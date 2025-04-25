@@ -30,7 +30,12 @@
 <rect id="sq27-r1" x="1014.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
 <rect id="sq28-r1" x="1053.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
 <rect id="sq29-r1" x="1092.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
-<rect id="sq30-r1" x="1131.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<g id="sq30-r1">
+<mask id="path-30-inside-1_413_124" fill="white">
+<path d="M1131 0H1171V40H1131V0Z"/>
+</mask>
+<path d="M1131 0V-1H1130V0H1131ZM1131 40H1130V41H1131V40ZM1131 0V1H1171V0V-1H1131V0ZM1171 40V39H1131V40V41H1171V40ZM1131 40H1132V0H1131H1130V40H1131Z" fill="#8A8A8A" mask="url(#path-30-inside-1_413_124)"/>
+</g>
 </g>
 <g id="row2">
 <rect id="sq01-r2" x="0.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
@@ -61,7 +66,12 @@
 <rect id="sq26-r2" x="1014.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
 <rect id="sq27-r2" x="1053.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
 <rect id="sq28-r2" x="1092.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
-<rect id="sq29-r2" x="1131.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<g id="sq29-r2">
+<mask id="path-60-inside-2_413_124" fill="white">
+<path d="M1131 39H1171V79H1131V39Z"/>
+</mask>
+<path d="M1131 39V38H1130V39H1131ZM1131 79H1130V80H1131V79ZM1131 39V40H1171V39V38H1131V39ZM1171 79V78H1131V79V80H1171V79ZM1131 79H1132V39H1131H1130V79H1131Z" fill="#8A8A8A" mask="url(#path-60-inside-2_413_124)"/>
+</g>
 <rect id="sq30-r2" x="195.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
 </g>
 <g id="elements">

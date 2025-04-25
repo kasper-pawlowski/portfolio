@@ -1,6 +1,6 @@
 import React from 'react'
 
-type DividerProps = {
+type MarqueeProps = {
   tileSize?: number
   stroke?: string
   fill?: string
@@ -10,7 +10,7 @@ type DividerProps = {
   id?: number
 }
 
-const Divider = ({
+const Marquee = ({
   tileSize = 39,
   stroke = '#8A8A8A',
   fill = 'none',
@@ -18,7 +18,7 @@ const Divider = ({
   height = 'auto',
   className = '',
   id
-}: DividerProps) => {
+}: MarqueeProps) => {
   const computedClassName = `${className} absolute bottom-0 z-1 w-full h-auto ${
     id === 1 ? 'left-[-50%]' : id === 2 ? 'left-[50%]' : 'left-[0%]'
   }`
@@ -558,4 +558,4 @@ const Divider = ({
   )
 }
 
-export default Divider
+export default Marquee
