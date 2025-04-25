@@ -2,17 +2,7 @@ import React from 'react'
 
 const Grain = () => (
   <div
-    className='grain-overlay pointer-events-none'
-    style={{
-      zIndex: 0,
-      opacity: 1,
-      mixBlendMode: 'overlay',
-      // backgroundImage: 'url("/grain.png")',
-      backgroundRepeat: 'repeat',
-      // backgroundSize: 'auto',
-      width: '100%'
-      // height: '100%'
-    }}
+    className='grain-overlay pointer-events-none absolute z-0 h-[300vh] w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
     aria-hidden='true'
   />
 )

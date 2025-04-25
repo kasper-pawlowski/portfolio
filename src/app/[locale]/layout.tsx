@@ -32,9 +32,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
-        <Suspense fallback={<Loading />}>
+        <Suspense>
           <NextIntlClientProvider>
             <Providers>
+              {/* <Loading /> */}
               <Grain />
               <Header />
               <main className='grow'>{children}</main>
