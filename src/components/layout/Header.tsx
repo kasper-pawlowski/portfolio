@@ -5,10 +5,13 @@ import ThemeToggle from '../theme-toggle'
 import Image from 'next/image'
 import SoundToggle from '../sound-toggle'
 import { useTheme } from 'next-themes'
+import LanguageToggle from '../language-toggle'
+import { useTranslations } from 'next-intl'
 
 const Header = () => {
   const { resolvedTheme } = useTheme()
   const headerRef = useRef<HTMLDivElement>(null)
+  const t = useTranslations('Navigation')
 
   useEffect(() => {
     if (headerRef.current) {
@@ -40,21 +43,22 @@ const Header = () => {
         <div className='flex grow-2 items-center justify-center'>
           <nav className='flex items-center justify-center gap-10'>
             <a href='#about' className='font-goia'>
-              O mnie
+              {t('about')}
             </a>
             <span className='text-2xl text-[#30303060]'>・</span>
             <a href='#projects' className='font-goia'>
-              Projekty
+              {t('projects')}
             </a>
             <span className='text-2xl text-[#30303060]'>・</span>
             <a href='#contact' className='font-goia'>
-              Kontakt
+              {t('contact')}
             </a>
           </nav>
         </div>
         <div className='flex grow items-center justify-end gap-8'>
           <SoundToggle />
           <ThemeToggle />
+          <LanguageToggle />
         </div>
       </div>
     </header>
