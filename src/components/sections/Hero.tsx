@@ -1,22 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
 import HeroGrid from '../ui/HeroGrid'
+import Divider from '../ui/Divider'
 
 const Hero = () => {
   return (
-    <section className='container mx-auto flex min-h-screen flex-col items-center justify-center pt-[var(--header-height)]'>
-      <HeroGrid />
-      {/* <div className='h-auto w-full'>
-        <Image
-          src='/hero-grid.svg'
-          alt='Moon Icon'
-          width={0}
-          height={0}
-          style={{ width: '100%', height: 'auto', zIndex: -1 }}
-        />
-      </div> */}
+    <section className='mx-auto flex h-screen flex-col items-center pt-[var(--header-height)]'>
+      <div className='container h-full w-full justify-center'>
+        <HeroGrid />
+      </div>
+      <div className='relative container w-full justify-self-end'>
+        <Divider id={1} />
+        <Divider id={2} />
+      </div>
 
-      {/* <div className='mt-auto h-[5rem] w-screen bg-[url("/divider.svg")] bg-repeat-y object-cover'></div> */}
       <Image
         src='/hero-blob.png'
         alt='blob'
