@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 type MarqueeProps = {
   tileSize?: number
@@ -23,8 +23,22 @@ const Marquee = ({
     id === 1 ? 'left-[-50%]' : id === 2 ? 'left-[50%]' : 'left-[0%]'
   }`
 
+  const parallaxMarqueeRef = useRef<SVGSVGElement>(null)
+
+  useEffect(() => {
+    if (parallaxMarqueeRef.current) {
+      const height = parallaxMarqueeRef.current.getBoundingClientRect().height
+      console.log('height', height)
+      document.documentElement.style.setProperty(
+        '--parallaxMarquee-height',
+        `${height}px`
+      )
+    }
+  }, [])
+
   return (
     <svg
+      ref={parallaxMarqueeRef}
       width={width}
       height={height}
       viewBox='0 0 1171 79'

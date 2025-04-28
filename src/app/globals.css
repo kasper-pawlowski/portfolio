@@ -14,7 +14,9 @@
   html {
     background-color: var(--background);
     height: auto;
-    overflow-x: hidden;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   body {
@@ -32,6 +34,25 @@
   button {
     cursor: pointer;
   }
+
+  /* *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 5px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--foreground);
+    border-radius: 14px;
+    border: 2px solid var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: orange;
+  } */
 }
 
 @theme {
@@ -44,4 +65,55 @@
 @theme inline {
   --font-sans: var(--font-goia);
   --font-display: var(--font-goia-display);
+}
+
+@utility container {
+  @variant sm {
+    /* @media (width >= 40rem) {
+      max-width: 40rem;
+      background-color: #155dfb20;
+    } */
+
+    @media (width >= 64rem /* 1024px */) {
+      max-width: 64rem /* 1024px */;
+      /* background-color: orange; */
+    }
+  }
+
+  @variant md {
+    /* @media (width >= 48rem) {
+      max-width: 48rem;
+      background-color: green;
+    } */
+
+    @media (width >= 64rem /* 1024px */) {
+      max-width: 64rem /* 1024px */;
+      /* background-color: orange; */
+    }
+  }
+
+  @variant lg {
+    @media (width >= 64rem /* 1024px */) {
+      max-width: 64rem /* 1024px */;
+      /* background-color: orange; */
+    }
+  }
+
+  @variant xl {
+    @media (width >= 80rem /* 1280px */) {
+      max-width: 80rem /* 1280px */;
+      /* background-color: red; */
+    }
+  }
+
+  @variant 2xl {
+    @media (width >= 90rem /* 1536px */) {
+      max-width: 90rem /* 1536px */;
+      /* background-color: blue; */
+    }
+    @media (width >= 106rem /* 1536px */) {
+      max-width: 106rem;
+      /* background-color: orange; */
+    }
+  }
 }

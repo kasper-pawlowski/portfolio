@@ -9,8 +9,10 @@ import Image from 'next/image'
 import Providers from '@/components/providers'
 import Header from '@/components/layout/Header'
 import { Suspense } from 'react'
-import Loading from './Loading'
+import NextTopLoader from 'nextjs-toploader'
+
 import Grain from '@/components/Grain'
+import Loading from './Loading'
 
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
@@ -32,16 +34,21 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
-        <Suspense>
-          <NextIntlClientProvider>
-            <Providers>
-              {/* <Loading /> */}
-              <Grain />
-              <Header />
-              <main className='grow'>{children}</main>
-            </Providers>
-          </NextIntlClientProvider>
-        </Suspense>
+        {/* <Suspense fallback={<Loading />}> */}
+        {/* <NextTopLoader
+          height={10}
+          template='<div class="bar" role="bar"><div class="peg"></div></div> 
+  <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+        /> */}
+        <NextIntlClientProvider>
+          <Providers>
+            {/* <Loading /> */}
+            <Grain />
+            <Header />
+            <main className=''>{children}</main>
+          </Providers>
+        </NextIntlClientProvider>
+        {/* </Suspense> */}
       </body>
     </html>
   )

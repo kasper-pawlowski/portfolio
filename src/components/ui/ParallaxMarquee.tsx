@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import {
   motion,
@@ -32,7 +32,7 @@ const ParallaxMarquee = () => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000)
 
     if (velocityFactor.get() < 0) {
-      directionFactor.current = -1 // -1 is left, 1 is right
+      directionFactor.current = 1 // -1 is left, 1 is right
     } else if (velocityFactor.get() > 0) {
       directionFactor.current = 1
     }
@@ -45,7 +45,7 @@ const ParallaxMarquee = () => {
   return (
     <motion.div
       style={{ x }}
-      className='divider-wrapper relative container w-full justify-self-end'
+      className='relative container w-full place-self-end justify-self-end'
     >
       <Marquee id={1} />
       <Marquee id={2} />

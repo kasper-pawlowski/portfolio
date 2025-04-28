@@ -24,10 +24,10 @@ const Header = () => {
   }, [])
 
   return (
-    <header ref={headerRef} className='fixed top-0 left-0 w-screen'>
+    <header ref={headerRef} className='fixed top-0 left-0 z-10 w-full'>
       <div className='text-grey container mx-auto flex w-full items-center justify-between py-8 text-2xl font-bold'>
         <div className='flex grow items-center justify-start'>
-          <a href='/'>
+          <a href='#hero'>
             {resolvedTheme === 'dark' ? (
               <Image
                 src='/icons/logo-light.svg'
@@ -61,6 +61,19 @@ const Header = () => {
           <LanguageToggle />
         </div>
       </div>
+      <div
+        className='absolute top-0 z-[-1] h-full w-full backdrop-blur-2xl'
+        style={{
+          WebkitMaskImage:
+            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
+          maskImage:
+            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
+          WebkitMaskSize: '100% 100%',
+          maskSize: '100% 100%',
+          WebkitMaskRepeat: 'no-repeat',
+          maskRepeat: 'no-repeat'
+        }}
+      ></div>
     </header>
   )
 }
