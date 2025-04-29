@@ -28,7 +28,6 @@ const Marquee = ({
   useEffect(() => {
     if (parallaxMarqueeRef.current) {
       const height = parallaxMarqueeRef.current.getBoundingClientRect().height
-      console.log('height', height)
       document.documentElement.style.setProperty(
         '--parallaxMarquee-height',
         `${height}px`

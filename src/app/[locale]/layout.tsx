@@ -42,10 +42,12 @@ export default async function LocaleLayout({
         /> */}
         <NextIntlClientProvider>
           <Providers>
-            {/* <Loading /> */}
-            <Grain />
-            <Header />
-            <main className=''>{children}</main>
+            <div className='overflow-clip scroll-smooth'>
+              {/* <Loading /> */}
+              <Grain />
+              <Header />
+              <main className=''>{children}</main>
+            </div>
           </Providers>
         </NextIntlClientProvider>
         {/* </Suspense> */}
