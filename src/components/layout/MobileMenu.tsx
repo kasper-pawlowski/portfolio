@@ -4,45 +4,20 @@ import SoundToggle from '../sound-toggle'
 import ThemeToggle from '../theme-toggle'
 import { useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
+import { motion } from 'framer-motion'
 
 const MobileMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations('Navigation')
   const { resolvedTheme } = useTheme()
 
   return (
-    <div className='bg-beige text-foreground fixed top-0 z-[-1] flex h-screen w-screen flex-col items-center justify-center gap-10'>
-      {/* <button onClick={onClose} className='absolute top-6 right-6'>
-        {resolvedTheme === 'dark' ? (
-          <Image
-            src='/icons/close-light.svg'
-            width={30}
-            height={30}
-            alt='Close menu'
-          />
-        ) : (
-          <Image
-            src='/icons/close-dark.svg'
-            width={30}
-            height={30}
-            alt='Close menu'
-          />
-        )}
-      </button>
-      <a onClick={onClose} href='#about' className='text-2xl'>
-        {t('about')}
-      </a>
-      <a onClick={onClose} href='#projects' className='text-2xl'>
-        {t('projects')}
-      </a>
-      <a onClick={onClose} href='#contact' className='text-2xl'>
-        {t('contact')}
-      </a>
-      <div className='flex gap-6'>
-        <SoundToggle />
-        <ThemeToggle />
-        <LanguageToggle />
-      </div> */}
-    </div>
+    <motion.div className='bg-beige text-foreground relative flex h-screen w-screen flex-col items-center justify-center gap-10'>
+      <button onClick={onClose}>close</button>
+      <div
+        className='pointer-events-none absolute inset-0 z-0 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        aria-hidden='true'
+      />
+    </motion.div>
   )
 }
 

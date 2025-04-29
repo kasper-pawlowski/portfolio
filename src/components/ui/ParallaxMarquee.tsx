@@ -11,6 +11,7 @@ import {
 } from 'framer-motion'
 import { wrap } from '@motionone/utils'
 import Marquee from './Marquee'
+import MarqueeMobile from './MarqueeMobile'
 
 const ParallaxMarquee = () => {
   const baseVelocity = 3
@@ -47,8 +48,15 @@ const ParallaxMarquee = () => {
       style={{ x }}
       className='relative container w-full place-self-end justify-self-end'
     >
-      <Marquee id={1} />
-      <Marquee id={2} />
+      <div className='hidden lg:flex'>
+        <Marquee id={1} />
+        <Marquee id={2} />
+      </div>
+
+      <div className='lg:hidden'>
+        <MarqueeMobile id={1} />
+        <MarqueeMobile id={2} />
+      </div>
     </motion.div>
   )
 }

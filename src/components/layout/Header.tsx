@@ -8,7 +8,12 @@ import { useTheme } from 'next-themes'
 import LanguageToggle from '../language-toggle'
 import { useTranslations } from 'next-intl'
 import MobileMenu from './MobileMenu'
-import { useMotionValueEvent, useScroll, motion } from 'motion/react'
+import {
+  useMotionValueEvent,
+  useScroll,
+  motion,
+  AnimatePresence
+} from 'motion/react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -66,7 +71,7 @@ const Header = () => {
       initial={{ y: 0 }}
       animate={{ y: scrollDirection === 'down' ? '-100%' : '0%' }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
-      className='fixed top-0 left-0 z-10 w-full'
+      className='fixed top-0 left-0 z-10 w-full px-8 lg:px-0'
     >
       <div className='text-grey container mx-auto flex w-full items-center justify-between py-8 text-2xl font-bold'>
         <div className='flex grow items-center justify-start'>
@@ -113,7 +118,7 @@ const Header = () => {
         </button>
       </div>
       <div
-        className='absolute top-0 z-[-1] h-full w-full backdrop-blur-2xl'
+        className='absolute inset-0 z-[-1] h-full w-full backdrop-blur-2xl'
         style={{
           WebkitMaskImage:
             'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
@@ -126,7 +131,22 @@ const Header = () => {
         }}
       ></div>
 
-      {isMenuOpen && <MobileMenu onClose={() => setIsMenuOpen(false)} />}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className='fixed inset-0 z-[-1]'
+            initial={{ opacity: 0, y: '-100vh' }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            exit={{ opacity: 0, y: '-100vh' }}
+          >
+            <MobileMenu
+              key={'mobile-menu'}
+              onClose={() => setIsMenuOpen(false)}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }

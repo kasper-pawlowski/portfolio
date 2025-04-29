@@ -300,7 +300,7 @@ const HeroGrid = ({
       width={width}
       height={height}
       viewBox='0 0 1171 547'
-      fill='#8A8A8A01' // Tło SVG, może być 'none'
+      fill='none' // Tło SVG, może być 'none'
       xmlns='http://www.w3.org/2000/svg'
       className={className}
     >
