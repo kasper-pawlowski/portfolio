@@ -4,7 +4,6 @@ import Image from 'next/image'
 import React from 'react'
 import HeroGrid from '../ui/HeroGrid'
 import ParallaxMarquee from '../ui/ParallaxMarquee'
-import AnimatedHeroGrid from '../ui/AnimatedHeroGrid'
 
 const Hero = () => {
   return (

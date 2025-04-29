@@ -295,176 +295,6 @@ const HeroGrid = ({
     { id: 'sq09-r14', type: 'rect', x: 429.5, y: 507.5 }
   ]
 
-  const [hoverTrail, setHoverTrail] = useState<string[]>([])
-  const [lastId, setLastId] = useState<string | null>(null)
-
-  // --- Optymalizacja i Interpolacja ---
-
-  // 1. Mapa do szybkiego wyszukiwania ID po koordynatach siatki
-  const elementMap = useMemo(() => {
-    const map = new Map<string, { id: string; x: number; y: number }>()
-    gridElements.forEach(e => {
-      if (e.type === 'rect') {
-        const col = Math.floor(e.x! / tileSize)
-        const row = Math.floor(e.y! / tileSize)
-        const key = `${col},${row}`
-        map.set(key, { id: e.id, x: e.x!, y: e.y! })
-      }
-      // Można dodać obsługę path, jeśli potrzebne (np. po bounding box)
-    })
-    return map
-  }, [tileSize]) // Zakładamy, że gridElements jest stałe
-
-  // Zoptymalizowana funkcja do znajdowania ID pod kursorem
-  const getElementIdFromMouse = (
-    mouseX: number,
-    mouseY: number
-  ): string | null => {
-    const col = Math.floor(mouseX / tileSize)
-    const row = Math.floor(mouseY / tileSize)
-    const key = `${col},${row}`
-    const element = elementMap.get(key)
-
-    // Dodatkowe sprawdzenie, czy kursor jest faktycznie w granicach elementu
-    if (
-      element &&
-      mouseX >= element.x &&
-      mouseX < element.x + tileSize &&
-      mouseY >= element.y &&
-      mouseY < element.y + tileSize
-    ) {
-      return element.id
-    }
-
-    // Fallback dla pathów lub elementów nie w mapie (jeśli potrzebne)
-    // Można tu dodać oryginalną pętlę sprawdzającą pathy
-    return null
-  }
-
-  // Funkcja pomocnicza: pobierz indeksy siatki (col, row) dla danego ID
-  const getGridIndicesById = (
-    id: string
-  ): { col: number; row: number } | null => {
-    const el = gridElements.find(e => e.id === id) // Można zoptymalizować przez mapę ID -> Element
-    if (!el || el.type !== 'rect') return null
-    return {
-      col: Math.floor(el.x! / tileSize),
-      row: Math.floor(el.y! / tileSize)
-    }
-  }
-
-  // Funkcja pomocnicza: pobierz ID dla danych indeksów siatki
-  const getIdFromGridIndices = (col: number, row: number): string | null => {
-    const key = `${col},${row}`
-    return elementMap.get(key)?.id || null
-  }
-
-  // 2. Funkcja znajdująca ID elementów na linii między dwoma punktami siatki
-  const getElementsBetween = (idA: string, idB: string): string[] => {
-    const start = getGridIndicesById(idA)
-    const end = getGridIndicesById(idB)
-
-    if (!start || !end) return [idB] // Nie można interpolować
-
-    let x0 = start.col
-    let y0 = start.row
-    const x1 = end.col
-    const y1 = end.row
-
-    const dx = Math.abs(x1 - x0)
-    const dy = -Math.abs(y1 - y0)
-    const sx = x0 < x1 ? 1 : -1
-    const sy = y0 < y1 ? 1 : -1
-    let err = dx + dy
-
-    const ids: string[] = []
-
-    while (true) {
-      const currentId = getIdFromGridIndices(x0, y0)
-      // Dodajemy tylko jeśli istnieje i nie jest duplikatem
-      if (currentId && !ids.includes(currentId)) {
-        ids.push(currentId)
-      }
-
-      if (x0 === x1 && y0 === y1) break // Dotarliśmy do końca
-
-      const e2 = 2 * err
-      if (e2 >= dy) {
-        // Krok w osi X
-        err += dy
-        x0 += sx
-      }
-      if (e2 <= dx) {
-        // Krok w osi Y
-        err += dx
-        y0 += sy
-      }
-    }
-    // Upewnij się, że końcowy element jest zawsze dodany
-    if (!ids.includes(idB)) {
-      const endIdFromIndices = getIdFromGridIndices(x1, y1)
-      if (endIdFromIndices) ids.push(endIdFromIndices)
-    }
-
-    return ids // Zwraca ID od startu do końca
-  }
-
-  // 3. Zaktualizowany handler mouse move
-  const handleSvgMouseMove = (
-    evt: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
-    const svg = evt.currentTarget
-    const point = svg.createSVGPoint()
-    point.x = evt.clientX
-    point.y = evt.clientY
-    const ctm = svg.getScreenCTM()
-    if (!ctm) return
-    const transformed = point.matrixTransform(ctm.inverse())
-    const currentId = getElementIdFromMouse(transformed.x, transformed.y)
-
-    if (currentId) {
-      setHoverTrail(prevTrail => {
-        let elementsToAdd: string[] = []
-
-        if (lastId && lastId !== currentId) {
-          // Interpoluj od lastId do currentId
-          elementsToAdd = getElementsBetween(lastId, currentId)
-          // Odwracamy, aby najnowszy (currentId) był pierwszy
-          elementsToAdd.reverse()
-        } else if (prevTrail[0] !== currentId) {
-          // Tylko nowy element, jeśli nie jest już na początku
-          elementsToAdd = [currentId]
-        } else {
-          // Brak zmian, ID jest to samo co ostatnio na początku
-          return prevTrail
-        }
-
-        // Połącz nowe elementy z istniejącym śladem
-        const combined = [...elementsToAdd, ...prevTrail]
-        // Usuń duplikaty (zachowując pierwsze wystąpienie) i ogranicz do 20
-        const uniqueTrail = Array.from(new Set(combined))
-        const finalTrail = uniqueTrail.slice(0, 20)
-
-        return finalTrail
-      })
-      // Zaktualizuj lastId *poza* setHoverTrail, aby mieć pewność, że jest aktualny dla następnego ruchu
-      setLastId(currentId)
-    }
-    // Można dodać logikę 'else' jeśli kursor opuścił wszystkie elementy, np. reset lastId
-    // else if (lastId) {
-    //   setLastId(null);
-    // }
-  }
-
-  const getTrailColor = (id: string) => {
-    const idx = hoverTrail.indexOf(id)
-    if (idx === -1) return fill // Użyj domyślnego 'fill' zamiast 'transparent'
-    const alpha = (1 - idx * 0.05).toFixed(2) // 0.05 = 5%
-    return `rgba(255,76,0,${alpha})` // Zakładamy biały kolor bazowy
-  }
-
-  // --- Koniec Optymalizacji i Interpolacji ---
-
   return (
     <motion.svg
       width={width}
@@ -473,12 +303,6 @@ const HeroGrid = ({
       fill='#8A8A8A01' // Tło SVG, może być 'none'
       xmlns='http://www.w3.org/2000/svg'
       className={className}
-      onMouseMove={handleSvgMouseMove}
-      // Opcjonalnie: onMouseLeave do wyczyszczenia śladu
-      onMouseLeave={() => {
-        setHoverTrail([])
-        setLastId(null)
-      }}
     >
       <motion.g id='hero-grid'>
         {gridElements.map(e =>
@@ -487,9 +311,8 @@ const HeroGrid = ({
               key={e.id}
               id={e.id}
               d={e.d!}
-              stroke={stroke} // Nadaj kolor również pathom
-              fill={getTrailColor(e.id)} // Nadaj kolor również pathom
-              // pointerEvents="stroke" // Lub "fill" lub "all" jeśli pathy mają reagować
+              stroke={stroke}
+              fill={fill}
             />
           ) : (
             <motion.rect
@@ -500,8 +323,7 @@ const HeroGrid = ({
               width={tileSize}
               height={tileSize}
               stroke={stroke}
-              fill={getTrailColor(e.id)}
-              // pointerEvents="all" // Upewnij się, że recty łapią zdarzenia
+              fill={fill}
             />
           )
         )}
