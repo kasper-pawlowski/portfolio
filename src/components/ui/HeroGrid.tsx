@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useEffect, useState, useMemo } from 'react' // Dodaj useMemo
+import { animate, hover, motion, useScroll, useTransform } from 'framer-motion'
 
 type HeroGridProps = {
   tileSize?: number
@@ -16,7 +16,7 @@ const HeroGrid = ({
   fill = 'none',
   width = '100%',
   height = 'auto',
-  className = 'absolute z-[-2]'
+  className = 'absolute z-1'
 }: HeroGridProps) => {
   const { scrollYProgress } = useScroll()
 
@@ -26,2080 +26,487 @@ const HeroGrid = ({
     ['0deg', '960deg']
   )
 
+  const gridElements = [
+    // row01
+    {
+      id: 'sq01-r1',
+      type: 'path',
+      d: 'M907 0.5H936.5V39.5H897.5V10C897.5 4.7533 901.753 0.5 907 0.5Z'
+    },
+    { id: 'sq02-r1', type: 'rect', x: 936.5, y: 0.5 },
+    { id: 'sq03-r1', type: 'rect', x: 975.5, y: 0.5 },
+    { id: 'sq04-r1', type: 'rect', x: 1014.5, y: 0.5 },
+    // row02
+    {
+      id: 'sq01-r2',
+      type: 'path',
+      d: 'M556 39.5H585.5V78.5H546.5V49C546.5 43.7533 550.753 39.5 556 39.5Z'
+    },
+    { id: 'sq02-r2', type: 'rect', x: 585.5, y: 39.5 },
+    { id: 'sq03-r2', type: 'rect', x: 624.5, y: 39.5 },
+    { id: 'sq04-r2', type: 'rect', x: 780.5, y: 39.5 },
+    { id: 'sq05-r2', type: 'rect', x: 819.5, y: 39.5 },
+    { id: 'sq06-r2', type: 'rect', x: 858.5, y: 39.5 },
+    { id: 'sq07-r2', type: 'rect', x: 897.5, y: 39.5 },
+    { id: 'sq08-r2', type: 'rect', x: 936.5, y: 39.5 },
+    { id: 'sq09-r2', type: 'rect', x: 975.5, y: 39.5 },
+    { id: 'sq10-r2', type: 'rect', x: 1014.5, y: 39.5 },
+    { id: 'sq11-r2', type: 'rect', x: 1053.5, y: 39.5 },
+    { id: 'sq12-r2', type: 'rect', x: 1092.5, y: 39.5 },
+    // row03
+    { id: 'sq01-r3', type: 'rect', x: 546.5, y: 78.5 },
+    { id: 'sq02-r3', type: 'rect', x: 585.5, y: 78.5 },
+    { id: 'sq03-r3', type: 'rect', x: 624.5, y: 78.5 },
+    { id: 'sq04-r3', type: 'rect', x: 780.5, y: 78.5 },
+    { id: 'sq05-r3', type: 'rect', x: 819.5, y: 78.5 },
+    { id: 'sq06-r3', type: 'rect', x: 858.5, y: 78.5 },
+    { id: 'sq07-r3', type: 'rect', x: 897.5, y: 78.5 },
+    { id: 'sq08-r3', type: 'rect', x: 936.5, y: 78.5 },
+    { id: 'sq09-r3', type: 'rect', x: 975.5, y: 78.5 },
+    { id: 'sq10-r3', type: 'rect', x: 1014.5, y: 78.5 },
+    { id: 'sq11-r3', type: 'rect', x: 1053.5, y: 78.5 },
+    { id: 'sq12-r3', type: 'rect', x: 1092.5, y: 78.5 },
+    {
+      id: 'sq13-r3',
+      type: 'path',
+      d: 'M1161 78.5C1166.25 78.5 1170.5 82.7533 1170.5 88V117.5H1131.5V78.5H1161Z'
+    },
+    // row04
+    { id: 'sq01-r4', type: 'rect', x: 507.5, y: 117.5 },
+    { id: 'sq02-r4', type: 'rect', x: 546.5, y: 117.5 },
+    { id: 'sq03-r4', type: 'rect', x: 585.5, y: 117.5 },
+    { id: 'sq04-r4', type: 'rect', x: 624.5, y: 117.5 },
+    { id: 'sq05-r4', type: 'rect', x: 663.5, y: 117.5 },
+    { id: 'sq06-r4', type: 'rect', x: 702.5, y: 117.5 },
+    { id: 'sq07-r4', type: 'rect', x: 741.5, y: 117.5 },
+    { id: 'sq08-r4', type: 'rect', x: 780.5, y: 117.5 },
+    { id: 'sq09-r4', type: 'rect', x: 819.5, y: 117.5 },
+    { id: 'sq10-r4', type: 'rect', x: 858.5, y: 117.5 },
+    { id: 'sq11-r4', type: 'rect', x: 897.5, y: 117.5 },
+    { id: 'sq12-r4', type: 'rect', x: 936.5, y: 117.5 },
+    { id: 'sq13-r4', type: 'rect', x: 975.5, y: 117.5 },
+    { id: 'sq14-r4', type: 'rect', x: 1014.5, y: 117.5 },
+    { id: 'sq15-r4', type: 'rect', x: 1053.5, y: 117.5 },
+    { id: 'sq16-r4', type: 'rect', x: 1092.5, y: 117.5 },
+    { id: 'sq17-r4', type: 'rect', x: 1131.5, y: 117.5 },
+    // row05
+    { id: 'sq01-r5', type: 'rect', x: 507.5, y: 156.5 },
+    { id: 'sq02-r5', type: 'rect', x: 546.5, y: 156.5 },
+    { id: 'sq03-r5', type: 'rect', x: 585.5, y: 156.5 },
+    { id: 'sq04-r5', type: 'rect', x: 624.5, y: 156.5 },
+    { id: 'sq05-r5', type: 'rect', x: 663.5, y: 156.5 },
+    { id: 'sq06-r5', type: 'rect', x: 702.5, y: 156.5 },
+    { id: 'sq07-r5', type: 'rect', x: 741.5, y: 156.5 },
+    { id: 'sq08-r5', type: 'rect', x: 780.5, y: 156.5 },
+    { id: 'sq09-r5', type: 'rect', x: 819.5, y: 156.5 },
+    { id: 'sq10-r5', type: 'rect', x: 858.5, y: 156.5 },
+    { id: 'sq11-r5', type: 'rect', x: 897.5, y: 156.5 },
+    { id: 'sq12-r5', type: 'rect', x: 936.5, y: 156.5 },
+    { id: 'sq13-r5', type: 'rect', x: 975.5, y: 156.5 },
+    { id: 'sq14-r5', type: 'rect', x: 1014.5, y: 156.5 },
+    { id: 'sq15-r5', type: 'rect', x: 1053.5, y: 156.5 },
+    { id: 'sq16-r5', type: 'rect', x: 1092.5, y: 156.5 },
+    { id: 'sq17-r5', type: 'rect', x: 1131.5, y: 156.5 },
+    // row06
+    { id: 'sq01-r6', type: 'rect', x: 507.5, y: 195.5 },
+    { id: 'sq02-r6', type: 'rect', x: 546.5, y: 195.5 },
+    { id: 'sq03-r6', type: 'rect', x: 585.5, y: 195.5 },
+    { id: 'sq04-r6', type: 'rect', x: 624.5, y: 195.5 },
+    { id: 'sq05-r6', type: 'rect', x: 663.5, y: 195.5 },
+    { id: 'sq06-r6', type: 'rect', x: 702.5, y: 195.5 },
+    { id: 'sq07-r6', type: 'rect', x: 741.5, y: 195.5 },
+    { id: 'sq08-r6', type: 'rect', x: 780.5, y: 195.5 },
+    { id: 'sq09-r6', type: 'rect', x: 819.5, y: 195.5 },
+    { id: 'sq10-r6', type: 'rect', x: 858.5, y: 195.5 },
+    { id: 'sq11-r6', type: 'rect', x: 897.5, y: 195.5 },
+    { id: 'sq12-r6', type: 'rect', x: 936.5, y: 195.5 },
+    { id: 'sq13-r6', type: 'rect', x: 975.5, y: 195.5 },
+    { id: 'sq14-r6', type: 'rect', x: 1014.5, y: 195.5 },
+    { id: 'sq15-r6', type: 'rect', x: 1053.5, y: 195.5 },
+    { id: 'sq16-r6', type: 'rect', x: 1092.5, y: 195.5 },
+    { id: 'sq17-r6', type: 'rect', x: 1131.5, y: 195.5 },
+    // row07
+    {
+      id: 'sq01-r7',
+      type: 'path',
+      d: 'M205 234.5H234.5V273.5H195.5V244C195.5 238.753 199.753 234.5 205 234.5Z'
+    },
+    { id: 'sq02-r7', type: 'rect', x: 234.5, y: 234.5 },
+    { id: 'sq03-r7', type: 'rect', x: 273.5, y: 234.5 },
+    { id: 'sq04-r7', type: 'rect', x: 312.5, y: 234.5 },
+    { id: 'sq05-r7', type: 'rect', x: 351.5, y: 234.5 },
+    { id: 'sq06-r7', type: 'rect', x: 390.5, y: 234.5 },
+    { id: 'sq07-r7', type: 'rect', x: 429.5, y: 234.5 },
+    { id: 'sq08-r7', type: 'rect', x: 468.5, y: 234.5 },
+    { id: 'sq09-r7', type: 'rect', x: 507.5, y: 234.5 },
+    { id: 'sq10-r7', type: 'rect', x: 546.5, y: 234.5 },
+    { id: 'sq11-r7', type: 'rect', x: 585.5, y: 234.5 },
+    { id: 'sq12-r7', type: 'rect', x: 624.5, y: 234.5 },
+    { id: 'sq13-r7', type: 'rect', x: 663.5, y: 234.5 },
+    { id: 'sq14-r7', type: 'rect', x: 702.5, y: 234.5 },
+    { id: 'sq15-r7', type: 'rect', x: 741.5, y: 234.5 },
+    { id: 'sq16-r7', type: 'rect', x: 780.5, y: 234.5 },
+    { id: 'sq17-r7', type: 'rect', x: 819.5, y: 234.5 },
+    { id: 'sq18-r7', type: 'rect', x: 858.5, y: 234.5 },
+    { id: 'sq19-r7', type: 'rect', x: 897.5, y: 234.5 },
+    { id: 'sq20-r7', type: 'rect', x: 936.5, y: 234.5 },
+    { id: 'sq21-r7', type: 'rect', x: 975.5, y: 234.5 },
+    { id: 'sq22-r7', type: 'rect', x: 1014.5, y: 234.5 },
+    { id: 'sq23-r7', type: 'rect', x: 1053.5, y: 234.5 },
+    // row08
+    { id: 'sq01-r8', type: 'rect', x: 0.5, y: 273.5 },
+    { id: 'sq02-r8', type: 'rect', x: 39.5, y: 273.5 },
+    { id: 'sq03-r8', type: 'rect', x: 78.5, y: 273.5 },
+    { id: 'sq04-r8', type: 'rect', x: 117.5, y: 273.5 },
+    { id: 'sq05-r8', type: 'rect', x: 156.5, y: 273.5 },
+    { id: 'sq06-r8', type: 'rect', x: 195.5, y: 273.5 },
+    { id: 'sq07-r8', type: 'rect', x: 234.5, y: 273.5 },
+    { id: 'sq08-r8', type: 'rect', x: 273.5, y: 273.5 },
+    { id: 'sq09-r8', type: 'rect', x: 312.5, y: 273.5 },
+    { id: 'sq10-r8', type: 'rect', x: 351.5, y: 273.5 },
+    { id: 'sq11-r8', type: 'rect', x: 390.5, y: 273.5 },
+    { id: 'sq12-r8', type: 'rect', x: 429.5, y: 273.5 },
+    { id: 'sq13-r8', type: 'rect', x: 468.5, y: 273.5 },
+    { id: 'sq14-r8', type: 'rect', x: 507.5, y: 273.5 },
+    { id: 'sq15-r8', type: 'rect', x: 546.5, y: 273.5 },
+    { id: 'sq16-r8', type: 'rect', x: 585.5, y: 273.5 },
+    { id: 'sq17-r8', type: 'rect', x: 624.5, y: 273.5 },
+    { id: 'sq18-r8', type: 'rect', x: 663.5, y: 273.5 },
+    { id: 'sq19-r8', type: 'rect', x: 702.5, y: 273.5 },
+    { id: 'sq20-r8', type: 'rect', x: 741.5, y: 273.5 },
+    { id: 'sq21-r8', type: 'rect', x: 780.5, y: 273.5 },
+    { id: 'sq22-r8', type: 'rect', x: 819.5, y: 273.5 },
+    { id: 'sq23-r8', type: 'rect', x: 858.5, y: 273.5 },
+    { id: 'sq24-r8', type: 'rect', x: 897.5, y: 273.5 },
+    { id: 'sq25-r8', type: 'rect', x: 936.5, y: 273.5 },
+    { id: 'sq26-r8', type: 'rect', x: 975.5, y: 273.5 },
+    { id: 'sq27-r8', type: 'rect', x: 1014.5, y: 273.5 },
+    { id: 'sq28-r8', type: 'rect', x: 1053.5, y: 273.5 },
+    // row09
+    { id: 'sq01-r9', type: 'rect', x: 0.5, y: 312.5 },
+    { id: 'sq02-r9', type: 'rect', x: 39.5, y: 312.5 },
+    { id: 'sq03-r9', type: 'rect', x: 78.5, y: 312.5 },
+    { id: 'sq04-r9', type: 'rect', x: 117.5, y: 312.5 },
+    { id: 'sq05-r9', type: 'rect', x: 156.5, y: 312.5 },
+    { id: 'sq06-r9', type: 'rect', x: 195.5, y: 312.5 },
+    { id: 'sq07-r9', type: 'rect', x: 234.5, y: 312.5 },
+    { id: 'sq08-r9', type: 'rect', x: 273.5, y: 312.5 },
+    { id: 'sq09-r9', type: 'rect', x: 312.5, y: 312.5 },
+    { id: 'sq10-r9', type: 'rect', x: 351.5, y: 312.5 },
+    { id: 'sq11-r9', type: 'rect', x: 390.5, y: 312.5 },
+    { id: 'sq12-r9', type: 'rect', x: 429.5, y: 312.5 },
+    { id: 'sq13-r9', type: 'rect', x: 468.5, y: 312.5 },
+    { id: 'sq14-r9', type: 'rect', x: 507.5, y: 312.5 },
+    { id: 'sq15-r9', type: 'rect', x: 546.5, y: 312.5 },
+    { id: 'sq16-r9', type: 'rect', x: 585.5, y: 312.5 },
+    { id: 'sq17-r9', type: 'rect', x: 624.5, y: 312.5 },
+    { id: 'sq18-r9', type: 'rect', x: 663.5, y: 312.5 },
+    { id: 'sq19-r9', type: 'rect', x: 702.5, y: 312.5 },
+    { id: 'sq20-r9', type: 'rect', x: 741.5, y: 312.5 },
+    { id: 'sq21-r9', type: 'rect', x: 780.5, y: 312.5 },
+    { id: 'sq22-r9', type: 'rect', x: 819.5, y: 312.5 },
+    { id: 'sq23-r9', type: 'rect', x: 858.5, y: 312.5 },
+    { id: 'sq24-r9', type: 'rect', x: 897.5, y: 312.5 },
+    // row10
+    { id: 'sq01-r10', type: 'rect', x: 0.5, y: 351.5 },
+    { id: 'sq02-r10', type: 'rect', x: 39.5, y: 351.5 },
+    { id: 'sq03-r10', type: 'rect', x: 78.5, y: 351.5 },
+    { id: 'sq04-r10', type: 'rect', x: 117.5, y: 351.5 },
+    { id: 'sq05-r10', type: 'rect', x: 156.5, y: 351.5 },
+    { id: 'sq06-r10', type: 'rect', x: 195.5, y: 351.5 },
+    { id: 'sq07-r10', type: 'rect', x: 234.5, y: 351.5 },
+    { id: 'sq08-r10', type: 'rect', x: 273.5, y: 351.5 },
+    { id: 'sq09-r10', type: 'rect', x: 312.5, y: 351.5 },
+    { id: 'sq10-r10', type: 'rect', x: 351.5, y: 351.5 },
+    { id: 'sq11-r10', type: 'rect', x: 390.5, y: 351.5 },
+    { id: 'sq12-r10', type: 'rect', x: 429.5, y: 351.5 },
+    { id: 'sq13-r10', type: 'rect', x: 468.5, y: 351.5 },
+    { id: 'sq14-r10', type: 'rect', x: 507.5, y: 351.5 },
+    { id: 'sq15-r10', type: 'rect', x: 546.5, y: 351.5 },
+    { id: 'sq16-r10', type: 'rect', x: 585.5, y: 351.5 },
+    { id: 'sq17-r10', type: 'rect', x: 624.5, y: 351.5 },
+    { id: 'sq18-r10', type: 'rect', x: 663.5, y: 351.5 },
+    { id: 'sq19-r10', type: 'rect', x: 702.5, y: 351.5 },
+    // row11
+    {
+      id: 'sq01-r11',
+      type: 'path',
+      d: 'M39.5 390.5V429.5H10C4.7533 429.5 0.5 425.247 0.5 420V390.5H39.5Z'
+    },
+    { id: 'sq02-r11', type: 'rect', x: 39.5, y: 390.5 },
+    { id: 'sq03-r11', type: 'rect', x: 78.5, y: 390.5 },
+    { id: 'sq04-r11', type: 'rect', x: 117.5, y: 390.5 },
+    { id: 'sq05-r11', type: 'rect', x: 156.5, y: 390.5 },
+    { id: 'sq06-r11', type: 'rect', x: 195.5, y: 390.5 },
+    { id: 'sq07-r11', type: 'rect', x: 234.5, y: 390.5 },
+    { id: 'sq08-r11', type: 'rect', x: 273.5, y: 390.5 },
+    { id: 'sq09-r11', type: 'rect', x: 312.5, y: 390.5 },
+    { id: 'sq10-r11', type: 'rect', x: 351.5, y: 390.5 },
+    { id: 'sq11-r11', type: 'rect', x: 390.5, y: 390.5 },
+    { id: 'sq12-r11', type: 'rect', x: 429.5, y: 390.5 },
+    { id: 'sq13-r11', type: 'rect', x: 468.5, y: 390.5 },
+    { id: 'sq14-r11', type: 'rect', x: 507.5, y: 390.5 },
+    { id: 'sq15-r11', type: 'rect', x: 546.5, y: 390.5 },
+    { id: 'sq16-r11', type: 'rect', x: 585.5, y: 390.5 },
+    { id: 'sq17-r11', type: 'rect', x: 624.5, y: 390.5 },
+    { id: 'sq18-r11', type: 'rect', x: 663.5, y: 390.5 },
+    // row12
+    { id: 'sq01-r12', type: 'rect', x: 117.5, y: 429.5 },
+    { id: 'sq02-r12', type: 'rect', x: 156.5, y: 429.5 },
+    { id: 'sq03-r12', type: 'rect', x: 195.5, y: 429.5 },
+    { id: 'sq04-r12', type: 'rect', x: 234.5, y: 429.5 },
+    { id: 'sq05-r12', type: 'rect', x: 273.5, y: 429.5 },
+    { id: 'sq06-r12', type: 'rect', x: 312.5, y: 429.5 },
+    { id: 'sq07-r12', type: 'rect', x: 351.5, y: 429.5 },
+    { id: 'sq08-r12', type: 'rect', x: 390.5, y: 429.5 },
+    { id: 'sq09-r12', type: 'rect', x: 429.5, y: 429.5 },
+    { id: 'sq10-r12', type: 'rect', x: 468.5, y: 429.5 },
+    { id: 'sq11-r12', type: 'rect', x: 507.5, y: 429.5 },
+    { id: 'sq12-r12', type: 'rect', x: 546.5, y: 429.5 },
+    { id: 'sq13-r12', type: 'rect', x: 585.5, y: 429.5 },
+    { id: 'sq14-r12', type: 'rect', x: 624.5, y: 429.5 },
+    {
+      id: 'sq15-r12',
+      type: 'path',
+      d: 'M702.5 429.5V459C702.5 464.247 698.247 468.5 693 468.5H663.5V429.5H702.5Z'
+    },
+    // row13
+    { id: 'sq01-r13', type: 'rect', x: 117.5, y: 468.5 },
+    { id: 'sq02-r13', type: 'rect', x: 156.5, y: 468.5 },
+    { id: 'sq03-r13', type: 'rect', x: 195.5, y: 468.5 },
+    { id: 'sq04-r13', type: 'rect', x: 234.5, y: 468.5 },
+    { id: 'sq05-r13', type: 'rect', x: 273.5, y: 468.5 },
+    { id: 'sq06-r13', type: 'rect', x: 312.5, y: 468.5 },
+    { id: 'sq07-r13', type: 'rect', x: 351.5, y: 468.5 },
+    { id: 'sq08-r13', type: 'rect', x: 390.5, y: 468.5 },
+    { id: 'sq09-r13', type: 'rect', x: 429.5, y: 468.5 },
+    { id: 'sq10-r13', type: 'rect', x: 468.5, y: 468.5 },
+    { id: 'sq11-r13', type: 'rect', x: 507.5, y: 468.5 },
+    { id: 'sq12-r13', type: 'rect', x: 546.5, y: 468.5 },
+    // row14
+    { id: 'sq01-r14', type: 'rect', x: 117.5, y: 507.5 },
+    { id: 'sq02-r14', type: 'rect', x: 156.5, y: 507.5 },
+    { id: 'sq03-r14', type: 'rect', x: 195.5, y: 507.5 },
+    { id: 'sq04-r14', type: 'rect', x: 234.5, y: 507.5 },
+    { id: 'sq05-r14', type: 'rect', x: 273.5, y: 507.5 },
+    { id: 'sq06-r14', type: 'rect', x: 312.5, y: 507.5 },
+    { id: 'sq07-r14', type: 'rect', x: 351.5, y: 507.5 },
+    { id: 'sq08-r14', type: 'rect', x: 390.5, y: 507.5 },
+    { id: 'sq09-r14', type: 'rect', x: 429.5, y: 507.5 }
+  ]
+
+  const [hoverTrail, setHoverTrail] = useState<string[]>([])
+  const [lastId, setLastId] = useState<string | null>(null)
+
+  // --- Optymalizacja i Interpolacja ---
+
+  // 1. Mapa do szybkiego wyszukiwania ID po koordynatach siatki
+  const elementMap = useMemo(() => {
+    const map = new Map<string, { id: string; x: number; y: number }>()
+    gridElements.forEach(e => {
+      if (e.type === 'rect') {
+        const col = Math.floor(e.x! / tileSize)
+        const row = Math.floor(e.y! / tileSize)
+        const key = `${col},${row}`
+        map.set(key, { id: e.id, x: e.x!, y: e.y! })
+      }
+      // Można dodać obsługę path, jeśli potrzebne (np. po bounding box)
+    })
+    return map
+  }, [tileSize]) // Zakładamy, że gridElements jest stałe
+
+  // Zoptymalizowana funkcja do znajdowania ID pod kursorem
+  const getElementIdFromMouse = (
+    mouseX: number,
+    mouseY: number
+  ): string | null => {
+    const col = Math.floor(mouseX / tileSize)
+    const row = Math.floor(mouseY / tileSize)
+    const key = `${col},${row}`
+    const element = elementMap.get(key)
+
+    // Dodatkowe sprawdzenie, czy kursor jest faktycznie w granicach elementu
+    if (
+      element &&
+      mouseX >= element.x &&
+      mouseX < element.x + tileSize &&
+      mouseY >= element.y &&
+      mouseY < element.y + tileSize
+    ) {
+      return element.id
+    }
+
+    // Fallback dla pathów lub elementów nie w mapie (jeśli potrzebne)
+    // Można tu dodać oryginalną pętlę sprawdzającą pathy
+    return null
+  }
+
+  // Funkcja pomocnicza: pobierz indeksy siatki (col, row) dla danego ID
+  const getGridIndicesById = (
+    id: string
+  ): { col: number; row: number } | null => {
+    const el = gridElements.find(e => e.id === id) // Można zoptymalizować przez mapę ID -> Element
+    if (!el || el.type !== 'rect') return null
+    return {
+      col: Math.floor(el.x! / tileSize),
+      row: Math.floor(el.y! / tileSize)
+    }
+  }
+
+  // Funkcja pomocnicza: pobierz ID dla danych indeksów siatki
+  const getIdFromGridIndices = (col: number, row: number): string | null => {
+    const key = `${col},${row}`
+    return elementMap.get(key)?.id || null
+  }
+
+  // 2. Funkcja znajdująca ID elementów na linii między dwoma punktami siatki
+  const getElementsBetween = (idA: string, idB: string): string[] => {
+    const start = getGridIndicesById(idA)
+    const end = getGridIndicesById(idB)
+
+    if (!start || !end) return [idB] // Nie można interpolować
+
+    let x0 = start.col
+    let y0 = start.row
+    const x1 = end.col
+    const y1 = end.row
+
+    const dx = Math.abs(x1 - x0)
+    const dy = -Math.abs(y1 - y0)
+    const sx = x0 < x1 ? 1 : -1
+    const sy = y0 < y1 ? 1 : -1
+    let err = dx + dy
+
+    const ids: string[] = []
+
+    while (true) {
+      const currentId = getIdFromGridIndices(x0, y0)
+      // Dodajemy tylko jeśli istnieje i nie jest duplikatem
+      if (currentId && !ids.includes(currentId)) {
+        ids.push(currentId)
+      }
+
+      if (x0 === x1 && y0 === y1) break // Dotarliśmy do końca
+
+      const e2 = 2 * err
+      if (e2 >= dy) {
+        // Krok w osi X
+        err += dy
+        x0 += sx
+      }
+      if (e2 <= dx) {
+        // Krok w osi Y
+        err += dx
+        y0 += sy
+      }
+    }
+    // Upewnij się, że końcowy element jest zawsze dodany
+    if (!ids.includes(idB)) {
+      const endIdFromIndices = getIdFromGridIndices(x1, y1)
+      if (endIdFromIndices) ids.push(endIdFromIndices)
+    }
+
+    return ids // Zwraca ID od startu do końca
+  }
+
+  // 3. Zaktualizowany handler mouse move
+  const handleSvgMouseMove = (
+    evt: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
+    const svg = evt.currentTarget
+    const point = svg.createSVGPoint()
+    point.x = evt.clientX
+    point.y = evt.clientY
+    const ctm = svg.getScreenCTM()
+    if (!ctm) return
+    const transformed = point.matrixTransform(ctm.inverse())
+    const currentId = getElementIdFromMouse(transformed.x, transformed.y)
+
+    if (currentId) {
+      setHoverTrail(prevTrail => {
+        let elementsToAdd: string[] = []
+
+        if (lastId && lastId !== currentId) {
+          // Interpoluj od lastId do currentId
+          elementsToAdd = getElementsBetween(lastId, currentId)
+          // Odwracamy, aby najnowszy (currentId) był pierwszy
+          elementsToAdd.reverse()
+        } else if (prevTrail[0] !== currentId) {
+          // Tylko nowy element, jeśli nie jest już na początku
+          elementsToAdd = [currentId]
+        } else {
+          // Brak zmian, ID jest to samo co ostatnio na początku
+          return prevTrail
+        }
+
+        // Połącz nowe elementy z istniejącym śladem
+        const combined = [...elementsToAdd, ...prevTrail]
+        // Usuń duplikaty (zachowując pierwsze wystąpienie) i ogranicz do 20
+        const uniqueTrail = Array.from(new Set(combined))
+        const finalTrail = uniqueTrail.slice(0, 20)
+
+        return finalTrail
+      })
+      // Zaktualizuj lastId *poza* setHoverTrail, aby mieć pewność, że jest aktualny dla następnego ruchu
+      setLastId(currentId)
+    }
+    // Można dodać logikę 'else' jeśli kursor opuścił wszystkie elementy, np. reset lastId
+    // else if (lastId) {
+    //   setLastId(null);
+    // }
+  }
+
+  const getTrailColor = (id: string) => {
+    const idx = hoverTrail.indexOf(id)
+    if (idx === -1) return fill // Użyj domyślnego 'fill' zamiast 'transparent'
+    const alpha = (1 - idx * 0.05).toFixed(2) // 0.05 = 5%
+    return `rgba(255,76,0,${alpha})` // Zakładamy biały kolor bazowy
+  }
+
+  // --- Koniec Optymalizacji i Interpolacji ---
+
   return (
-    <svg
+    <motion.svg
       width={width}
       height={height}
       viewBox='0 0 1171 547'
-      fill='none'
+      fill='#8A8A8A01' // Tło SVG, może być 'none'
       xmlns='http://www.w3.org/2000/svg'
       className={className}
+      onMouseMove={handleSvgMouseMove}
+      // Opcjonalnie: onMouseLeave do wyczyszczenia śladu
+      onMouseLeave={() => {
+        setHoverTrail([])
+        setLastId(null)
+      }}
     >
-      <g id='HERO GRID FINAL'>
-        <g id='row01'>
-          <path
-            id='sq01-r1'
-            d='M907 0.5H936.5V39.5H897.5V10C897.5 4.7533 901.753 0.5 907 0.5Z'
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r1'
-            x='936.5'
-            y='0.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r1'
-            x='975.5'
-            y='0.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r1'
-            x='1014.5'
-            y='0.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row02'>
-          <path
-            id='sq01-r2'
-            d='M556 39.5H585.5V78.5H546.5V49C546.5 43.7533 550.753 39.5 556 39.5Z'
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r2'
-            x='585.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r2'
-            x='624.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r2'
-            x='780.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r2'
-            x='819.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r2'
-            x='858.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r2'
-            x='897.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r2'
-            x='936.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r2'
-            x='975.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r2'
-            x='1014.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r2'
-            x='1053.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r2'
-            x='1092.5'
-            y='39.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row03'>
-          <rect
-            id='sq01-r3'
-            x='546.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r3'
-            x='585.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r3'
-            x='624.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r3'
-            x='780.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r3'
-            x='819.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r3'
-            x='858.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r3'
-            x='897.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r3'
-            x='936.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r3'
-            x='975.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r3'
-            x='1014.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r3'
-            x='1053.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r3'
-            x='1092.5'
-            y='78.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <path
-            id='sq13-r3'
-            d='M1161 78.5C1166.25 78.5 1170.5 82.7533 1170.5 88V117.5H1131.5V78.5H1161Z'
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row04'>
-          <rect
-            id='sq01-r4'
-            x='507.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r4'
-            x='546.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r4'
-            x='585.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r4'
-            x='624.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r4'
-            x='663.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r4'
-            x='702.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r4'
-            x='741.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r4'
-            x='780.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r4'
-            x='819.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r4'
-            x='858.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r4'
-            x='897.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r4'
-            x='936.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r4'
-            x='975.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r4'
-            x='1014.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r4'
-            x='1053.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r4'
-            x='1092.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r4'
-            x='1131.5'
-            y='117.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row05'>
-          <rect
-            id='sq01-r5'
-            x='507.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r5'
-            x='546.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r5'
-            x='585.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r5'
-            x='624.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r5'
-            x='663.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r5'
-            x='702.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r5'
-            x='741.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r5'
-            x='780.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r5'
-            x='819.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r5'
-            x='858.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r5'
-            x='897.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r5'
-            x='936.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r5'
-            x='975.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r5'
-            x='1014.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r5'
-            x='1053.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r5'
-            x='1092.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r5'
-            x='1131.5'
-            y='156.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row06'>
-          <rect
-            id='sq01-r6'
-            x='507.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r6'
-            x='546.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r6'
-            x='585.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r6'
-            x='624.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r6'
-            x='663.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r6'
-            x='702.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r6'
-            x='741.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r6'
-            x='780.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r6'
-            x='819.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r6'
-            x='858.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r6'
-            x='897.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r6'
-            x='936.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r6'
-            x='975.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r6'
-            x='1014.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r6'
-            x='1053.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r6'
-            x='1092.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r6'
-            x='1131.5'
-            y='195.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row07'>
-          <path
-            id='sq01-r7'
-            d='M205 234.5H234.5V273.5H195.5V244C195.5 238.753 199.753 234.5 205 234.5Z'
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r7'
-            x='234.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r7'
-            x='273.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r7'
-            x='312.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r7'
-            x='351.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r7'
-            x='390.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r7'
-            x='429.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r7'
-            x='468.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r7'
-            x='507.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r7'
-            x='546.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r7'
-            x='585.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r7'
-            x='624.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r7'
-            x='663.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r7'
-            x='702.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r7'
-            x='741.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r7'
-            x='780.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r7'
-            x='819.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq18-r7'
-            x='858.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq19-r7'
-            x='897.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq20-r7'
-            x='936.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq21-r7'
-            x='975.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq22-r7'
-            x='1014.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq23-r7'
-            x='1053.5'
-            y='234.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row08'>
-          <rect
-            id='sq01-r8'
-            x='0.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r8'
-            x='39.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r8'
-            x='78.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r8'
-            x='117.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r8'
-            x='156.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r8'
-            x='195.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r8'
-            x='234.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r8'
-            x='273.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r8'
-            x='312.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r8'
-            x='351.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r8'
-            x='390.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r8'
-            x='429.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r8'
-            x='468.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r8'
-            x='507.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r8'
-            x='546.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r8'
-            x='585.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r8'
-            x='624.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq18-r8'
-            x='663.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq19-r8'
-            x='702.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq20-r8'
-            x='741.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq21-r8'
-            x='780.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq22-r8'
-            x='819.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq23-r8'
-            x='858.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq24-r8'
-            x='897.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq25-r8'
-            x='936.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq26-r8'
-            x='975.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq27-r8'
-            x='1014.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq28-r8'
-            x='1053.5'
-            y='273.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row09'>
-          <rect
-            id='sq01-r9'
-            x='0.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r9'
-            x='39.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r9'
-            x='78.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r9'
-            x='117.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r9'
-            x='156.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r9'
-            x='195.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r9'
-            x='234.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r9'
-            x='273.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r9'
-            x='312.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r9'
-            x='351.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r9'
-            x='390.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r9'
-            x='429.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r9'
-            x='468.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r9'
-            x='507.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r9'
-            x='546.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r9'
-            x='585.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r9'
-            x='624.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq18-r9'
-            x='663.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq19-r9'
-            x='702.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq20-r9'
-            x='741.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq21-r9'
-            x='780.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq22-r9'
-            x='819.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq23-r9'
-            x='858.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq24-r9'
-            x='897.5'
-            y='312.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row10'>
-          <rect
-            id='sq01-r10'
-            x='0.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r10'
-            x='39.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r10'
-            x='78.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r10'
-            x='117.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r10'
-            x='156.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r10'
-            x='195.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r10'
-            x='234.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r10'
-            x='273.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r10'
-            x='312.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r10'
-            x='351.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r10'
-            x='390.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r10'
-            x='429.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r10'
-            x='468.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r10'
-            x='507.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r10'
-            x='546.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r10'
-            x='585.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r10'
-            x='624.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq18-r10'
-            x='663.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq19-r10'
-            x='702.5'
-            y='351.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row11'>
-          <path
-            id='sq01-r11'
-            d='M39.5 390.5V429.5H10C4.7533 429.5 0.5 425.247 0.5 420V390.5H39.5Z'
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r11'
-            x='39.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r11'
-            x='78.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r11'
-            x='117.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r11'
-            x='156.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r11'
-            x='195.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r11'
-            x='234.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r11'
-            x='273.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r11'
-            x='312.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r11'
-            x='351.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r11'
-            x='390.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r11'
-            x='429.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r11'
-            x='468.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r11'
-            x='507.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq15-r11'
-            x='546.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq16-r11'
-            x='585.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq17-r11'
-            x='624.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq18-r11'
-            x='663.5'
-            y='390.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row12'>
-          <rect
-            id='sq01-r12'
-            x='117.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r12'
-            x='156.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r12'
-            x='195.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r12'
-            x='234.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r12'
-            x='273.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r12'
-            x='312.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r12'
-            x='351.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r12'
-            x='390.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r12'
-            x='429.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r12'
-            x='468.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r12'
-            x='507.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r12'
-            x='546.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq13-r12'
-            x='585.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq14-r12'
-            x='624.5'
-            y='429.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <path
-            id='sq15-r12'
-            d='M702.5 429.5V459C702.5 464.247 698.247 468.5 693 468.5H663.5V429.5H702.5Z'
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row13'>
-          <rect
-            id='sq01-r13'
-            x='117.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r13'
-            x='156.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r13'
-            x='195.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r13'
-            x='234.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r13'
-            x='273.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r13'
-            x='312.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r13'
-            x='351.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r13'
-            x='390.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r13'
-            x='429.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq10-r13'
-            x='468.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq11-r13'
-            x='507.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq12-r13'
-            x='546.5'
-            y='468.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-        <g id='row14'>
-          <rect
-            id='sq01-r14'
-            x='117.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq02-r14'
-            x='156.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq03-r14'
-            x='195.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq04-r14'
-            x='234.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq05-r14'
-            x='273.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq06-r14'
-            x='312.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq07-r14'
-            x='351.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq08-r14'
-            x='390.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-          <rect
-            id='sq09-r14'
-            x='429.5'
-            y='507.5'
-            width={tileSize}
-            height={tileSize}
-            stroke={stroke}
-            fill={fill}
-          />
-        </g>
-      </g>
-      <motion.g id='grid-elements'>
+      <motion.g id='hero-grid'>
+        {gridElements.map(e =>
+          e.type === 'path' ? (
+            <motion.path
+              key={e.id}
+              id={e.id}
+              d={e.d!}
+              stroke={stroke} // Nadaj kolor również pathom
+              fill={getTrailColor(e.id)} // Nadaj kolor również pathom
+              // pointerEvents="stroke" // Lub "fill" lub "all" jeśli pathy mają reagować
+            />
+          ) : (
+            <motion.rect
+              key={e.id}
+              id={e.id}
+              x={e.x!}
+              y={e.y!}
+              width={tileSize}
+              height={tileSize}
+              stroke={stroke}
+              fill={getTrailColor(e.id)}
+              // pointerEvents="all" // Upewnij się, że recty łapią zdarzenia
+            />
+          )
+        )}
+      </motion.g>
+      <motion.g id='grid-elements' style={{}}>
         <motion.path
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -2176,7 +583,7 @@ const HeroGrid = ({
           stroke='#8A8A8A'
         />
       </motion.g>
-    </svg>
+    </motion.svg>
   )
 }
 
