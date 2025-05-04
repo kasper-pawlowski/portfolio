@@ -13,6 +13,7 @@ import NextTopLoader from 'nextjs-toploader'
 
 import Grain from '@/components/Grain'
 import Loading from './Loading'
+import BreakpointIndicator from '@/components/BreakpointIndicator'
 
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
@@ -42,8 +43,9 @@ export default async function LocaleLayout({
         /> */}
         <NextIntlClientProvider>
           <Providers>
-            <div className='overflow-clip scroll-smooth'>
+            <div className='overflow-clip'>
               {/* <Loading /> */}
+              <BreakpointIndicator />
               <Grain />
               <Header />
               <main className=''>{children}</main>

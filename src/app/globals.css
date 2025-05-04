@@ -4,19 +4,20 @@
   :root {
     --background: #e3dfd5;
     --foreground: #303030;
+    --foreground-light: #52514e;
   }
 
   .dark {
     --background: #303030;
     --foreground: #e3dfd5;
+    --foreground-light: #bdbbb3;
   }
 
   html {
     background-color: var(--background);
     height: auto;
-    overflow-x: clip;
-    scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -60,60 +61,64 @@
   --font-goia-display: var(--font-goia-display);
   --color-beige: #e3dfd5;
   --color-grey: #303030;
+  --color-orange: #ff9500;
 }
 
 @theme inline {
   --font-sans: var(--font-goia);
   --font-display: var(--font-goia-display);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-light: var(--foreground-light);
+}
+
+@layer utilities {
+  .clip-bottom-ellipse {
+    /* Używamy metody ellipse */
+    clip-path: ellipse(70% 20% at 50% 100%);
+    /* -webkit-clip-path: ellipse(70% 20% at 50% 100%); */
+  }
+
+  .clip-bottom-path {
+    /* Alternatywnie, używamy metody path */
+    clip-path: path('M 0 0 H 100% V 100% Q 50% 80% 0 100% Z');
+    -webkit-clip-path: path('M 0 0 H 100% V 100% Q 50% 80% 0 100% Z');
+  }
 }
 
 @utility container {
   @variant sm {
-    /* @media (width >= 40rem) {
-      max-width: 40rem;
-      background-color: #155dfb20;
-    } */
-
-    @media (width >= 64rem /* 1024px */) {
-      max-width: 64rem /* 1024px */;
-      /* background-color: orange; */
+    @media (width >= 64rem) {
+      max-width: 64rem;
+      /* background-color: #ffc0cb10; */
     }
   }
 
   @variant md {
-    /* @media (width >= 48rem) {
-      max-width: 48rem;
-      background-color: green;
-    } */
-
-    @media (width >= 64rem /* 1024px */) {
-      max-width: 64rem /* 1024px */;
-      /* background-color: orange; */
+    @media (width >= 64rem) {
+      max-width: 64rem;
+      /* background-color: #ffff0010; */
     }
   }
 
   @variant lg {
-    @media (width >= 64rem /* 1024px */) {
-      max-width: 64rem /* 1024px */;
-      /* background-color: orange; */
+    @media (width >= 64rem) {
+      max-width: 64rem;
+      /* background-color: #ffa50010; */
     }
   }
 
   @variant xl {
-    @media (width >= 80rem /* 1280px */) {
-      max-width: 80rem /* 1280px */;
-      /* background-color: red; */
+    @media (width >= 80rem) {
+      max-width: 80rem;
+      /* background-color: #ff000010; */
     }
   }
 
   @variant 2xl {
-    @media (width >= 90rem /* 1536px */) {
-      max-width: 90rem /* 1536px */;
-      /* background-color: blue; */
-    }
-    @media (width >= 106rem /* 1536px */) {
-      max-width: 106rem;
-      /* background-color: orange; */
+    @media (width >= 95rem) {
+      max-width: 95rem;
+      /* background-color: #0000ff10; */
     }
   }
 }

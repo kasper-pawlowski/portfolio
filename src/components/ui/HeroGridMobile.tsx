@@ -16,7 +16,7 @@ const HeroGridMobile = ({
   fill = 'none',
   width = '100%',
   height = 'auto',
-  className = 'absolute z-1'
+  className = 'absolute z-[-2] px-8'
 }: HeroGridMobileProps) => {
   const { scrollYProgress } = useScroll()
 
@@ -842,12 +842,10 @@ const HeroGridMobile = ({
           id='element-08'
           style={{ rotate: rotateElement08 }}
           d='M341 263.5L335.469 253.991L318.033 263.987V244H306.971V263.991L289.531 253.994L284 263.505L301.435 273.499L284.005 283.492L289.536 293.001L306.971 283.005V303H318.033V283.012L335.464 293.006L340.995 283.495L323.558 273.499L341 263.5Z'
-          fill='#303030'
+          fill='var(--foreground-light)'
         />
         <path
           id='element-07'
-          fill-rule='evenodd'
-          clip-rule='evenodd'
           d='M351.5 372C351.459 360.692 342.297 351.538 331 351.538C342.322 351.538 351.5 342.343 351.5 331C351.541 342.308 360.703 351.462 372 351.462C360.678 351.462 351.5 360.657 351.5 372Z'
           fill='#8A8A8A'
         />
@@ -859,8 +857,6 @@ const HeroGridMobile = ({
         />
         <path
           id='element-04'
-          fill-rule='evenodd'
-          clip-rule='evenodd'
           d='M195.5 177C195.459 165.692 186.297 156.538 175 156.538C186.322 156.538 195.5 147.343 195.5 136C195.541 147.308 204.703 156.462 216 156.462C204.678 156.462 195.5 165.657 195.5 177Z'
           fill='#8A8A8A'
         />

@@ -16,7 +16,7 @@ const HeroGrid = ({
   fill = 'none',
   width = '100%',
   height = 'auto',
-  className = 'absolute z-1'
+  className = 'absolute z-[-2]'
 }: HeroGridProps) => {
   const { scrollYProgress } = useScroll()
 
@@ -336,7 +336,7 @@ const HeroGrid = ({
           style={{ rotate: rotateElement08 }}
           id='element-08'
           d='M1043 29.5001L1037.47 19.9908L1020.03 29.9873V10H1008.97V29.9907L991.531 19.9943L986 29.5047L1003.44 39.4988L986.005 49.492L991.536 59.0012L1008.97 49.0048V69H1020.03V49.0117L1037.46 59.0058L1043 49.4954L1025.56 39.4988L1043 29.5001Z'
-          fill='#303030'
+          fill='var(--foreground-light)'
         />
         <motion.path
           initial={{ opacity: 0 }}
