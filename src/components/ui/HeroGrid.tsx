@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useMemo } from 'react' // Dodaj useMemo
-import { animate, hover, motion, useScroll, useTransform } from 'framer-motion'
+import React from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 type HeroGridProps = {
   tileSize?: number

@@ -11,31 +11,37 @@ const MobileMenu = ({ onClose }: { onClose: () => void }) => {
   const { resolvedTheme } = useTheme()
 
   return (
-    <motion.div className='bg-background text-foreground relative flex h-svh w-screen flex-col items-center justify-center gap-10'>
-      <div
+    <motion.div className='bg-background/70 text-foreground relative container mx-auto flex h-svh w-screen flex-col px-8 backdrop-blur-lg'>
+      <nav className='font-700 flex w-full flex-4/6 flex-col justify-center gap-15 text-4xl'>
+        <a href='#about' className='flex gap-5' onClick={onClose}>
+          <span>⑊</span>
+          <p>{t('about')}</p>
+        </a>
+        <a href='#projects' className='flex gap-5' onClick={onClose}>
+          <span>⑊</span>
+          {t('projects')}
+        </a>
+        <a href='#contact' className='flex gap-5' onClick={onClose}>
+          <span>⑊</span>
+          {t('contact')}
+        </a>
+      </nav>
+
+      <div className='flex w-full flex-2/6 items-center justify-center gap-8 pb-30'>
+        <div className='flex flex-1/3 justify-end'>
+          <SoundToggle />
+        </div>
+        <div className='flex flex-1/3 justify-center'>
+          <ThemeToggle />
+        </div>
+        <div className='flex flex-1/3 justify-start'>
+          <LanguageToggle />
+        </div>
+      </div>
+      {/* <div
         className='pointer-events-none absolute inset-0 z-0 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
-      />
-      <div className='flex grow-2 items-center justify-center'>
-        <nav className='flex items-center justify-center gap-10'>
-          <a href='#about' className='font-goia'>
-            {t('about')}
-          </a>
-          <span className='text-2xl text-[#30303060]'>・</span>
-          <a href='#projects' className='font-goia'>
-            {t('projects')}
-          </a>
-          <span className='text-2xl text-[#30303060]'>・</span>
-          <a href='#contact' className='font-goia'>
-            {t('contact')}
-          </a>
-        </nav>
-      </div>
-      <div className='flex grow items-center justify-end gap-8'>
-        <SoundToggle />
-        <ThemeToggle />
-        <LanguageToggle />
-      </div>
+      /> */}
     </motion.div>
   )
 }
