@@ -1,11 +1,13 @@
 import React from 'react'
 import AboutGrid from '../ui/AboutGrid'
+import Image from 'next/image'
+import Photo from '../ui/Photo'
 
 const About = () => {
   return (
     <section
       id='about'
-      className='relative container mx-auto flex h-auto flex-col px-8 py-20 font-black lg:flex-row lg:px-0 lg:pt-40 lg:pb-120'
+      className='relative container mx-auto flex h-auto flex-col px-8 py-20 font-black lg:px-0 lg:py-40'
     >
       <div className='flex w-full flex-col gap-10 lg:w-[50%]'>
         <h1 className='font-display w-full text-5xl lg:text-7xl'>O mnie</h1>
@@ -35,7 +37,10 @@ const About = () => {
           </span>
         </p>
       </div>
-      <AboutGrid />
+      <div className='relative h-80 w-full'>
+        <Photo />
+        <AboutGrid />
+      </div>
     </section>
   )
 }

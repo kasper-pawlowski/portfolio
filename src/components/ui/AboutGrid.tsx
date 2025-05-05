@@ -9,7 +9,7 @@ const AboutGrid = () => {
       viewBox='0 0 1171 430'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className='absolute bottom-40 left-0 z-[-3] h-auto w-full'
+      className='absolute bottom-0 left-0 z-[-3] h-auto w-full'
     >
       <g id='about-grid'>
         <g id='grid'>
