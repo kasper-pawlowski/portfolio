@@ -12,9 +12,9 @@ import React from 'react'
 
 const Photo = () => {
   return (
-    <div className='border-foreground absolute top-[-100%] right-10 flex h-auto w-80 flex-col overflow-hidden rounded-3xl border-3 duration-300 ease-in-out hover:scale-95'>
-      <div className='flex w-full items-center justify-between p-2 backdrop-blur-md'>
-        <p className='text-foreground font-600 text-lg'>Photo.jpg</p>
+    <div className='border-foreground absolute top-[-70%] right-10 flex h-auto w-60 flex-col overflow-hidden rounded-3xl border-3 shadow-[8px_8px_0_0_var(--foreground)] duration-300 ease-in-out hover:scale-95 xl:top-[-90%] xl:w-70'>
+      <div className='flex w-full items-center justify-between px-3 py-2 backdrop-blur-md'>
+        <p className='text-foreground font-600 font-sans text-lg'>Photo.jpg</p>
         <div className='flex items-center justify-center gap-1'>
           <SquareMinus />
           <SquareSquare />

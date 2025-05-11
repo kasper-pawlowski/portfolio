@@ -9,7 +9,7 @@ const About = () => {
       id='about'
       className='relative container mx-auto flex h-auto flex-col px-8 py-20 font-black lg:px-0 lg:py-40'
     >
-      <div className='flex w-full flex-col gap-10 lg:w-[50%]'>
+      <div className='flex w-full flex-col gap-10 lg:w-[60%] xl:w-[50%]'>
         <h1 className='font-display w-full text-5xl lg:text-7xl'>O mnie</h1>
         <p className='flex w-full flex-col gap-5 font-sans text-lg font-medium lg:pl-20 lg:text-xl'>
           <span>
