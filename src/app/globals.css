@@ -79,19 +79,16 @@
   --color-foreground-light: var(--foreground-light);
 }
 
-@layer utilities {
+/* @layer utilities {
   .clip-bottom-ellipse {
-    /* Używamy metody ellipse */
-    clip-path: ellipse(70% 20% at 50% 100%);
-    /* -webkit-clip-path: ellipse(70% 20% at 50% 100%); */
+    clip-path: ellipse(70% 10% at 50% 100%);
+    -webkit-clip-path: ellipse(70% 10% at 50% 100%);
+    @media (width >= 64rem) {
+      clip-path: ellipse(70% 20% at 50% 100%);
+      -webkit-clip-path: ellipse(70% 20% at 50% 100%);
+    }
   }
-
-  .clip-bottom-path {
-    /* Alternatywnie, używamy metody path */
-    clip-path: path('M 0 0 H 100% V 100% Q 50% 80% 0 100% Z');
-    -webkit-clip-path: path('M 0 0 H 100% V 100% Q 50% 80% 0 100% Z');
-  }
-}
+} */
 
 @utility container {
   @variant sm {

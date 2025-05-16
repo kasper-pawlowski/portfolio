@@ -30,20 +30,6 @@ const Experience = () => {
           </span>
         </p>
       </div>
-      {/* <svg
-        width='100%'
-        height='100px'
-        viewBox='0 0 1440 51'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-        className='absolute bottom-[-100px] left-0'
-      >
-        <path
-          id='bg'
-          d='M0 0.792907H720H1440V57.0002C990.275 -21.6544 329.689 -14.3 0 57.0002V0.792907Z'
-          fill='#ea1f1f'
-        />
-      </svg> */}
       <div className='bg-foreground absolute inset-0 z-[-2] h-full w-full'></div>
     </section>
   )

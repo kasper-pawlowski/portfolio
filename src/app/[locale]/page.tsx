@@ -1,6 +1,7 @@
 import About from '@/components/sections/About'
 import Experience from '@/components/sections/Experience'
 import Hero from '@/components/sections/Hero'
+import Technologies from '@/components/sections/Technologies'
 import React from 'react'
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       <Hero />
       <About />
       <Experience />
+      <Technologies />
       <div className='placeholder-div h-[300svh] w-full'></div>
       {/* <div
         className='fixed bottom-0 z-10 h-20 w-screen backdrop-blur-[10px]'

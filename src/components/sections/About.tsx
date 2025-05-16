@@ -37,7 +37,7 @@ const About = () => {
           </span>
         </p>
       </div>
-      <div className='relative h-80 w-full'>
+      <div className='relative h-90 w-full lg:h-80'>
         <Photo />
         <AboutGrid />
       </div>
