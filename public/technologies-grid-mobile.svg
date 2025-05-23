@@ -1,0 +1,38 @@
+<svg width="391" height="118" viewBox="0 0 391 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="hero-grid-mobile">
+<g id="grid">
+<rect id="sq01" x="0.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq02" x="39.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq03" x="78.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq04" x="117.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq05" x="156.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq06" x="195.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq07" x="234.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq08" x="273.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq09" x="312.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq10" x="351.5" y="0.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq11" x="0.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq12" x="39.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq13" x="78.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq18" x="273.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq19" x="312.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq20" x="351.5" y="39.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq21" x="0.5" y="78.5" width="39" height="39" stroke="#8A8A8A"/>
+<rect id="sq30" x="351.5" y="78.5" width="39" height="39" stroke="#8A8A8A"/>
+</g>
+<g id="elements">
+<path id="element-03" fill-rule="evenodd" clip-rule="evenodd" d="M351.5 99C351.459 87.6921 342.297 78.538 331 78.538C342.322 78.538 351.5 69.3427 351.5 58C351.541 69.3079 360.703 78.462 372 78.462C360.678 78.462 351.5 87.6573 351.5 99Z" fill="#8A8A8A"/>
+<g id="element-02">
+<path d="M293 39H283.5V29.5H293V39Z" fill="#8A8A8A"/>
+<path d="M312 39H302.5V29.5H312V39Z" fill="#8A8A8A"/>
+<path d="M283.5 29.5H274V20H283.5V29.5Z" fill="#8A8A8A"/>
+<path d="M302.5 29.5H293V20H302.5V29.5Z" fill="#8A8A8A"/>
+<path d="M293 20H283.5V10.5H293V20Z" fill="#8A8A8A"/>
+<path d="M312 20H302.5V10.5H312V20Z" fill="#8A8A8A"/>
+<path d="M283.5 10.5H274V1H283.5V10.5Z" fill="#8A8A8A"/>
+<path d="M302.5 10.5H293V1H302.5V10.5Z" fill="#8A8A8A"/>
+</g>
+<path id="element-01" d="M78.5078 23.5381C80.2787 31.4656 86.5149 37.703 94.4346 39.4619C86.4899 41.2264 80.2394 47.4978 78.4912 55.4609C76.7199 47.5336 70.4843 41.2956 62.5645 39.5371C70.5096 37.7728 76.7598 31.5018 78.5078 23.5381Z" fill="#C4C2BB" stroke="#8A8A8A"/>
+</g>
+</g>
+</svg>

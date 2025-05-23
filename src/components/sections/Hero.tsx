@@ -52,7 +52,7 @@ const Hero = () => {
         width={0}
         height={0}
         sizes='100vw'
-        className='absolute top-[80vh] left-0 z-[-3] h-auto w-full object-cover object-top lg:top-[60vh]'
+        className='absolute top-[80vh] left-0 z-[-5] h-auto w-full object-cover object-top lg:top-[60vh]'
       />
     </section>
   )
