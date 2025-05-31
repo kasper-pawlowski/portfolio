@@ -22,6 +22,9 @@ const Technologies = () => {
           oraz <br /> wybrane projekty
         </span>
       </div>
+
+      <div className='gravity-wrapper h-[500px] w-full bg-amber-500'></div>
+
       {/* <Image
         src='/hero-blob.png'
         alt='blob'
