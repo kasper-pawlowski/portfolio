@@ -16,7 +16,7 @@ const HeroGrid = ({
   fill = 'none',
   width = '100%',
   height = 'auto',
-  className = 'absolute z-[-2]'
+  className = 'z-[-2]'
 }: HeroGridProps) => {
   const { scrollYProgress } = useScroll()
 

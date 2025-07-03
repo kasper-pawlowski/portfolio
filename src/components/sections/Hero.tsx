@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id='hero'
-      className='relative mx-auto flex h-[100svh] flex-col items-center px-8 pt-[var(--header-height)] lg:px-0'
+      className='pt-header relative mx-auto flex h-[100svh] flex-col items-center px-8 lg:px-0'
     >
       <div className='w-ful relative container mb-[var(--parallaxMarquee-height)] hidden h-full lg:flex'>
         {/* <h1 className='font-display pt-[8%] text-[clamp(1rem,5.5cqw,10rem)] font-black'>

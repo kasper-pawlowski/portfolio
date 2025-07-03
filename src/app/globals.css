@@ -5,12 +5,22 @@
     --background: #e3dfd5;
     --foreground: #303030;
     --foreground-light: #52514e;
+    --github-icon-color: #181717;
+    --email-background: #fefefe;
+    --contact-background: #ffa51453;
+    /* --header-height: 80px; */
+    --header-height: 7rem; /* 64px */
+    --projects-grid-background-background: #c4c2bb;
   }
 
   .dark {
     --background: #303030;
     --foreground: #e3dfd5;
     --foreground-light: #bdbbb3;
+    --github-icon-color: #ffffff;
+    --email-background: #303030;
+    --contact-background: #bcbcbc76;
+    --projects-grid-background-background: #8a8a8a;
   }
 
   html {
@@ -18,11 +28,13 @@
     height: auto;
     scrollbar-gutter: stable;
     scroll-behavior: smooth;
+    min-height: 100%;
   }
 
   body {
     @apply font-sans antialiased;
     color: var(--foreground);
+    min-height: 100%;
     height: auto;
   }
 
@@ -34,6 +46,22 @@
 
   button {
     cursor: pointer;
+  }
+
+  .github-link:hover .github-logo {
+    color: var(--github-icon-color);
+  }
+
+  .linkedin-link:hover .linkedin-logo {
+    color: #0077b7;
+  }
+
+  .whatsapp-link:hover .whatsapp-logo {
+    color: #25d366;
+  }
+
+  .pt-header {
+    padding-top: var(--header-height);
   }
 
   /* *::-webkit-scrollbar {
@@ -62,13 +90,21 @@
   --color-beige: #e3dfd5;
   --color-grey: #303030;
   --color-orange: #ff9500;
-
+  --color-email-background: var(--email-background);
+  --color-contact-background: var(--contact-background);
+  --color-projects-grid-background: var(--projects-grid-background-background);
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
   --font-weight-800: 800;
   --font-weight-900: 900;
+
+  --shadow-elevated: 8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground);
+  --shadow-elevated-hover:
+    0px 0px 0 0 var(--foreground), 0 0 0 3px var(--foreground);
+  --shadow-elevated-active:
+    2px 2px 0 0 var(--foreground), 0 0 0 3px var(--foreground);
 }
 
 @theme inline {

@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "nameKey": "project1.name",
+    "descriptionKey": "project1.description",
+    "videoUrl": "/projects/videos/1.mp4",
+    "images": [
+      "/projects/screenshots/1/1.png",
+      "/projects/screenshots/1/2.png",
+      "/projects/screenshots/1/3.png",
+      "/projects/screenshots/1/4.png",
+      "/projects/screenshots/1/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 2,
+    "nameKey": "project2.name",
+    "descriptionKey": "project2.description",
+    "videoUrl": "/projects/videos/2.mp4",
+    "images": [
+      "/projects/screenshots/2/1.png",
+      "/projects/screenshots/2/2.png",
+      "/projects/screenshots/2/3.png",
+      "/projects/screenshots/2/4.png",
+      "/projects/screenshots/2/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 3,
+    "nameKey": "project3.name",
+    "descriptionKey": "project3.description",
+    "videoUrl": "/projects/videos/3.mp4",
+    "images": [
+      "/projects/screenshots/3/1.png",
+      "/projects/screenshots/3/2.png",
+      "/projects/screenshots/3/3.png",
+      "/projects/screenshots/3/4.png",
+      "/projects/screenshots/3/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 4,
+    "nameKey": "project4.name",
+    "descriptionKey": "project4.description",
+    "videoUrl": "/projects/videos/4.mp4",
+    "images": [
+      "/projects/screenshots/4/1.png",
+      "/projects/screenshots/4/2.png",
+      "/projects/screenshots/4/3.png",
+      "/projects/screenshots/4/4.png",
+      "/projects/screenshots/4/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 5,
+    "nameKey": "project5.name",
+    "descriptionKey": "project5.description",
+    "videoUrl": "/projects/videos/5.mp4",
+    "images": [
+      "/projects/screenshots/5/1.png",
+      "/projects/screenshots/5/2.png",
+      "/projects/screenshots/5/3.png",
+      "/projects/screenshots/5/4.png",
+      "/projects/screenshots/5/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 6,
+    "nameKey": "project6.name",
+    "descriptionKey": "project6.description",
+    "videoUrl": "/projects/videos/6.mp4",
+    "images": [
+      "/projects/screenshots/6/1.png",
+      "/projects/screenshots/6/2.png",
+      "/projects/screenshots/6/3.png",
+      "/projects/screenshots/6/4.png",
+      "/projects/screenshots/6/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 7,
+    "nameKey": "project7.name",
+    "descriptionKey": "project7.description",
+    "videoUrl": "/projects/videos/7.mp4",
+    "images": [
+      "/projects/screenshots/7/1.png",
+      "/projects/screenshots/7/2.png",
+      "/projects/screenshots/7/3.png",
+      "/projects/screenshots/7/4.png",
+      "/projects/screenshots/7/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  },
+  {
+    "id": 8,
+    "nameKey": "project8.name",
+    "descriptionKey": "project8.description",
+    "videoUrl": "/projects/videos/8.mp4",
+    "images": [
+      "/projects/screenshots/8/1.png",
+      "/projects/screenshots/8/2.png",
+      "/projects/screenshots/8/3.png",
+      "/projects/screenshots/8/4.png",
+      "/projects/screenshots/8/5.png"
+    ],
+    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "liveLink": "https://hyperio.ch",
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+  }
+]

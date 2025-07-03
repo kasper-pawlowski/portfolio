@@ -1,8 +1,10 @@
 import About from '@/components/sections/About'
 import Experience from '@/components/sections/Experience'
+import Projects from '@/components/sections/Projects'
 import Hero from '@/components/sections/Hero'
-import Technologies from '@/components/sections/Technologies'
 import React from 'react'
+import Contact from '@/components/sections/Contact'
+import Footer from '@/components/sections/Footer'
 
 const Home = () => {
   return (
@@ -10,8 +12,10 @@ const Home = () => {
       <Hero />
       <About />
       <Experience />
-      <Technologies />
-      <div className='placeholder-div h-[600svh] w-full'></div>
+      <Projects />
+      <Contact />
+      <Footer />
+      {/* <div className='placeholder-div h-[600svh] w-full'></div> */}
       {/* <div
         className='fixed bottom-0 z-10 h-20 w-screen backdrop-blur-[10px]'
         style={{

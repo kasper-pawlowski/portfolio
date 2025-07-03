@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { use, useEffect, useRef, useState } from 'react'
 import ThemeToggle from '../theme-toggle'
 import Image from 'next/image'
 import SoundToggle from '../sound-toggle'
@@ -14,6 +14,7 @@ import {
   AnimatePresence
 } from 'motion/react'
 import LanguageSelect from '../language-select'
+import Link from 'next/link'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -29,14 +30,16 @@ const Header = () => {
   })
 
   useEffect(() => {
-    if (headerRef.current) {
-      const height = headerRef.current.offsetHeight
-      document.documentElement.style.setProperty(
-        '--header-height',
-        `${height}px`
-      )
+    function updateHeaderHeight() {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight
+        document.body.style.setProperty('--header-height', `${height}px`)
+      }
     }
-  }, [])
+    updateHeaderHeight()
+    window.addEventListener('resize', updateHeaderHeight)
+    return () => window.removeEventListener('resize', updateHeaderHeight)
+  }, [headerRef.current])
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -80,8 +83,8 @@ const Header = () => {
     >
       <div className='text-grey font-700 container mx-auto flex w-full content-center justify-between py-4 text-2xl lg:py-8'>
         <div className='flex flex-1/5 items-center justify-start'>
-          <a
-            href='#hero'
+          <Link
+            href='/'
             aria-label='Logo'
             onClick={isMenuOpen ? () => setIsMenuOpen(false) : undefined}
           >
@@ -95,21 +98,21 @@ const Header = () => {
               height={30}
               alt='Logo'
             />
-          </a>
+          </Link>
         </div>
         <div className='hidden flex-3/5 items-center justify-center lg:flex'>
           <nav className='flex items-center justify-center gap-10'>
-            <a href='#about' className='font-goia'>
+            <Link href='/#about' className='font-goia'>
               {t('about')}
-            </a>
+            </Link>
             <span className='text-foreground-light text-2xl'>・</span>
-            <a href='#projects' className='font-goia'>
+            <Link href='/#projects' className='font-goia'>
               {t('projects')}
-            </a>
+            </Link>
             <span className='text-foreground-light text-2xl'>・</span>
-            <a href='#contact' className='font-goia'>
+            <Link href='/#contact' className='font-goia'>
               {t('contact')}
-            </a>
+            </Link>
           </nav>
         </div>
         <div className='hidden flex-1/5 items-center justify-end gap-8 lg:flex'>

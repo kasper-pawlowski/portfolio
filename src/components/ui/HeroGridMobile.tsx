@@ -16,7 +16,7 @@ const HeroGridMobile = ({
   fill = 'none',
   width = '100%',
   height = 'auto',
-  className = 'absolute z-[-2] px-8'
+  className = 'z-[-2] px-8'
 }: HeroGridMobileProps) => {
   const { scrollYProgress } = useScroll()
 

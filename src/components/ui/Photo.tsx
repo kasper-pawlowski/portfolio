@@ -12,7 +12,7 @@ import React from 'react'
 
 const Photo = () => {
   return (
-    <div className='border-foreground absolute top-[15%] right-8 flex h-auto w-40 flex-col overflow-hidden rounded-3xl border-3 shadow-[8px_8px_0_0_var(--foreground)] duration-300 ease-in-out lg:top-[-70%] lg:right-10 lg:w-60 xl:top-[-90%] xl:w-70'>
+    <div className='border-foreground shadow-elevated hover:shadow-elevated-hover absolute top-[15%] right-8 flex h-auto w-40 flex-col overflow-hidden rounded-3xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 lg:top-[-70%] lg:right-10 lg:w-60 xl:top-[-90%] xl:w-70'>
       <div className='flex w-full items-center justify-between px-3 py-2 backdrop-blur-md'>
         <p className='text-foreground font-600 font-sans text-sm lg:text-lg'>
           Photo.jpg

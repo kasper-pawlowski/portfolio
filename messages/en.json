@@ -4,5 +4,40 @@
     "about": "about me",
     "projects": "projects",
     "contact": "contact"
+  },
+  "Projects": {
+    "title": "Projects",
+    "project1": {
+      "name": "Project One",
+      "description": "A brief description of Project One."
+    },
+    "project2": {
+      "name": "Project Two",
+      "description": "A brief description of Project Two."
+    },
+    "project3": {
+      "name": "Project Three",
+      "description": "A brief description of Project Three."
+    },
+    "project4": {
+      "name": "Project Four",
+      "description": "A brief description of Project Four."
+    },
+    "project5": {
+      "name": "Project Five",
+      "description": "A brief description of Project Five."
+    },
+    "project6": {
+      "name": "Project Six",
+      "description": "A brief description of Project Six."
+    },
+    "project7": {
+      "name": "Project Seven",
+      "description": "A brief description of Project Seven."
+    },
+    "project8": {
+      "name": "Project Eight",
+      "description": "A brief description of Project Eight."
+    }
   }
 }
