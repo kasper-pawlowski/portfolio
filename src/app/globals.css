@@ -8,8 +8,6 @@
     --github-icon-color: #181717;
     --email-background: #fefefe;
     --contact-background: #ffa51453;
-    /* --header-height: 80px; */
-    --header-height: 7rem; /* 64px */
     --projects-grid-background-background: #c4c2bb;
   }
 
@@ -61,7 +59,29 @@
   }
 
   .pt-header {
-    padding-top: var(--header-height);
+    padding-top: 62px;
+    @media (width >= 64rem) {
+      padding-top: 112px;
+    }
+  }
+
+  .project-padding {
+    padding-top: calc(62px + 1rem);
+    @media (width >= 64rem) {
+      padding-top: calc(112px + 1rem);
+    }
+  }
+
+  .embla {
+    /* overflow: hidden; */
+  }
+  .embla__container {
+    display: flex;
+    gap: 1rem;
+  }
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
   }
 
   /* *::-webkit-scrollbar {

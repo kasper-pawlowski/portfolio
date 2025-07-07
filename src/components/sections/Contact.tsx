@@ -21,7 +21,7 @@ const Contact = () => {
   return (
     <section
       id='contact'
-      className='container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'
+      className='bg container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'
     >
       <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
         Kontakt
@@ -32,7 +32,7 @@ const Contact = () => {
       </p>
       <a
         href='mailto:kasper.pawlowski04@gmail.com'
-        className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background mt-25 rounded-2xl px-16 py-4 text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max'
+        className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
         aria-label='Wyślij wiadomość email do kasper.pawlowski04@gmail.com'
         role='button'
       >

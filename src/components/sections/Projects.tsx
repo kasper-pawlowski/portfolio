@@ -9,8 +9,38 @@ const Projects = () => (
       className='bg-projects-grid-background relative flex flex-col gap-[2px] lg:hidden'
     >
       <div className={`${styles.gridContainerMobile} relative`}>
-        <div className={`${styles.mobile_div1} ${styles.mobile_div}`}>1</div>
-        <div className={`${styles.mobile_div2} ${styles.mobile_div}`}>2</div>
+        <div className={`${styles.mobile_div1} ${styles.mobile_div}`}>
+          <Link href={`/project/1`} className='z-5 h-full w-full'>
+            <video
+              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
+              autoPlay // Włącza automatyczne odtwarzanie
+              loop // Odtwarza wideo w pętli
+              muted // Wycisza dźwięk
+              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
+              preload='none'
+              className='z-5 h-full w-full object-cover'
+            >
+              <source src={projectsData[0].videoUrl} type='video/mp4' />
+              Twój browser nie obsługuje tagu wideo.
+            </video>
+          </Link>
+        </div>
+        <div className={`${styles.mobile_div2} ${styles.mobile_div}`}>
+          <Link href={`/project/2`} className='z-5 h-full w-full'>
+            <video
+              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
+              autoPlay // Włącza automatyczne odtwarzanie
+              loop // Odtwarza wideo w pętli
+              muted // Wycisza dźwięk
+              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
+              preload='none'
+              className='z-5 h-full w-full object-cover'
+            >
+              <source src={projectsData[3].videoUrl} type='video/mp4' />
+              Twój browser nie obsługuje tagu wideo.
+            </video>
+          </Link>
+        </div>
         <div className={`${styles.mobile_div3} ${styles.mobile_div}`}>3</div>
         <div className={`${styles.mobile_div4} ${styles.mobile_div}`}>4</div>
         <div className={`${styles.mobile_div5} ${styles.mobile_div}`}>5</div>

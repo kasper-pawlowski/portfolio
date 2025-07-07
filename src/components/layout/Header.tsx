@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ThemeToggle from '../theme-toggle'
 import Image from 'next/image'
 import SoundToggle from '../sound-toggle'
@@ -20,7 +20,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollDirection, setScrollDirection] = useState('up')
   const { resolvedTheme } = useTheme()
-  const headerRef = useRef<HTMLDivElement>(null)
   const t = useTranslations('Navigation')
   const { scrollY } = useScroll()
 
@@ -28,18 +27,6 @@ const Header = () => {
     const diff = current - (scrollY.getPrevious() ?? 0)
     setScrollDirection(diff > 0 ? 'down' : 'up')
   })
-
-  useEffect(() => {
-    function updateHeaderHeight() {
-      if (headerRef.current) {
-        const height = headerRef.current.offsetHeight
-        document.body.style.setProperty('--header-height', `${height}px`)
-      }
-    }
-    updateHeaderHeight()
-    window.addEventListener('resize', updateHeaderHeight)
-    return () => window.removeEventListener('resize', updateHeaderHeight)
-  }, [headerRef.current])
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -75,7 +62,6 @@ const Header = () => {
 
   return (
     <motion.header
-      ref={headerRef}
       initial={{ y: 0 }}
       animate={{ y: scrollDirection === 'down' ? '-100%' : '0%' }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}

@@ -11,6 +11,9 @@
   "dependencies": {
     "@motionone/utils": "^10.18.0",
     "clsx": "^2.1.1",
+    "embla-carousel-class-names": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "embla-carousel-wheel-gestures": "^8.0.2",
     "lucide-react": "^0.507.0",
     "motion": "^12.7.5",
     "next": "15.3.1",

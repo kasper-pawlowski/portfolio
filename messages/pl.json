@@ -8,35 +8,27 @@
   "Projects": {
     "title": "Projekty",
     "project1": {
-      "name": "Projekt Pierwszy",
-      "description": "Krótki opis Projektu Pierwszego."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet, velit sit amet aliquam imperdiet, ligula tortor porttitor augue"
     },
     "project2": {
-      "name": "Projekt Drugi",
       "description": "Krótki opis Projektu Drugiego."
     },
     "project3": {
-      "name": "Projekt Trzeci",
       "description": "Krótki opis Projektu Trzeciego."
     },
     "project4": {
-      "name": "Projekt Czwarty",
       "description": "Krótki opis Projektu Czwartego."
     },
     "project5": {
-      "name": "Projekt Piąty",
       "description": "Krótki opis Projektu Piątego."
     },
     "project6": {
-      "name": "Projekt Szósty",
       "description": "Krótki opis Projektu Szóstego."
     },
     "project7": {
-      "name": "Projekt Siódmy",
       "description": "Krótki opis Projektu Siódmego."
     },
     "project8": {
-      "name": "Projekt Ósmy",
       "description": "Krótki opis Projektu Ósmego."
     }
   }
