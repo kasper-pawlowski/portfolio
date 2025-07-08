@@ -94,29 +94,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         {/* <Carousel projectId={projectId} /> */}
         <Karuzela projectId={projectId} />
         <div className='project-padding hidden flex-col lg:flex lg:flex-2/8'></div>
-        {/* <Link
-          href={`/project/${projectId + 1}`}
-          className='absolute right-8 bottom-8 flex h-30 w-30 items-center justify-center'
-        >
-          <p className='font-display'>0{projectId}</p>
-        </Link> */}
-        {/* <div className='absolute right-8 bottom-16 flex gap-1'>
-          <Link
-            className='border-foreground-light flex h-10 w-15 items-center justify-center rounded-l-full border-1'
-            href={`/project/${projectId - 1}`}
-          >
-            <MoveLeft size={20} />
-          </Link>
-          <p className='border-foreground font-display font-600 flex h-10 w-15 items-center justify-center border-1'>
-            0{projectId}
-          </p>
-          <Link
-            className='border-foreground-light flex h-10 w-15 items-center justify-center rounded-r-full border-1'
-            href={`/project/${projectId + 1}`}
-          >
-            <MoveRight size={20} />
-          </Link>
-        </div> */}
       </div>
       <div
         className='hero-noise pointer-events-none absolute top-0 left-0 z-[-1] h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
