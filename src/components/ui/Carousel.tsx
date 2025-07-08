@@ -5,6 +5,9 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import data from '@/data/projects.json'
 import Image from 'next/image'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { useCallback, useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { MoveDown } from 'lucide-react'
 
 type CarouselProps = {
   projectId: number
@@ -12,7 +15,7 @@ type CarouselProps = {
 
 const Carousel = ({ projectId }: CarouselProps) => {
   const isLgUp = useBreakpoint('lg')
-  const [emblaRef] = useEmblaCarousel(
+  const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: false,
       axis: isLgUp ? 'y' : 'x',
@@ -22,33 +25,55 @@ const Carousel = ({ projectId }: CarouselProps) => {
     [WheelGesturesPlugin()]
   )
 
-  WheelGesturesPlugin.globalOptions = {
-    wheelDraggingClass: 'my-class',
-    speed: 21
-  }
-
   const project = data.find(p => p.id === projectId)
 
   if (!project) return null
 
   return (
-    <div className='embla mt-5 lg:mt-0 lg:flex-4/8' ref={emblaRef}>
-      <div className='embla__container lg:flex-col'>
-        {project.images.map((image, index) => {
-          return (
-            <div className='embla__slide w-full overflow-hidden' key={index}>
-              <Image
-                src={image}
-                alt={`Project image ${index + 1}`}
-                width={800}
-                height={600}
-                className='embla_slide_img rounded-2xl object-cover'
-              />
-            </div>
-          )
-        })}
+    <>
+      <div
+        className='embla relative mt-5 flex h-full min-w-0 flex-2 flex-col lg:mt-0 lg:basis-2/4'
+        ref={emblaRef}
+      >
+        <div className='embla__container lg:flex-col'>
+          {project.images.map((image, index) => {
+            return (
+              <div className='embla__slide relative w-full' key={index}>
+                <Image
+                  src={image}
+                  alt={`Project image ${index + 1}`}
+                  width={800}
+                  height={600}
+                  className='embla_slide_img relative rounded-2xl object-cover'
+                />
+              </div>
+            )
+          })}
+        </div>
+        <div className='absolute top-20 right-[-60px] z-10 hidden w-[60px] flex-col items-center justify-center gap-3 opacity-50 lg:flex'>
+          <p className='font-display text-sm'>scroll</p>
+          <MoveDown className='text-foreground-light' strokeWidth={1} />
+        </div>
       </div>
-    </div>
+      <AnimatePresence mode='wait'>
+        <motion.div
+          key={project.images[0]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.1 }}
+          className='absolute top-0 z-[-2] aspect-video h-full w-full'
+        >
+          <Image
+            src={project.images[0]}
+            alt={`Blurred background`}
+            fill
+            aria-hidden='true'
+            className='scale-120 object-contain opacity-30 blur-[100px]'
+          />
+        </motion.div>
+      </AnimatePresence>
+    </>
   )
 }
 

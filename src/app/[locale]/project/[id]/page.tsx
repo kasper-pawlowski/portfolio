@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import GithubLogo from '../../../../../public/icons/github.svg'
 import Image from 'next/image'
-import Karuzela from '@/components/ui/Karuzela'
+import ProjectNavigation from '@/components/ui/ProjectNavigation'
 
 type Project = {
   id: number
@@ -51,14 +51,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <div
         id='project'
-        className='relative container mx-auto flex h-[100svh] w-full flex-col px-8 lg:flex-row lg:gap-5 lg:px-0'
+        className='project-padding relative container mx-auto flex h-[100svh] w-full flex-col px-8 pb-10 lg:flex-row lg:gap-5 lg:px-0 lg:pb-20'
       >
-        <div className='project-padding flex w-full flex-col gap-5 lg:flex-2/8'>
-          <h1 className='font-900 font-display text-4xl'>{project.nameKey}</h1>
+        <div className='flex h-full min-w-0 flex-1 flex-col gap-5 lg:basis-1/4'>
+          <h1 className='font-900 font-display text-4xl break-words lg:text-6xl'>
+            {project.nameKey}
+          </h1>
           <div className='flex w-full gap-6'>
             <div className='flex flex-6/10 flex-col gap-2'>
-              <p className='font-500 font-display'>/ Description</p>
-              <p className='font-400 text-sm'>{t(projectDescriptionKey)}</p>
+              <p className='font-500 font-display lg:mt-5 lg:text-xl'>
+                / Description
+              </p>
+              <p className='font-400 text-sm lg:text-base'>
+                {t(projectDescriptionKey)}
+              </p>
             </div>
             <div className='flex flex-4/10 flex-col gap-2 lg:hidden'>
               <p className='font-500 font-display'>/ Technologies</p>
@@ -74,7 +80,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
           </div>
-          <div className='flex gap-3'>
+          <div className='mt-5 flex gap-3'>
             <Link
               href={project.liveLink}
               className='border-foreground flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1'
@@ -91,9 +97,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Link>
           </div>
         </div>
-        {/* <Carousel projectId={projectId} /> */}
-        <Karuzela projectId={projectId} />
-        <div className='project-padding hidden flex-col lg:flex lg:flex-2/8'></div>
+        <Carousel projectId={projectId} />
+        <div className='hidden h-full min-w-0 flex-1 flex-col items-end gap-2 lg:flex lg:basis-1/4'>
+          <p className='font-500 font-display lg:text-xl'>/ Technologies</p>
+          <div className='text-foreground font-400 flex w-[50%] flex-wrap justify-end gap-x-2 text-end text-sm lg:text-base'>
+            {project.technologies.map((technology, index) => (
+              <div key={technology}>
+                <span>{technology}</span>
+                {index < project.technologies.length - 1 && <span> / </span>}
+              </div>
+            ))}
+          </div>
+          <ProjectNavigation
+            currentProjectId={projectId}
+            totalProjects={projects.length}
+          />
+        </div>
+        <div className='mt-auto flex w-full items-end justify-end lg:hidden'>
+          <ProjectNavigation
+            currentProjectId={projectId}
+            totalProjects={projects.length}
+          />
+        </div>
       </div>
       <div
         className='hero-noise pointer-events-none absolute top-0 left-0 z-[-1] h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'

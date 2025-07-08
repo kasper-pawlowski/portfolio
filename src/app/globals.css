@@ -68,7 +68,7 @@
   .project-padding {
     padding-top: calc(62px + 1rem);
     @media (width >= 64rem) {
-      padding-top: calc(112px + 1rem);
+      padding-top: calc(112px + 5rem);
     }
   }
 
@@ -80,6 +80,7 @@
     gap: 1rem;
     @media (width >= 64rem) {
       height: 100%; /* Ważne! To musi mieć jakąś wysokość */
+      gap: 3rem;
     }
   }
   .embla__slide {

@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Toaster } from 'react-hot-toast'
+import { unstable_ViewTransition as ViewTransition } from 'react'
 
 import { goia_display, goia } from '../fonts'
 import Image from 'next/image'
@@ -34,14 +35,15 @@ export default async function LocaleLayout({
   }
 
   return (
+    // <ViewTransition>
     <html lang={locale} suppressHydrationWarning>
       <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
         {/* <Suspense fallback={<Loading />}> */}
         {/* <NextTopLoader
           height={10}
           template='<div class="bar" role="bar"><div class="peg"></div></div> 
-  <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-        /> */}
+          <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+          /> */}
         <NextIntlClientProvider>
           <Providers>
             <div className='relative min-h-full w-full overflow-clip'>
@@ -79,5 +81,6 @@ export default async function LocaleLayout({
         {/* </Suspense> */}
       </body>
     </html>
+    // </ViewTransition>
   )
 }
