@@ -13,16 +13,26 @@ type CarouselProps = {
 const Carousel = ({ projectId }: CarouselProps) => {
   const isLgUp = useBreakpoint('lg')
   const [emblaRef] = useEmblaCarousel(
-    { loop: false, axis: isLgUp ? 'y' : 'x' },
+    {
+      loop: false,
+      axis: isLgUp ? 'y' : 'x',
+      dragFree: isLgUp ? true : false,
+      skipSnaps: true
+    },
     [WheelGesturesPlugin()]
   )
+
+  WheelGesturesPlugin.globalOptions = {
+    wheelDraggingClass: 'my-class',
+    speed: 21
+  }
 
   const project = data.find(p => p.id === projectId)
 
   if (!project) return null
 
   return (
-    <div className='embla pt-5' ref={emblaRef}>
+    <div className='embla mt-5 lg:mt-0 lg:flex-4/8' ref={emblaRef}>
       <div className='embla__container lg:flex-col'>
         {project.images.map((image, index) => {
           return (
