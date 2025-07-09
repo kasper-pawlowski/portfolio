@@ -1,7 +1,7 @@
 'use client'
 
 import { MoveLeft, MoveRight } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 interface ProjectNavigationProps {
@@ -14,7 +14,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   totalProjects
 }) => {
   return (
-    <div className='relative mt-auto flex h-40 w-40 items-center justify-center gap-3 rounded-full transition duration-200 ease-out hover:backdrop-blur-sm lg:h-60 lg:w-60 lg:gap-5'>
+    <div className='relative mt-auto flex h-40 w-40 items-center justify-center gap-3 rounded-full transition duration-300 ease-out hover:backdrop-blur-sm lg:h-60 lg:w-60 lg:gap-5'>
       <Link
         href={`/project/${currentProjectId === 1 ? totalProjects : currentProjectId - 1}`}
       >

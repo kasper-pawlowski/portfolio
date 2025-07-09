@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <div
         id='project'
-        className='project-padding relative container mx-auto flex h-[100svh] w-full flex-col px-8 pb-10 lg:flex-row lg:gap-5 lg:px-0 lg:pb-20'
+        className='project-padding relative container mx-auto flex h-svh w-full flex-col px-8 pb-10 lg:flex-row lg:gap-5 lg:px-0 lg:pb-20'
       >
         <div className='flex h-full min-w-0 flex-1 flex-col gap-5 lg:basis-1/4'>
           <h1 className='font-900 font-display text-4xl break-words lg:text-6xl'>
@@ -59,15 +59,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </h1>
           <div className='flex w-full gap-6'>
             <div className='flex flex-6/10 flex-col gap-2'>
-              <p className='font-500 font-display lg:mt-5 lg:text-xl'>
+              <p className='font-500 font-display text-foreground-light lg:mt-5 lg:text-lg'>
                 / Description
               </p>
-              <p className='font-400 text-sm lg:text-base'>
+              <p className='font-400 text-foreground text-sm lg:text-base'>
                 {t(projectDescriptionKey)}
               </p>
             </div>
             <div className='flex flex-4/10 flex-col gap-2 lg:hidden'>
-              <p className='font-500 font-display'>/ Technologies</p>
+              <p className='font-500 font-display text-foreground-light'>
+                / Technologies
+              </p>
               <div className='text-foreground font-400 flex flex-wrap items-center gap-x-2 text-sm'>
                 {project.technologies.map((technology, index) => (
                   <div key={technology}>
@@ -96,10 +98,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <GithubLogo className='github-logo h-4 w-4' />
             </Link>
           </div>
+          <Link
+            href='/#projects'
+            className='font-display text-foreground mt-auto hidden w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl lg:flex'
+          >
+            <MoveLeft strokeWidth={1} />
+            <p>powrót</p>
+          </Link>
         </div>
         <Carousel projectId={projectId} />
         <div className='hidden h-full min-w-0 flex-1 flex-col items-end gap-2 lg:flex lg:basis-1/4'>
-          <p className='font-500 font-display lg:text-xl'>/ Technologies</p>
+          <p className='font-500 font-display text-foreground-light lg:text-lg'>
+            / Technologies
+          </p>
           <div className='text-foreground font-400 flex w-[50%] flex-wrap justify-end gap-x-2 text-end text-sm lg:text-base'>
             {project.technologies.map((technology, index) => (
               <div key={technology}>
@@ -113,11 +124,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             totalProjects={projects.length}
           />
         </div>
-        <div className='mt-auto flex w-full items-end justify-end lg:hidden'>
-          <ProjectNavigation
-            currentProjectId={projectId}
-            totalProjects={projects.length}
-          />
+        <div className='mt-auto flex justify-between lg:hidden'>
+          <Link
+            href='/#projects'
+            className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
+          >
+            <MoveLeft strokeWidth={1} />
+            <p>powrót</p>
+          </Link>
+          <div className='flex items-end justify-end'>
+            <ProjectNavigation
+              currentProjectId={projectId}
+              totalProjects={projects.length}
+            />
+          </div>
         </div>
       </div>
       <div

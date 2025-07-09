@@ -5,8 +5,8 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import data from '@/data/projects.json'
 import Image from 'next/image'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { useCallback, useEffect, useState } from 'react'
-import { AnimatePresence, motion, scale } from 'motion/react'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { MoveDown } from 'lucide-react'
 
 type CarouselProps = {
