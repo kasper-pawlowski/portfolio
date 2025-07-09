@@ -16,18 +16,19 @@ import {
 import LanguageSelect from '../language-select'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { ProgressiveBlur } from '../core/progressive-blur'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrollDirection, setScrollDirection] = useState('up')
+  // const [scrollDirection, setScrollDirection] = useState('up')
   const { resolvedTheme } = useTheme()
   const t = useTranslations('Navigation')
-  const { scrollY } = useScroll()
+  // const { scrollY } = useScroll()
 
-  useMotionValueEvent(scrollY, 'change', current => {
-    const diff = current - (scrollY.getPrevious() ?? 0)
-    setScrollDirection(diff > 0 ? 'down' : 'up')
-  })
+  // useMotionValueEvent(scrollY, 'change', current => {
+  //   const diff = current - (scrollY.getPrevious() ?? 0)
+  //   setScrollDirection(diff > 0 ? 'down' : 'up')
+  // })
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -50,7 +51,7 @@ const Header = () => {
   return (
     <motion.header
       initial={{ y: 0 }}
-      animate={{ y: scrollDirection === 'down' ? '-100%' : '0%' }}
+      // animate={{ y: scrollDirection === 'down' ? '-100%' : '0%' }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
       className='fixed top-0 left-0 z-10 w-full px-8 lg:px-0'
     >
@@ -102,19 +103,12 @@ const Header = () => {
           {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
-      <div
-        className='absolute inset-0 z-[-1] h-full w-full backdrop-blur-2xl'
-        style={{
-          WebkitMaskImage:
-            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
-          maskImage:
-            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%)',
-          WebkitMaskSize: '100% 100%',
-          maskSize: '100% 100%',
-          WebkitMaskRepeat: 'no-repeat',
-          maskRepeat: 'no-repeat'
-        }}
-      ></div>
+
+      <ProgressiveBlur
+        className='pointer-events-none absolute top-0 left-0 z-[-2] h-[90%] w-full'
+        blurIntensity={1}
+        direction='top'
+      />
 
       <AnimatePresence>
         {isMenuOpen && (
