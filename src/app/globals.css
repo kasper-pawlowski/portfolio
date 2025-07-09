@@ -79,9 +79,10 @@
     display: flex;
     gap: 1rem;
     @media (width >= 64rem) {
-      height: 100%; /* Ważne! To musi mieć jakąś wysokość */
+      height: 100%;
       gap: 3rem;
     }
+    /* transition: transform 0.2s ease-out; */
   }
   .embla__slide {
     flex: 0 0 90%;

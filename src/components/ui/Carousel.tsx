@@ -6,7 +6,7 @@ import data from '@/data/projects.json'
 import Image from 'next/image'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useCallback, useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, scale } from 'motion/react'
 import { MoveDown } from 'lucide-react'
 
 type CarouselProps = {
@@ -15,6 +15,15 @@ type CarouselProps = {
 
 const Carousel = ({ projectId }: CarouselProps) => {
   const isLgUp = useBreakpoint('lg')
+  const [plugins, setPlugins] = useState<any[]>([])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const plugin = WheelGesturesPlugin({ target: document.body })
+      setPlugins([plugin])
+    }
+  }, [])
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: false,
@@ -22,8 +31,22 @@ const Carousel = ({ projectId }: CarouselProps) => {
       dragFree: isLgUp ? true : false,
       skipSnaps: true
     },
-    [WheelGesturesPlugin()]
+    plugins
   )
+
+  useEffect(() => {
+    if (!emblaApi || !isLgUp) return
+
+    const container = emblaApi.containerNode()
+
+    const setTransition = () => {
+      container.style.transition = 'transform 0.3s ease-out'
+    }
+
+    emblaApi.on('pointerDown', setTransition)
+    emblaApi.on('scroll', setTransition)
+    emblaApi.on('settle', setTransition)
+  }, [emblaApi])
 
   const project = data.find(p => p.id === projectId)
 
@@ -38,15 +61,18 @@ const Carousel = ({ projectId }: CarouselProps) => {
         <div className='embla__container lg:flex-col'>
           {project.images.map((image, index) => {
             return (
-              <div className='embla__slide relative w-full' key={index}>
+              <motion.div
+                className='embla__slide relative w-full overflow-hidden rounded-2xl'
+                key={index}
+              >
                 <Image
                   src={image}
                   alt={`Project image ${index + 1}`}
                   width={800}
                   height={600}
-                  className='embla_slide_img relative rounded-2xl object-cover'
+                  className='embla_slide_img relative rounded-2xl object-cover transition duration-200 ease-out hover:scale-105'
                 />
-              </div>
+              </motion.div>
             )
           })}
         </div>
