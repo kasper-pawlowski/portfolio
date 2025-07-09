@@ -1,33 +1,16 @@
-'use client'
-
 import { useState } from 'react'
-import { useTheme } from 'next-themes'
-import Image from 'next/image'
+import { Volume2, VolumeX } from 'lucide-react'
 
 const SoundToggle = () => {
-  const { resolvedTheme } = useTheme()
   const [soundEnabled, setSoundEnabled] = useState(true)
 
   return (
     <button
-      className='flex'
       onClick={() => {
         setSoundEnabled(e => !e)
       }}
     >
-      {soundEnabled ? (
-        resolvedTheme === 'dark' ? (
-          <Image src='/icons/sound-light.svg' width={30} height={30} alt='' />
-        ) : (
-          <Image src='/icons/sound-dark.svg' width={30} height={30} alt='' />
-        )
-      ) : resolvedTheme === 'dark' ? (
-        <Image src='/icons/sound-off-light.svg' width={30} height={30} alt='' />
-      ) : (
-        <Image src='/icons/sound-off-dark.svg' width={30} height={30} alt='' />
-      )}
-
-      <span className='sr-only'>Toggle theme</span>
+      {soundEnabled ? <Volume2 size={30} /> : <VolumeX size={30} />}
     </button>
   )
 }

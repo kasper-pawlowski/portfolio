@@ -1,30 +1,28 @@
-import Image from 'next/image'
 import LanguageToggle from '../language-select'
 import SoundToggle from '../sound-toggle'
 import ThemeToggle from '../theme-toggle'
 import { useTranslations } from 'next-intl'
-import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const MobileMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations('Navigation')
-  const { resolvedTheme } = useTheme()
 
   return (
     <motion.div className='bg-background/70 text-foreground relative container mx-auto flex h-svh w-screen flex-col px-8 backdrop-blur-lg'>
       <nav className='font-700 flex w-full flex-4/6 flex-col justify-center gap-15 text-4xl'>
-        <a href='#about' className='flex gap-5' onClick={onClose}>
+        <Link href='/#about' className='flex gap-5' onClick={onClose}>
           <span>⑊</span>
           <p>{t('about')}</p>
-        </a>
-        <a href='#projects' className='flex gap-5' onClick={onClose}>
+        </Link>
+        <Link href='/#projects' className='flex gap-5' onClick={onClose}>
           <span>⑊</span>
           {t('projects')}
-        </a>
-        <a href='#contact' className='flex gap-5' onClick={onClose}>
+        </Link>
+        <Link href='/#contact' className='flex gap-5' onClick={onClose}>
           <span>⑊</span>
           {t('contact')}
-        </a>
+        </Link>
       </nav>
 
       <div className='flex w-full flex-2/6 items-center justify-center gap-8 pb-30'>

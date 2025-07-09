@@ -25,7 +25,7 @@ const Contact = () => {
     >
       <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
         Kontakt
-        <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-1] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
+        <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
       </h2>
       <p className='font-600 text-foreground-light mt-5 text-xl'>
         Zapraszam do kontaktu!

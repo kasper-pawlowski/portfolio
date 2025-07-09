@@ -15,6 +15,7 @@ import {
 } from 'motion/react'
 import LanguageSelect from '../language-select'
 import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -44,20 +45,6 @@ const Header = () => {
 
   if (!mounted) {
     return null
-  }
-
-  const MenuIcon = () => {
-    const src = !isMenuOpen
-      ? resolvedTheme === 'dark'
-        ? '/icons/menu-light.svg'
-        : '/icons/menu-dark.svg'
-      : resolvedTheme === 'dark'
-        ? '/icons/close-light.svg'
-        : '/icons/close-dark.svg'
-
-    const alt = isMenuOpen ? 'Close menu' : 'Open menu'
-
-    return <Image src={src} width={30} height={30} alt={alt} />
   }
 
   return (
@@ -112,7 +99,7 @@ const Header = () => {
           aria-expanded={isMenuOpen}
           aria-label='Open menu'
         >
-          <MenuIcon />
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
       <div

@@ -3,14 +3,13 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { useTheme } from 'next-themes'
 import clsx from 'clsx'
+import { ChevronDown } from 'lucide-react'
 
 const LanguageSelect = () => {
   const t = useTranslations()
   const locale = useLocale()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const { resolvedTheme } = useTheme()
   const dropdownRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [alignRight, setAlignRight] = useState(false)
@@ -86,12 +85,7 @@ const LanguageSelect = () => {
           animate={{ rotate: isDropdownOpen ? 180 : 0 }}
           transition={{ duration: 0.1 }}
         >
-          <Image
-            src={`/icons/arrow-down-${resolvedTheme === 'dark' ? 'light' : 'dark'}.svg`}
-            width={30}
-            height={30}
-            alt='arrow icon'
-          />
+          <ChevronDown size={30} />
         </motion.div>
       </motion.button>
 
