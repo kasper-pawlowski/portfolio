@@ -58,11 +58,11 @@ const Carousel = ({ projectId }: CarouselProps) => {
         className='embla relative mt-5 flex h-full min-w-0 flex-2 flex-col lg:mt-0 lg:basis-2/4'
         ref={emblaRef}
       >
-        <div className='embla__container lg:flex-col'>
+        <div className='embla__container flex gap-4 lg:h-full lg:flex-col lg:gap-12'>
           {project.images.map((image, index) => {
             return (
               <motion.div
-                className='embla__slide relative w-full overflow-hidden rounded-2xl'
+                className='embla__slide relative aspect-video min-h-0 w-[90%] min-w-0 flex-none overflow-hidden rounded-2xl lg:w-full lg:flex-shrink-0 lg:flex-grow-0 lg:basis-auto'
                 key={index}
               >
                 <Image
@@ -70,7 +70,7 @@ const Carousel = ({ projectId }: CarouselProps) => {
                   alt={`Project image ${index + 1}`}
                   width={800}
                   height={600}
-                  className='embla_slide_img relative rounded-2xl object-cover transition duration-200 ease-out hover:scale-105'
+                  className='embla_slide_img relative h-full w-full rounded-2xl object-cover transition duration-200 ease-out hover:scale-105'
                 />
               </motion.div>
             )
