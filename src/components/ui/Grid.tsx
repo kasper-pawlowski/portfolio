@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-type OverlayConfig = {
+export type OverlayConfig = {
   widthSquares: number
   heightSquares: number
   anchor?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
@@ -241,7 +241,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [] }) => {
       {overlays.map((overlay, index) => (
         <div
           key={index}
-          className={overlay.className}
+          className={`${overlay.className} bg-background z-1`}
           style={getOverlayStyle(
             overlay,
             itemRef.current?.getBoundingClientRect()?.width ?? 0,
