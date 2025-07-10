@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Toaster } from 'react-hot-toast'
 import { unstable_ViewTransition as ViewTransition } from 'react'
-
+import { ReactLenis, useLenis } from 'lenis/react'
 import { goia_display, goia } from '../fonts'
 import Image from 'next/image'
 import Providers from '@/components/providers'
@@ -47,6 +47,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <Providers>
             <div className='relative min-h-full w-full overflow-clip'>
+              <ReactLenis root />
               {/* <Loading /> */}
               <Toaster
                 position='bottom-right'
