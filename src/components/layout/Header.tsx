@@ -118,10 +118,9 @@ const Header = () => {
 
   const textColorClass =
     isDarkSection && !isMenuOpen ? 'text-background' : 'text-foreground'
-  const separatorColorClass =
-    isDarkSection && !isMenuOpen
-      ? 'text-background-light'
-      : 'text-foreground-light'
+  const separatorColorClass = isDarkSection
+    ? 'text-background-light'
+    : 'text-foreground-light'
   const headerY = !isLgUp && scrollDirection === 'down' ? '-100%' : '0%'
 
   return (

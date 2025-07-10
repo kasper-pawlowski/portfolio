@@ -15,8 +15,8 @@
   .dark {
     --background: #303030;
     --foreground: #e3dfd5;
-    --foreground-light: #bdbbb3;
     --background-light: #52514e;
+    --foreground-light: #bdbbb3;
     --github-icon-color: #ffffff;
     --email-background: #303030;
     --contact-background: #bcbcbc76;
