@@ -52,7 +52,7 @@ const Projects = () => (
 
     <section
       id='projects'
-      className='bg-projects-grid-background relative hidden flex-col gap-[2px] lg:flex'
+      className='bg-projects-grid-background relative hidden flex-col gap-[2px] pb-[1px] lg:flex'
     >
       <div className={`${styles.gridGradient} relative`}>
         <div className={`${styles.div28} ${styles.blank}`}></div>

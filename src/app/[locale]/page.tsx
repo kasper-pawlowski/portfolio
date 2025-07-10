@@ -6,6 +6,7 @@ import React from 'react'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
 import { ProgressiveBlur } from '@/components/core/progressive-blur'
+import Marquee from '@/components/ui/Marquee'
 
 const Home = () => {
   return (
@@ -14,13 +15,14 @@ const Home = () => {
       <About />
       <Experience />
       <Projects />
+      <Marquee />
       <Contact />
       <Footer />
 
-      <ProgressiveBlur
+      {/* <ProgressiveBlur
         className='pointer-events-none fixed bottom-0 left-0 z-6 h-[200px] w-screen'
         direction='bottom'
-      />
+      /> */}
     </>
   )
 }
