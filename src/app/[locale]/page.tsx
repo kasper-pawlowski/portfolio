@@ -5,6 +5,7 @@ import Hero from '@/components/sections/Hero'
 import React from 'react'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
+import { ProgressiveBlur } from '@/components/core/progressive-blur'
 
 const Home = () => {
   return (
@@ -15,7 +16,6 @@ const Home = () => {
       <Projects />
       <Contact />
       <Footer />
-      {/* <div className='placeholder-div h-[600svh] w-full'></div> */}
       {/* <div
         className='fixed bottom-0 z-10 h-20 w-screen backdrop-blur-[10px]'
         style={{
@@ -31,6 +31,11 @@ const Home = () => {
       >
         .
       </div> */}
+      <ProgressiveBlur
+        className='pointer-events-none fixed bottom-0 left-0 z-10 h-[5%] w-full'
+        blurIntensity={1}
+        direction='bottom'
+      />
     </>
   )
 }
