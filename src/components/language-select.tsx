@@ -6,7 +6,11 @@ import { Link } from '@/i18n/navigation'
 import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
 
-const LanguageSelect = () => {
+type LanguageSelectProps = {
+  textColorClass?: string
+}
+
+const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
   const t = useTranslations()
   const locale = useLocale()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -74,7 +78,7 @@ const LanguageSelect = () => {
     <div className='relative'>
       <motion.button
         ref={buttonRef}
-        className='bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl px-4 py-2 backdrop-blur-xl duration-100'
+        className={`bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl px-4 py-2 backdrop-blur-xl transition-colors duration-300 ${textColorClass}`}
         onClick={toggleDropdown}
         aria-expanded={isDropdownOpen}
         aria-haspopup='true'
@@ -112,8 +116,9 @@ const LanguageSelect = () => {
               href='/'
               onClick={closeDropdown}
               className={clsx(
-                'flex items-center rounded-lg py-5 backdrop-blur-xl hover:bg-[#FFFFFF20]',
-                locale === 'pl' && 'bg-[#FFFFFF30]'
+                'flex items-center rounded-lg py-5 backdrop-blur-xl transition-colors duration-300 hover:bg-[#FFFFFF20]',
+                locale === 'pl' && 'bg-[#FFFFFF30]',
+                textColorClass
               )}
               role='menuitem'
               tabIndex={0}
@@ -133,8 +138,9 @@ const LanguageSelect = () => {
               locale='en'
               onClick={closeDropdown}
               className={clsx(
-                'flex items-center rounded-lg py-5 backdrop-blur-xl hover:bg-[#FFFFFF20]',
-                locale === 'en' && 'bg-[#FFFFFF30]'
+                'flex items-center rounded-lg py-5 backdrop-blur-xl transition-colors duration-300 hover:bg-[#FFFFFF20]',
+                locale === 'en' && 'bg-[#FFFFFF30]',
+                textColorClass
               )}
               role='menuitem'
               tabIndex={0}
