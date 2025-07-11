@@ -233,7 +233,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
   }
 
   return (
-    <div className='relative h-full w-full overflow-hidden'>
+    <div className='relative h-full w-full'>
       {overlays.map((overlay, index) => (
         <div
           key={index}
@@ -253,7 +253,6 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
           display: 'grid',
           gridTemplateColumns: `repeat(${gridConfig.cols}, 1fr)`,
           gridTemplateRows: `repeat(${gridConfig.rows}, 1fr)`,
-          minHeight: '400px',
           filter: 'url(#gooey-filter)'
         }}
       >
