@@ -90,7 +90,7 @@ const SimpleMarquee = ({
   const velocityFactor = useTransform(
     useScrollVelocity ? smoothVelocity : defaultVelocity,
     [0, 1000],
-    [0, 5],
+    [0, 10],
     {
       clamp: false
     }

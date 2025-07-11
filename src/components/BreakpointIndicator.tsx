@@ -48,7 +48,7 @@ const BreakpointIndicator = () => {
   }
 
   return (
-    <div className='fixed right-4 bottom-4 z-[9999] rounded bg-black/80 px-3 py-1 font-mono text-xs text-white backdrop-blur'>
+    <div className='pointer-events-none fixed top-4 right-4 z-[9999] rounded bg-black/80 px-3 py-1 font-mono text-xs text-white opacity-30 backdrop-blur'>
       {breakpoint} ({width}px)
     </div>
   )

@@ -9,15 +9,16 @@ export type OverlayConfig = {
 
 type GridProps = {
   overlays?: OverlayConfig[]
+  baseSize?: number
 }
 
-const Grid: React.FC<GridProps> = ({ overlays = [] }) => {
+const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const itemRef = useRef<HTMLDivElement>(null)
   const [gridConfig, setGridConfig] = useState({
     cols: 0,
     rows: 0,
-    squareSize: 40
+    squareSize: baseSize
   })
   const [hoveredSquare, setHoveredSquare] = useState<number | null>(null)
   const [trailSquares, setTrailSquares] = useState<Set<number>>(new Set())
@@ -66,7 +67,6 @@ const Grid: React.FC<GridProps> = ({ overlays = [] }) => {
     const container = containerRef.current
     const containerWidth = container.offsetWidth
     const containerHeight = container.offsetHeight
-    const baseSize = 40
     const tolerance = 5
 
     // Oblicz liczbę kolumn i wierszy na podstawie rozmiaru bazowego
@@ -155,7 +155,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [] }) => {
       resizeObserver.disconnect()
       clearInterval(clearTrailInterval)
     }
-  }, [])
+  }, [baseSize]) // Dodano baseSize jako dependency
 
   // Funkcja do obliczania ścieżki między dwoma kwadratami
   const getSquaresBetween = (startIndex: number, endIndex: number) => {
@@ -205,10 +205,6 @@ const Grid: React.FC<GridProps> = ({ overlays = [] }) => {
     // Nie resetuj lastHoveredSquare tutaj, aby zachować ciągłość ścieżki
   }
 
-  useEffect(() => {
-    console.log(itemRef?.current?.getBoundingClientRect().width)
-  }, [gridConfig])
-
   const generateSquares = () => {
     const squares = []
     const totalSquares = gridConfig.cols * gridConfig.rows
@@ -220,11 +216,11 @@ const Grid: React.FC<GridProps> = ({ overlays = [] }) => {
       squares.push(
         <div
           ref={i === 0 ? itemRef : null}
-          className={`border-foreground box-border border-1 transition-all duration-100 ease-in-out ${
+          className={`border-foreground-light box-border border-1 transition-all duration-100 ease-out ${
             isHovered
               ? 'bg-orange-500'
               : isInTrail
-                ? 'bg-orange-500'
+                ? 'bg-orange-300'
                 : 'bg-transparent'
           } ${!isHovered ? 'duration-1000' : ''}`}
           key={i}

@@ -2,8 +2,8 @@ import { OverlayConfig } from '@/components/ui/Grid'
 
 export const heroOverlays: OverlayConfig[] = [
   {
-    widthSquares: 2,
-    heightSquares: 3,
+    widthSquares: 0,
+    heightSquares: 0,
     anchor: 'top-left',
     className: ''
   }
