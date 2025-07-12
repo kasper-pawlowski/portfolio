@@ -233,11 +233,11 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
   }
 
   return (
-    <div className='relative h-full w-full'>
+    <div className='relative h-full w-full overflow-hidden'>
       {overlays.map((overlay, index) => (
         <div
           key={index}
-          className={`${overlay.className} bg-background z-1`}
+          className={`${overlay.className} bg-background z-2`}
           style={getOverlayStyle(
             overlay,
             itemRef.current?.getBoundingClientRect()?.width ?? 0,
