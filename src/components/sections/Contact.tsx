@@ -21,7 +21,7 @@ const Contact = () => {
   return (
     <section
       id='contact'
-      className='bg container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'
+      className='bg z-1 container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'
     >
       <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
         Kontakt
