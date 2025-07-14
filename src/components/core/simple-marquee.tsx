@@ -76,7 +76,7 @@ const SimpleMarquee = ({
   const smoothVelocity = useSpring(scrollVelocity, scrollSpringConfig)
 
   const hoverFactorValue = useMotionValue(1)
-  const defaultVelocity = useMotionValue(1)
+  const defaultVelocity = useMotionValue(0)
 
   // Track if user is currently dragging
   const isDragging = useRef(false)
@@ -87,10 +87,11 @@ const SimpleMarquee = ({
   const smoothHoverFactor = useSpring(hoverFactorValue, slowDownSpringConfig)
 
   // Transform scroll velocity into a factor that affects marquee speed
+  // Wzorowane na przykładzie - używaj jako mnożnik
   const velocityFactor = useTransform(
     useScrollVelocity ? smoothVelocity : defaultVelocity,
     [0, 1000],
-    [0, 10],
+    [0, 5],
     {
       clamp: false
     }
@@ -149,36 +150,40 @@ const SimpleMarquee = ({
       hoverFactorValue.set(1)
     }
 
-    // Calculate regular movement
+    // Calculate regular movement - wzorowane na przykładzie
     let moveBy =
       directionFactor.current *
       actualBaseVelocity *
       (delta / 1000) *
       smoothHoverFactor.get()
 
-    // Adjust movement based on scroll velocity if scrollAwareDirection is enabled
+    // Adjust direction based on scroll velocity if scrollAwareDirection is enabled
     if (scrollAwareDirection && !isDragging.current) {
-      if (velocityFactor.get() < 0) {
+      const currentVelocityFactor = velocityFactor.get()
+      if (currentVelocityFactor < 0) {
         directionFactor.current = -1
-      } else if (velocityFactor.get() > 0) {
+      } else if (currentVelocityFactor > 0) {
         directionFactor.current = 1
       }
     }
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get()
+    // Dodaj scroll velocity jako mnożnik, tak jak w przykładzie
+    if (useScrollVelocity && !isDragging.current) {
+      moveBy += directionFactor.current * moveBy * velocityFactor.get()
+    }
 
     if (draggable) {
       moveBy += dragVelocity.current
 
       // Update direction based on drag direction if dragAwareDirection is true
-      if (dragAwareDirection && Math.abs(dragVelocity.current) > 0.1) {
+      if (dragAwareDirection && Math.abs(dragVelocity.current) > 0.2) {
         // If dragging in negative direction, set directionFactor to -1
         // If dragging in positive direction, set directionFactor to 1
         directionFactor.current = Math.sign(dragVelocity.current)
       }
 
       // Gradually decay drag velocity back to zero
-      if (!isDragging.current && Math.abs(dragVelocity.current) > 0.01) {
+      if (!isDragging.current && Math.abs(dragVelocity.current) > 0.02) {
         dragVelocity.current *= dragVelocityDecay
       } else if (!isDragging.current) {
         dragVelocity.current = 0
@@ -246,7 +251,12 @@ const SimpleMarquee = ({
 
   return (
     <motion.div
-      className={cn('flex', isHorizontal ? 'flex-row' : 'flex-col', className)}
+      className={cn(
+        'flex',
+        isHorizontal ? 'flex-row' : 'flex-col',
+        'relative',
+        className
+      )}
       onHoverStart={() => (isHovered.current = true)}
       onHoverEnd={() => (isHovered.current = false)}
       onPointerDown={handlePointerDown}

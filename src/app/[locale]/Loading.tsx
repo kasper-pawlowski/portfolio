@@ -1,7 +1,5 @@
 'use client'
 
-import AnimatedHeroGrid from '@/components/ui/AnimatedHeroGrid'
-import Marquee from '@/components/ui/Marquee'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
@@ -23,15 +21,7 @@ const Loading = () => {
   }, [])
 
   return (
-    <div className='fixed z-20 mx-auto flex h-screen w-screen flex-col bg-[#303030]'>
-      <div className='container mx-auto mt-[var(--header-height)] mb-[var(--parallaxMarquee-height)] grow'>
-        <AnimatedHeroGrid />
-      </div>
-      <motion.div className='relative container w-full place-self-end justify-self-end'>
-        <Marquee id={1} />
-        <Marquee id={2} />
-      </motion.div>
-    </div>
+    <div className='fixed z-20 mx-auto flex h-screen w-screen flex-col bg-[#303030]'></div>
   )
 }
 

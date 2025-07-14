@@ -2,12 +2,16 @@ import React from 'react'
 
 const Experience = () => {
   return (
-    <section id='experience' className='text-background relative'>
+    <section id='experience' className='text-background bg-foreground relative'>
+      <div
+        className='pointer-events-none absolute inset-0 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        aria-hidden='true'
+      />
       <div className='container mx-auto flex h-auto flex-col gap-10 px-8 py-20 lg:px-0 lg:py-40'>
-        <h1 className='font-display w-full text-5xl font-black lg:text-7xl'>
+        <h1 className='font-display z-2 w-full text-5xl font-black lg:text-7xl'>
           Doświadcznie
         </h1>
-        <p className='flex w-full flex-col gap-5 font-sans text-lg font-medium lg:px-20 lg:text-xl'>
+        <p className='z-2 flex w-full flex-col gap-5 font-sans text-lg font-medium lg:px-20 lg:text-xl'>
           <span>
             W ramach mojej drogi jako frontend developer miałem okazję zdobyć
             praktyczne doświadczenie zarówno w pracy z klientami, jak i w
@@ -30,9 +34,9 @@ const Experience = () => {
           </span>
         </p>
       </div>
-      <div className='bg-foreground absolute inset-0 z-[-2] h-full w-full'></div>
+
       <svg
-        className='text-foreground absolute z-10 h-16 w-full border-1 border-blue-800'
+        className='text-foreground absolute z-1 h-20 w-full'
         viewBox='0 0 1200 64'
         preserveAspectRatio='none'
       >

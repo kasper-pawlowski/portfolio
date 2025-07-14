@@ -4,27 +4,44 @@ const Footer = () => {
   const t = useTranslations('Navigation')
 
   return (
-    <section
-      id='footer'
-      className='text-background relative flex h-80 flex-col items-center py-20'
-    >
-      <div className='hidden flex-3/5 items-center justify-center lg:flex'>
-        <nav className='flex items-center justify-center gap-10'>
-          <a href='#about' className='font-goia text-background font-500'>
-            {t('about')}
-          </a>
-          <span className='text-background text-2xl'>・</span>
-          <a href='#projects' className='font-goia text-background font-500'>
-            {t('projects')}
-          </a>
-          <span className='text-background text-2xl'>・</span>
-          <a href='#contact' className='font-goia text-background font-500'>
-            {t('contact')}
-          </a>
-        </nav>
+    <section id='footer' className='relative'>
+      <div
+        className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        aria-hidden='true'
+      />
+      <svg
+        className='text-foreground absolute -top-20 z-0 h-20 w-full rotate-180'
+        viewBox='0 0 1200 64'
+        preserveAspectRatio='none'
+      >
+        <path
+          d='M0,0 L1200,0 L1200,64 Q600,-10 0,64 Z'
+          fill='var(--svg-accent-1)'
+        />
+        <path
+          d='M0,0 L1200,0 L1200,56 Q600,-20 0,56 Z'
+          fill='var(--svg-accent-2)'
+        />
+        <path d='M0,0 L1200,0 L1200,46 Q600,-30 0,46 Z' fill='currentColor' />
+      </svg>
+      <div className='text-background bg-foreground flex h-70 flex-col items-center pb-20'>
+        <div className='hidden flex-3/5 items-center justify-center lg:flex'>
+          <nav className='flex items-center justify-center gap-10'>
+            <a href='#about' className='font-goia text-background font-500'>
+              {t('about')}
+            </a>
+            <span className='text-background text-2xl'>・</span>
+            <a href='#projects' className='font-goia text-background font-500'>
+              {t('projects')}
+            </a>
+            <span className='text-background text-2xl'>・</span>
+            <a href='#contact' className='font-goia text-background font-500'>
+              {t('contact')}
+            </a>
+          </nav>
+        </div>
+        <p className='mt-auto'>© 2025 Kasper Pawłowski</p>
       </div>
-      <p className='mt-auto'>© 2025 Kasper Pawłowski</p>
-      <div className='bg-foreground absolute inset-0 z-[-2]'></div>
     </section>
   )
 }

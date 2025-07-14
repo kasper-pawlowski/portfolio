@@ -15,6 +15,7 @@ export type ProgressiveBlurProps = {
   blurLayers?: number
   className?: string
   blurIntensity?: number
+  enableOpacityTransition?: boolean
 } & HTMLMotionProps<'div'>
 
 export function ProgressiveBlur({
@@ -22,6 +23,7 @@ export function ProgressiveBlur({
   blurLayers = 8,
   className,
   blurIntensity = 0.5,
+  enableOpacityTransition = true,
   ...props
 }: ProgressiveBlurProps) {
   const { scrollY } = useScroll()
@@ -48,6 +50,8 @@ export function ProgressiveBlur({
   }, [])
 
   const opacity = useTransform(scrollY, value => {
+    if (!enableOpacityTransition) return 1
+
     const showThreshold = 20
     const hideThreshold = documentHeight - windowHeight - 100
     const fadeDistance = 100
@@ -131,7 +135,7 @@ export function ProgressiveBlur({
               backdropFilter: `blur(${blurValue}px)`,
               WebkitBackdropFilter: `blur(${blurValue}px)`,
               zIndex: index + 1,
-              opacity: opacity
+              opacity: enableOpacityTransition ? opacity : 1
             }}
             {...props}
           />

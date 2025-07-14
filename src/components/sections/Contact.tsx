@@ -19,62 +19,55 @@ const handleCopyEmail = async () => {
 
 const Contact = () => {
   return (
-    <section
-      id='contact'
-      className='bg z-1 container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'
-    >
-      <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
-        Kontakt
-        <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
-      </h2>
-      <p className='font-600 text-foreground-light mt-5 text-xl'>
-        Zapraszam do kontaktu!
-      </p>
-      <a
-        href='mailto:kasper.pawlowski04@gmail.com'
-        className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
-        aria-label='Wyślij wiadomość email do kasper.pawlowski04@gmail.com'
-        role='button'
-      >
-        kasper.pawlowski04@gmail.com
-      </a>
-      <button
-        onClick={handleCopyEmail}
-        className='font-600 mt-10 flex items-center justify-center gap-3'
-      >
-        <Copy size={20} /> skopiuj email
-      </button>
-      <div className='mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
+    <section id='contact' className='relative'>
+      <div
+        className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        aria-hidden='true'
+      />
+      <div className='container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'>
+        <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
+          Kontakt
+          <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
+        </h2>
+        <p className='font-600 text-foreground-light mt-5 text-xl'>
+          Zapraszam do kontaktu!
+        </p>
         <a
-          href='https://github.com/kasper-pawlowski'
-          className='github-link flex items-center gap-5'
+          href='mailto:kasper.pawlowski04@gmail.com'
+          className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
+          aria-label='Wyślij wiadomość email do kasper.pawlowski04@gmail.com'
+          role='button'
         >
-          <GithubLogo className='github-logo h-10 w-10 duration-300' />
-          <div className='flex flex-col gap-1'>
-            <span className='font-700 text-xl'>GitHub</span>
-            <p className='text-lg'>@kasper-pawlowski</p>
-          </div>
+          kasper.pawlowski04@gmail.com
         </a>
-        <a
-          href='https://linkedin.com/in/kasper-pawlowski'
-          className='linkedin-link flex items-center gap-5'
+        <button
+          onClick={handleCopyEmail}
+          className='font-600 mt-10 flex items-center justify-center gap-3'
         >
-          <LinkedinLogo className='linkedin-logo h-10 w-10 duration-300' />
-          <div className='flex flex-col gap-1'>
-            <span className='font-700 text-xl'>LinkedIn</span>
-            <p className='text-lg'>@kasper-pawlowski</p>
-          </div>
-        </a>
-        {/* <a
-          href='https://wa.me/48534569698'
-          className='whatsapp-link flex items-center gap-5'
-        >
-          <WhatsappLogo className='whatsapp-logo h-10 w-10 duration-300' />
-          <div className='flex flex-col gap-1'>
-            <span className='font-700 text-xl'>WhatsApp</span>
-            <p className='text-lg'>+48 534 569 698</p>
-          </div>
-        </a> */}
+          <Copy size={20} /> skopiuj email
+        </button>
+        <div className='mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
+          <a
+            href='https://github.com/kasper-pawlowski'
+            className='github-link flex items-center gap-5'
+          >
+            <GithubLogo className='github-logo h-10 w-10 duration-300' />
+            <div className='flex flex-col gap-1'>
+              <span className='font-700 text-xl'>GitHub</span>
+              <p className='text-lg'>@kasper-pawlowski</p>
+            </div>
+          </a>
+          <a
+            href='https://linkedin.com/in/kasper-pawlowski'
+            className='linkedin-link flex items-center gap-5'
+          >
+            <LinkedinLogo className='linkedin-logo h-10 w-10 duration-300' />
+            <div className='flex flex-col gap-1'>
+              <span className='font-700 text-xl'>LinkedIn</span>
+              <p className='text-lg'>@kasper-pawlowski</p>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   )

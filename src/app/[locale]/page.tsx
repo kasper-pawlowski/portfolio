@@ -22,6 +22,7 @@ const Home = () => {
       <ProgressiveBlur
         className='pointer-events-none fixed bottom-0 left-0 z-6 h-[200px] w-screen'
         direction='bottom'
+        enableOpacityTransition={true}
       />
     </>
   )

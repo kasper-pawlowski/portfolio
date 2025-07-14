@@ -73,7 +73,7 @@ export default async function LocaleLayout({
                 }}
               />
               <BreakpointIndicator />
-              <Grain />
+              {/* <Grain /> */}
               <Header />
               <main>{children}</main>
             </div>

@@ -6,10 +6,16 @@
     --foreground: #303030;
     --background-light: #bdbbb3;
     --foreground-light: #52514e;
+
     --github-icon-color: #181717;
     --email-background: #fefefe;
     --contact-background: #ffa51453;
     --projects-grid-background-background: #c4c2bb;
+
+    --blob-accent-1: #ff6f00;
+
+    --svg-accent-1: #ff9500ba;
+    --svg-accent-2: #ff0000c3;
   }
 
   .dark {
@@ -17,10 +23,16 @@
     --foreground: #e3dfd5;
     --background-light: #52514e;
     --foreground-light: #bdbbb3;
+
     --github-icon-color: #ffffff;
     --email-background: #303030;
     --contact-background: #bcbcbc76;
     --projects-grid-background-background: #8a8a8a;
+
+    --blob-accent-1: #c4c2bb;
+
+    --svg-accent-1: #f7dab1;
+    --svg-accent-2: #8f8f8f;
   }
 
   html {
@@ -110,6 +122,12 @@
   --color-email-background: var(--email-background);
   --color-contact-background: var(--contact-background);
   --color-projects-grid-background: var(--projects-grid-background-background);
+
+  --color-blob-accent-1: var(--blob-accent-1);
+
+  --color-svg-accent-1: var(--svg-accent-1);
+  --color-svg-accent-2: var(--svg-accent-2);
+
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;

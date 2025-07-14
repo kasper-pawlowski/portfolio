@@ -4,7 +4,6 @@ import { heroOverlay2Xl, heroOverlayXl } from '@/data/gridOverlays'
 import Grid from '../ui/Grid'
 import Marquee from '../ui/Marquee'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
-import Image from 'next/image'
 const Hero = () => {
   const isLgUp = useBreakpoint('lg')
 
@@ -40,7 +39,7 @@ const Hero = () => {
           <Marquee />
         </div>
 
-        <div className='absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] bg-orange-500 blur-3xl' />
+        <div className='bg-blob-accent-1 absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] blur-3xl' />
       </section>
     </>
   )

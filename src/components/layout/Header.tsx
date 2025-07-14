@@ -194,6 +194,7 @@ const Header = () => {
       <ProgressiveBlur
         className='absolute top-0 left-0 z-[-2] h-[100%] w-full'
         direction='top'
+        enableOpacityTransition={false}
       />
 
       <AnimatePresence>
