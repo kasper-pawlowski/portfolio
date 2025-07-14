@@ -39,16 +39,8 @@ const Hero = () => {
         <div className='z-4'>
           <Marquee />
         </div>
-        <div className='absolute w-screen'>
-          <Image
-            src='/hero-blob.png'
-            alt='blob'
-            width={0}
-            height={0}
-            sizes='100vw'
-            className='pointer-events-none absolute top-[80vh] left-0 z-1 h-auto w-full object-cover object-top lg:top-[70vh]'
-          />
-        </div>
+
+        <div className='absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] bg-orange-500 blur-3xl' />
       </section>
     </>
   )

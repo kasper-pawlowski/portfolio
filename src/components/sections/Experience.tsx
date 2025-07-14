@@ -31,6 +31,13 @@ const Experience = () => {
         </p>
       </div>
       <div className='bg-foreground absolute inset-0 z-[-2] h-full w-full'></div>
+      <svg
+        className='text-foreground absolute z-10 h-16 w-full border-1 border-blue-800'
+        viewBox='0 0 1200 64'
+        preserveAspectRatio='none'
+      >
+        <path d='M0,0 L1200,0 L1200,64 Q600,0 0,64 Z' fill='currentColor' />
+      </svg>
     </section>
   )
 }

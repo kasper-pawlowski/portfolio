@@ -248,12 +248,13 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
 
       <div
         ref={containerRef}
-        className='border-foreground relative h-full w-full overflow-hidden border-1'
+        className='border-foreground-light relative h-full w-full overflow-hidden border-1'
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${gridConfig.cols}, 1fr)`,
           gridTemplateRows: `repeat(${gridConfig.rows}, 1fr)`,
-          filter: 'url(#gooey-filter)'
+          filter: 'url(#gooey-filter)',
+          maxHeight: '1000px'
         }}
       >
         {/* SVG Filter dla efektu Gooey */}

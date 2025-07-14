@@ -1,6 +1,7 @@
 'use client'
 import { cn } from '@/lib/utils'
-import { HTMLMotionProps, motion } from 'motion/react'
+import { HTMLMotionProps, motion, useScroll, useTransform } from 'motion/react'
+import { useEffect, useState } from 'react'
 
 export const GRADIENT_ANGLES = {
   top: 0,
@@ -23,7 +24,45 @@ export function ProgressiveBlur({
   blurIntensity = 0.5,
   ...props
 }: ProgressiveBlurProps) {
+  const { scrollY } = useScroll()
+  const [documentHeight, setDocumentHeight] = useState(0)
+  const [windowHeight, setWindowHeight] = useState(0)
   const layers = Math.max(blurLayers, 2)
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      setDocumentHeight(document.documentElement.scrollHeight)
+      setWindowHeight(window.innerHeight)
+    }
+
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+
+    const observer = new ResizeObserver(updateDimensions)
+    observer.observe(document.body)
+
+    return () => {
+      window.removeEventListener('resize', updateDimensions)
+      observer.disconnect()
+    }
+  }, [])
+
+  const opacity = useTransform(scrollY, value => {
+    const showThreshold = 20
+    const hideThreshold = documentHeight - windowHeight - 100
+    const fadeDistance = 100
+
+    if (value < showThreshold) return 0
+    if (value < showThreshold + fadeDistance) {
+      return (value - showThreshold) / fadeDistance
+    }
+
+    if (value > hideThreshold - fadeDistance) {
+      return Math.max(0, (hideThreshold - value) / fadeDistance)
+    }
+
+    return 1
+  })
 
   // Hardcoded patterns z twojego custom blur dla płynności
   const blurPatterns: Array<{
@@ -91,7 +130,8 @@ export function ProgressiveBlur({
               WebkitMaskImage: gradient,
               backdropFilter: `blur(${blurValue}px)`,
               WebkitBackdropFilter: `blur(${blurValue}px)`,
-              zIndex: index + 1
+              zIndex: index + 1,
+              opacity: opacity
             }}
             {...props}
           />

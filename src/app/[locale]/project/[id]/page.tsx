@@ -6,6 +6,7 @@ import Link from 'next/link'
 import GithubLogo from '../../../../../public/icons/github.svg'
 import Image from 'next/image'
 import ProjectNavigation from '@/components/ui/ProjectNavigation'
+import { ProgressiveBlur } from '@/components/core/progressive-blur'
 
 type Project = {
   id: number
@@ -140,8 +141,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </div>
+      <ProgressiveBlur
+        className='pointer-events-none fixed bottom-0 left-0 z-0 h-[200px] w-screen'
+        direction='bottom'
+      />
       <div
-        className='hero-noise pointer-events-none absolute top-0 left-0 z-[-1] h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        className='hero-noise pointer-events-none absolute top-0 left-0 -z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
     </>
