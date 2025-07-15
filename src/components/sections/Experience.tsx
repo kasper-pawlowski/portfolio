@@ -7,7 +7,7 @@ const Experience = () => {
         className='pointer-events-none absolute inset-0 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
-      <div className='container mx-auto flex h-auto flex-col gap-10 px-8 py-20 lg:px-0 lg:py-40'>
+      <div className='container mx-auto flex h-auto flex-col gap-10 py-20 lg:py-40'>
         <h1 className='font-display z-2 w-full text-5xl font-black lg:text-7xl'>
           Doświadcznie
         </h1>

@@ -10,6 +10,7 @@ export type OverlayConfig = {
 type GridProps = {
   overlays?: OverlayConfig[]
   baseSize?: number
+  section?: 'hero' | 'about' | 'footer'
 }
 
 const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
@@ -216,7 +217,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
       squares.push(
         <div
           ref={i === 0 ? itemRef : null}
-          className={`border-foreground-light box-border border-1 transition-all duration-100 ease-out ${
+          className={`border-grid-color box-border border-1 transition-all duration-100 ease-out ${
             isHovered
               ? 'bg-orange-500'
               : isInTrail
@@ -248,13 +249,13 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
 
       <div
         ref={containerRef}
-        className='border-foreground-light relative h-full w-full overflow-hidden border-1'
+        className='border-grid-color relative h-full w-full overflow-hidden border-1'
         style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${gridConfig.cols}, 1fr)`,
           gridTemplateRows: `repeat(${gridConfig.rows}, 1fr)`,
-          filter: 'url(#gooey-filter)',
-          maxHeight: '1000px'
+          filter: 'url(#gooey-filter)'
+          // maxHeight: '1000px'
         }}
       >
         {/* SVG Filter dla efektu Gooey */}

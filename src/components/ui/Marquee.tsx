@@ -1,15 +1,10 @@
-'use client'
-
 import React from 'react'
 import SimpleMarquee from '../core/simple-marquee'
 import Divider from '../../../public/divider.svg'
-import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const Marquee = () => {
-  const isLgUp = useBreakpoint('lg')
-
   return (
-    <div style={{ height: isLgUp ? '90px' : '80px', width: '100%' }}>
+    <div className='h-marquee w-full'>
       <SimpleMarquee
         className='relative flex h-full w-full'
         baseVelocity={5}
@@ -19,7 +14,7 @@ const Marquee = () => {
         useScrollVelocity={true}
         direction='right'
       >
-        <Divider className='text-foreground-light h-full' />
+        <Divider className='text-grid-color h-full' />
       </SimpleMarquee>
     </div>
   )

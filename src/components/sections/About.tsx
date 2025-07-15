@@ -1,22 +1,15 @@
-'use client'
-
 import React from 'react'
-import Image from 'next/image'
 import Photo from '../ui/Photo'
-import Grid from '../ui/Grid'
-import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { heroOverlayXl } from '@/data/gridOverlays'
+import GridWrapper from '../ui/GridWrapper'
 
 const About = () => {
-  const isLgUp = useBreakpoint('lg')
-
   return (
     <section id='about' className='relative'>
       <div
         className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
-      <div className='container mx-auto flex flex-col gap-20 px-8 py-20 font-black lg:flex-row lg:px-0 lg:py-40'>
+      <div className='container mx-auto flex flex-col gap-20 py-20 font-black lg:flex-row lg:py-40'>
         <div className='flex flex-3/5 flex-col gap-10'>
           <h1 className='font-display z-2 text-5xl lg:text-7xl'>O mnie</h1>
           <p className='font-500 z-2 flex flex-col gap-5 font-sans text-lg lg:pl-20 lg:text-xl'>
@@ -48,10 +41,7 @@ const About = () => {
         </div>
         <div className='relative flex h-auto flex-2/5 flex-col pt-40'>
           <Photo />
-          <Grid
-            overlays={isLgUp ? heroOverlayXl : heroOverlayXl}
-            baseSize={isLgUp ? 45 : 40}
-          />
+          <GridWrapper section='about' />
         </div>
         {/* <div className='relative h-90 w-full lg:h-80'>
           <Photo />

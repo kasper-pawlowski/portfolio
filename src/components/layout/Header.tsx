@@ -128,7 +128,7 @@ const Header = () => {
       initial={{ y: 0 }}
       animate={{ y: headerY }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
-      className='fixed top-0 left-0 z-20 w-full px-8 lg:px-0'
+      className='fixed top-0 left-0 z-20 w-full'
     >
       <div className='font-700 container mx-auto flex w-full content-center justify-between py-4 text-2xl lg:py-8'>
         <div className='flex flex-1/5 items-center justify-start'>

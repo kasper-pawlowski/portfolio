@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <div
         id='project'
-        className='project-padding relative container mx-auto flex h-svh w-full flex-col px-8 pb-10 lg:flex-row lg:gap-5 lg:px-0 lg:pb-20'
+        className='project-padding relative container flex h-svh w-full flex-col pb-10 lg:flex-row lg:gap-5 lg:pb-20'
       >
         <div className='flex h-full min-w-0 flex-1 flex-col gap-5 lg:basis-1/4'>
           <h1 className='font-900 font-display text-4xl break-words lg:text-6xl'>

@@ -24,7 +24,7 @@ const Contact = () => {
         className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
-      <div className='container mx-auto flex h-auto flex-col items-center px-8 py-20 lg:px-0 lg:py-40'>
+      <div className='container mx-auto flex h-auto flex-col items-center py-20 lg:py-40'>
         <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
           Kontakt
           <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
