@@ -16,6 +16,7 @@ import NextTopLoader from 'nextjs-toploader'
 import Grain from '@/components/Grain'
 import Loading from './Loading'
 import BreakpointIndicator from '@/components/BreakpointIndicator'
+import GlobalLoader from '@/components/GlobalLoader'
 
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
@@ -38,48 +39,48 @@ export default async function LocaleLayout({
     // <ViewTransition>
     <html lang={locale} suppressHydrationWarning>
       <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
-        {/* <Suspense fallback={<Loading />}> */}
-        {/* <NextTopLoader
+        <Suspense fallback={<Loading />}>
+          {/* <NextTopLoader
           height={10}
           template='<div class="bar" role="bar"><div class="peg"></div></div> 
           <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
           /> */}
-        <NextIntlClientProvider>
-          <Providers>
-            <div className='relative min-h-full w-full overflow-clip'>
-              <ReactLenis root />
-              {/* <Loading /> */}
-              <Toaster
-                position='bottom-right'
-                gutter={16}
-                toastOptions={{
-                  style: {
-                    border: '0px solid var(--background)',
-                    borderRadius: '12px',
-                    padding: '16px',
-                    color: 'var(--foreground)',
-                    backgroundColor: 'var(--background)',
-                    fontFamily: 'var(--font-goia-display)',
-                    boxShadow:
-                      '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
-                    fontWeight: '600'
-                  },
-                  success: {
-                    iconTheme: {
-                      primary: 'var(--foreground)',
-                      secondary: 'var(--background)'
+          <NextIntlClientProvider>
+            <Providers>
+              <div className='relative min-h-full w-full overflow-clip'>
+                <GlobalLoader />
+                <ReactLenis root />
+                <Toaster
+                  position='bottom-right'
+                  gutter={16}
+                  toastOptions={{
+                    style: {
+                      border: '0px solid var(--background)',
+                      borderRadius: '12px',
+                      padding: '16px',
+                      color: 'var(--foreground)',
+                      backgroundColor: 'var(--background)',
+                      fontFamily: 'var(--font-goia-display)',
+                      boxShadow:
+                        '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
+                      fontWeight: '600'
+                    },
+                    success: {
+                      iconTheme: {
+                        primary: 'var(--foreground)',
+                        secondary: 'var(--background)'
+                      }
                     }
-                  }
-                }}
-              />
-              <BreakpointIndicator />
-              {/* <Grain /> */}
-              <Header />
-              <main>{children}</main>
-            </div>
-          </Providers>
-        </NextIntlClientProvider>
-        {/* </Suspense> */}
+                  }}
+                />
+                <BreakpointIndicator />
+                {/* <Grain /> */}
+                <Header />
+                <main>{children}</main>
+              </div>
+            </Providers>
+          </NextIntlClientProvider>
+        </Suspense>
       </body>
     </html>
     // </ViewTransition>
