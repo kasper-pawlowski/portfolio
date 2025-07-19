@@ -68,9 +68,9 @@ const Carousel = ({ projectId }: CarouselProps) => {
                 <Image
                   src={image}
                   alt={`Project image ${index + 1}`}
-                  width={800}
-                  height={600}
-                  className='embla_slide_img relative h-full w-full rounded-2xl object-cover transition duration-200 ease-out hover:scale-105'
+                  width={720}
+                  height={1280}
+                  className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out'
                 />
               </motion.div>
             )
@@ -81,7 +81,7 @@ const Carousel = ({ projectId }: CarouselProps) => {
           <MoveDown className='text-foreground-light' strokeWidth={1} />
         </div>
       </div>
-      <AnimatePresence mode='wait'>
+      {/* <AnimatePresence mode='wait'>
         <motion.div
           key={project.images[0]}
           initial={{ opacity: 0 }}
@@ -98,7 +98,7 @@ const Carousel = ({ projectId }: CarouselProps) => {
             className='scale-120 object-contain opacity-30 blur-[100px]'
           />
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
     </>
   )
 }

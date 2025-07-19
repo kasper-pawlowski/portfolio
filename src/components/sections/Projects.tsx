@@ -1,6 +1,7 @@
 import styles from '../../styles/Projects.module.css'
 import projectsData from '../../data/projects.json'
 import Link from 'next/link'
+import ProjectLink from '../ui/ProjectLink'
 
 const Projects = () => (
   <>
@@ -78,133 +79,45 @@ const Projects = () => (
       </div>
 
       <div className={styles.gridContainer}>
-        <div className={`${styles.div1} ${styles.item} rounded-r-xl`}>
-          <Link href={`/project/1`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-r-xl object-cover'
-            >
-              <source src={projectsData[0].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div1} ${styles.item} overflow-hidden rounded-r-xl`}
+        >
+          <ProjectLink id={1} />
         </div>
-        <div className={`${styles.div2} ${styles.item} rounded-l-xl`}>
-          <Link href={`/project/2`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-l-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div2} ${styles.item} overflow-hidden rounded-l-xl`}
+        >
+          <ProjectLink id={2} />
         </div>
-        <div className={`${styles.div3} ${styles.item} rounded-xl`}>
-          <Link href={`/project/3`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div3} ${styles.item} overflow-hidden rounded-xl`}
+        >
+          <ProjectLink id={3} />
         </div>
-        <div className={`${styles.div4} ${styles.item} rounded-r-xl`}>
-          <Link href={`/project/4`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-r-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div4} ${styles.item} overflow-hidden rounded-r-xl`}
+        >
+          <ProjectLink id={4} />
         </div>
-        <div className={`${styles.div5} ${styles.item} rounded-xl`}>
-          <Link href={`/project/5`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div5} ${styles.item} overflow-hidden rounded-xl`}
+        >
+          <ProjectLink id={5} />
         </div>
-        <div className={`${styles.div6} ${styles.item} rounded-tr-xl`}>
-          <Link href={`/project/6`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-tr-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div6} ${styles.item} overflow-hidden rounded-tr-xl`}
+        >
+          <ProjectLink id={6} />
         </div>
-        <div className={`${styles.div7} ${styles.item} rounded-t-xl`}>
-          <Link href={`/project/7`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-t-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div7} ${styles.item} overflow-hidden rounded-t-xl`}
+        >
+          <ProjectLink id={7} />
         </div>
-        <div className={`${styles.div8} ${styles.item} rounded-tl-xl`}>
-          <Link href={`/project/8`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full rounded-tl-xl object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
+        <div
+          className={`${styles.div8} ${styles.item} overflow-hidden rounded-tl-xl`}
+        >
+          <ProjectLink id={8} />
         </div>
         <div
           className={`${styles.div9} ${styles.blank} rounded-tl-xl rounded-br-xl`}

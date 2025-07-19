@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const projectId = parseInt(params.id) // Parsujemy ID na liczbę
+  const projectId = parseInt(params?.id) // Parsujemy ID na liczbę
   const t = await getTranslations('Projects')
 
   // Znajdujemy projekt bezpośrednio z zaimportowanej tablicy

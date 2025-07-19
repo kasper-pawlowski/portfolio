@@ -3,13 +3,13 @@
     "id": 1,
     "nameKey": "Hyperio",
     "descriptionKey": "project1.description",
-    "videoUrl": "/projects/videos/1.mp4",
+    "videoUrl": "/projects/videos/hyperio.webm",
     "images": [
-      "/projects/screenshots/1/1.png",
-      "/projects/screenshots/1/2.png",
-      "/projects/screenshots/1/3.png",
-      "/projects/screenshots/1/4.png",
-      "/projects/screenshots/1/5.png"
+      "/projects/screenshots/hyperio/1.avif",
+      "/projects/screenshots/hyperio/2.avif",
+      "/projects/screenshots/hyperio/3.avif",
+      "/projects/screenshots/hyperio/4.avif",
+      "/projects/screenshots/hyperio/5.avif"
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
     "liveLink": "https://hyperio.ch",
@@ -17,114 +17,117 @@
   },
   {
     "id": 2,
-    "nameKey": "project2.name",
+    "nameKey": "Pokedex",
     "descriptionKey": "project2.description",
-    "videoUrl": "/projects/videos/2.mp4",
+    "videoUrl": "/projects/videos/pokedex.webm",
     "images": [
-      "/projects/screenshots/2/1.png",
-      "/projects/screenshots/2/2.png",
-      "/projects/screenshots/2/3.png",
-      "/projects/screenshots/2/4.png",
-      "/projects/screenshots/2/5.png"
+      "/projects/screenshots/pokedex/1.avif",
+      "/projects/screenshots/pokedex/2.avif",
+      "/projects/screenshots/pokedex/3.avif",
+      "/projects/screenshots/pokedex/4.avif",
+      "/projects/screenshots/pokedex/5.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "githubLink": "https://github.com/kasper-pawlowski/pokedex",
+    "liveLink": "https://kasper-pawlowski.github.io/pokedex/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   },
   {
     "id": 3,
-    "nameKey": "project3.name",
+    "nameKey": "Paper planes",
     "descriptionKey": "project3.description",
-    "videoUrl": "/projects/videos/3.mp4",
+    "videoUrl": "/projects/videos/paperplanes.webm",
     "images": [
-      "/projects/screenshots/3/1.png",
-      "/projects/screenshots/3/2.png",
-      "/projects/screenshots/3/3.png",
-      "/projects/screenshots/3/4.png",
-      "/projects/screenshots/3/5.png"
+      "/projects/screenshots/paperplanes/1.avif",
+      "/projects/screenshots/paperplanes/2.avif",
+      "/projects/screenshots/paperplanes/3.avif",
+      "/projects/screenshots/paperplanes/4.avif",
+      "/projects/screenshots/paperplanes/5.avif",
+      "/projects/screenshots/paperplanes/6.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "githubLink": "https://github.com/kasper-pawlowski/paper-planes",
+    "liveLink": "https://kasper-pawlowski-paper-planes.web.app/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   },
   {
     "id": 4,
-    "nameKey": "project4.name",
+    "nameKey": "Pop Guesser",
     "descriptionKey": "project4.description",
-    "videoUrl": "/projects/videos/4.mp4",
+    "videoUrl": "/projects/videos/popguesser.webm",
     "images": [
-      "/projects/screenshots/4/1.png",
-      "/projects/screenshots/4/2.png",
-      "/projects/screenshots/4/3.png",
-      "/projects/screenshots/4/4.png",
-      "/projects/screenshots/4/5.png"
+      "/projects/screenshots/popguesser/1.avif",
+      "/projects/screenshots/popguesser/2.avif",
+      "/projects/screenshots/popguesser/3.avif",
+      "/projects/screenshots/popguesser/4.avif",
+      "/projects/screenshots/popguesser/5.avif"
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "liveLink": "https://popguesser.netlify.app/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   },
   {
     "id": 5,
-    "nameKey": "project5.name",
+    "nameKey": "Trivium",
     "descriptionKey": "project5.description",
-    "videoUrl": "/projects/videos/5.mp4",
+    "videoUrl": "/projects/videos/trivium.webm",
     "images": [
-      "/projects/screenshots/5/1.png",
-      "/projects/screenshots/5/2.png",
-      "/projects/screenshots/5/3.png",
-      "/projects/screenshots/5/4.png",
-      "/projects/screenshots/5/5.png"
+      "/projects/screenshots/trivium/1.avif",
+      "/projects/screenshots/trivium/2.avif",
+      "/projects/screenshots/trivium/3.avif",
+      "/projects/screenshots/trivium/4.avif",
+      "/projects/screenshots/trivium/5.avif",
+      "/projects/screenshots/trivium/6.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "githubLink": "https://github.com/kasper-pawlowski/trivium",
+    "liveLink": "https://trivium1.netlify.app/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   },
   {
     "id": 6,
-    "nameKey": "project6.name",
+    "nameKey": "Artsnob",
     "descriptionKey": "project6.description",
-    "videoUrl": "/projects/videos/6.mp4",
+    "videoUrl": "/projects/videos/artsnob.webm",
     "images": [
-      "/projects/screenshots/6/1.png",
-      "/projects/screenshots/6/2.png",
-      "/projects/screenshots/6/3.png",
-      "/projects/screenshots/6/4.png",
-      "/projects/screenshots/6/5.png"
+      "/projects/screenshots/artsnob/1.avif",
+      "/projects/screenshots/artsnob/2.avif",
+      "/projects/screenshots/artsnob/3.avif",
+      "/projects/screenshots/artsnob/4.avif",
+      "/projects/screenshots/artsnob/5.avif",
+      "/projects/screenshots/artsnob/6.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "githubLink": "https://github.com/kasper-pawlowski/artsnob",
+    "liveLink": "https://artsnob.netlify.app/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   },
   {
     "id": 7,
-    "nameKey": "project7.name",
+    "nameKey": "GeoGuess",
     "descriptionKey": "project7.description",
-    "videoUrl": "/projects/videos/7.mp4",
+    "videoUrl": "/projects/videos/geoguess.webm",
     "images": [
-      "/projects/screenshots/7/1.png",
-      "/projects/screenshots/7/2.png",
-      "/projects/screenshots/7/3.png",
-      "/projects/screenshots/7/4.png",
-      "/projects/screenshots/7/5.png"
+      "/projects/screenshots/geoguess/1.avif",
+      "/projects/screenshots/geoguess/2.avif",
+      "/projects/screenshots/geoguess/3.avif",
+      "/projects/screenshots/geoguess/4.avif",
+      "/projects/screenshots/geoguess/5.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "githubLink": "https://github.com/kasper-pawlowski/GeoGuess",
+    "liveLink": "https://quiz-architekt.web.app/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   },
   {
     "id": 8,
-    "nameKey": "project8.name",
-    "descriptionKey": "project8.description",
-    "videoUrl": "/projects/videos/8.mp4",
+    "nameKey": "Pop Guesser",
+    "descriptionKey": "project4.description",
+    "videoUrl": "/projects/videos/popguesser.webm",
     "images": [
-      "/projects/screenshots/8/1.png",
-      "/projects/screenshots/8/2.png",
-      "/projects/screenshots/8/3.png",
-      "/projects/screenshots/8/4.png",
-      "/projects/screenshots/8/5.png"
+      "/projects/screenshots/popguesser/1.avif",
+      "/projects/screenshots/popguesser/2.avif",
+      "/projects/screenshots/popguesser/3.avif",
+      "/projects/screenshots/popguesser/4.avif",
+      "/projects/screenshots/popguesser/5.avif"
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://hyperio.ch",
+    "liveLink": "https://popguesser.netlify.app/",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
   }
 ]
