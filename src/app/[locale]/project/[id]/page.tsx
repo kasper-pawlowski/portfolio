@@ -20,10 +20,10 @@ type Project = {
 }
 
 type ProjectPageProps = {
-  params: {
+  params: Promise<{
     locale: string
     id: string
-  }
+  }>
 }
 
 // Funkcja generująca statyczne ścieżki (dla static site generation - SSG)
@@ -36,7 +36,8 @@ export async function generateStaticParams() {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const projectId = parseInt(params?.id) // Parsujemy ID na liczbę
+  const resolvedParams = await params
+  const projectId = parseInt(resolvedParams.id)
   const t = await getTranslations('Projects')
 
   // Znajdujemy projekt bezpośrednio z zaimportowanej tablicy
