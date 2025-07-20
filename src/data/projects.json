@@ -13,7 +13,8 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
     "liveLink": "https://hyperio.ch",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#fd9e28"
   },
   {
     "id": 2,
@@ -29,7 +30,8 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/pokedex",
     "liveLink": "https://kasper-pawlowski.github.io/pokedex/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#85cd6d"
   },
   {
     "id": 3,
@@ -46,11 +48,12 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/paper-planes",
     "liveLink": "https://kasper-pawlowski-paper-planes.web.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#a3e041"
   },
   {
     "id": 4,
-    "nameKey": "Pop Guesser",
+    "nameKey": "PopGuesser",
     "descriptionKey": "project4.description",
     "videoUrl": "/projects/videos/popguesser.webm",
     "images": [
@@ -62,7 +65,8 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
     "liveLink": "https://popguesser.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#FF914C"
   },
   {
     "id": 5,
@@ -79,7 +83,8 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/trivium",
     "liveLink": "https://trivium1.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#6a5be0"
   },
   {
     "id": 6,
@@ -96,7 +101,8 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/artsnob",
     "liveLink": "https://artsnob.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#283032"
   },
   {
     "id": 7,
@@ -112,11 +118,12 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/GeoGuess",
     "liveLink": "https://quiz-architekt.web.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#f39c13"
   },
   {
     "id": 8,
-    "nameKey": "Pop Guesser",
+    "nameKey": "PopGuesser",
     "descriptionKey": "project4.description",
     "videoUrl": "/projects/videos/popguesser.webm",
     "images": [
@@ -128,6 +135,7 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
     "liveLink": "https://popguesser.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"]
+    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "accent": "#FF914C"
   }
 ]

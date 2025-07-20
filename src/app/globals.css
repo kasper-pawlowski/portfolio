@@ -79,6 +79,16 @@
     color: #25d366;
   }
 
+  .cursor-parent {
+    anchor-name: --cursor-parent;
+  }
+  .cursor-child {
+    position-anchor: --cursor-parent;
+    position-try: flip-block;
+    bottom: anchor(top);
+    left: anchor(center);
+  }
+
   /* .pt-header {
     padding-top: 62px;
     @media (width >= 64rem) {
