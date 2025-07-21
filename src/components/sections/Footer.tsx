@@ -45,7 +45,7 @@ const Footer = () => {
           className='block lg:hidden'
         />
       </svg>
-      <div className='text-background bg-foreground container flex flex-col items-center gap-15 py-10'>
+      <div className='text-background bg-foreground flex flex-col items-center gap-15 py-10'>
         <div className='flex-3/5 items-center justify-center'>
           <nav className='flex items-center justify-center gap-3'>
             <a href='#about' className='font-goia text-background font-500'>
