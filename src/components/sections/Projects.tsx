@@ -5,6 +5,7 @@ import ProjectCard from '../ui/ProjectCard'
 
 const Projects = () => (
   <>
+    {/* Mobile */}
     <section id='projects-mobile' className='relative lg:hidden'>
       <div
         className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
@@ -20,6 +21,7 @@ const Projects = () => (
       </div>
     </section>
 
+    {/* Desktop */}
     <section
       id='projects'
       className='bg-projects-grid-background relative hidden flex-col gap-[2px] pb-[1px] lg:flex'
