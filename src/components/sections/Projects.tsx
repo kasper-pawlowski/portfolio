@@ -1,6 +1,5 @@
 import styles from '../../styles/Projects.module.css'
 import projectsData from '../../data/projects.json'
-import Link from 'next/link'
 import ProjectLink from '../ui/ProjectLink'
 import ProjectCard from '../ui/ProjectCard'
 

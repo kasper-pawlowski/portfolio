@@ -45,17 +45,17 @@ const Footer = () => {
           className='block lg:hidden'
         />
       </svg>
-      <div className='text-background bg-foreground flex flex-col items-center py-20'>
-        <div className='hidden flex-3/5 items-center justify-center lg:flex'>
-          <nav className='flex items-center justify-center gap-10'>
+      <div className='text-background bg-foreground container flex flex-col items-center gap-15 py-10'>
+        <div className='flex-3/5 items-center justify-center'>
+          <nav className='flex items-center justify-center gap-3'>
             <a href='#about' className='font-goia text-background font-500'>
               {t('about')}
             </a>
-            <span className='text-background text-2xl'>・</span>
+            <span className='text-background text-lg'>・</span>
             <a href='#projects' className='font-goia text-background font-500'>
               {t('projects')}
             </a>
-            <span className='text-background text-2xl'>・</span>
+            <span className='text-background text-lg'>・</span>
             <a href='#contact' className='font-goia text-background font-500'>
               {t('contact')}
             </a>
