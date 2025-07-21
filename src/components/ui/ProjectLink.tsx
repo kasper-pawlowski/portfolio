@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import projectsData from '@/data/projects.json'
 import { Cursor } from '../core/cursor'
-import { MousePointer2 } from 'lucide-react'
+import { MousePointer2, MousePointerClick } from 'lucide-react'
 
 type ProjectLinkProps = {
   id: number
@@ -10,7 +10,7 @@ type ProjectLinkProps = {
 
 const ProjectLink = ({ id }: ProjectLinkProps) => {
   return (
-    <Link href={`/project/${id}`} className='relative z-5 h-full w-full'>
+    <Link href={`/project/${id}`} className='group relative z-5 h-full w-full'>
       <video
         controls={false}
         autoPlay
@@ -18,7 +18,7 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
         muted
         playsInline
         preload='none'
-        className='z-5 h-full w-full object-cover'
+        className='z-5 h-full w-full object-cover duration-200 ease-in-out group-hover:scale-105'
       >
         <source src={projectsData[id - 1].videoUrl} type='video/webm' />
         Twój browser nie obsługuje tagu wideo.
@@ -39,15 +39,23 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
         <div className='cursor-parent relative'>
           <MousePointer2
             style={{ color: projectsData[id - 1].accent }}
-            className='h-6 w-6'
+            className='block h-6 w-6 group-active:hidden'
           />
+          <MousePointerClick
+            style={{ color: projectsData[id - 1].accent }}
+            className='hidden h-6 w-6 group-active:block'
+          />
+
           <div
-            className='cursor-child absolute ml-4 rounded-lg px-2 text-neutral-50'
+            className='cursor-child absolute ml-4 rounded-lg px-3 py-1 text-neutral-50'
             style={{ backgroundColor: projectsData[id - 1].accent }}
           >
-            <span className='font-display font-500 text-2xl whitespace-nowrap'>
+            {/* <p className='font-display font-500 text-2xl whitespace-nowrap'>
               {projectsData[id - 1].nameKey}
-            </span>
+            </p> */}
+            <p className='font-display font-400 text-xl whitespace-nowrap'>
+              przejdź do projektu
+            </p>
           </div>
         </div>
       </Cursor>

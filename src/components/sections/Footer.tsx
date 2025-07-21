@@ -17,14 +17,35 @@ const Footer = () => {
         <path
           d='M0,0 L1200,0 L1200,64 Q600,-10 0,64 Z'
           fill='var(--svg-accent-1)'
+          className='hidden lg:block'
+        />
+        <path
+          d='M0,0 L1200,0 L1200,34 Q600,10 0,34 Z'
+          fill='var(--svg-accent-1)'
+          className='block lg:hidden'
         />
         <path
           d='M0,0 L1200,0 L1200,56 Q600,-20 0,56 Z'
           fill='var(--svg-accent-2)'
+          className='hidden lg:block'
         />
-        <path d='M0,0 L1200,0 L1200,46 Q600,-30 0,46 Z' fill='currentColor' />
+        <path
+          d='M0,0 L1200,0 L1200,26 Q600,0 0,26 Z'
+          fill='var(--svg-accent-2)'
+          className='block lg:hidden'
+        />
+        <path
+          d='M0,0 L1200,0 L1200,46 Q600,-30 0,46 Z'
+          fill='currentColor'
+          className='hidden lg:block'
+        />
+        <path
+          d='M0,0 L1200,0 L1200,16 Q600,-10 0,16 Z'
+          fill='currentColor'
+          className='block lg:hidden'
+        />
       </svg>
-      <div className='text-background bg-foreground flex h-70 flex-col items-center pb-20'>
+      <div className='text-background bg-foreground flex flex-col items-center py-20'>
         <div className='hidden flex-3/5 items-center justify-center lg:flex'>
           <nav className='flex items-center justify-center gap-10'>
             <a href='#about' className='font-goia text-background font-500'>

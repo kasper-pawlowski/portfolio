@@ -1,11 +1,3 @@
-.gridContainerMobile {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(8, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
 .mobile_div {
   aspect-ratio: 16 / 9;
 }

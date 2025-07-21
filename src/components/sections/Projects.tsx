@@ -2,52 +2,22 @@ import styles from '../../styles/Projects.module.css'
 import projectsData from '../../data/projects.json'
 import Link from 'next/link'
 import ProjectLink from '../ui/ProjectLink'
+import ProjectCard from '../ui/ProjectCard'
 
 const Projects = () => (
   <>
-    <section
-      id='projects-mobile'
-      className='bg-projects-grid-background relative flex flex-col gap-[2px] lg:hidden'
-    >
-      <div className={`${styles.gridContainerMobile} relative`}>
-        <div className={`${styles.mobile_div1} ${styles.mobile_div}`}>
-          <Link href={`/project/1`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full object-cover'
-            >
-              <source src={projectsData[0].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
-        </div>
-        <div className={`${styles.mobile_div2} ${styles.mobile_div}`}>
-          <Link href={`/project/2`} className='z-5 h-full w-full'>
-            <video
-              controls={false} // Opcjonalnie: ukrywa kontrolki odtwarzania
-              autoPlay // Włącza automatyczne odtwarzanie
-              loop // Odtwarza wideo w pętli
-              muted // Wycisza dźwięk
-              playsInline // Ważne dla autoodtwarzania na urządzeniach mobilnych
-              preload='none'
-              className='z-5 h-full w-full object-cover'
-            >
-              <source src={projectsData[3].videoUrl} type='video/mp4' />
-              Twój browser nie obsługuje tagu wideo.
-            </video>
-          </Link>
-        </div>
-        <div className={`${styles.mobile_div3} ${styles.mobile_div}`}>3</div>
-        <div className={`${styles.mobile_div4} ${styles.mobile_div}`}>4</div>
-        <div className={`${styles.mobile_div5} ${styles.mobile_div}`}>5</div>
-        <div className={`${styles.mobile_div6} ${styles.mobile_div}`}>6</div>
-        <div className={`${styles.mobile_div7} ${styles.mobile_div}`}>7</div>
-        <div className={`${styles.mobile_div8} ${styles.mobile_div}`}>8</div>
+    <section id='projects-mobile' className='relative lg:hidden'>
+      <div
+        className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        aria-hidden='true'
+      />
+      <div className='container flex w-full flex-col gap-10 py-20'>
+        <h2 className='font-display font-900 z-2 mt-5 mb-10 text-center text-5xl'>
+          Projekty
+        </h2>
+        {projectsData.map(project => (
+          <ProjectCard project={project} key={project.id} />
+        ))}
       </div>
     </section>
 
@@ -156,7 +126,7 @@ const Projects = () => (
         <div className={`${styles.div27} ${styles.blank} rounded-tl-xl`}></div>
       </div>
       <div
-        className='hero-noise pointer-events-none absolute top-0 left-0 z-[1] h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        className='hero-noise pointer-events-none absolute top-0 left-0 z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
     </section>

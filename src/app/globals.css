@@ -89,6 +89,16 @@
     left: anchor(center);
   }
 
+  .project-link-parent {
+    anchor-name: --project-link-parent;
+  }
+  .project-link-child {
+    position-anchor: --project-link-parent;
+    position-try: flip-block;
+    bottom: anchor(top);
+    left: anchor(left);
+  }
+
   /* .pt-header {
     padding-top: 62px;
     @media (width >= 64rem) {

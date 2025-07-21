@@ -40,7 +40,16 @@ const Experience = () => {
         viewBox='0 0 1200 64'
         preserveAspectRatio='none'
       >
-        <path d='M0,0 L1200,0 L1200,64 Q600,0 0,64 Z' fill='currentColor' />
+        <path
+          d='M0,0 L1200,0 L1200,34 Q600,0 0,34 Z'
+          fill='currentColor'
+          className='block lg:hidden'
+        />
+        <path
+          d='M0,0 L1200,0 L1200,64 Q600,0 0,64 Z'
+          fill='currentColor'
+          className='hidden lg:block'
+        />
       </svg>
     </section>
   )
