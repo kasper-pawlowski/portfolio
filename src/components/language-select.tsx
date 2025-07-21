@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Link } from '@/i18n/navigation'
+import { Link, usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
 
@@ -17,6 +17,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [alignRight, setAlignRight] = useState(false)
+  const pathname = usePathname()
 
   const toggleDropdown = () => setIsDropdownOpen(prev => !prev)
   const closeDropdown = () => setIsDropdownOpen(false)
@@ -39,22 +40,20 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
       }
     }
 
-    const handleScrollOrResize = () => {
+    const handleResize = () => {
       closeDropdown()
     }
 
     if (isDropdownOpen) {
       document.addEventListener('mousedown', handleMouseDown)
       document.addEventListener('keydown', handleKeyDown)
-      window.addEventListener('scroll', handleScrollOrResize, { passive: true })
-      window.addEventListener('resize', handleScrollOrResize)
+      window.addEventListener('resize', handleResize)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleMouseDown)
       document.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('scroll', handleScrollOrResize)
-      window.removeEventListener('resize', handleScrollOrResize)
+      window.removeEventListener('resize', handleResize)
     }
   }, [isDropdownOpen])
 
@@ -78,7 +77,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
     <div className='relative'>
       <motion.button
         ref={buttonRef}
-        className={`bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl px-4 py-2 backdrop-blur-xl transition-colors duration-300 ${textColorClass}`}
+        className={`bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl border-1 border-neutral-200/20 px-4 py-2 backdrop-blur-lg transition-colors duration-300 ${textColorClass}`}
         onClick={toggleDropdown}
         aria-expanded={isDropdownOpen}
         aria-haspopup='true'
@@ -105,7 +104,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               scale: { type: 'spring', visualDuration: 0.1, bounce: 0.3 }
             }}
             className={clsx(
-              'font-700 absolute bottom-16 z-10 flex w-max flex-col justify-start rounded-lg bg-[#FFFFFF20] shadow-lg backdrop-blur-xl lg:top-16',
+              'font-700 absolute bottom-16 z-10 flex h-max w-max flex-col justify-start rounded-xl border-1 border-neutral-200/20 bg-white/20 p-1 shadow-lg backdrop-blur-sm lg:top-16',
               alignRight ? 'right-0' : 'left-1/2 -translate-x-1/2'
             )}
             role='menu'
@@ -113,11 +112,13 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
           >
             <Link
               locale='pl'
-              href='/'
+              href={pathname}
               onClick={closeDropdown}
+              scroll={false}
               className={clsx(
-                'flex items-center rounded-lg py-5 backdrop-blur-xl transition-colors duration-300 hover:bg-[#FFFFFF20]',
-                locale === 'pl' && 'bg-[#FFFFFF30]',
+                'flex gap-3 rounded-lg py-4 transition-colors duration-300',
+                locale === 'pl' && 'bg-white/20 backdrop-blur-lg',
+                locale !== 'pl' && 'hover:bg-white/15',
                 textColorClass
               )}
               role='menuitem'
@@ -129,17 +130,21 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
                 height={32}
                 alt='Polish flag'
                 loading='lazy'
-                className='mr-5 ml-7'
+                className='ml-5'
               />
-              <span className='mr-7'>Polski</span>
+              <span className='font-display font-700 mr-5 text-2xl'>
+                Polski
+              </span>
             </Link>
             <Link
-              href='/'
               locale='en'
+              href={pathname}
               onClick={closeDropdown}
+              scroll={false}
               className={clsx(
-                'flex items-center rounded-lg py-5 backdrop-blur-xl transition-colors duration-300 hover:bg-[#FFFFFF20]',
-                locale === 'en' && 'bg-[#FFFFFF30]',
+                'flex gap-3 rounded-lg py-4 transition-colors duration-300',
+                locale === 'en' && 'bg-white/20 backdrop-blur-lg',
+                locale !== 'en' && 'hover:bg-white/15',
                 textColorClass
               )}
               role='menuitem'
@@ -151,9 +156,11 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
                 height={32}
                 loading='lazy'
                 alt='English flag'
-                className='mr-5 ml-7'
+                className='ml-5'
               />
-              <span className='mr-7'>English</span>
+              <span className='font-display font-700 mr-5 text-2xl'>
+                English
+              </span>
             </Link>
           </motion.div>
         )}
