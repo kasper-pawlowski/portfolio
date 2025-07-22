@@ -2,7 +2,8 @@
   {
     "id": 1,
     "nameKey": "Hyperio",
-    "descriptionKey": "project1.description",
+    "slug": "hyperio",
+    "descriptionKey": "hyperio.description",
     "videoUrl": "/projects/videos/hyperio.webm",
     "images": [
       "/projects/screenshots/hyperio/1.avif",
@@ -19,7 +20,8 @@
   {
     "id": 2,
     "nameKey": "Pokedex",
-    "descriptionKey": "project2.description",
+    "slug": "pokedex",
+    "descriptionKey": "pokedex.description",
     "videoUrl": "/projects/videos/pokedex.webm",
     "images": [
       "/projects/screenshots/pokedex/1.avif",
@@ -36,7 +38,8 @@
   {
     "id": 3,
     "nameKey": "Paper planes",
-    "descriptionKey": "project3.description",
+    "slug": "paperplanes",
+    "descriptionKey": "paperplanes.description",
     "videoUrl": "/projects/videos/paperplanes.webm",
     "images": [
       "/projects/screenshots/paperplanes/1.avif",
@@ -54,7 +57,8 @@
   {
     "id": 4,
     "nameKey": "PopGuesser",
-    "descriptionKey": "project4.description",
+    "slug": "popguesser",
+    "descriptionKey": "popguesser.description",
     "videoUrl": "/projects/videos/popguesser.webm",
     "images": [
       "/projects/screenshots/popguesser/1.avif",
@@ -71,7 +75,8 @@
   {
     "id": 5,
     "nameKey": "Trivium",
-    "descriptionKey": "project5.description",
+    "slug": "trivium",
+    "descriptionKey": "trivium.description",
     "videoUrl": "/projects/videos/trivium.webm",
     "images": [
       "/projects/screenshots/trivium/1.avif",
@@ -89,7 +94,8 @@
   {
     "id": 6,
     "nameKey": "Artsnob",
-    "descriptionKey": "project6.description",
+    "slug": "artsnob",
+    "descriptionKey": "artsnob.description",
     "videoUrl": "/projects/videos/artsnob.webm",
     "images": [
       "/projects/screenshots/artsnob/1.avif",
@@ -107,7 +113,8 @@
   {
     "id": 7,
     "nameKey": "GeoGuess",
-    "descriptionKey": "project7.description",
+    "slug": "geoguess",
+    "descriptionKey": "geoguess.description",
     "videoUrl": "/projects/videos/geoguess.webm",
     "images": [
       "/projects/screenshots/geoguess/1.avif",
@@ -124,7 +131,8 @@
   {
     "id": 8,
     "nameKey": "PopGuesser",
-    "descriptionKey": "project4.description",
+    "slug": "popguesser",
+    "descriptionKey": "popguesser.description",
     "videoUrl": "/projects/videos/popguesser.webm",
     "images": [
       "/projects/screenshots/popguesser/1.avif",

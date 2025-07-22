@@ -17,6 +17,7 @@ type Project = {
   githubLink: string
   liveLink: string
   technologies: string[]
+  slug: string
 }
 
 type ProjectPageProps = {
@@ -47,7 +48,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return <div>Projekt nie znaleziony.</div>
   }
 
-  const projectDescriptionKey = `project${project.id}.description`
+  const projectDescriptionKey = `${project.slug}.description`
 
   return (
     <>

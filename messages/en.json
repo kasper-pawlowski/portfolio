@@ -7,29 +7,29 @@
   },
   "Projects": {
     "title": "Projects",
-    "project1": {
-      "description": "A brief description of Project One."
+    "hyperio": {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet, velit sit amet aliquam imperdiet, ligula tortor porttitor augue"
     },
-    "project2": {
-      "description": "A brief description of Project Two."
+    "pokedex": {
+      "description": "Krótki opis Projektu Drugiego."
     },
-    "project3": {
-      "description": "A brief description of Project Three."
+    "paperplanes": {
+      "description": "Krótki opis Projektu Trzeciego."
     },
-    "project4": {
-      "description": "A brief description of Project Four."
+    "popguesser": {
+      "description": "Krótki opis Projektu Czwartego."
     },
-    "project5": {
-      "description": "A brief description of Project Five."
+    "trivium": {
+      "description": "Krótki opis Projektu Piątego."
     },
-    "project6": {
-      "description": "A brief description of Project Six."
+    "artsnob": {
+      "description": "Krótki opis Projektu Szóstego."
     },
-    "project7": {
-      "description": "A brief description of Project Seven."
+    "geoguess": {
+      "description": "Krótki opis Projektu Siódmego."
     },
-    "project8": {
-      "description": "A brief description of Project Eight."
+    "portfolio": {
+      "description": "Krótki opis Projektu Ósmego."
     }
   }
 }
