@@ -14,7 +14,7 @@
     ],
     "githubLink": "",
     "liveLink": "https://hyperio.ch",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": ["html", "css", "scss", "javascript"],
     "accent": "#fd9e28"
   },
   {
@@ -32,7 +32,13 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/pokedex",
     "liveLink": "https://kasper-pawlowski.github.io/pokedex/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": [
+      "react",
+      "styled-components",
+      "axios",
+      "motion",
+      "pokeapi"
+    ],
     "accent": "#85cd6d"
   },
   {
@@ -51,7 +57,15 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/paper-planes",
     "liveLink": "https://kasper-pawlowski-paper-planes.web.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": [
+      "react",
+      "styled-components",
+      "firebase",
+      "konva",
+      "motion",
+      "axios",
+      "geopify"
+    ],
     "accent": "#a3e041"
   },
   {
@@ -69,7 +83,13 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
     "liveLink": "https://popguesser.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": [
+      "react",
+      "styled-components",
+      "motion",
+      "axios",
+      "themoviedb"
+    ],
     "accent": "#FF914C"
   },
   {
@@ -88,7 +108,14 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/trivium",
     "liveLink": "https://trivium1.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": [
+      "react",
+      "styled-components",
+      "firebase",
+      "motion",
+      "axios",
+      "opentdb"
+    ],
     "accent": "#6a5be0"
   },
   {
@@ -107,7 +134,7 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/artsnob",
     "liveLink": "https://artsnob.netlify.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": ["react", "styled-components", "motion"],
     "accent": "#283032"
   },
   {
@@ -125,7 +152,7 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/GeoGuess",
     "liveLink": "https://quiz-architekt.web.app/",
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    "technologies": ["react", "styled-components", "firebase", "leaflet"],
     "accent": "#f39c13"
   },
   {
@@ -143,6 +170,7 @@
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
     "liveLink": "",
+
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
     "accent": "#FF914C"
   }

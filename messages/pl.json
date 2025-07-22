@@ -5,8 +5,36 @@
     "projects": "projekty",
     "contact": "kontakt"
   },
+  "About": {
+    "title": "O mnie",
+    "content": {
+      "paragraph1": "Cześć! Jestem Kasper i od 2019 roku tworzę strony internetowe oraz aplikacje webowe. Jestem samoukiem – wszystkiego nauczyłem się samodzielnie, korzystając z zasobów dostępnych w internecie. Moja pasja do programowania zaczęła się naturalnie i z czasem przerodziła się w chęć tworzenia coraz bardziej zaawansowanych projektów.",
+      "paragraph2": "Najlepiej czuję się w technologii react i to właśnie na nim opieram większość swoich aplikacji. Lubię tworzyć nowoczesne landing page, dynamiczne aplikacje webowe, a ostatnio zgłębiam także świat aplikacji mobilnych.",
+      "paragraph3": "Moim celem zawodowym jest rozpoczęcie kariery jako frontend developer, ale w przyszłości chciałbym rozwijać się również w kierunku full-stack developmentu. Stale poszerzam swoje umiejętności i jestem otwarty na nowe wyzwania.",
+      "paragraph4": "Jeśli szukasz kogoś, kto z pasją tworzy nowoczesne, wydajne i estetyczne aplikacje – zapraszam do kontaktu! 🚀"
+    }
+  },
+  "Experience": {
+    "title": "Doświadcznie",
+    "content": {
+      "paragraph1": "W ramach mojej drogi jako frontend developer miałem okazję zdobyć praktyczne doświadczenie zarówno w pracy z klientami, jak i w środowisku firmowym.",
+      "paragraph2": "Zdobyłem doświadczenie komercyjne, realizując projekty stron internetowych dla klientów na Fiverr. Każde zlecenie było dla mnie okazją do wykorzystania zdobytej wiedzy w praktyce, a także do rozwijania nie tylko umiejętności technicznych, ale również skutecznej komunikacji z klientami oraz rozwiązywania problemów w trakcie realizacji projektów.",
+      "paragraph3": "Dodatkowo w ramach praktyk szkolnych odbyłem praktyki w firmie Prezent Marzeń na stanowisku informatyka. Podczas praktyk miałem okazję wspierać zespół w codziennych zadaniach związanych z utrzymaniem i rozwijaniem systemów wewnętrznych oraz zdobywać doświadczenie w pracy zespołowej w środowisku IT."
+    }
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "sub_title": "Zapraszam do kontaktu",
+    "copy_mail": "skopiuj email",
+    "toast_success": "Skopiowano do schowka!",
+    "toast_error": "Nie udało się skopiować. Spróbuj ponownie!"
+  },
   "Projects": {
     "title": "Projekty",
+    "description": "Opis",
+    "technologies": "Technologie",
+    "back_button": "powrót",
+    "notfound": "Projekt nie znaleziony.",
     "hyperio": {
       "description": "Responsywny landing page dla firmy Hyperio. Strona powstała na podstawie wcześniej przygotowanych projektów graficznych"
     },

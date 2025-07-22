@@ -1,6 +1,9 @@
+import { useTranslations } from 'next-intl'
 import React from 'react'
 
 const Experience = () => {
+  const t = useTranslations('Experience')
+
   return (
     <section id='experience' className='text-background bg-foreground relative'>
       <div
@@ -9,29 +12,12 @@ const Experience = () => {
       />
       <div className='container mx-auto flex h-auto flex-col gap-10 py-20 lg:py-40'>
         <h1 className='font-display z-2 w-full text-5xl font-black lg:text-7xl'>
-          Doświadcznie
+          {t('title')}
         </h1>
         <p className='z-2 flex w-full flex-col gap-5 font-sans text-lg font-medium lg:px-20 lg:text-xl'>
-          <span>
-            W ramach mojej drogi jako frontend developer miałem okazję zdobyć
-            praktyczne doświadczenie zarówno w pracy z klientami, jak i w
-            środowisku firmowym.
-          </span>
-          <span>
-            Zdobyłem doświadczenie komercyjne, realizując projekty stron
-            internetowych dla klientów na Fiverr. Każde zlecenie było dla mnie
-            okazją do wykorzystania zdobytej wiedzy w praktyce, a także do
-            rozwijania nie tylko umiejętności technicznych, ale również
-            skutecznej komunikacji z klientami oraz rozwiązywania problemów w
-            trakcie realizacji projektów.
-          </span>
-          <span>
-            Dodatkowo w ramach praktyk szkolnych odbyłem praktyki w firmie
-            Prezent Marzeń na stanowisku informatyka. Podczas praktyk miałem
-            okazję wspierać zespół w codziennych zadaniach związanych z
-            utrzymaniem i rozwijaniem systemów wewnętrznych oraz zdobywać
-            doświadczenie w pracy zespołowej w środowisku IT.
-          </span>
+          <span>{t('content.paragraph1')}</span>
+          <span>{t('content.paragraph2')}</span>
+          <span>{t('content.paragraph3')}</span>
         </p>
       </div>
 

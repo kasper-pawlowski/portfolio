@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const project = (projects as Project[]).find(p => p.id === projectId)
 
   if (!project) {
-    return <div>Projekt nie znaleziony.</div>
+    return <div>{t('notfound')}</div>
   }
 
   const projectDescriptionKey = `${project.slug}.description`
@@ -66,7 +66,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className='flex w-full flex-col gap-6'>
             <div className='flex flex-6/10 flex-col gap-2'>
               <p className='font-500 font-display text-foreground-light lg:mt-5 lg:text-lg'>
-                / Description
+                / {t('description')}
               </p>
               <p className='font-400 text-foreground text-sm lg:text-base'>
                 {t(projectDescriptionKey)}
@@ -74,7 +74,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
             <div className='flex flex-4/10 flex-col gap-2 lg:hidden'>
               <p className='font-500 font-display text-foreground-light'>
-                / Technologies
+                / {t('technologies')}
               </p>
               <div className='text-foreground font-400 flex flex-wrap items-center gap-x-2 text-sm'>
                 {project.technologies.map((technology, index) => (
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             className='font-display text-foreground mt-auto hidden w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl lg:flex'
           >
             <MoveLeft strokeWidth={1} />
-            <p>powrót</p>
+            <p>back_button</p>
           </Link>
         </div>
         <div className='hidden lg:block'>
@@ -121,7 +121,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
         <div className='hidden h-full min-w-0 flex-1 flex-col items-end gap-2 lg:flex lg:basis-1/4'>
           <p className='font-500 font-display text-foreground-light lg:text-lg'>
-            / Technologies
+            / {t('technologies')}
           </p>
           <div className='text-foreground font-400 flex w-[50%] flex-wrap justify-end gap-x-2 text-end text-sm lg:text-base'>
             {project.technologies.map((technology, index) => (
@@ -143,7 +143,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
         >
           <MoveLeft strokeWidth={1} />
-          <p>powrót</p>
+          <p>{t('back_button')}</p>
         </Link>
         <div className='flex items-end justify-end'>
           <ProjectNavigation

@@ -6,18 +6,20 @@ import GithubLogo from '../../../public/icons/github.svg'
 import LinkedinLogo from '../../../public/icons/linkedin.svg'
 import WhatsappLogo from '../../../public/icons/whatsapp.svg'
 import toast from 'react-hot-toast'
-
-const handleCopyEmail = async () => {
-  try {
-    await navigator.clipboard.writeText('kasper.pawlowski04@gmail.com')
-    toast.success('Skopiowano do schowka!')
-  } catch (err) {
-    console.error('Nie udało się skopiować e-maila:', err)
-    toast.error('Nie udało się skopiować. Spróbuj ponownie!')
-  }
-}
+import { useTranslations } from 'next-intl'
 
 const Contact = () => {
+  const t = useTranslations('Contact')
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('kasper.pawlowski04@gmail.com')
+      toast.success(t('toast_success'))
+    } catch (err) {
+      toast.error(t('toast_error'))
+    }
+  }
+
   return (
     <section id='contact' className='relative'>
       <div
@@ -26,11 +28,11 @@ const Contact = () => {
       />
       <div className='container mx-auto flex h-auto flex-col items-center py-20 lg:py-40'>
         <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
-          Kontakt
+          {t('title')}
           <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
         </h2>
         <p className='font-600 text-foreground-light mt-5 text-xl'>
-          Zapraszam do kontaktu!
+          {t('sub_title')}
         </p>
         <a
           href='mailto:kasper.pawlowski04@gmail.com'
@@ -44,7 +46,7 @@ const Contact = () => {
           onClick={handleCopyEmail}
           className='font-600 mt-10 flex items-center justify-center gap-3'
         >
-          <Copy size={20} /> skopiuj email
+          <Copy size={20} /> <span>{t('copy_mail')}</span>
         </button>
         <div className='mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
           <a

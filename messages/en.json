@@ -5,31 +5,59 @@
     "projects": "projects",
     "contact": "contact"
   },
+  "About": {
+    "title": "About Me",
+    "content": {
+      "paragraph1": "Hi! I'm Kasper and I've been creating websites and web applications since 2019. I'm self-taught – I learned everything myself using resources available online. My passion for programming started naturally and over time grew into a desire to create more and more advanced projects.",
+      "paragraph2": "I feel most comfortable with React technology, and that's what I base most of my applications on. I enjoy creating modern landing pages, dynamic web applications, and recently I've also been delving into the world of mobile applications.",
+      "paragraph3": "My professional goal is to start a career as a frontend developer, but in the future, I'd also like to develop towards full-stack development. I'm constantly expanding my skills and am open to new challenges.",
+      "paragraph4": "If you're looking for someone who passionately creates modern, efficient, and aesthetic applications – feel free to contact me! 🚀"
+    }
+  },
+  "Experience": {
+    "title": "Experience",
+    "content": {
+      "paragraph1": "As a frontend developer, I've had the opportunity to gain practical experience both working with clients and in a corporate environment.",
+      "paragraph2": "I gained commercial experience by delivering website projects for clients on Fiverr. Each commission was an opportunity for me to apply the knowledge I gained in practice, and also to develop not only technical skills but also effective communication with clients and problem-solving during project implementation.",
+      "paragraph3": "Additionally, as part of my school internship, I completed an internship at Prezent Marzeń as an IT specialist. During the internship, I had the opportunity to support the team in daily tasks related to maintaining and developing internal systems, and to gain experience in teamwork in an IT environment."
+    }
+  },
+  "Contact": {
+    "title": "Contact",
+    "sub_title": "Feel free to contact me",
+    "copy_mail": "copy email",
+    "toast_success": "Copied to clipboard!",
+    "toast_error": "Failed to copy. Please try again!"
+  },
   "Projects": {
     "title": "Projects",
+    "description": "Description",
+    "technologies": "Technologies",
+    "back_button": "back",
+    "notfound": "Project not found.",
     "hyperio": {
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet, velit sit amet aliquam imperdiet, ligula tortor porttitor augue"
+      "description": "Responsive landing page for Hyperio. The page was created based on previously prepared graphic designs."
     },
     "pokedex": {
-      "description": "Krótki opis Projektu Drugiego."
+      "description": "Pokedex is a web application written in React, allowing users to browse information about Pokémon. Users can search for Pokémon by name or ID, and also view detailed data and statistics. The project focuses on a clear interface and dynamic data retrieval from an external API."
     },
     "paperplanes": {
-      "description": "Krótki opis Projektu Trzeciego."
+      "description": "Paper Planes is an interactive web application that allows users to create their own virtual paper airplanes, mark them with stamps indicating their approximate location, and 'throw' them into the world where they can be intercepted by other users from various corners of the globe. The inspiration for this project was the website paperplanes.world"
     },
     "popguesser": {
-      "description": "Krótki opis Projektu Czwartego."
+      "description": "A web application where the player guesses a movie from a poster that becomes clearer over time."
     },
     "trivium": {
-      "description": "Krótki opis Projektu Piątego."
+      "description": "Trivium is a web application written in React using Firebase as a backend and the OpenTDB API for fetching quiz questions. It allows users to play quizzes solo or in multiplayer mode with a friend, who can join using a shared code."
     },
     "artsnob": {
-      "description": "Krótki opis Projektu Szóstego."
+      "description": "ArtSnob is a clone of an application created by Timothy Ricks in Webflow, implemented using React technology. The goal of the project was to faithfully reproduce the look and functionality of the original application, with a particular emphasis on a modern user interface and smooth operation."
     },
     "geoguess": {
-      "description": "Krótki opis Projektu Siódmego."
+      "description": "A web application where the player guesses the location of famous places on the world map. The user points out the locations of famous places on the map, earning points and competing with bots."
     },
     "portfolio": {
-      "description": "Krótki opis Projektu Ósmego."
+      "description": "A short description of Project Eight."
     }
   }
 }
