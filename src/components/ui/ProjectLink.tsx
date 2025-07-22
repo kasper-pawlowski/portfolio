@@ -3,12 +3,15 @@ import React from 'react'
 import projectsData from '@/data/projects.json'
 import { Cursor } from '../core/cursor'
 import { MousePointer2, MousePointerClick } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 type ProjectLinkProps = {
   id: number
 }
 
 const ProjectLink = ({ id }: ProjectLinkProps) => {
+  const t = useTranslations('Projects')
+
   return (
     <Link href={`/project/${id}`} className='group relative z-5 h-full w-full'>
       <video
@@ -21,7 +24,7 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
         className='z-5 h-full w-full object-cover duration-200 ease-in-out group-hover:scale-105'
       >
         <source src={projectsData[id - 1].videoUrl} type='video/webm' />
-        Twój browser nie obsługuje tagu wideo.
+        {t('notsupported')}
       </video>
       <Cursor
         attachToParent
@@ -47,14 +50,14 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
           />
 
           <div
-            className='cursor-child absolute ml-4 rounded-lg px-3 py-1 text-neutral-50'
+            className='cursor-child absolute ml-4 rounded-lg border-1 border-neutral-200/20 px-3 py-1 text-neutral-50'
             style={{ backgroundColor: projectsData[id - 1].accent }}
           >
             {/* <p className='font-display font-500 text-2xl whitespace-nowrap'>
               {projectsData[id - 1].nameKey}
             </p> */}
             <p className='font-display font-400 text-xl whitespace-nowrap'>
-              przejdź do projektu
+              {t('cursor_text')}
             </p>
           </div>
         </div>

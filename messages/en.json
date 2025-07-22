@@ -34,7 +34,9 @@
     "description": "Description",
     "technologies": "Technologies",
     "back_button": "back",
+    "cursor_text": "go to project",
     "notfound": "Project not found.",
+    "notsupported": "Your browser does not support the video tag.",
     "hyperio": {
       "description": "Responsive landing page for Hyperio. The page was created based on previously prepared graphic designs."
     },

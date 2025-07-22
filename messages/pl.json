@@ -34,7 +34,9 @@
     "description": "Opis",
     "technologies": "Technologie",
     "back_button": "powrót",
+    "cursor_text": "przejdź do projektu",
     "notfound": "Projekt nie znaleziony.",
+    "notsupported": "Twoja przeglądarka nie obsługuje tagu wideo.",
     "hyperio": {
       "description": "Responsywny landing page dla firmy Hyperio. Strona powstała na podstawie wcześniej przygotowanych projektów graficznych"
     },

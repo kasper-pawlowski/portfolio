@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             className='font-display text-foreground mt-auto hidden w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl lg:flex'
           >
             <MoveLeft strokeWidth={1} />
-            <p>back_button</p>
+            <p>{t('back_button')}</p>
           </Link>
         </div>
         <div className='hidden lg:block'>
