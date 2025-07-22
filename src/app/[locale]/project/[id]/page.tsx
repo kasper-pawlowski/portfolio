@@ -56,11 +56,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         id='project'
         className='project-padding relative container flex h-svh w-full flex-col pb-10 lg:flex-row lg:gap-5 lg:pb-20'
       >
-        <div className='flex h-full min-w-0 flex-1 flex-col gap-5 lg:basis-1/4'>
+        <div className='flex h-full min-w-0 flex-1 flex-col lg:basis-1/4 lg:gap-5'>
           <h1 className='font-900 font-display text-4xl break-words lg:text-6xl'>
             {project.nameKey}
           </h1>
-          <div className='flex w-full gap-6'>
+          <div className='mt-3 mb-5 block lg:hidden'>
+            <Carousel projectId={projectId} />
+          </div>
+          <div className='flex w-full flex-col gap-6'>
             <div className='flex flex-6/10 flex-col gap-2'>
               <p className='font-500 font-display text-foreground-light lg:mt-5 lg:text-lg'>
                 / Description
@@ -113,7 +116,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <p>powrót</p>
           </Link>
         </div>
-        <Carousel projectId={projectId} />
+        <div className='hidden lg:block'>
+          <Carousel projectId={projectId} />
+        </div>
         <div className='hidden h-full min-w-0 flex-1 flex-col items-end gap-2 lg:flex lg:basis-1/4'>
           <p className='font-500 font-display text-foreground-light lg:text-lg'>
             / Technologies
@@ -131,20 +136,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             totalProjects={projects.length}
           />
         </div>
-        <div className='mt-auto flex justify-between lg:hidden'>
-          <Link
-            href='/#projects'
-            className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
-          >
-            <MoveLeft strokeWidth={1} />
-            <p>powrót</p>
-          </Link>
-          <div className='flex items-end justify-end'>
-            <ProjectNavigation
-              currentProjectId={projectId}
-              totalProjects={projects.length}
-            />
-          </div>
+      </div>
+      <div className='absolute bottom-6 z-1 container flex justify-between lg:hidden'>
+        <Link
+          href='/#projects'
+          className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
+        >
+          <MoveLeft strokeWidth={1} />
+          <p>powrót</p>
+        </Link>
+        <div className='flex items-end justify-end'>
+          <ProjectNavigation
+            currentProjectId={projectId}
+            totalProjects={projects.length}
+          />
         </div>
       </div>
       <ProgressiveBlur

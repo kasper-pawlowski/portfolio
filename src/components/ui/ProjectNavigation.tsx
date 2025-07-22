@@ -14,8 +14,9 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   totalProjects
 }) => {
   return (
-    <div className='relative mt-auto flex h-40 w-40 items-center justify-center gap-3 rounded-full transition duration-300 ease-out hover:backdrop-blur-sm lg:h-60 lg:w-60 lg:gap-5'>
+    <div className='relative mt-auto flex h-35 w-35 items-center justify-center gap-3 rounded-full transition duration-300 ease-out hover:backdrop-blur-sm lg:h-60 lg:w-60 lg:gap-5'>
       <Link
+        className='translate-x-2 lg:translate-x-0'
         href={`/project/${currentProjectId === 1 ? totalProjects : currentProjectId - 1}`}
       >
         <MoveLeft className='text-foreground-light' />
@@ -35,6 +36,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
       </div>
 
       <Link
+        className='-translate-x-2 lg:-translate-x-0'
         href={`/project/${currentProjectId === totalProjects ? 1 : currentProjectId + 1}`}
       >
         <MoveRight className='text-foreground-light' />
