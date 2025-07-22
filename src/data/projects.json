@@ -12,7 +12,7 @@
       "/projects/screenshots/hyperio/4.avif",
       "/projects/screenshots/hyperio/5.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
+    "githubLink": "",
     "liveLink": "https://hyperio.ch",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
     "accent": "#fd9e28"
@@ -142,7 +142,7 @@
       "/projects/screenshots/popguesser/5.avif"
     ],
     "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "https://popguesser.netlify.app/",
+    "liveLink": "",
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
     "accent": "#FF914C"
   }

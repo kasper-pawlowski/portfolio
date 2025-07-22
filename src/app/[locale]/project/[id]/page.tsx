@@ -86,20 +86,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
           <div className='mt-5 flex gap-3'>
-            <Link
-              href={project.liveLink}
-              className='border-foreground flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1'
-            >
-              <span>Live</span>
-              <ArrowUpRight size={16} />
-            </Link>
-            <Link
-              href={project.githubLink}
-              className='border-foreground flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1'
-            >
-              <span>Github</span>
-              <GithubLogo className='github-logo h-4 w-4' />
-            </Link>
+            {project.liveLink !== '' && (
+              <Link
+                href={project.liveLink}
+                className='border-foreground flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1'
+              >
+                <span>Live</span>
+                <ArrowUpRight size={16} />
+              </Link>
+            )}
+            {project.githubLink !== '' && (
+              <Link
+                href={project.githubLink}
+                className='border-foreground flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1'
+              >
+                <span>Github</span>
+                <GithubLogo className='github-logo h-4 w-4' />
+              </Link>
+            )}
           </div>
           <Link
             href='/#projects'
