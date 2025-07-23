@@ -125,8 +125,8 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ y: 0 }}
-      animate={{ y: headerY }}
+      initial={{ y: 0, opacity: 0 }}
+      animate={{ y: headerY, opacity: 1 }}
       transition={{ duration: 0.2, ease: 'easeInOut' }}
       className='fixed top-0 left-0 z-20 w-full'
     >
