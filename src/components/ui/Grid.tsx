@@ -26,6 +26,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
   const [lastHoveredSquare, setLastHoveredSquare] = useState<number | null>(
     null
   )
+  const [squareSize, setSquareSize] = useState({ width: 0, height: 0 })
 
   const getOverlayStyle = (
     overlay: OverlayConfig,
@@ -124,6 +125,13 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
       squareSize: finalSquareSize
     })
   }
+
+  useEffect(() => {
+    if (itemRef.current) {
+      const rect = itemRef.current.getBoundingClientRect()
+      setSquareSize({ width: rect.width, height: rect.height })
+    }
+  }, [gridConfig])
 
   useEffect(() => {
     calculateGrid()
@@ -235,17 +243,18 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
 
   return (
     <div className='relative h-full w-full overflow-hidden'>
-      {overlays.map((overlay, index) => (
-        <div
-          key={index}
-          className={`${overlay.className} bg-background z-1`}
-          style={getOverlayStyle(
-            overlay,
-            itemRef.current?.getBoundingClientRect()?.width ?? 0,
-            itemRef.current?.getBoundingClientRect()?.height ?? 0
-          )}
-        />
-      ))}
+      {squareSize.width > 0 &&
+        overlays.map((overlay, index) => (
+          <div
+            key={index}
+            className={`${overlay.className} bg-background z-1`}
+            style={getOverlayStyle(
+              overlay,
+              squareSize.width,
+              squareSize.height
+            )}
+          />
+        ))}
 
       <div
         ref={containerRef}
