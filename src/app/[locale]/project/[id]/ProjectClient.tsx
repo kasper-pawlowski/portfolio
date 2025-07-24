@@ -6,9 +6,11 @@ import Link from 'next/link'
 import GithubLogo from '../../../../../public/icons/github.svg'
 import ProjectNavigation from '@/components/ui/ProjectNavigation'
 import { ProgressiveBlur } from '@/components/core/progressive-blur'
-import { AnimatePresence, motion } from 'framer-motion'
+import { animate, AnimatePresence, motion, stagger } from 'framer-motion'
 import { useEffect, useRef, type ReactNode } from 'react'
 import VerticalCutReveal from '@/components/core/vertical-cut-reveal'
+import FlipText from '@/components/core/text-effect-flipper'
+import { splitText } from 'motion-plus'
 
 // Typy zgodne z page.tsx
 interface Project {
@@ -39,6 +41,28 @@ export default function ProjectClient({
   translations
 }: ProjectClientProps) {
   const projectId = project.id
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    document.fonts.ready.then(() => {
+      if (!containerRef.current) return
+
+      containerRef.current.style.visibility = 'visible'
+
+      const { lines } = splitText('#description')
+
+      animate(
+        lines,
+        { opacity: [0, 1], y: [10, 0] },
+        {
+          type: 'spring',
+          duration: 0.5,
+          bounce: 0,
+          delay: stagger(0.05)
+        }
+      )
+    })
+  }, [])
 
   return (
     <>
@@ -46,10 +70,16 @@ export default function ProjectClient({
         id='project'
         className='project-padding relative container flex h-svh w-full flex-col pb-10 lg:flex-row lg:gap-5 lg:pb-20'
       >
-        <div className='flex h-full min-w-0 flex-1 flex-col lg:basis-1/4 lg:gap-5'>
+        <motion.div
+          // initial={{ opacity: 0, y: 50 }}
+          // animate={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.2 }}
+          className='flex h-full min-w-0 flex-1 flex-col lg:basis-1/4 lg:gap-5'
+        >
           <h1 className='font-900 font-display text-4xl break-words lg:text-6xl'>
             {project.nameKey}
           </h1>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -63,7 +93,11 @@ export default function ProjectClient({
               <p className='font-500 font-display text-foreground-light lg:mt-5 lg:text-lg'>
                 / {translations.description}
               </p>
-              <p className='font-400 text-foreground text-sm lg:text-base'>
+              <p
+                ref={containerRef}
+                id='description'
+                className='font-400 text-foreground text-sm lg:text-base'
+              >
                 {translations.projectDescription}
               </p>
             </div>
@@ -83,12 +117,7 @@ export default function ProjectClient({
               </div>
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.2 }}
-            className='mt-5 flex gap-3'
-          >
+          <div className='mt-5 flex gap-3'>
             {project.liveLink !== '' && (
               <Link
                 href={project.liveLink}
@@ -107,7 +136,7 @@ export default function ProjectClient({
                 <GithubLogo className='github-logo h-4 w-4' />
               </Link>
             )}
-          </motion.div>
+          </div>
           <Link
             href='/#projects'
             className='font-display text-foreground mt-auto hidden w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl lg:flex'
@@ -115,7 +144,7 @@ export default function ProjectClient({
             <MoveLeft strokeWidth={1} />
             <p>{translations.back_button}</p>
           </Link>
-        </div>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

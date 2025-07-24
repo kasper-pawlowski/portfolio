@@ -7,6 +7,7 @@ import LinkedinLogo from '../../../public/icons/linkedin.svg'
 import WhatsappLogo from '../../../public/icons/whatsapp.svg'
 import toast from 'react-hot-toast'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
 
 const Contact = () => {
   const t = useTranslations('Contact')

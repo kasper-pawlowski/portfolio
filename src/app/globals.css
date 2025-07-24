@@ -99,6 +99,10 @@
     left: anchor(left);
   }
 
+  .char {
+    display: inline-block;
+  }
+
   /* .pt-header {
     padding-top: 62px;
     @media (width >= 64rem) {
