@@ -34,8 +34,8 @@ const Hero = () => {
             <div className='qhd:my-30 relative my-5 flex flex-1 items-center justify-center'>
               <div className='font-display fhd:text-8xl/tight qhd:text-9xl/tight pointer-events-none absolute z-3 flex h-full w-full flex-col items-center text-5xl font-black md:text-7xl lg:tracking-wide'>
                 <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0, x: 0 }}
                   transition={{ duration: 0.5, ease: 'easeInOut', delay: 2 }}
                   style={{ y: firstY }}
                   className='place-self-start'
@@ -43,7 +43,7 @@ const Hero = () => {
                   KASPER <br /> PAWŁOWSKI
                 </motion.h1>
                 <motion.h1
-                  initial={{ opacity: 0, y: -30 }}
+                  initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: 'easeInOut', delay: 2.3 }}
                   style={{ y: secondY }}
@@ -68,7 +68,12 @@ const Hero = () => {
           <Marquee />
         </div>
 
-        <div className='bg-blob-accent-1 absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] opacity-70 blur-3xl' />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: 2 }}
+          className='bg-blob-accent-1 absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] opacity-70 blur-3xl'
+        />
       </section>
     </>
   )

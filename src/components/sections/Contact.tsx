@@ -8,6 +8,7 @@ import WhatsappLogo from '../../../public/icons/whatsapp.svg'
 import toast from 'react-hot-toast'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
+import { motion } from 'motion/react'
 
 const Contact = () => {
   const t = useTranslations('Contact')
@@ -28,13 +29,31 @@ const Contact = () => {
         aria-hidden='true'
       />
       <div className='container mx-auto flex h-auto flex-col items-center py-20 lg:py-40'>
-        <h2 className='font-display relative text-center text-5xl font-black lg:text-7xl'>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{
+            once: false,
+            margin: '0px 0px -20px 0px'
+          }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          className='font-display relative text-center text-5xl font-black lg:text-7xl'
+        >
           {t('title')}
           <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
-        </h2>
-        <p className='font-600 text-foreground-light mt-5 text-xl'>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{
+            once: false,
+            margin: '0px 0px -20px 0px'
+          }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          className='font-600 text-foreground-light mt-5 text-xl'
+        >
           {t('sub_title')}
-        </p>
+        </motion.p>
         <a
           href='mailto:kasper.pawlowski04@gmail.com'
           className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'

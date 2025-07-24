@@ -3,6 +3,10 @@ import projectsData from '../../data/projects.json'
 import ProjectLink from '../ui/ProjectLink'
 import ProjectCard from '../ui/ProjectCard'
 import { useTranslations } from 'next-intl'
+import {
+  AnimatedProjectTitle,
+  AnimatedProjectTitleMobile
+} from '../ui/AnimatedProjectTitle'
 
 const Projects = () => {
   const t = useTranslations('Projects')
@@ -16,9 +20,7 @@ const Projects = () => {
           aria-hidden='true'
         />
         <div className='container flex w-full flex-col gap-10 py-20'>
-          <h1 className='font-display font-900 z-2 mt-5 mb-10 text-center text-5xl'>
-            {t('title')}
-          </h1>
+          <AnimatedProjectTitleMobile>{t('title')}</AnimatedProjectTitleMobile>
           {projectsData.map(project => (
             <ProjectCard project={project} key={project.id} />
           ))}
@@ -54,9 +56,7 @@ const Projects = () => {
             className={`${styles.div37} ${styles.blank} rounded-bl-xl`}
           ></div>
           <div className='to-background pointer-events-none absolute inset-0 h-full w-full bg-gradient-to-t from-transparent'></div>
-          <h1 className='font-display absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black lg:text-7xl'>
-            {t('title')}
-          </h1>
+          <AnimatedProjectTitle>{t('title')}</AnimatedProjectTitle>
         </div>
 
         <div className={styles.gridContainer}>
