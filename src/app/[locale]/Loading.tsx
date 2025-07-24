@@ -1,51 +1,61 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { animate, motion, useMotionValue, useTransform } from 'framer-motion'
+import { useEffect } from 'react'
 
 const Loading = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1
-      }
-    }
-  }
+  const count = useMotionValue(0)
 
-  const dotVariants = {
-    hidden: {
-      scale: 0,
-      opacity: 0
-    },
-    visible: {
-      scale: [0, 1.2, 1],
-      opacity: [0, 1, 1],
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const
-      }
-    }
-  }
+  const rounded = useTransform(() => Math.round(count.get()))
 
-  const pulseVariants = {
-    animate: {
-      scale: [1, 1.1, 1],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: 'easeInOut' as const
-      }
-    }
-  }
+  useEffect(() => {
+    const controls = animate(count, 100, { duration: 2 })
+    return () => controls.stop()
+  }, [])
 
   return (
-    <motion.div className='bg-background/50 fixed z-50 flex h-screen w-screen items-center justify-center backdrop-blur-2xl'>
-      {/* Grain overlay */}
-      <div
-        className='pointer-events-none absolute inset-0 bg-[url("/grain.png")] bg-repeat opacity-50 mix-blend-overlay'
-        aria-hidden='true'
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.5, ease: 'easeOut' }
+      }}
+      className='fixed z-50 flex h-svh w-screen flex-col justify-end'
+    >
+      <div className='bg-background bottom-marquee absolute flex h-full w-full items-center justify-center'>
+        <motion.pre className='font-display font-900 text-7xl'>
+          {rounded}
+        </motion.pre>
+        <span className='font-display font-900 text-7xl'>%</span>
+      </div>
+      <motion.div
+        id='1'
+        initial={{ x: '-100%' }}
+        animate={{
+          x: ['-100%', '0%', '100%']
+        }}
+        transition={{
+          duration: 2,
+          times: [0, 0.9, 1],
+          ease: 'linear',
+          bounce: 0
+        }}
+        className='h-marquee bg-foreground absolute bottom-0 z-2 flex w-full shrink-0'
+      />
+      <motion.div
+        id='2'
+        initial={{ x: '0%' }}
+        animate={{
+          x: ['0%', '0%', '100%']
+        }}
+        transition={{
+          duration: 2,
+          times: [0, 0.9, 1],
+          ease: 'linear',
+          bounce: 0
+        }}
+        className='h-marquee bg-background absolute bottom-0 z-1 flex w-full shrink-0'
       />
     </motion.div>
   )

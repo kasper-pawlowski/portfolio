@@ -2,22 +2,37 @@
 
 import { useEffect, useState } from 'react'
 import Loading from '@/app/[locale]/Loading'
+import { AnimatePresence } from 'framer-motion'
 
 const GlobalLoader = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Symulacja czasu ładowania strony
+    // Ustawiamy overflow na hidden gdy komponent się montuje
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden'
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1000) // 3 sekundy
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'unset'
+      }
+    }, 2000)
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'unset'
+      }
+    }
   }, [])
 
-  if (!isLoading) return null
-
-  return <Loading />
+  return (
+    <AnimatePresence mode='wait'>
+      {isLoading && <Loading key='loader' />}
+    </AnimatePresence>
+  )
 }
 
 export default GlobalLoader

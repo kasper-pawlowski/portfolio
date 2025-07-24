@@ -29,13 +29,52 @@ const Experience = () => {
         style={{ y: containerY }}
         className='container mx-auto flex h-auto flex-col gap-10 py-20 lg:py-40'
       >
-        <h1 className='font-display z-2 w-full text-5xl font-black lg:text-7xl'>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{
+            once: false,
+            margin: '0px 0px -20px 0px'
+          }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          className='font-display z-2 w-full text-5xl font-black lg:text-7xl'
+        >
           {t('title')}
-        </h1>
+        </motion.h1>
         <p className='z-2 flex w-full flex-col gap-5 font-sans text-lg font-medium lg:px-20 lg:text-xl'>
-          <span>{t('content.paragraph1')}</span>
-          <span>{t('content.paragraph2')}</span>
-          <span>{t('content.paragraph3')}</span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{
+              once: false,
+              margin: '0px 0px -20px 0px'
+            }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            {t('content.paragraph1')}
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{
+              once: false,
+              margin: '0px 0px -20px 0px'
+            }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            {t('content.paragraph2')}
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{
+              once: false,
+              margin: '0px 0px -20px 0px'
+            }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            {t('content.paragraph3')}
+          </motion.span>
         </p>
       </motion.div>
 

@@ -1,7 +1,27 @@
+'use client'
+
+import {
+  useMotionValue,
+  useMotionValueEvent,
+  useScroll,
+  motion
+} from 'motion/react'
+
 import Marquee from '../ui/Marquee'
 import GridWrapper from '../ui/GridWrapper'
 
 const Hero = () => {
+  const { scrollYProgress } = useScroll()
+  const firstY = useMotionValue(0)
+  const secondY = useMotionValue(0)
+  useMotionValueEvent(scrollYProgress, 'change', latest => {
+    const newFirstY = 0 - latest * 300
+    firstY.set(newFirstY)
+
+    const newSecondY = 0 + latest * 300
+    secondY.set(newSecondY)
+  })
+
   return (
     <>
       <section id='hero' className='relative flex h-svh flex-col'>
@@ -13,17 +33,34 @@ const Hero = () => {
           <div className='pt-header container flex pb-10'>
             <div className='qhd:my-30 relative my-5 flex flex-1 items-center justify-center'>
               <div className='font-display fhd:text-8xl/tight qhd:text-9xl/tight pointer-events-none absolute z-3 flex h-full w-full flex-col items-center text-5xl font-black md:text-7xl lg:tracking-wide'>
-                <h1 className='place-self-start'>
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut', delay: 2 }}
+                  style={{ y: firstY }}
+                  className='place-self-start'
+                >
                   KASPER <br /> PAWŁOWSKI
-                </h1>
-                <h1 className='text-foreground-light font-700 mt-auto self-end'>
+                </motion.h1>
+                <motion.h1
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut', delay: 2.3 }}
+                  style={{ y: secondY }}
+                  className='text-foreground-light font-700 mt-auto self-end'
+                >
                   frontend <br /> developer
-                </h1>
+                </motion.h1>
               </div>
 
-              <div className='aspect-square w-full lg:aspect-auto lg:h-full'>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: 'easeInOut', delay: 2.6 }}
+                className='aspect-square w-full lg:aspect-auto lg:h-full'
+              >
                 <GridWrapper section='hero' />
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

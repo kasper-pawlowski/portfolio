@@ -51,10 +51,50 @@ const About = () => {
             {t('title')}
           </motion.h1>
           <p className='font-500 z-2 flex flex-col gap-5 font-sans text-lg lg:pl-20 lg:text-xl'>
-            <span>{t('content.paragraph1')}</span>
-            <span>{t('content.paragraph2')}</span>
-            <span>{t('content.paragraph3')}</span>
-            <span>{t('content.paragraph4')}</span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: false,
+                margin: '0px 0px -50px 0px'
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+              {t('content.paragraph1')}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: false,
+                margin: '0px 0px -50px 0px'
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+              {t('content.paragraph2')}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: false,
+                margin: '0px 0px -50px 0px'
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+              {t('content.paragraph3')}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: false,
+                margin: '0px 0px -50px 0px'
+              }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+              {t('content.paragraph4')}
+            </motion.span>
           </p>
         </div>
         <div className='relative flex h-auto flex-2/5 flex-col pt-40'>
