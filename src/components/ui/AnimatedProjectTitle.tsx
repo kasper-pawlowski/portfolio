@@ -41,7 +41,7 @@ export const AnimatedProjectTitle = ({ children }: PropsWithChildren) => {
     <motion.h1
       transition={{ duration: 0.5, ease: 'easeInOut' }}
       style={{ y: titleY, scale: titleScale }}
-      className='font-display absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black lg:text-7xl'
+      className='font-display absolute top-1/2 left-1/2 z-2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black lg:text-7xl'
     >
       {children}
     </motion.h1>
