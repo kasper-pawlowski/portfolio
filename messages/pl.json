@@ -33,6 +33,7 @@
     "title": "Projekty",
     "description": "Opis",
     "technologies": "Technologie",
+    "see_more": "zobacz więcej",
     "back_button": "powrót",
     "cursor_text": "przejdź do projektu",
     "notfound": "Projekt nie znaleziony.",

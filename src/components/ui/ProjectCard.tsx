@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 
 type Project = {
   nameKey: string
@@ -15,7 +16,9 @@ type ProjectCardProps = {
   project: Project
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+export default async function ProjectCard({ project }: ProjectCardProps) {
+  const t = await getTranslations('Projects')
+
   return (
     <div className='shadow-elevated hover:shadow-elevated-hover relative z-2 flex flex-col items-center overflow-hidden rounded-2xl border backdrop-blur-sm duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1'>
       <Link
@@ -43,12 +46,10 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           href={`/project/${project.id}`}
           className='border-foreground flex items-center justify-center rounded-full border-2 px-3 py-1'
         >
-          <span className='font-500'>zobacz więcej</span>
+          <span className='font-500'>{t('see_more')}</span>
           <ArrowRight size={16} />
         </Link>
       </div>
     </div>
   )
 }
-
-export default ProjectCard

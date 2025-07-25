@@ -33,6 +33,7 @@
     "title": "Projects",
     "description": "Description",
     "technologies": "Technologies",
+    "see_more": "see more",
     "back_button": "back",
     "cursor_text": "go to project",
     "notfound": "Project not found.",
