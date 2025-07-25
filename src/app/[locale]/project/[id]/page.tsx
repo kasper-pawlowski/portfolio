@@ -51,24 +51,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <>
-      <AnimationProvider>
-        <div
-          className='hero-noise pointer-events-none absolute top-0 left-0 -z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
-          aria-hidden='true'
-        />
-        <ProjectClient project={project} translations={translations} />
-        <div className='absolute bottom-5 container mx-auto flex justify-between lg:bottom-10'>
-          <Link
-            href='/#projects'
-            className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
-          >
-            <MoveLeft strokeWidth={1} />
-            <p>{translations.back_button}</p>
-          </Link>
-          <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
-        </div>
-      </AnimationProvider>
-    </>
+    <AnimationProvider>
+      <div
+        className='hero-noise pointer-events-none absolute top-0 left-0 -z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        aria-hidden='true'
+      />
+
+      <ProjectClient project={project} translations={translations} />
+      <div className='absolute inset-x-0 bottom-5 container flex justify-between lg:bottom-10'>
+        {/* <div className='h-full w-full bg-amber-300'>asASDASDASDASDASDd</div> */}
+        <Link
+          href='/#projects'
+          className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full py-2 text-xl'
+        >
+          <MoveLeft strokeWidth={1} />
+          <p>{translations.back_button}</p>
+        </Link>
+        <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
+      </div>
+    </AnimationProvider>
   )
 }

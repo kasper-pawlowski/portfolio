@@ -14,7 +14,7 @@ const Projects = () => {
   return (
     <>
       {/* Mobile */}
-      <section id='projects-mobile' className='relative lg:hidden'>
+      <section id='projects' className='relative lg:hidden'>
         <div
           className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
           aria-hidden='true'

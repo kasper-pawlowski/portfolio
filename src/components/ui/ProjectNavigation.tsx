@@ -62,7 +62,12 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
       </Link>
 
       <div className='font-display font-600 relative flex flex-col items-center justify-center gap-0 text-5xl lg:gap-3 lg:text-7xl'>
-        <AnimateNumber className='pr-8'>{current}</AnimateNumber>
+        <AnimateNumber
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className='pr-8'
+        >
+          {current}
+        </AnimateNumber>
         <span className='pl-8'>{totalProjects}</span>
       </div>
 

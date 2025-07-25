@@ -17,6 +17,7 @@ import Grain from '@/components/Grain'
 import Loading from './Loading'
 import BreakpointIndicator from '@/components/BreakpointIndicator'
 import GlobalLoader from '@/components/GlobalLoader'
+import { LoaderProvider } from '@/context/LoaderContext'
 
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
@@ -47,38 +48,40 @@ export default async function LocaleLayout({
           /> */}
         <NextIntlClientProvider>
           <Providers>
-            <div className='relative min-h-full w-full overflow-clip'>
-              <GlobalLoader />
-              <ReactLenis root />
-              <Toaster
-                position='bottom-right'
-                gutter={16}
-                toastOptions={{
-                  style: {
-                    border: '0px solid var(--background)',
-                    borderRadius: '12px',
-                    padding: '16px',
-                    color: 'var(--foreground)',
-                    backgroundColor: 'var(--background)',
-                    fontFamily: 'var(--font-goia-display)',
-                    boxShadow:
-                      '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
-                    fontWeight: '600'
-                  },
-                  success: {
-                    iconTheme: {
-                      primary: 'var(--foreground)',
-                      secondary: 'var(--background)'
+            <LoaderProvider>
+              <div className='relative min-h-full w-full overflow-clip'>
+                <GlobalLoader />
+                <ReactLenis root />
+                <Toaster
+                  position='bottom-right'
+                  gutter={16}
+                  toastOptions={{
+                    style: {
+                      border: '0px solid var(--background)',
+                      borderRadius: '12px',
+                      padding: '16px',
+                      color: 'var(--foreground)',
+                      backgroundColor: 'var(--background)',
+                      fontFamily: 'var(--font-goia-display)',
+                      boxShadow:
+                        '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
+                      fontWeight: '600'
+                    },
+                    success: {
+                      iconTheme: {
+                        primary: 'var(--foreground)',
+                        secondary: 'var(--background)'
+                      }
                     }
-                  }
-                }}
-              />
-              {/* <BreakpointIndicator /> */}
-              {/* <Grain /> */}
-              <Header />
+                  }}
+                />
+                {/* <BreakpointIndicator /> */}
+                {/* <Grain /> */}
+                <Header />
 
-              <main>{children}</main>
-            </div>
+                <main>{children}</main>
+              </div>
+            </LoaderProvider>
           </Providers>
         </NextIntlClientProvider>
         {/* </Suspense> */}

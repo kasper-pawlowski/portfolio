@@ -9,8 +9,10 @@ import {
 
 import Marquee from '../ui/Marquee'
 import GridWrapper from '../ui/GridWrapper'
+import { useLoader } from '@/context/LoaderContext'
 
 const Hero = () => {
+  const { hasInitialLoadFinished } = useLoader()
   const { scrollYProgress } = useScroll()
   const firstY = useMotionValue(0)
   const secondY = useMotionValue(0)
@@ -21,6 +23,8 @@ const Hero = () => {
     const newSecondY = 0 + latest * 300
     secondY.set(newSecondY)
   })
+
+  const baseDelay = hasInitialLoadFinished ? 0 : 2
 
   return (
     <>
@@ -36,7 +40,11 @@ const Hero = () => {
                 <motion.h1
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut', delay: 2 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut',
+                    delay: baseDelay
+                  }}
                   style={{ y: firstY }}
                   className='place-self-start'
                 >
@@ -45,7 +53,11 @@ const Hero = () => {
                 <motion.h1
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut', delay: 2.3 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut',
+                    delay: baseDelay + 0.3
+                  }}
                   style={{ y: secondY }}
                   className='text-foreground-light font-700 mt-auto self-end'
                 >
@@ -56,7 +68,11 @@ const Hero = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, ease: 'easeInOut', delay: 2.6 }}
+                transition={{
+                  duration: 0.5,
+                  ease: 'easeInOut',
+                  delay: baseDelay + 0.6
+                }}
                 className='aspect-square w-full lg:aspect-auto lg:h-full'
               >
                 <GridWrapper section='hero' />
@@ -71,7 +87,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeInOut', delay: 2 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
           className='bg-blob-accent-1 absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] opacity-70 blur-3xl'
         />
       </section>

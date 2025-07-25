@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 import Loading from '@/app/[locale]/Loading'
 import { AnimatePresence } from 'framer-motion'
+import { useLoader } from '@/context/LoaderContext'
 
 const GlobalLoader = () => {
   const [isLoading, setIsLoading] = useState(true)
+  const { setHasInitialLoadFinished } = useLoader()
 
   useEffect(() => {
     // Ustawiamy overflow na hidden gdy komponent się montuje
@@ -15,6 +17,7 @@ const GlobalLoader = () => {
 
     const timer = setTimeout(() => {
       setIsLoading(false)
+      setHasInitialLoadFinished(true)
       if (typeof document !== 'undefined') {
         document.body.style.overflow = 'unset'
       }

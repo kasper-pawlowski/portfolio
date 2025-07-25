@@ -42,14 +42,14 @@ export default function ProjectClient({
   translations
 }: ProjectClientProps) {
   const projectId = project.id
-  const containerRef = useRef<HTMLDivElement>(null)
+  const descriptionRef = useRef<HTMLDivElement>(null)
   const { isAnimating } = useAnimation()
 
   useEffect(() => {
     document.fonts.ready.then(() => {
-      if (!containerRef.current) return
+      if (!descriptionRef.current) return
 
-      containerRef.current.style.visibility = 'visible'
+      descriptionRef.current.style.visibility = 'visible'
 
       const { lines } = splitText('#description')
 
@@ -94,11 +94,16 @@ export default function ProjectClient({
           </motion.div>
           <div className='flex w-full flex-col gap-6'>
             <div className='flex flex-6/10 flex-col gap-2'>
-              <p className='font-500 font-display text-foreground-light lg:mt-5 lg:text-lg'>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className='font-500 font-display text-foreground-light lg:mt-5 lg:text-lg'
+              >
                 / {translations.description}
-              </p>
+              </motion.p>
               <p
-                ref={containerRef}
+                ref={descriptionRef}
                 id='description'
                 className='font-400 text-foreground text-sm lg:text-base'
               >
@@ -121,7 +126,12 @@ export default function ProjectClient({
               </div>
             </div>
           </div>
-          <div className='mt-5 flex gap-3'>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className='mt-5 flex gap-3'
+          >
             {project.liveLink !== '' && (
               <Link
                 href={project.liveLink}
@@ -140,14 +150,7 @@ export default function ProjectClient({
                 <GithubLogo className='github-logo h-4 w-4' />
               </Link>
             )}
-          </div>
-          {/* <Link
-            href='/#projects'
-            className='font-display text-foreground mt-auto hidden w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl lg:flex'
-          >
-            <MoveLeft strokeWidth={1} />
-            <p>{translations.back_button}</p>
-          </Link> */}
+          </motion.div>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -158,31 +161,29 @@ export default function ProjectClient({
           <Carousel projectId={projectId} />
         </motion.div>
         <div className='hidden h-full min-w-0 flex-1 flex-col items-end gap-2 lg:flex lg:basis-1/4'>
-          <p className='font-500 font-display text-foreground-light lg:text-lg'>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className='font-500 font-display text-foreground-light lg:text-lg'
+          >
             / {translations.technologies}
-          </p>
-          <div className='text-foreground font-400 flex w-[50%] flex-wrap justify-end gap-x-2 text-end text-sm lg:text-base'>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className='text-foreground font-400 flex w-[50%] flex-wrap justify-end gap-x-2 text-end text-sm lg:text-base'
+          >
             {project.technologies.map((technology, index) => (
               <div key={technology}>
                 <span>{technology}</span>
                 {index < project.technologies.length - 1 && <span> / </span>}
               </div>
             ))}
-          </div>
-          {/* <ProjectNavigation currentProjectId={projectId} totalProjects={8} /> */}
+          </motion.div>
         </div>
-        {/* <div className='absolute bottom-6 z-1 container flex justify-between lg:hidden'>
-          <Link
-            href='/#projects'
-            className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
-          >
-            <MoveLeft strokeWidth={1} />
-            <p>{translations.back_button}</p>
-          </Link>
-          <div className='flex items-end justify-end'>
-            <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
-          </div>
-        </div> */}
+
         <ProgressiveBlur
           className='pointer-events-none fixed bottom-0 left-0 z-0 h-[200px] w-screen'
           direction='bottom'

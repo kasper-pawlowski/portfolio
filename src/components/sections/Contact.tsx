@@ -25,7 +25,7 @@ const Contact = () => {
   return (
     <section id='contact' className='relative'>
       <div
-        className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        className='pointer-events-none absolute inset-0 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
       <div className='container mx-auto flex h-auto flex-col items-center py-20 lg:py-40'>
@@ -40,7 +40,7 @@ const Contact = () => {
           className='font-display relative text-center text-5xl font-black lg:text-7xl'
         >
           {t('title')}
-          <div className='bg-contact-background absolute top-1/2 left-1/2 z-[-2] h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
+          <div className='bg-contact-background absolute top-1/2 left-1/2 -z-1 h-[120%] w-[140%] -translate-x-1/2 -translate-y-1/2 rounded-4xl blur-2xl'></div>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
@@ -50,13 +50,13 @@ const Contact = () => {
             margin: '0px 0px -20px 0px'
           }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
-          className='font-600 text-foreground-light mt-5 text-xl'
+          className='font-600 text-foreground-light z-1 mt-5 text-xl'
         >
           {t('sub_title')}
         </motion.p>
         <a
           href='mailto:kasper.pawlowski04@gmail.com'
-          className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
+          className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background z-1 mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
           aria-label='Wyślij wiadomość email do kasper.pawlowski04@gmail.com'
           role='button'
         >
@@ -64,11 +64,11 @@ const Contact = () => {
         </a>
         <button
           onClick={handleCopyEmail}
-          className='font-600 mt-10 flex items-center justify-center gap-3'
+          className='font-600 z-1 mt-10 flex items-center justify-center gap-3'
         >
           <Copy size={20} /> <span>{t('copy_mail')}</span>
         </button>
-        <div className='mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
+        <div className='z-1 mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
           <a
             href='https://github.com/kasper-pawlowski'
             className='github-link flex items-center gap-5'

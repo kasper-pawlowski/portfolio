@@ -17,6 +17,7 @@ import { Menu, X } from 'lucide-react'
 import { ProgressiveBlur } from '../core/progressive-blur'
 import Logo from '../../../public/icons/logo.svg'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { useLenis } from 'lenis/react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -25,6 +26,7 @@ const Header = () => {
   const [mounted, setMounted] = useState(false)
 
   const t = useTranslations('Navigation')
+  const lenis = useLenis()
   const isLgUp = useBreakpoint('lg')
   const { scrollY } = useScroll()
 
@@ -112,6 +114,12 @@ const Header = () => {
     setIsMenuOpen(prev => !prev)
   }, [])
 
+  const handleScrollTo = (target: string) => {
+    if (lenis) {
+      lenis.scrollTo(target)
+    }
+  }
+
   if (!mounted) {
     return null
   }
@@ -135,7 +143,10 @@ const Header = () => {
           <Link
             href='/#hero'
             aria-label='Logo'
-            onClick={handleLogoClick}
+            onClick={() => {
+              handleLogoClick()
+              handleScrollTo('#hero')
+            }}
             className={`transition-colors duration-300 ${textColorClass}`}
           >
             <Logo className='h-[30px] w-[30px]' />
@@ -147,6 +158,7 @@ const Header = () => {
             <Link
               href='/#about'
               className={`transition-colors duration-300 ${textColorClass}`}
+              onClick={() => handleScrollTo('#about')}
             >
               {t('about')}
             </Link>
@@ -158,6 +170,7 @@ const Header = () => {
             <Link
               href='/#projects'
               className={`transition-colors duration-300 ${textColorClass}`}
+              onClick={() => handleScrollTo('#projects')}
             >
               {t('projects')}
             </Link>
@@ -169,6 +182,7 @@ const Header = () => {
             <Link
               href='/#contact'
               className={`transition-colors duration-300 ${textColorClass}`}
+              onClick={() => handleScrollTo('#contact')}
             >
               {t('contact')}
             </Link>

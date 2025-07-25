@@ -1,16 +1,27 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
+import { useLenis } from 'lenis/react'
 
 const Footer = () => {
   const t = useTranslations('Navigation')
+  const lenis = useLenis()
+
+  const handleScrollTo = (target: string) => {
+    if (lenis) {
+      lenis.scrollTo(target)
+    }
+  }
 
   return (
     <section id='footer' className='relative'>
       <div
-        className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+        className='pointer-events-none absolute inset-0 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
       <svg
-        className='text-foreground absolute -top-20 z-0 h-20 w-full rotate-180'
+        className='text-foreground absolute -top-20 -z-1 h-20 w-full rotate-180'
         viewBox='0 0 1200 64'
         preserveAspectRatio='none'
       >
@@ -45,23 +56,35 @@ const Footer = () => {
           className='block lg:hidden'
         />
       </svg>
-      <div className='text-background bg-foreground flex flex-col items-center gap-15 py-10'>
+      <div className='text-background bg-foreground z-1 flex flex-col items-center gap-15 py-10'>
         <div className='flex-3/5 items-center justify-center'>
           <nav className='flex items-center justify-center gap-3'>
-            <a href='#about' className='font-goia text-background font-500'>
+            <Link
+              href='#about'
+              className='font-goia text-background font-500 z-1'
+              onClick={() => handleScrollTo('#about')}
+            >
               {t('about')}
-            </a>
-            <span className='text-background text-lg'>・</span>
-            <a href='#projects' className='font-goia text-background font-500'>
+            </Link>
+            <span className='text-background z-1 text-lg'>・</span>
+            <Link
+              href='#projects'
+              className='font-goia text-background font-500 z-1'
+              onClick={() => handleScrollTo('#projects')}
+            >
               {t('projects')}
-            </a>
-            <span className='text-background text-lg'>・</span>
-            <a href='#contact' className='font-goia text-background font-500'>
+            </Link>
+            <span className='text-background z-1 text-lg'>・</span>
+            <Link
+              href='#contact'
+              className='font-goia text-background font-500 z-1'
+              onClick={() => handleScrollTo('#contact')}
+            >
               {t('contact')}
-            </a>
+            </Link>
           </nav>
         </div>
-        <p className='mt-auto'>© 2025 Kasper Pawłowski</p>
+        <p className='z-1 mt-auto'>© 2025 Kasper Pawłowski</p>
       </div>
     </section>
   )

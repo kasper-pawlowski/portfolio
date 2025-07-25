@@ -14,10 +14,6 @@ const AnimationContext = createContext<AnimationContextType | undefined>(
 export function AnimationProvider({ children }: { children: React.ReactNode }) {
   const [isAnimating, setIsAnimating] = useState(false)
 
-  useEffect(() => {
-    console.log(isAnimating)
-  }, [isAnimating])
-
   return (
     <AnimationContext.Provider value={{ isAnimating, setIsAnimating }}>
       {children}
