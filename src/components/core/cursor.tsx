@@ -38,6 +38,7 @@ export function Cursor({
   const cursorY = useMotionValue(0)
   const cursorRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(!attachToParent)
+  const mousePositionRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -45,6 +46,25 @@ export function Cursor({
       cursorY.set(window.innerHeight / 2)
     }
   }, [])
+
+  // Funkcja do sprawdzania czy mysz jest nad rodzicem
+  const checkMouseOverParent = () => {
+    if (!attachToParent || !cursorRef.current) return
+
+    const parent = cursorRef.current.parentElement
+    if (!parent) return
+
+    const rect = parent.getBoundingClientRect()
+    const { x, y } = mousePositionRef.current
+
+    const isOver =
+      x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+
+    if (isOver !== isVisible) {
+      setIsVisible(isOver)
+      parent.style.cursor = isOver ? 'none' : 'auto'
+    }
+  }
 
   useEffect(() => {
     if (!attachToParent) {
@@ -54,52 +74,58 @@ export function Cursor({
     }
 
     const updatePosition = (e: MouseEvent) => {
+      mousePositionRef.current = { x: e.clientX, y: e.clientY }
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
       onPositionChange?.(e.clientX, e.clientY)
+
+      // Sprawdź czy mysz jest nad rodzicem przy każdym ruchu
+      if (attachToParent) {
+        checkMouseOverParent()
+      }
+    }
+
+    const handleScroll = () => {
+      // Sprawdź pozycję myszy po scrollowaniu
+      if (attachToParent) {
+        checkMouseOverParent()
+      }
     }
 
     document.addEventListener('mousemove', updatePosition)
+    document.addEventListener('scroll', handleScroll, true) // true dla capture phase
+    window.addEventListener('resize', checkMouseOverParent)
 
     return () => {
       document.removeEventListener('mousemove', updatePosition)
+      document.removeEventListener('scroll', handleScroll, true)
+      window.removeEventListener('resize', checkMouseOverParent)
     }
-  }, [cursorX, cursorY, onPositionChange])
+  }, [cursorX, cursorY, onPositionChange, attachToParent, isVisible])
 
   const cursorXSpring = useSpring(cursorX, springConfig || { duration: 0 })
   const cursorYSpring = useSpring(cursorY, springConfig || { duration: 0 })
 
   useEffect(() => {
-    const handleVisibilityChange = (visible: boolean) => {
-      setIsVisible(visible)
-    }
-
     if (attachToParent && cursorRef.current) {
       const parent = cursorRef.current.parentElement
       if (parent) {
-        parent.addEventListener('mouseenter', () => {
+        const handleMouseEnter = () => {
+          setIsVisible(true)
           parent.style.cursor = 'none'
-          handleVisibilityChange(true)
-        })
-        parent.addEventListener('mouseleave', () => {
-          parent.style.cursor = 'auto'
-          handleVisibilityChange(false)
-        })
-      }
-    }
+        }
 
-    return () => {
-      if (attachToParent && cursorRef.current) {
-        const parent = cursorRef.current.parentElement
-        if (parent) {
-          parent.removeEventListener('mouseenter', () => {
-            parent.style.cursor = 'none'
-            handleVisibilityChange(true)
-          })
-          parent.removeEventListener('mouseleave', () => {
-            parent.style.cursor = 'auto'
-            handleVisibilityChange(false)
-          })
+        const handleMouseLeave = () => {
+          setIsVisible(false)
+          parent.style.cursor = 'auto'
+        }
+
+        parent.addEventListener('mouseenter', handleMouseEnter)
+        parent.addEventListener('mouseleave', handleMouseLeave)
+
+        return () => {
+          parent.removeEventListener('mouseenter', handleMouseEnter)
+          parent.removeEventListener('mouseleave', handleMouseLeave)
         }
       }
     }
