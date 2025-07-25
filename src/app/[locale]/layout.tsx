@@ -11,7 +11,6 @@ import Image from 'next/image'
 import Providers from '@/components/providers'
 import Header from '@/components/layout/Header'
 import { Suspense } from 'react'
-import NextTopLoader from 'nextjs-toploader'
 
 import Grain from '@/components/Grain'
 import Loading from './Loading'
@@ -47,51 +46,46 @@ export default async function LocaleLayout({
     // <ViewTransition>
     <html lang={locale} suppressHydrationWarning>
       <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
-        {/* <Suspense fallback={<Loading />}> */}
-        {/* <NextTopLoader
-          height={10}
-          template='<div class="bar" role="bar"><div class="peg"></div></div> 
-          <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-          /> */}
-        <NextIntlClientProvider>
-          <Providers>
-            <LoaderProvider>
-              <div className='relative min-h-full w-full overflow-clip'>
-                <GlobalLoader />
-                <ReactLenis root />
-                <Toaster
-                  position='bottom-right'
-                  gutter={16}
-                  toastOptions={{
-                    style: {
-                      border: '0px solid var(--background)',
-                      borderRadius: '12px',
-                      padding: '16px',
-                      color: 'var(--foreground)',
-                      backgroundColor: 'var(--background)',
-                      fontFamily: 'var(--font-goia-display)',
-                      boxShadow:
-                        '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
-                      fontWeight: '600'
-                    },
-                    success: {
-                      iconTheme: {
-                        primary: 'var(--foreground)',
-                        secondary: 'var(--background)'
+        <Suspense fallback={<Loading />}>
+          <NextIntlClientProvider>
+            <Providers>
+              <LoaderProvider>
+                <div className='relative min-h-full w-full overflow-clip'>
+                  <GlobalLoader />
+                  <ReactLenis root />
+                  <Toaster
+                    position='bottom-right'
+                    gutter={16}
+                    toastOptions={{
+                      style: {
+                        border: '0px solid var(--background)',
+                        borderRadius: '12px',
+                        padding: '16px',
+                        color: 'var(--foreground)',
+                        backgroundColor: 'var(--background)',
+                        fontFamily: 'var(--font-goia-display)',
+                        boxShadow:
+                          '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
+                        fontWeight: '600'
+                      },
+                      success: {
+                        iconTheme: {
+                          primary: 'var(--foreground)',
+                          secondary: 'var(--background)'
+                        }
                       }
-                    }
-                  }}
-                />
-                {/* <BreakpointIndicator /> */}
-                {/* <Grain /> */}
-                <Header />
+                    }}
+                  />
+                  {/* <BreakpointIndicator /> */}
+                  {/* <Grain /> */}
+                  <Header />
 
-                <main>{children}</main>
-              </div>
-            </LoaderProvider>
-          </Providers>
-        </NextIntlClientProvider>
-        {/* </Suspense> */}
+                  <main>{children}</main>
+                </div>
+              </LoaderProvider>
+            </Providers>
+          </NextIntlClientProvider>
+        </Suspense>
       </body>
     </html>
     // </ViewTransition>
