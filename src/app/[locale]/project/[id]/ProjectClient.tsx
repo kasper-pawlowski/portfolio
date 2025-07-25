@@ -11,6 +11,7 @@ import { useEffect, useRef, type ReactNode } from 'react'
 import VerticalCutReveal from '@/components/core/vertical-cut-reveal'
 import FlipText from '@/components/core/text-effect-flipper'
 import { splitText } from 'motion-plus'
+import { useAnimation } from '@/context/AnimationContext'
 
 // Typy zgodne z page.tsx
 interface Project {
@@ -42,6 +43,7 @@ export default function ProjectClient({
 }: ProjectClientProps) {
   const projectId = project.id
   const containerRef = useRef<HTMLDivElement>(null)
+  const { isAnimating } = useAnimation()
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -66,7 +68,9 @@ export default function ProjectClient({
 
   return (
     <>
-      <div
+      <motion.div
+        animate={{ opacity: isAnimating ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
         id='project'
         className='project-padding relative container flex h-svh w-full flex-col pb-10 lg:flex-row lg:gap-5 lg:pb-20'
       >
@@ -137,13 +141,13 @@ export default function ProjectClient({
               </Link>
             )}
           </div>
-          <Link
+          {/* <Link
             href='/#projects'
             className='font-display text-foreground mt-auto hidden w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl lg:flex'
           >
             <MoveLeft strokeWidth={1} />
             <p>{translations.back_button}</p>
-          </Link>
+          </Link> */}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -165,9 +169,9 @@ export default function ProjectClient({
               </div>
             ))}
           </div>
-          <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
+          {/* <ProjectNavigation currentProjectId={projectId} totalProjects={8} /> */}
         </div>
-        <div className='absolute bottom-6 z-1 container flex justify-between lg:hidden'>
+        {/* <div className='absolute bottom-6 z-1 container flex justify-between lg:hidden'>
           <Link
             href='/#projects'
             className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
@@ -178,16 +182,12 @@ export default function ProjectClient({
           <div className='flex items-end justify-end'>
             <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
           </div>
-        </div>
+        </div> */}
         <ProgressiveBlur
           className='pointer-events-none fixed bottom-0 left-0 z-0 h-[200px] w-screen'
           direction='bottom'
         />
-        {/* <div
-          className='hero-noise pointer-events-none absolute top-0 left-0 -z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
-          aria-hidden='true'
-        /> */}
-      </div>
+      </motion.div>
     </>
   )
 }

@@ -1,6 +1,10 @@
+import ProjectNavigation from '@/components/ui/ProjectNavigation'
 import ProjectClient from './ProjectClient'
 import projects from '@/data/projects.json'
 import { getTranslations } from 'next-intl/server'
+import Link from 'next/link'
+import { MoveLeft } from 'lucide-react'
+import { AnimationProvider } from '@/context/AnimationContext'
 
 type Project = {
   id: number
@@ -46,5 +50,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     projectDescription: t(`${project.slug}.description`)
   }
 
-  return <ProjectClient project={project} translations={translations} />
+  return (
+    <>
+      <AnimationProvider>
+        <div
+          className='hero-noise pointer-events-none absolute top-0 left-0 -z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
+          aria-hidden='true'
+        />
+        <ProjectClient project={project} translations={translations} />
+        <div className='absolute bottom-5 container mx-auto flex justify-between lg:bottom-10'>
+          <Link
+            href='/#projects'
+            className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full px-6 py-2 text-xl'
+          >
+            <MoveLeft strokeWidth={1} />
+            <p>{translations.back_button}</p>
+          </Link>
+          <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
+        </div>
+      </AnimationProvider>
+    </>
+  )
 }
