@@ -60,13 +60,22 @@ const Header = () => {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('overflow-hidden')
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'hidden'
+      }
     } else {
       document.body.classList.remove('overflow-hidden')
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'unset'
+      }
     }
 
     // Cleanup przy unmount
     return () => {
       document.body.classList.remove('overflow-hidden')
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'unset'
+      }
     }
   }, [isMenuOpen])
 

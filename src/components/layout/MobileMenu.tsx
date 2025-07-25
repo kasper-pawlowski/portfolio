@@ -17,7 +17,7 @@ const MobileMenu = ({ onClose }: { onClose: () => void }) => {
   }
 
   return (
-    <motion.div className='bg-background/70 text-foreground relative container mx-auto flex h-svh w-screen flex-col px-8 backdrop-blur-lg'>
+    <motion.div className='bg-background/70 text-foreground fixed container mx-auto flex h-screen w-screen flex-col px-8 backdrop-blur-lg'>
       <nav className='font-700 flex w-full flex-4/6 flex-col justify-center gap-15 text-4xl'>
         <Link
           href='/#about'
@@ -65,10 +65,6 @@ const MobileMenu = ({ onClose }: { onClose: () => void }) => {
           <LanguageToggle />
         </div>
       </div>
-      {/* <div
-        className='pointer-events-none absolute inset-0 z-0 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
-        aria-hidden='true'
-      /> */}
     </motion.div>
   )
 }
