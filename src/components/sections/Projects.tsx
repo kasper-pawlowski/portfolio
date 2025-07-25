@@ -12,9 +12,9 @@ const Projects = () => {
   const t = useTranslations('Projects')
 
   return (
-    <>
+    <section id='projects'>
       {/* Mobile */}
-      <section id='projects' className='relative lg:hidden'>
+      <div className='relative lg:hidden'>
         <div
           className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
           aria-hidden='true'
@@ -25,7 +25,7 @@ const Projects = () => {
             <ProjectCard project={project} key={project.id} />
           ))}
         </div>
-      </section>
+      </div>
 
       {/* Desktop */}
       <section
@@ -149,7 +149,7 @@ const Projects = () => {
           aria-hidden='true'
         />
       </section>
-    </>
+    </section>
   )
 }
 
