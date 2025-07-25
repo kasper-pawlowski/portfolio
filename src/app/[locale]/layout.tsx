@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import '../globals.css'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
@@ -22,6 +22,13 @@ import { LoaderProvider } from '@/context/LoaderContext'
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
   description: 'Personal website of Kasper Pawłowski'
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false
 }
 
 export default async function LocaleLayout({

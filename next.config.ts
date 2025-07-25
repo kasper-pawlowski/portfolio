@@ -18,7 +18,6 @@ const nextConfig: NextConfig = {
                     name: 'preset-default',
                     params: {
                       overrides: {
-                        // customize default plugin options
                         removeViewBox: false
                       }
                     }
