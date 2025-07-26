@@ -6,9 +6,8 @@ import Link from 'next/link'
 import GithubLogo from '../../../../../public/icons/github.svg'
 import ProjectNavigation from '@/components/ui/ProjectNavigation'
 import { ProgressiveBlur } from '@/components/core/progressive-blur'
-import { animate, AnimatePresence, motion, stagger } from 'framer-motion'
+import { animate, AnimatePresence, delay, motion, stagger } from 'framer-motion'
 import { useEffect, useRef, type ReactNode } from 'react'
-import VerticalCutReveal from '@/components/core/vertical-cut-reveal'
 import FlipText from '@/components/core/text-effect-flipper'
 import { splitText } from 'motion-plus'
 import { useAnimation } from '@/context/AnimationContext'
@@ -66,6 +65,22 @@ export default function ProjectClient({
     })
   }, [])
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04, // opóźnienie między dziećmi
+        when: 'beforeChildren' // kontener animuje się najpierw
+      }
+    }
+  }
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 0 },
+    visible: { opacity: 1, y: 0 }
+  }
+
   return (
     <>
       <motion.div
@@ -74,15 +89,15 @@ export default function ProjectClient({
         id='project'
         className='project-padding relative container flex h-svh w-full flex-col pb-10 lg:flex-row lg:gap-5 lg:pb-20'
       >
-        <motion.div
-          // initial={{ opacity: 0, y: 50 }}
-          // animate={{ opacity: 1, y: 0 }}
-          // transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.2 }}
-          className='flex h-full min-w-0 flex-1 flex-col lg:basis-1/4 lg:gap-5'
-        >
-          <h1 className='font-900 font-display text-4xl break-words lg:text-6xl'>
+        <motion.div className='flex h-full min-w-0 flex-1 flex-col lg:basis-1/4 lg:gap-5'>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className='font-900 font-display text-4xl break-words lg:text-6xl'
+          >
             {project.nameKey}
-          </h1>
+          </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -102,28 +117,38 @@ export default function ProjectClient({
               >
                 / {translations.description}
               </motion.p>
-              <p
+              <motion.p
                 ref={descriptionRef}
                 id='description'
                 className='font-400 text-foreground text-sm lg:text-base'
               >
                 {translations.projectDescription}
-              </p>
+              </motion.p>
             </div>
             <div className='flex flex-4/10 flex-col gap-2 lg:hidden'>
-              <p className='font-500 font-display text-foreground-light'>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className='font-500 font-display text-foreground-light'
+              >
                 / {translations.technologies}
-              </p>
-              <div className='text-foreground font-400 flex flex-wrap items-center gap-x-2 text-sm'>
+              </motion.p>
+              <motion.div
+                variants={containerVariants}
+                initial='hidden'
+                animate='visible'
+                className='text-foreground font-400 flex flex-wrap items-center gap-x-2 text-sm'
+              >
                 {project.technologies.map((technology, index) => (
-                  <div key={technology}>
+                  <motion.div key={technology} variants={childVariants}>
                     <span>{technology}</span>
                     {index < project.technologies.length - 1 && (
                       <span> / </span>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
           <motion.div
@@ -170,16 +195,16 @@ export default function ProjectClient({
             / {translations.technologies}
           </motion.p>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            variants={containerVariants}
+            initial='hidden'
+            animate='visible'
             className='text-foreground font-400 flex w-[50%] flex-wrap justify-end gap-x-2 text-end text-sm lg:text-base'
           >
             {project.technologies.map((technology, index) => (
-              <div key={technology}>
+              <motion.div key={technology} variants={childVariants}>
                 <span>{technology}</span>
                 {index < project.technologies.length - 1 && <span> / </span>}
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

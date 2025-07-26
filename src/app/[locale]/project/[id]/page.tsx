@@ -59,7 +59,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <ProjectClient project={project} translations={translations} />
       <div className='absolute inset-x-0 bottom-5 container flex justify-between lg:bottom-10'>
-        {/* <div className='h-full w-full bg-amber-300'>asASDASDASDASDASDd</div> */}
         <Link
           href='/#projects'
           className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full py-2 text-xl'
