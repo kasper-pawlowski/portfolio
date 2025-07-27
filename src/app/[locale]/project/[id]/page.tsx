@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <div className='absolute inset-x-0 bottom-5 container flex justify-between lg:bottom-10'>
         <Link
           href='/#projects'
-          className='font-display text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full py-2 text-xl'
+          className='font-display group text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full py-2 text-xl'
         >
           <MoveLeft strokeWidth={1} />
           <p>{translations.back_button}</p>

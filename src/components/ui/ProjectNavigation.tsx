@@ -52,7 +52,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   return (
     <div className='relative flex h-35 w-35 items-center justify-center gap-3 rounded-full transition duration-300 ease-out hover:backdrop-blur-sm lg:h-60 lg:w-60 lg:gap-5'>
       <Link
-        className={`relative z-1 translate-x-2 before:absolute before:-inset-2 before:content-[''] lg:translate-x-0 ${
+        className={`group relative z-1 translate-x-2 before:absolute before:-inset-2 before:content-[''] lg:translate-x-0 ${
           isAnimating ? 'pointer-events-none' : ''
         }`}
         href={`/project/${current === 1 ? totalProjects : current - 1}`}
@@ -72,7 +72,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
       </div>
 
       <Link
-        className={`-translate-x-2 before:absolute before:-inset-2 before:content-[''] lg:-translate-x-0 ${
+        className={`group -translate-x-2 before:absolute before:-inset-2 before:content-[''] lg:-translate-x-0 ${
           isAnimating ? 'pointer-events-none' : ''
         }`}
         href={`/project/${current === totalProjects ? 1 : current + 1}`}

@@ -8,7 +8,6 @@ import ProjectNavigation from '@/components/ui/ProjectNavigation'
 import { ProgressiveBlur } from '@/components/core/progressive-blur'
 import { animate, AnimatePresence, delay, motion, stagger } from 'framer-motion'
 import { useEffect, useRef, type ReactNode } from 'react'
-import FlipText from '@/components/core/text-effect-flipper'
 import { splitText } from 'motion-plus'
 import { useAnimation } from '@/context/AnimationContext'
 
@@ -163,6 +162,7 @@ export default function ProjectClient({
                 className='border-foreground flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1'
               >
                 <span>Live</span>
+
                 <ArrowUpRight size={16} />
               </Link>
             )}
