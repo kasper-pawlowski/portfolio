@@ -77,7 +77,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
     <div className='relative'>
       <motion.button
         ref={buttonRef}
-        className={`bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl border-1 border-neutral-200/20 px-4 py-2 backdrop-blur-lg transition-colors duration-300 ${textColorClass}`}
+        className={`bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl border-1 border-neutral-200/20 px-4 py-2 backdrop-blur-lg transition-colors duration-200 ${textColorClass}`}
         onClick={toggleDropdown}
         aria-expanded={isDropdownOpen}
         aria-haspopup='true'
@@ -116,7 +116,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               onClick={closeDropdown}
               scroll={false}
               className={clsx(
-                'flex gap-3 rounded-lg py-4 transition-colors duration-300',
+                'flex gap-3 rounded-lg py-4 transition-colors duration-200',
                 locale === 'pl' && 'bg-white/20 backdrop-blur-lg',
                 locale !== 'pl' && 'hover:bg-white/15',
                 textColorClass
@@ -142,7 +142,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               onClick={closeDropdown}
               scroll={false}
               className={clsx(
-                'flex gap-3 rounded-lg py-4 transition-colors duration-300',
+                'flex gap-3 rounded-lg py-4 transition-colors duration-200',
                 locale === 'en' && 'bg-white/20 backdrop-blur-lg',
                 locale !== 'en' && 'hover:bg-white/15',
                 textColorClass

@@ -13,7 +13,7 @@ const SoundToggle = ({ textColorClass }: SoundToggleProps) => {
       onClick={() => {
         setSoundEnabled(e => !e)
       }}
-      className={`${textColorClass} transition-colors duration-300`}
+      className={`${textColorClass} transition-colors duration-200`}
     >
       {soundEnabled ? <Volume2 size={30} /> : <VolumeX size={30} />}
     </button>

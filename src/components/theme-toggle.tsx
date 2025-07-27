@@ -23,7 +23,7 @@ const ThemeToggle = ({ textColorClass }: ThemeToggleProps) => {
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
       }}
-      className={`${textColorClass} transition-colors duration-300`}
+      className={`${textColorClass} transition-colors duration-200`}
     >
       {resolvedTheme === 'dark' ? <Moon size={30} /> : <Sun size={30} />}
     </button>

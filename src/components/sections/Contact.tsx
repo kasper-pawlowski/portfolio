@@ -64,7 +64,7 @@ const Contact = () => {
         </a>
         <button
           onClick={handleCopyEmail}
-          className='font-600 z-1 mt-10 flex items-center justify-center gap-3'
+          className='font-500 z-1 mt-10 flex items-center justify-center gap-3 duration-200 ease-in-out active:translate-y-1'
         >
           <Copy size={20} /> <span>{t('copy_mail')}</span>
         </button>

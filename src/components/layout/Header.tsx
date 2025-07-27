@@ -156,7 +156,7 @@ const Header = () => {
               handleLogoClick()
               handleScrollTo('#hero')
             }}
-            className={`transition-colors duration-300 ${textColorClass}`}
+            className={`transition-colors duration-200 ${textColorClass}`}
           >
             <Logo className='h-[30px] w-[30px]' />
           </Link>
@@ -166,31 +166,31 @@ const Header = () => {
           <nav className='flex items-center justify-center gap-10'>
             <Link
               href='/#about'
-              className={`transition-colors duration-300 ${textColorClass}`}
+              className={`duration-200 ease-in-out ${textColorClass}`}
               onClick={() => handleScrollTo('#about')}
             >
               {t('about')}
             </Link>
             <span
-              className={`text-2xl transition-colors duration-300 ${separatorColorClass}`}
+              className={`text-2xl transition-colors duration-200 ${separatorColorClass}`}
             >
               ・
             </span>
             <Link
               href='/#projects'
-              className={`transition-colors duration-300 ${textColorClass}`}
+              className={`duration-200 ease-in-out${textColorClass}`}
               onClick={() => handleScrollTo('#projects')}
             >
               {t('projects')}
             </Link>
             <span
-              className={`text-2xl transition-colors duration-300 ${separatorColorClass}`}
+              className={`text-2xl transition-colors duration-200 ${separatorColorClass}`}
             >
               ・
             </span>
             <Link
               href='/#contact'
-              className={`transition-colors duration-300 ${textColorClass}`}
+              className={`duration-200 ease-in-out ${textColorClass}`}
               onClick={() => handleScrollTo('#contact')}
             >
               {t('contact')}
@@ -208,7 +208,7 @@ const Header = () => {
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
-          className={`${textColorClass} transition-colors duration-300 lg:hidden`}
+          className={`${textColorClass} transition-colors duration-200 lg:hidden`}
         >
           {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
