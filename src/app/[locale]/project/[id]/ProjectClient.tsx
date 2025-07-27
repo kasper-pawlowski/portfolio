@@ -159,6 +159,7 @@ export default function ProjectClient({
             {project.liveLink !== '' && (
               <Link
                 href={project.liveLink}
+                target='_blank'
                 className='border-foreground hover:bg-foreground hover:text-background flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1 duration-200 ease-in-out active:translate-y-1'
               >
                 <span>Live</span>
@@ -169,6 +170,7 @@ export default function ProjectClient({
             {project.githubLink !== '' && (
               <Link
                 href={project.githubLink}
+                target='_blank'
                 className='border-foreground hover:bg-foreground hover:text-background flex items-center justify-center gap-2 rounded-full border-1 px-3 py-1 duration-200 ease-in-out active:translate-y-1'
               >
                 <span>Github</span>

@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
+import Link from 'next/link'
 
 const Contact = () => {
   const t = useTranslations('Contact')
@@ -69,26 +70,28 @@ const Contact = () => {
           <Copy size={20} /> <span>{t('copy_mail')}</span>
         </button>
         <div className='z-1 mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
-          <a
+          <Link
             href='https://github.com/kasper-pawlowski'
             className='github-link flex items-center gap-5'
+            target='_blank'
           >
             <GithubLogo className='github-logo h-10 w-10 duration-300' />
             <div className='flex flex-col gap-1'>
               <span className='font-700 text-xl'>GitHub</span>
               <p className='text-lg'>@kasper-pawlowski</p>
             </div>
-          </a>
-          <a
+          </Link>
+          <Link
             href='https://linkedin.com/in/kasper-pawlowski'
             className='linkedin-link flex items-center gap-5'
+            target='_blank'
           >
             <LinkedinLogo className='linkedin-logo h-10 w-10 duration-300' />
             <div className='flex flex-col gap-1'>
               <span className='font-700 text-xl'>LinkedIn</span>
               <p className='text-lg'>@kasper-pawlowski</p>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
