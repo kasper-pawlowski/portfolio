@@ -73,7 +73,7 @@ const Hero = () => {
                   ease: 'easeInOut',
                   delay: baseDelay + 0.6
                 }}
-                className='aspect-square w-full lg:aspect-auto lg:h-full'
+                className='aspect-square max-h-180 w-full lg:aspect-auto lg:h-full'
               >
                 <GridWrapper section='hero' />
               </motion.div>

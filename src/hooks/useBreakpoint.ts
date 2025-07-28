@@ -5,7 +5,7 @@ const breakpoints: Record<
   'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'fhd' | 'qhd',
   string
 > = {
-  sm: '(min-width: 40rem)', // 640px
+  sm: '(min-width: 0rem)',
   md: '(min-width: 48rem)', // 768px
   lg: '(min-width: 64rem)', // 1024px
   xl: '(min-width: 80rem)', // 1280px

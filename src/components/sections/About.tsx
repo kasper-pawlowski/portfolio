@@ -35,7 +35,7 @@ const About = () => {
       />
       <motion.div
         style={{ y: containerY }}
-        className='relative z-1 container mx-auto flex flex-col gap-20 py-20 font-black lg:flex-row lg:py-40'
+        className='relative z-1 container mx-auto flex flex-col gap-10 py-20 font-black lg:flex-row lg:gap-20 lg:py-40'
       >
         <div className='flex flex-3/5 flex-col gap-10'>
           <motion.h1
@@ -97,7 +97,7 @@ const About = () => {
             </motion.span>
           </p>
         </div>
-        <div className='relative z-2 flex h-auto flex-2/5 flex-col pt-40'>
+        <div className='relative z-2 flex h-60 flex-col lg:h-auto lg:flex-2/5 lg:pt-40'>
           <div className='bg-background relative h-full w-full'>
             <GridWrapper section='about' />
             <div
