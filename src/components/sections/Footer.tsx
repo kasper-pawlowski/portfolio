@@ -66,7 +66,9 @@ const Footer = () => {
             >
               {t('about')}
             </Link>
-            <span className='text-background z-1 text-lg'>・</span>
+            <span className='text-background z-1 cursor-default text-lg'>
+              ・
+            </span>
             <Link
               href='#projects'
               className='font-goia text-background font-500 z-1'
@@ -74,7 +76,9 @@ const Footer = () => {
             >
               {t('projects')}
             </Link>
-            <span className='text-background z-1 text-lg'>・</span>
+            <span className='text-background z-1 cursor-default text-lg'>
+              ・
+            </span>
             <Link
               href='#contact'
               className='font-goia text-background font-500 z-1'

@@ -172,7 +172,7 @@ const Header = () => {
               {t('about')}
             </Link>
             <span
-              className={`text-2xl transition-colors duration-200 ${separatorColorClass}`}
+              className={`cursor-default text-2xl transition-colors duration-200 ${separatorColorClass}`}
             >
               ・
             </span>
@@ -184,7 +184,7 @@ const Header = () => {
               {t('projects')}
             </Link>
             <span
-              className={`text-2xl transition-colors duration-200 ${separatorColorClass}`}
+              className={`cursor-default text-2xl transition-colors duration-200 ${separatorColorClass}`}
             >
               ・
             </span>
