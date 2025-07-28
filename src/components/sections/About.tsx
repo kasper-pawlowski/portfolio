@@ -1,31 +1,12 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
 import Photo from '../ui/Photo'
 import GridWrapper from '../ui/GridWrapper'
 import { useTranslations } from 'next-intl'
-import {
-  animate,
-  motion,
-  stagger,
-  useInView,
-  useMotionValue,
-  useMotionValueEvent,
-  useScroll,
-  useTransform
-} from 'motion/react'
-import { splitText } from 'motion-plus'
-import { AnimateNumber } from 'motion-plus-react'
+import { motion } from 'motion/react'
 
 const About = () => {
   const t = useTranslations('About')
-
-  const { scrollYProgress } = useScroll()
-  const containerY = useMotionValue(100)
-  useMotionValueEvent(scrollYProgress, 'change', latest => {
-    const newY = 100 - latest * 300
-    containerY.set(newY)
-  })
 
   return (
     <section id='about' className='relative'>
@@ -33,16 +14,13 @@ const About = () => {
         className='pointer-events-none absolute inset-0 z-1 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
-      <motion.div
-        style={{ y: containerY }}
-        className='relative z-1 container mx-auto flex flex-col gap-10 py-20 font-black lg:flex-row lg:gap-20 lg:py-40'
-      >
+      <div className='relative z-1 container mx-auto flex flex-col gap-10 py-20 font-black lg:flex-row lg:gap-20 lg:py-40'>
         <div className='flex flex-3/5 flex-col gap-10'>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{
-              once: false,
+              once: true,
               margin: '0px 0px -20px 0px'
             }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -55,7 +33,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{
-                once: false,
+                once: true,
                 margin: '0px 0px -50px 0px'
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -66,7 +44,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{
-                once: false,
+                once: true,
                 margin: '0px 0px -50px 0px'
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -77,7 +55,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{
-                once: false,
+                once: true,
                 margin: '0px 0px -50px 0px'
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -88,7 +66,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{
-                once: false,
+                once: true,
                 margin: '0px 0px -50px 0px'
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -107,7 +85,7 @@ const About = () => {
           </div>
           <Photo />
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

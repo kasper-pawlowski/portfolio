@@ -14,7 +14,7 @@ export const AnimatedProjectTitleMobile = ({ children }: PropsWithChildren) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{
-        once: false,
+        once: true,
         margin: '0px 0px -20px 0px'
       }}
       transition={{ duration: 0.7, ease: 'easeInOut' }}
