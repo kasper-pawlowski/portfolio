@@ -13,11 +13,14 @@
     --projects-grid-background-background: #c4c2bb;
 
     --blob-accent-1: #ff6f00;
+    --blob-accent-2: #ff5500;
 
-    --svg-accent-1: #ff9500ba;
-    --svg-accent-2: #ff0000c3;
+    --svg-accent-1: #ff950092;
+    --svg-accent-2: #ff000092;
 
     --grid-color: #8a8a8a;
+    --grid-hover: #f97316;
+    --grid-hover-shadow: #fdba74;
 
     --header-size: 62px;
     --marquee-size: 80px;
@@ -31,15 +34,18 @@
 
     --github-icon-color: #ffffff;
     --email-background: #303030;
-    --contact-background: #bcbcbc76;
+    --contact-background: #cfc1b270;
     --projects-grid-background-background: #8a8a8a;
 
-    --blob-accent-1: #c4c2bb;
+    --blob-accent-1: #76593d;
+    --blob-accent-2: #938682;
 
     --grid-color: #8a8a8a;
+    --grid-hover: #cfc1b2;
+    --grid-hover-shadow: #cec6bd;
 
-    --svg-accent-1: #f7dab1;
-    --svg-accent-2: #8f8f8f;
+    --svg-accent-1: #f6a043d9;
+    --svg-accent-2: #bf806bcb;
   }
 
   html {
@@ -165,11 +171,14 @@
   --color-projects-grid-background: var(--projects-grid-background-background);
 
   --color-blob-accent-1: var(--blob-accent-1);
+  --color-blob-accent-2: var(--blob-accent-2);
 
   --color-svg-accent-1: var(--svg-accent-1);
   --color-svg-accent-2: var(--svg-accent-2);
 
   --color-grid-color: var(--grid-color);
+  --color-grid-hover: var(--grid-hover);
+  --color-grid-hover-shadow: var(--grid-hover-shadow);
 
   --font-weight-400: 400;
   --font-weight-500: 500;

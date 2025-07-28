@@ -88,8 +88,21 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
-          className='bg-blob-accent-1 absolute -bottom-30 -left-[5vw] z-1 h-60 w-[110vw] opacity-70 blur-3xl'
+          className='from-blob-accent-1 to-blob-accent-2 qhd:h-60 qhd:-bottom-20 absolute -bottom-5 -left-[15vw] z-1 h-30 w-[130vw] bg-linear-to-b blur-3xl lg:-bottom-10 lg:h-40'
         />
+
+        {/* <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
+          className='bg-blob-accent-2 absolute -bottom-20 -left-[5vw] z-1 h-30 w-[110vw] opacity-70 blur-3xl'
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
+          className='bg-blob-accent-1 absolute -bottom-20 -left-[5vw] z-1 h-60 w-[110vw] opacity-70 blur-3xl'
+        /> */}
       </section>
     </>
   )

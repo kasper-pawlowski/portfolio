@@ -227,9 +227,9 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
           ref={i === 0 ? itemRef : null}
           className={`border-grid-color box-border border-1 transition-all duration-100 ease-out ${
             isHovered
-              ? 'bg-orange-500'
+              ? 'bg-grid-hover'
               : isInTrail
-                ? 'bg-orange-300'
+                ? 'bg-grid-hover-shadow'
                 : 'bg-transparent'
           } ${!isHovered ? 'duration-1000' : ''}`}
           key={i}
