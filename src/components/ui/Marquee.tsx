@@ -13,6 +13,7 @@ const Marquee = () => {
         scrollSpringConfig={{ damping: 50, stiffness: 400 }}
         useScrollVelocity={true}
         direction='right'
+        scrollContainer={null}
       >
         <Divider className='text-grid-color h-full' />
       </SimpleMarquee>
