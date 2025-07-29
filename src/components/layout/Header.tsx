@@ -178,7 +178,7 @@ const Header = () => {
             </span>
             <Link
               href='/#projects'
-              className={`duration-200 ease-in-out${textColorClass}`}
+              className={`duration-200 ease-in-out ${textColorClass}`}
               onClick={() => handleScrollTo('#projects')}
             >
               {t('projects')}
