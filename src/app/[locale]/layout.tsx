@@ -5,16 +5,12 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Toaster } from 'react-hot-toast'
 import { unstable_ViewTransition as ViewTransition } from 'react'
-import { ReactLenis, useLenis } from 'lenis/react'
+import { ReactLenis } from 'lenis/react'
 import { goia_display, goia } from '../fonts'
-import Image from 'next/image'
 import Providers from '@/components/providers'
 import Header from '@/components/layout/Header'
 import { Suspense } from 'react'
-
-import Grain from '@/components/Grain'
 import Loading from './Loading'
-import BreakpointIndicator from '@/components/BreakpointIndicator'
 import GlobalLoader from '@/components/GlobalLoader'
 import { LoaderProvider } from '@/context/LoaderContext'
 
@@ -76,8 +72,6 @@ export default async function LocaleLayout({
                       }
                     }}
                   />
-                  {/* <BreakpointIndicator /> */}
-                  {/* <Grain /> */}
                   <Header />
 
                   <main>{children}</main>
