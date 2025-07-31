@@ -106,29 +106,29 @@ export default function ProjectClient({
 
   return (
     <>
-      {isLgUp ? (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isAnimating ? 0 : 1 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className='absolute inset-0 -z-2 h-screen w-screen'
-          >
-            <MeshGradient
-              className='h-full w-full'
-              animationDuration={500}
-              opacity={0.1}
-              seed={0}
-              darken={false}
-              colors={colors}
-            />
-          </motion.div>
-          <motion.div
-            animate={{ opacity: isAnimating ? 0 : 1 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            id='project'
-            className='project-padding relative container flex h-svh w-full flex-row gap-20 pb-20'
-          >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isAnimating ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className='absolute inset-0 -z-2 h-full w-screen'
+      >
+        <MeshGradient
+          className='h-full w-full'
+          animationDuration={500}
+          opacity={0.3}
+          seed={0}
+          darken={false}
+          colors={colors}
+        />
+      </motion.div>
+      <motion.div
+        animate={{ opacity: isAnimating ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        id='project'
+        className='project-padding relative container flex h-dvh w-full flex-col pb-10 lg:flex-row lg:gap-20 lg:pb-20'
+      >
+        {isLgUp ? (
+          <>
             <motion.div className='qhd:gap-15 flex h-full min-w-0 flex-1 basis-1/4 flex-col gap-10'>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -214,28 +214,149 @@ export default function ProjectClient({
                 ))}
               </motion.div>
             </div>
-          </motion.div>
-          {/* <div
-            style={{ backgroundColor: project.accent }}
-            className='absolute bottom-0 -z-1 h-150 w-full rounded-tl-full rounded-tr-full opacity-20 blur-3xl'
-          ></div>
-          <div
-            style={{ backgroundColor: project.color }}
-            className='absolute top-0 -z-1 h-150 w-full rounded-tl-full rounded-tr-full opacity-20 blur-3xl'
-          ></div> */}
-        </>
-      ) : (
-        <div className='h-screen w-screen bg-amber-800'>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          </>
+        ) : (
+          <>
+            <div className='flex items-center justify-between gap-5'>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className='font-700 font-display text-5xl break-words'
+              >
+                {titleParts[0]}
+                <br />
+                {titleParts.slice(1).join(' ')}
+              </motion.h1>
+              <div>asd</div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className='mt-10 flex gap-3'
+            >
+              {project.liveLink !== '' && (
+                <Link
+                  href={project.liveLink}
+                  target='_blank'
+                  className='text-background border-foreground bg-foreground hover:text-background group flex items-center justify-center gap-2 rounded-4xl border-1 px-4 py-2 text-base duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
+                >
+                  <span>Live</span>
+                  <ArrowUpRight
+                    size={16}
+                    className='duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1'
+                  />
+                </Link>
+              )}
+              {project.githubLink !== '' && (
+                <Link
+                  href={project.githubLink}
+                  target='_blank'
+                  className='border-foreground flex items-center justify-center gap-2 rounded-4xl border-1 px-4 py-2 text-base backdrop-blur-sm duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
+                >
+                  <span>Github</span>
+                  <GithubLogo className='github-logo h-4 w-4' />
+                </Link>
+              )}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className='mt-10 block'
+            >
+              <Carousel projectId={projectId} />
+            </motion.div>
+
+            <motion.p
+              ref={descriptionRef}
+              id='description'
+              className='font-400 text-foreground mt-10 text-base leading-4.5'
+            >
+              {translations.projectDescription}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className='font-400 text-foreground/70 mt-5 text-base'
+            >
+              {translations.technologies}:
+            </motion.p>
+
+            <motion.div
+              variants={containerVariants}
+              initial='hidden'
+              animate='visible'
+              className='font-400 text-foreground/70 flex flex-wrap gap-2 text-sm'
+            >
+              {project.technologies.map(technology => (
+                <motion.span
+                  key={technology}
+                  variants={childVariants}
+                  className='duration-200 ease-in-out'
+                >
+                  {technology}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            {/* <div className='mt-auto flex justify-between gap-5'>
+              <motion.p
+                ref={descriptionRef}
+                id='description'
+                className='font-400 text-foreground text-base leading-5'
+              >
+                {translations.projectDescription}
+              </motion.p>
+              <div className='bg-foreground-light/50 my-auto h-[80%] w-[1px]'></div>
+              <div className='flex flex-col gap-5'>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className='font-400 text-foreground-light text-end text-base'
+                >
+                  {translations.technologies}:
+                </motion.p>
+                <motion.div
+                  variants={containerVariants}
+                  initial='hidden'
+                  animate='visible'
+                  className='font-400 text-foreground-light border-foreground-light flex flex-col flex-wrap justify-end border-r-1 pr-2 text-end text-base'
+                >
+                  {project.technologies.map(technology => (
+                    <motion.span
+                      key={technology}
+                      variants={childVariants}
+                      className='duration-200 ease-in-out active:translate-y-1'
+                    >
+                      {technology}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+            </div> */}
+          </>
+        )}
+      </motion.div>
+    </>
+  )
+}
+
+{
+  /* <ProgressiveBlur
+        className='pointer-events-none fixed bottom-0 left-0 z-0 h-[200px] w-screen'
+        direction='bottom'
+      /> */
+}
+
+{
+  /* <div className='h-screen w-screen'>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -251,7 +372,7 @@ export default function ProjectClient({
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className='font-500 font-display text-foreground-light'
             >
-              / {translations.technologies}
+              {translations.technologies}
             </motion.p>
             <motion.div
               variants={containerVariants}
@@ -267,13 +388,5 @@ export default function ProjectClient({
               ))}
             </motion.div>
           </div>
-        </div>
-      )}
-
-      {/* <ProgressiveBlur
-        className='pointer-events-none fixed bottom-0 left-0 z-0 h-[200px] w-screen'
-        direction='bottom'
-      /> */}
-    </>
-  )
+        </div> */
 }
