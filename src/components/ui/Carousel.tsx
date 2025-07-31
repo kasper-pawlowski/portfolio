@@ -5,8 +5,8 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import data from '@/data/projects.json'
 import Image from 'next/image'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { useEffect } from 'react' // No need for useState for plugins
+// import { AnimatePresence, motion } from 'motion/react' // Uncomment if you use these
 import { MoveDown } from 'lucide-react'
 
 type CarouselProps = {
@@ -15,14 +15,13 @@ type CarouselProps = {
 
 const Carousel = ({ projectId }: CarouselProps) => {
   const isLgUp = useBreakpoint('lg')
-  const [plugins, setPlugins] = useState<any[]>([])
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const plugin = WheelGesturesPlugin({ target: document.body })
-      setPlugins([plugin])
-    }
-  }, [])
+  // Directly initialize plugins within the useEmblaCarousel call
+  // We only create the plugin instance if window is defined (client-side)
+  const plugins =
+    typeof window !== 'undefined'
+      ? [WheelGesturesPlugin({ target: document.body })]
+      : []
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -31,22 +30,42 @@ const Carousel = ({ projectId }: CarouselProps) => {
       dragFree: isLgUp ? true : false,
       skipSnaps: true
     },
-    plugins
+    plugins // Pass the directly created plugins
   )
 
   useEffect(() => {
-    if (!emblaApi || !isLgUp) return
+    // Ensure emblaApi is available and we're on a large screen
+    if (!emblaApi || !isLgUp) {
+      // console.log('Embla API not ready or not large screen, skipping transition setup.'); // For debugging
+      return
+    }
 
     const container = emblaApi.containerNode()
 
+    // Function to set the transition style
     const setTransition = () => {
-      container.style.transition = 'transform 0.3s ease-out'
+      // console.log('Setting transition on container.'); // For debugging
+      // Only apply if it's not already set to avoid unnecessary DOM writes
+      if (container.style.transition !== 'transform 0.3s ease-out') {
+        container.style.transition = 'transform 0.3s ease-out'
+      }
     }
 
+    // Attach event listeners for pointerDown, scroll, and settle
     emblaApi.on('pointerDown', setTransition)
     emblaApi.on('scroll', setTransition)
     emblaApi.on('settle', setTransition)
-  }, [emblaApi])
+
+    // IMPORTANT: Return a cleanup function to remove listeners
+    // This prevents memory leaks and ensures correct behavior if the component unmounts
+    // or if emblaApi somehow changes (though less common for Embla).
+    return () => {
+      // console.log('Cleaning up Embla API transition listeners.'); // For debugging
+      emblaApi.off('pointerDown', setTransition)
+      emblaApi.off('scroll', setTransition)
+      emblaApi.off('settle', setTransition)
+    }
+  }, [emblaApi, isLgUp]) // Dependencies: Re-run if emblaApi or isLgUp changes
 
   const project = data.find(p => p.id === projectId)
 
@@ -55,24 +74,24 @@ const Carousel = ({ projectId }: CarouselProps) => {
   return (
     <>
       <div
-        className='embla relative mt-5 flex h-full min-w-0 flex-2 flex-col lg:mt-0 lg:basis-2/4'
+        className='embla relative mt-5 flex h-full min-w-0 flex-2 flex-col lg:mt-0'
         ref={emblaRef}
       >
         <div className='embla__container flex gap-4 lg:h-full lg:flex-col lg:gap-12'>
           {project.images.map((image, index) => {
             return (
-              <motion.div
+              <div // Changed from motion.div for simplicity, use motion.div if 'motion/react' is fully integrated
                 className='embla__slide relative aspect-video min-h-0 w-[90%] min-w-0 flex-none overflow-hidden rounded-2xl lg:w-full lg:flex-shrink-0 lg:flex-grow-0 lg:basis-auto'
                 key={index}
               >
                 <Image
                   src={image}
                   alt={`Project image ${index + 1}`}
-                  width={720}
-                  height={1280}
+                  fill
+                  sizes='(max-width: 768px) 100vw, (min-width: 769px) 50vw'
                   className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out'
                 />
-              </motion.div>
+              </div>
             )
           })}
         </div>

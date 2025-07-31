@@ -32,7 +32,7 @@
   "Projects": {
     "title": "Projekty",
     "description": "Opis",
-    "technologies": "Technologie",
+    "technologies": "Użyte technologie",
     "see_more": "zobacz więcej",
     "back_button": "powrót",
     "cursor_text": "przejdź do projektu",

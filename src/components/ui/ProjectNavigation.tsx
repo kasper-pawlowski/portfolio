@@ -50,35 +50,39 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   }
 
   return (
-    <div className='relative flex h-35 w-35 items-center justify-center gap-3 rounded-full transition duration-300 ease-out hover:backdrop-blur-sm lg:h-60 lg:w-60 lg:gap-5'>
+    <div className='qhd:h-80 qhd:w-80 relative flex h-60 w-60 items-center justify-center gap-5 rounded-full backdrop-blur-sm transition duration-300 ease-out'>
       <Link
-        className={`group relative z-1 translate-x-2 duration-200 ease-in-out before:absolute before:-inset-2 before:content-[''] active:-translate-x-1 active:scale-80 lg:translate-x-0 ${
+        className={`group qhd:-translate-x-2 qhd:hover:-translate-x-3 relative z-1 duration-200 ease-in-out before:absolute before:-inset-2 before:content-[''] active:scale-80 ${
           isAnimating ? 'pointer-events-none' : ''
         }`}
         href={`/project/${current === 1 ? totalProjects : current - 1}`}
         onClick={handlePrev}
       >
-        <MoveLeft className='text-foreground-light' />
+        <MoveLeft className='text-foreground-light' size={40} strokeWidth={1} />
       </Link>
 
-      <div className='font-display font-600 relative flex flex-col items-center justify-center gap-0 text-5xl lg:gap-3 lg:text-7xl'>
+      <div className='font-display font-600 qhd:text-8xl relative flex flex-col items-center justify-center text-7xl'>
         <AnimateNumber
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className='pr-8'
+          className='mr-15'
         >
           {current}
         </AnimateNumber>
-        <span className='pl-8'>{totalProjects}</span>
+        <span className='ml-15 py-[7px]'>{totalProjects}</span>
       </div>
 
       <Link
-        className={`group -translate-x-2 duration-200 ease-in-out before:absolute before:-inset-2 before:content-[''] active:translate-x-1 active:scale-80 lg:-translate-x-0 ${
+        className={`group qhd:translate-x-2 qhd:hover:translate-x-3 duration-200 ease-in-out before:absolute before:-inset-2 before:content-[''] active:scale-80 ${
           isAnimating ? 'pointer-events-none' : ''
         }`}
         href={`/project/${current === totalProjects ? 1 : current + 1}`}
         onClick={handleNext}
       >
-        <MoveRight className='text-foreground-light' />
+        <MoveRight
+          className='text-foreground-light'
+          size={40}
+          strokeWidth={1}
+        />
       </Link>
 
       <div className='bg-foreground-light pointer-events-none absolute h-[80%] w-[1px] rotate-45 opacity-30'></div>

@@ -15,7 +15,11 @@
     "githubLink": "",
     "liveLink": "https://hyperio.ch",
     "technologies": ["html", "css", "scss", "javascript"],
-    "accent": "#fd9e28"
+    "accent": "#fd9e28",
+    "color_1": "#FFFFFF",
+    "color_2": "#F2D8B5",
+    "color_3": "#fd9e28",
+    "color_4": "#EDEEEF"
   },
   {
     "id": 2,
@@ -39,7 +43,11 @@
       "motion",
       "pokeapi"
     ],
-    "accent": "#85cd6d"
+    "accent": "#85cd6d",
+    "color_1": "#DEB39C",
+    "color_2": "#AAE2C9",
+    "color_3": "#7ECC48",
+    "color_4": "#F8FBF5"
   },
   {
     "id": 3,
@@ -66,11 +74,15 @@
       "axios",
       "geopify"
     ],
-    "accent": "#a3e041"
+    "accent": "#a3e041",
+    "color_1": "#FBFDFF",
+    "color_2": "#79C6FF",
+    "color_3": "#77F57C",
+    "color_4": "#D9EFFF"
   },
   {
     "id": 4,
-    "nameKey": "PopGuesser",
+    "nameKey": "Pop\u200bGuesser",
     "slug": "popguesser",
     "descriptionKey": "popguesser.description",
     "videoUrl": "/projects/popguesser/popguesser.webm",
@@ -90,7 +102,11 @@
       "axios",
       "themoviedb"
     ],
-    "accent": "#FF914C"
+    "accent": "#FF914C",
+    "color_1": "#BB4425",
+    "color_2": "#D9DDD4",
+    "color_3": "#E49752",
+    "color_4": "#FFFFFF"
   },
   {
     "id": 5,
@@ -116,7 +132,11 @@
       "axios",
       "opentdb"
     ],
-    "accent": "#6a5be0"
+    "accent": "#6a5be0",
+    "color_1": "#FFFFFF",
+    "color_2": "#6A5AE0",
+    "color_3": "#FFEEF1",
+    "color_4": "#EFEEFC"
   },
   {
     "id": 6,
@@ -135,11 +155,15 @@
     "githubLink": "https://github.com/kasper-pawlowski/artsnob",
     "liveLink": "https://artsnob.netlify.app/",
     "technologies": ["react", "styled-components", "motion"],
-    "accent": "#283032"
+    "accent": "#283032",
+    "color_1": "#827D5E",
+    "color_2": "#CDDCDC",
+    "color_3": "#879D90",
+    "color_4": "#BC9142"
   },
   {
     "id": 7,
-    "nameKey": "GeoGuess",
+    "nameKey": "Geo\u200bGuess",
     "slug": "geoguess",
     "descriptionKey": "geoguess.description",
     "videoUrl": "/projects/geoguess/geoguess.webm",
@@ -153,11 +177,15 @@
     "githubLink": "https://github.com/kasper-pawlowski/GeoGuess",
     "liveLink": "https://quiz-architekt.web.app/",
     "technologies": ["react", "styled-components", "firebase", "leaflet"],
-    "accent": "#f39c13"
+    "accent": "#f39c13",
+    "color_1": "#FFFFFF",
+    "color_2": "#C2CAAE",
+    "color_3": "#27AE60",
+    "color_4": "#E67E22"
   },
   {
     "id": 8,
-    "nameKey": "PopGuesser",
+    "nameKey": "Pop\u200bGuesser",
     "slug": "popguesser",
     "descriptionKey": "popguesser.description",
     "videoUrl": "/projects/popguesser/popguesser.webm",
@@ -172,6 +200,10 @@
     "liveLink": "",
 
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    "accent": "#FF914C"
+    "accent": "#FF914C",
+    "color_1": "#FFFFFF",
+    "color_2": "#C2CAAE",
+    "color_3": "#27AE60",
+    "color_4": "#E67E22"
   }
 ]

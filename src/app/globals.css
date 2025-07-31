@@ -302,8 +302,10 @@
   @variant qhd {
     @media (width >= 160rem) {
       max-width: 160rem;
-      padding-left: 18rem;
-      padding-right: 18rem;
+      /* padding-left: 18rem;
+      padding-right: 18rem; */
+      padding-left: 10rem;
+      padding-right: 10rem;
       &&:after {
         content: 'qhd';
         position: absolute;

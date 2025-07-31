@@ -16,6 +16,11 @@ type Project = {
   liveLink: string
   technologies: string[]
   slug: string
+  accent: string
+  color_1: string
+  color_2: string
+  color_3: string
+  color_4: string
 }
 
 type ProjectPageProps = {
@@ -58,12 +63,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       />
 
       <ProjectClient project={project} translations={translations} />
-      <div className='absolute inset-x-0 bottom-5 container flex justify-between lg:bottom-10'>
+      <div className='absolute inset-x-0 bottom-20 container flex justify-between'>
         <Link
           href='/#projects'
-          className='font-display group text-foreground mt-auto flex w-min items-center justify-center gap-2 rounded-full py-2 text-xl duration-200 ease-in-out active:-translate-x-1'
+          className='text-foreground group qhd:text-2xl mt-auto flex items-center justify-center gap-2 rounded-4xl border-1 border-neutral-500/50 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out active:translate-y-1'
         >
-          <MoveLeft strokeWidth={1} />
+          <MoveLeft
+            strokeWidth={1}
+            className='duration-300 ease-in-out group-hover:-translate-x-1'
+          />
           <p>{translations.back_button}</p>
         </Link>
         <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
