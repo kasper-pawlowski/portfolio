@@ -25,7 +25,11 @@ const ThemeToggle = ({ textColorClass }: ThemeToggleProps) => {
       }}
       className={`${textColorClass} transition-colors duration-200`}
     >
-      {resolvedTheme === 'dark' ? <Moon size={30} /> : <Sun size={30} />}
+      {resolvedTheme === 'dark' ? (
+        <Moon className='qhd:h-8 qhd:w-8 h-6 w-6' />
+      ) : (
+        <Sun className='qhd:h-8 qhd:w-8 h-6 w-6' />
+      )}
     </button>
   )
 }

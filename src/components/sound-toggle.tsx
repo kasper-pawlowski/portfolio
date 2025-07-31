@@ -15,7 +15,11 @@ const SoundToggle = ({ textColorClass }: SoundToggleProps) => {
       }}
       className={`${textColorClass} transition-colors duration-200`}
     >
-      {soundEnabled ? <Volume2 size={30} /> : <VolumeX size={30} />}
+      {soundEnabled ? (
+        <Volume2 className='qhd:h-8 qhd:w-8 h-6 w-6' />
+      ) : (
+        <VolumeX className='qhd:h-8 qhd:w-8 h-6 w-6' />
+      )}
     </button>
   )
 }

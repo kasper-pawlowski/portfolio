@@ -147,7 +147,7 @@ const Header = () => {
       transition={{ duration: 0.2, ease: 'easeInOut' }}
       className='fixed top-0 left-0 z-20 w-full'
     >
-      <div className='font-700 container mx-auto flex w-full content-center justify-between py-4 text-2xl lg:py-8'>
+      <div className='font-700 qhd:text-2xl qhd:py-8 container mx-auto flex w-full content-center justify-between py-4 text-xl lg:py-5'>
         <div className='flex flex-1/5 items-center justify-start'>
           <Link
             href='/#hero'
@@ -158,7 +158,7 @@ const Header = () => {
             }}
             className={`transition-colors duration-200 ${textColorClass}`}
           >
-            <Logo className='h-[30px] w-[30px]' />
+            <Logo className='qhd:h-8 qhd:w-8 h-6 w-6' />
           </Link>
         </div>
 
@@ -210,7 +210,7 @@ const Header = () => {
           aria-label={isMenuOpen ? 'Zamknij menu' : 'Otwórz menu'}
           className={`${textColorClass} transition-colors duration-200 lg:hidden`}
         >
-          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 

@@ -83,12 +83,14 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
         aria-haspopup='true'
         aria-label='Select language dropdown'
       >
-        <span className='font-display font-700'>{t('Language')}</span>
+        <span className='font-display qhd:text-2xl font-700 text-xl'>
+          {t('Language')}
+        </span>
         <motion.div
           animate={{ rotate: isDropdownOpen ? 180 : 0 }}
           transition={{ duration: 0.1 }}
         >
-          <ChevronDown size={30} />
+          <ChevronDown className='qhd:h-8 qhd:w-8 h-6 w-6' />
         </motion.div>
       </motion.button>
 
@@ -124,15 +126,17 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               role='menuitem'
               tabIndex={0}
             >
-              <Image
-                src='/icons/polish.png'
-                width={32}
-                height={32}
-                alt='Polish flag'
-                loading='lazy'
-                className='ml-5'
-              />
-              <span className='font-display font-700 mr-5 text-2xl'>
+              <div className='qhd:h-8 qhd:w-8 relative ml-5 h-6 w-6'>
+                <Image
+                  src='/icons/polish.png'
+                  className='h-full w-full object-cover'
+                  alt='Polish flag'
+                  loading='lazy'
+                  fill
+                />
+              </div>
+
+              <span className='font-display font-700 qhd:text-2xl mr-5 text-xl'>
                 Polski
               </span>
             </Link>
@@ -150,15 +154,17 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               role='menuitem'
               tabIndex={0}
             >
-              <Image
-                src='/icons/english.png'
-                width={32}
-                height={32}
-                loading='lazy'
-                alt='English flag'
-                className='ml-5'
-              />
-              <span className='font-display font-700 mr-5 text-2xl'>
+              <div className='qhd:h-8 qhd:w-8 relative ml-5 h-6 w-6'>
+                <Image
+                  src='/icons/english.png'
+                  loading='lazy'
+                  alt='English flag'
+                  fill
+                  className='h-full w-full object-cover'
+                />
+              </div>
+
+              <span className='font-display font-700 qhd:text-2xl mr-5 text-xl'>
                 English
               </span>
             </Link>

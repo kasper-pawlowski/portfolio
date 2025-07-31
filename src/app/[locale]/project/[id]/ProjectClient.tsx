@@ -56,6 +56,7 @@ export default function ProjectClient({
   const descriptionRef = useRef<HTMLDivElement>(null)
   const { isAnimating } = useAnimation()
   const isLgUp = useBreakpoint('lg')
+  const isQhdUp = useBreakpoint('qhd')
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -162,7 +163,7 @@ export default function ProjectClient({
                   >
                     <span>Live</span>
                     <ArrowUpRight
-                      size={24}
+                      size={isQhdUp ? 24 : 16}
                       className='duration-300 ease-in-out group-hover:translate-x-1 group-hover:-translate-y-1'
                     />
                   </Link>
@@ -174,7 +175,7 @@ export default function ProjectClient({
                     className='border-foreground qhd:text-2xl flex items-center justify-center gap-2 rounded-4xl border-1 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
                   >
                     <span>Github</span>
-                    <GithubLogo className='github-logo h-6 w-6' />
+                    <GithubLogo className='github-logo qhd:h-6 qhd:w-6 h-4 w-4' />
                   </Link>
                 )}
               </motion.div>
