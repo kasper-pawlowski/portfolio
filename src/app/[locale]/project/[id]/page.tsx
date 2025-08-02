@@ -57,16 +57,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <AnimationProvider>
-      {/* <div
+      <div
         className='hero-noise pointer-events-none absolute top-0 left-0 -z-1 h-full w-full bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
-      /> */}
+      />
 
       <ProjectClient project={project} translations={translations} />
-      <div className='absolute inset-x-0 bottom-20 container hidden justify-between lg:flex'>
+      <div className='project-padding absolute top-0 container flex justify-end lg:inset-x-0 lg:top-auto lg:bottom-20 lg:justify-between lg:pt-0'>
         <Link
           href='/#projects'
-          className='text-foreground group qhd:text-2xl mt-auto flex items-center justify-center gap-2 rounded-4xl border-1 border-neutral-500/50 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out active:translate-y-1'
+          className='text-foreground group qhd:text-2xl mt-auto hidden items-center justify-center gap-2 rounded-4xl border-1 border-neutral-500/50 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out active:translate-y-1 lg:flex'
         >
           <MoveLeft
             strokeWidth={1}

@@ -217,7 +217,7 @@ export default function ProjectClient({
           </>
         ) : (
           <>
-            <div className='flex items-center justify-between gap-5'>
+            <div className='flex items-center gap-5'>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -228,7 +228,6 @@ export default function ProjectClient({
                 <br />
                 {titleParts.slice(1).join(' ')}
               </motion.h1>
-              <div>asd</div>
             </div>
 
             <motion.div
@@ -283,7 +282,7 @@ export default function ProjectClient({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className='font-400 text-foreground/70 mt-5 text-base'
+              className='font-400 text-foreground/80 mt-10 text-base'
             >
               {translations.technologies}:
             </motion.p>
@@ -292,7 +291,7 @@ export default function ProjectClient({
               variants={containerVariants}
               initial='hidden'
               animate='visible'
-              className='font-400 text-foreground/70 flex flex-wrap gap-2 text-sm'
+              className='font-400 text-foreground/80 mt-2 flex flex-wrap gap-2 text-sm leading-2.5'
             >
               {project.technologies.map(technology => (
                 <motion.span

@@ -89,7 +89,7 @@ const Carousel = ({ projectId }: CarouselProps) => {
                   alt={`Project image ${index + 1}`}
                   fill
                   sizes='(max-width: 768px) 100vw, (min-width: 769px) 50vw'
-                  className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out'
+                  className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out lg:rounded-4xl'
                 />
               </div>
             )
