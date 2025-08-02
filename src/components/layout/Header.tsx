@@ -13,11 +13,12 @@ import {
 } from 'motion/react'
 import LanguageSelect from '../language-select'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, MoveLeft, X } from 'lucide-react'
 import { ProgressiveBlur } from '../core/progressive-blur'
 import Logo from '../../../public/icons/logo.svg'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useLenis } from 'lenis/react'
+import { usePathname } from '@/i18n/navigation'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,9 +27,11 @@ const Header = () => {
   const [mounted, setMounted] = useState(false)
 
   const t = useTranslations('Navigation')
+  const tProjects = useTranslations('Projects')
   const lenis = useLenis()
   const isLgUp = useBreakpoint('lg')
   const { scrollY } = useScroll()
+  const pathname = usePathname()
 
   // Memoizowana funkcja sprawdzająca pozycję nagłówka
   const checkHeaderPosition = useCallback(() => {
@@ -149,17 +152,31 @@ const Header = () => {
     >
       <div className='font-700 qhd:text-2xl qhd:py-8 container mx-auto flex w-full content-center justify-between py-4 text-xl lg:py-5'>
         <div className='flex flex-1/5 items-center justify-start'>
-          <Link
-            href='/#hero'
-            aria-label='Logo'
-            onClick={() => {
-              handleLogoClick()
-              handleScrollTo('#hero')
-            }}
-            className={`transition-colors duration-200 ${textColorClass}`}
-          >
-            <Logo className='qhd:h-8 qhd:w-8 h-6 w-6' />
-          </Link>
+          {!isLgUp && pathname != '/' ? (
+            <Link
+              href='/#projects'
+              aria-label='back to projects'
+              className={`font-400 group flex items-center justify-center gap-3 text-base transition-colors duration-200 ${textColorClass}`}
+            >
+              <MoveLeft
+                strokeWidth={1}
+                className='duration-300 ease-in-out group-active:-translate-x-1'
+              />
+              {tProjects('back_button')}
+            </Link>
+          ) : (
+            <Link
+              href='/#hero'
+              aria-label='Logo'
+              onClick={() => {
+                handleLogoClick()
+                handleScrollTo('#hero')
+              }}
+              className={`transition-colors duration-200 ${textColorClass}`}
+            >
+              <Logo className='qhd:h-8 qhd:w-8 h-6 w-6' />
+            </Link>
+          )}
         </div>
 
         <div className='hidden flex-3/5 items-center justify-center lg:flex'>
