@@ -19,7 +19,11 @@
     "color_1": "#FFFFFF",
     "color_2": "#F2D8B5",
     "color_3": "#fd9e28",
-    "color_4": "#EDEEEF"
+    "color_4": "#EDEEEF",
+    "color_1_dark": "#1A1A1A",
+    "color_2_dark": "#8B6914",
+    "color_3_dark": "#B8741C",
+    "color_4_dark": "#2D2D2D"
   },
   {
     "id": 2,
@@ -47,7 +51,11 @@
     "color_1": "#DEB39C",
     "color_2": "#AAE2C9",
     "color_3": "#7ECC48",
-    "color_4": "#F8FBF5"
+    "color_4": "#F8FBF5",
+    "color_1_dark": "#3D2A1F",
+    "color_2_dark": "#2A4A32",
+    "color_3_dark": "#4A7A2C",
+    "color_4_dark": "#1F2F1A"
   },
   {
     "id": 3,
@@ -78,7 +86,11 @@
     "color_1": "#FBFDFF",
     "color_2": "#77F57C",
     "color_3": "#79C6FF",
-    "color_4": "#D9EFFF"
+    "color_4": "#D9EFFF",
+    "color_1_dark": "#0F1214",
+    "color_2_dark": "#2E4A30",
+    "color_3_dark": "#2E3D4A",
+    "color_4_dark": "#1A2228"
   },
   {
     "id": 4,
@@ -106,7 +118,11 @@
     "color_1": "#BB4425",
     "color_2": "#D9DDD4",
     "color_3": "#E49752",
-    "color_4": "#FFFFFF"
+    "color_4": "#FFFFFF",
+    "color_1_dark": "#4A1A0F",
+    "color_2_dark": "#3A3D34",
+    "color_3_dark": "#8B5A2E",
+    "color_4_dark": "#1A1A1A"
   },
   {
     "id": 5,
@@ -136,7 +152,11 @@
     "color_1": "#FFFFFF",
     "color_2": "#6A5AE0",
     "color_3": "#FFEEF1",
-    "color_4": "#EFEEFC"
+    "color_4": "#EFEEFC",
+    "color_1_dark": "#1A1A1A",
+    "color_2_dark": "#3D2F5A",
+    "color_3_dark": "#4A2A30",
+    "color_4_dark": "#2A2A3A"
   },
   {
     "id": 6,
@@ -159,7 +179,11 @@
     "color_1": "#827D5E",
     "color_2": "#CDDCDC",
     "color_3": "#879D90",
-    "color_4": "#BC9142"
+    "color_4": "#BC9142",
+    "color_1_dark": "#3A352A",
+    "color_2_dark": "#4A5555",
+    "color_3_dark": "#3A4540",
+    "color_4_dark": "#5A4821"
   },
   {
     "id": 7,
@@ -181,7 +205,11 @@
     "color_1": "#FFFFFF",
     "color_2": "#C2CAAE",
     "color_3": "#27AE60",
-    "color_4": "#E67E22"
+    "color_4": "#E67E22",
+    "color_1_dark": "#1A1A1A",
+    "color_2_dark": "#4A5240",
+    "color_3_dark": "#1F5A40",
+    "color_4_dark": "#8A4A15"
   },
   {
     "id": 8,
@@ -201,9 +229,13 @@
 
     "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
     "accent": "#FF914C",
-    "color_1": "#FFFFFF",
-    "color_2": "#C2CAAE",
-    "color_3": "#27AE60",
-    "color_4": "#E67E22"
+    "color_1": "#BB4425",
+    "color_2": "#D9DDD4",
+    "color_3": "#E49752",
+    "color_4": "#FFFFFF",
+    "color_1_dark": "#4A1A0F",
+    "color_2_dark": "#3A3D34",
+    "color_3_dark": "#8B5A2E",
+    "color_4_dark": "#1A1A1A"
   }
 ]

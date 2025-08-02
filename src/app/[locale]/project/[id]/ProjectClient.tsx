@@ -12,8 +12,8 @@ import { splitText } from 'motion-plus'
 import { useAnimation } from '@/context/AnimationContext'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { MeshGradient } from '@blur-ui/mesh-gradient'
+import { useGradientColors } from '@/hooks/useGradientColors'
 
-// Typy zgodne z page.tsx
 interface Project {
   id: number
   nameKey: string
@@ -29,6 +29,10 @@ interface Project {
   color_2: string
   color_3: string
   color_4: string
+  color_1_dark: string
+  color_2_dark: string
+  color_3_dark: string
+  color_4_dark: string
 }
 
 interface ProjectClientProps {
@@ -41,12 +45,6 @@ interface ProjectClientProps {
     projectDescription: string
   }
 }
-type GradientPalette = {
-  color1: string
-  color2: string
-  color3: string
-  color4: string
-}
 
 export default function ProjectClient({
   project,
@@ -57,6 +55,7 @@ export default function ProjectClient({
   const { isAnimating } = useAnimation()
   const isLgUp = useBreakpoint('lg')
   const isQhdUp = useBreakpoint('qhd')
+  const colors = useGradientColors(project)
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -97,13 +96,6 @@ export default function ProjectClient({
 
   const titleParts = project.nameKey.split(/ |\u200b/)
 
-  const colors: GradientPalette = {
-    color1: project.color_1,
-    color2: project.color_2,
-    color3: project.color_3,
-    color4: project.color_4
-  }
-
   return (
     <>
       <motion.div
@@ -125,7 +117,7 @@ export default function ProjectClient({
         animate={{ opacity: isAnimating ? 0 : 1 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         id='project'
-        className='project-padding relative container flex h-dvh w-full flex-col pb-10 lg:flex-row lg:gap-20 lg:pb-20'
+        className='project-padding qhd:gap-20 relative container flex h-dvh w-full flex-col pb-10 lg:flex-row lg:gap-10 lg:pb-20'
       >
         {isLgUp ? (
           <>
@@ -133,7 +125,10 @@ export default function ProjectClient({
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut'
+                }}
                 className='font-700 font-display qhd:text-8xl text-7xl break-words'
               >
                 {titleParts[0]}
@@ -152,14 +147,17 @@ export default function ProjectClient({
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut'
+                }}
                 className='flex gap-3'
               >
                 {project.liveLink !== '' && (
                   <Link
                     href={project.liveLink}
                     target='_blank'
-                    className='text-background border-foreground bg-foreground hover:text-background group qhd:text-2xl flex items-center justify-center gap-2 rounded-4xl border-1 px-5 py-2 text-base duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
+                    className='text-background border-foreground bg-foreground hover:text-background group qhd:text-2xl flex items-center justify-center gap-2 rounded-2xl border-1 px-5 py-2 text-base duration-300 ease-in-out hover:rounded-3xl active:translate-y-1'
                   >
                     <span>Live</span>
                     <ArrowUpRight
@@ -172,7 +170,7 @@ export default function ProjectClient({
                   <Link
                     href={project.githubLink}
                     target='_blank'
-                    className='border-foreground qhd:text-2xl flex items-center justify-center gap-2 rounded-4xl border-1 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
+                    className='border-foreground qhd:text-2xl flex items-center justify-center gap-2 rounded-2xl border-1 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out hover:rounded-3xl active:translate-y-1'
                   >
                     <span>Github</span>
                     <GithubLogo className='github-logo qhd:h-6 qhd:w-6 h-4 w-4' />
@@ -183,7 +181,10 @@ export default function ProjectClient({
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{
+                duration: 0.3,
+                ease: 'easeInOut'
+              }}
               className='flex basis-2/4'
             >
               <Carousel projectId={projectId} />
@@ -192,7 +193,10 @@ export default function ProjectClient({
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut'
+                }}
                 className='font-500 text-foreground qhd:text-xl text-base'
               >
                 {translations.technologies}:
@@ -221,7 +225,10 @@ export default function ProjectClient({
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut'
+                }}
                 className='font-700 font-display text-5xl break-words'
               >
                 {titleParts[0]}
@@ -233,7 +240,10 @@ export default function ProjectClient({
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{
+                duration: 0.3,
+                ease: 'easeInOut'
+              }}
               className='mt-10 flex gap-3'
             >
               {project.liveLink !== '' && (
@@ -264,7 +274,10 @@ export default function ProjectClient({
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{
+                duration: 0.3,
+                ease: 'easeInOut'
+              }}
               className='mt-10 block'
             >
               <Carousel projectId={projectId} />
@@ -281,7 +294,10 @@ export default function ProjectClient({
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{
+                duration: 0.3,
+                ease: 'easeInOut'
+              }}
               className='font-400 text-foreground/80 mt-10 text-base'
             >
               {translations.technologies}:
@@ -303,55 +319,11 @@ export default function ProjectClient({
                 </motion.span>
               ))}
             </motion.div>
-
-            {/* <div className='mt-auto flex justify-between gap-5'>
-              <motion.p
-                ref={descriptionRef}
-                id='description'
-                className='font-400 text-foreground text-base leading-5'
-              >
-                {translations.projectDescription}
-              </motion.p>
-              <div className='bg-foreground-light/50 my-auto h-[80%] w-[1px]'></div>
-              <div className='flex flex-col gap-5'>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className='font-400 text-foreground-light text-end text-base'
-                >
-                  {translations.technologies}:
-                </motion.p>
-                <motion.div
-                  variants={containerVariants}
-                  initial='hidden'
-                  animate='visible'
-                  className='font-400 text-foreground-light border-foreground-light flex flex-col flex-wrap justify-end border-r-1 pr-2 text-end text-base'
-                >
-                  {project.technologies.map(technology => (
-                    <motion.span
-                      key={technology}
-                      variants={childVariants}
-                      className='duration-200 ease-in-out active:translate-y-1'
-                    >
-                      {technology}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              </div>
-            </div> */}
           </>
         )}
       </motion.div>
     </>
   )
-}
-
-{
-  /* <ProgressiveBlur
-        className='pointer-events-none fixed bottom-0 left-0 z-0 h-[200px] w-screen'
-        direction='bottom'
-      /> */
 }
 
 {

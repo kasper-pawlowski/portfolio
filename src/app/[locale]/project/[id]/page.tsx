@@ -21,6 +21,10 @@ type Project = {
   color_2: string
   color_3: string
   color_4: string
+  color_1_dark: string
+  color_2_dark: string
+  color_3_dark: string
+  color_4_dark: string
 }
 
 type ProjectPageProps = {
