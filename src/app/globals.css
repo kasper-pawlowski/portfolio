@@ -95,6 +95,33 @@
     left: anchor(center);
   }
 
+  .buttton {
+    box-shadow:
+      #ff6f006d 0px -0.722625px 1.01167px -0.833333px inset,
+      #ff6f006d 0px -2.74624px 3.84474px -1.66667px inset,
+      #ff6f006d 0px -12px 16.8px -2.5px inset,
+      8px 8px 0 0 var(--foreground),
+      0 0 0 3px var(--foreground);
+  }
+
+  .buttton:hover {
+    box-shadow:
+      #ff6f00 0px -0.722625px 1.01167px -0.833333px inset,
+      #ff6f00 0px -2.74624px 3.84474px -1.66667px inset,
+      #ff6f00 0px -12px 16.8px -2.5px inset,
+      0px 0px 0 0 var(--foreground),
+      0 0 0 3px var(--foreground);
+  }
+
+  .buttton:active {
+    box-shadow:
+      #ff6f00 0px -0.722625px 1.01167px -0.833333px inset,
+      #ff6f00 0px -2.74624px 3.84474px -1.66667px inset,
+      #ff6f00 0px -12px 16.8px -2.5px inset,
+      2px 2px 0 0 var(--foreground),
+      0 0 0 3px var(--foreground);
+  }
+
   .project-link-parent {
     anchor-name: --project-link-parent;
   }

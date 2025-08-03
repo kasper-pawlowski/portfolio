@@ -10,12 +10,16 @@ import {
 import Marquee from '../ui/Marquee'
 import GridWrapper from '../ui/GridWrapper'
 import { useLoader } from '@/context/LoaderContext'
+import Link from 'next/link'
+import { useLenis } from 'lenis/react'
+import { ArrowDownRight } from 'lucide-react'
 
 const Hero = () => {
   const { hasInitialLoadFinished } = useLoader()
   const { scrollYProgress } = useScroll()
   const firstY = useMotionValue(0)
   const secondY = useMotionValue(0)
+  const lenis = useLenis()
   useMotionValueEvent(scrollYProgress, 'change', latest => {
     const newFirstY = 0 - latest * 300
     firstY.set(newFirstY)
@@ -25,6 +29,12 @@ const Hero = () => {
   })
 
   const baseDelay = hasInitialLoadFinished ? 0 : 2
+
+  const handleScrollTo = (target: string) => {
+    if (lenis) {
+      lenis.scrollTo(target)
+    }
+  }
 
   return (
     <>
@@ -64,6 +74,17 @@ const Hero = () => {
                   frontend <br /> developer
                 </motion.h1>
               </div>
+
+              <motion.button
+                className='font-500 buttton group font-display absolute top-[80%] left-[30%] z-5 flex items-center justify-center gap-3 rounded-3xl px-6 py-4 text-[20px] backdrop-blur-sm duration-300 ease-in-out hover:translate-x-1 hover:translate-y-1'
+                onClick={() => handleScrollTo('#projects')}
+              >
+                <span className=''>przejdź do projektów</span>
+                <ArrowDownRight
+                  className='duration-300 ease-in-out group-hover:translate-x-1 group-hover:translate-y-1'
+                  size={20}
+                />
+              </motion.button>
 
               <motion.div
                 initial={{ opacity: 0 }}
