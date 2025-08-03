@@ -10,14 +10,17 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
+import { useSound } from 'react-sounds'
 
 const Contact = () => {
   const t = useTranslations('Contact')
+  const { play } = useSound('/sounds/button.wav')
 
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText('kasper.pawlowski04@gmail.com')
       toast.success(t('toast_success'))
+      play()
     } catch (err) {
       toast.error(t('toast_error'))
     }
