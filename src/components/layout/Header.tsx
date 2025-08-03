@@ -183,7 +183,7 @@ const Header = () => {
           <nav className='flex items-center justify-center gap-10'>
             <Link
               href='/#about'
-              className={`duration-200 ease-in-out ${textColorClass}`}
+              className={`underline-effect duration-200 ease-in-out ${textColorClass} `}
               onClick={() => handleScrollTo('#about')}
             >
               {t('about')}
@@ -195,7 +195,7 @@ const Header = () => {
             </span>
             <Link
               href='/#projects'
-              className={`duration-200 ease-in-out ${textColorClass}`}
+              className={`underline-effect duration-200 ease-in-out ${textColorClass}`}
               onClick={() => handleScrollTo('#projects')}
             >
               {t('projects')}
@@ -207,7 +207,7 @@ const Header = () => {
             </span>
             <Link
               href='/#contact'
-              className={`duration-200 ease-in-out ${textColorClass}`}
+              className={`underline-effect duration-200 ease-in-out ${textColorClass}`}
               onClick={() => handleScrollTo('#contact')}
             >
               {t('contact')}

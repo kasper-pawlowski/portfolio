@@ -61,7 +61,7 @@ const Footer = () => {
           <nav className='flex items-center justify-center gap-3'>
             <Link
               href='#about'
-              className='font-goia text-background font-500 z-1'
+              className='font-goia text-background font-500 underline-effect z-1'
               onClick={() => handleScrollTo('#about')}
             >
               {t('about')}
@@ -71,7 +71,7 @@ const Footer = () => {
             </span>
             <Link
               href='#projects'
-              className='font-goia text-background font-500 z-1'
+              className='font-goia text-background font-500 underline-effect z-1'
               onClick={() => handleScrollTo('#projects')}
             >
               {t('projects')}
@@ -81,7 +81,7 @@ const Footer = () => {
             </span>
             <Link
               href='#contact'
-              className='font-goia text-background font-500 z-1'
+              className='font-goia text-background font-500 underline-effect z-1'
               onClick={() => handleScrollTo('#contact')}
             >
               {t('contact')}

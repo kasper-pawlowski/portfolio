@@ -225,9 +225,9 @@ export const about_qhd: OverlayConfig[] = [
   box(4, 3, 'top-left'),
   box(10, 1, 'top-left'),
   box(8, 2, 'top-left'),
-  box(1, 6, 'bottom-left'),
+  box(3, 6, 'bottom-left'),
   box(2, 2, 'bottom-left'),
-  box(5, 1, 'bottom-left')
+  box(6, 1, 'bottom-left')
 ]
 
 export const blank: OverlayConfig[] = []
