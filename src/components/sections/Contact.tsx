@@ -81,7 +81,7 @@ const Contact = () => {
             <GithubLogo className='github-logo h-10 w-10 duration-300' />
             <div className='flex flex-col gap-1'>
               <span className='font-700 text-xl'>GitHub</span>
-              <p className='text-lg'>@kasper-pawlowski</p>
+              <p className='text-foreground-light text-lg'>@kasper-pawlowski</p>
             </div>
           </Link>
           <Link
@@ -92,7 +92,7 @@ const Contact = () => {
             <LinkedinLogo className='linkedin-logo h-10 w-10 duration-300' />
             <div className='flex flex-col gap-1'>
               <span className='font-700 text-xl'>LinkedIn</span>
-              <p className='text-lg'>@kasper-pawlowski</p>
+              <p className='text-foreground-light text-lg'>@kasper-pawlowski</p>
             </div>
           </Link>
         </div>

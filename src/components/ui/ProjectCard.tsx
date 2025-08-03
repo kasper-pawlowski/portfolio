@@ -38,7 +38,7 @@ export default async function ProjectCard({ project }: ProjectCardProps) {
         />
       </div>
 
-      <div className='border-foreground flex w-full items-center justify-between gap-3 border-t-4 px-2 py-3'>
+      <div className='border-foreground flex w-full items-center justify-between gap-3 border-t-4 px-3 py-3'>
         <p className='font-display font-800 overflow-hidden text-3xl overflow-ellipsis whitespace-nowrap'>
           {project.nameKey}
         </p>
