@@ -68,10 +68,19 @@ const Contact = () => {
         </a>
         <button
           onClick={handleCopyEmail}
-          className='font-500 z-1 mt-10 flex items-center justify-center gap-3 duration-200 ease-in-out active:translate-y-1'
+          className='font-500 group relative z-1 mt-10 flex items-center justify-center gap-3 duration-200 ease-in-out active:translate-y-1'
         >
-          <Copy size={20} /> <span>{t('copy_mail')}</span>
+          <Copy size={20} />
+          <span className='relative inline-flex overflow-hidden'>
+            <div className='translate-y-0 skew-y-0 transition duration-300 group-hover:-translate-y-[120%] group-hover:skew-y-12'>
+              {t('copy_mail')}
+            </div>
+            <div className='absolute translate-y-[120%] skew-y-12 transition duration-300 group-hover:translate-y-0 group-hover:skew-y-0'>
+              {t('copy_mail')}
+            </div>
+          </span>
         </button>
+
         <div className='z-1 mx-auto mt-25 flex flex-col gap-20 lg:flex-row'>
           <Link
             href='https://github.com/kasper-pawlowski'
