@@ -76,7 +76,7 @@ const Hero = () => {
               </div>
 
               <motion.button
-                className='font-500 buttton group font-display absolute top-[80%] left-[30%] z-5 flex items-center justify-center gap-3 rounded-3xl px-6 py-4 text-[20px] backdrop-blur-sm duration-300 ease-in-out hover:translate-x-1 hover:translate-y-1'
+                className='font-500 buttton group font-display qhd:left-[30%] qhd:px-6 qhd:py-4 absolute top-[80%] left-[25%] z-5 hidden items-center justify-center gap-3 rounded-3xl px-5 py-3 text-[20px] backdrop-blur-sm duration-300 ease-in-out hover:translate-x-1 hover:translate-y-1 lg:flex'
                 onClick={() => handleScrollTo('#projects')}
               >
                 <span className=''>przejdź do projektów</span>

@@ -12,6 +12,9 @@
     --contact-background: #ffa51453;
     --projects-grid-background-background: #c4c2bb;
 
+    --hero-button-shadow: #ff6f006d;
+    --hero-button-shadow-hover: #ff6f00;
+
     --blob-accent-1: #ff6f00;
     --blob-accent-2: #ff5500;
 
@@ -36,6 +39,9 @@
     --email-background: #303030;
     --contact-background: #cfc1b270;
     --projects-grid-background-background: #8a8a8a;
+
+    --hero-button-shadow: #76593da6;
+    --hero-button-shadow-hover: #76593d;
 
     --blob-accent-1: #76593d;
     --blob-accent-2: #938682;
@@ -97,28 +103,20 @@
 
   .buttton {
     box-shadow:
-      #ff6f006d 0px -0.722625px 1.01167px -0.833333px inset,
-      #ff6f006d 0px -2.74624px 3.84474px -1.66667px inset,
-      #ff6f006d 0px -12px 16.8px -2.5px inset,
+      var(--hero-button-shadow) 0px -0.722625px 1.01167px -0.833333px inset,
+      var(--hero-button-shadow) 0px -2.74624px 3.84474px -1.66667px inset,
+      var(--hero-button-shadow) 0px -12px 16.8px -2.5px inset,
       8px 8px 0 0 var(--foreground),
       0 0 0 3px var(--foreground);
   }
 
   .buttton:hover {
     box-shadow:
-      #ff6f00 0px -0.722625px 1.01167px -0.833333px inset,
-      #ff6f00 0px -2.74624px 3.84474px -1.66667px inset,
-      #ff6f00 0px -12px 16.8px -2.5px inset,
+      var(--hero-button-shadow-hover) 0px -0.722625px 1.01167px -0.833333px
+        inset,
+      var(--hero-button-shadow-hover) 0px -2.74624px 3.84474px -1.66667px inset,
+      var(--hero-button-shadow-hover) 0px -12px 16.8px -2.5px inset,
       0px 0px 0 0 var(--foreground),
-      0 0 0 3px var(--foreground);
-  }
-
-  .buttton:active {
-    box-shadow:
-      #ff6f00 0px -0.722625px 1.01167px -0.833333px inset,
-      #ff6f00 0px -2.74624px 3.84474px -1.66667px inset,
-      #ff6f00 0px -12px 16.8px -2.5px inset,
-      2px 2px 0 0 var(--foreground),
       0 0 0 3px var(--foreground);
   }
 
