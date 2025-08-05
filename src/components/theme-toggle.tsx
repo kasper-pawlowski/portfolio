@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { Moon, Sun } from 'lucide-react'
+import useSound from '@/hooks/useSound'
 
 type ThemeToggleProps = {
   textColorClass?: string
@@ -9,6 +10,7 @@ type ThemeToggleProps = {
 const ThemeToggle = ({ textColorClass }: ThemeToggleProps) => {
   const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const { soundButton, soundHover } = useSound()
 
   useEffect(() => {
     setMounted(true)
@@ -21,8 +23,9 @@ const ThemeToggle = ({ textColorClass }: ThemeToggleProps) => {
   return (
     <button
       onClick={() => {
-        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'), soundButton()
       }}
+      onMouseEnter={soundHover}
       className={`${textColorClass} transition-colors duration-200`}
     >
       {resolvedTheme === 'dark' ? (

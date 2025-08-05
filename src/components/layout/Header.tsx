@@ -19,12 +19,15 @@ import Logo from '../../../public/icons/logo.svg'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useLenis } from 'lenis/react'
 import { usePathname } from '@/i18n/navigation'
+import useSound from '@/hooks/useSound'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkSection, setIsDarkSection] = useState(false)
   const [scrollDirection, setScrollDirection] = useState('up')
   const [mounted, setMounted] = useState(false)
+  const { soundHover, soundClick, soundTransitionDown, soundTransitionUp } =
+    useSound()
 
   const t = useTranslations('Navigation')
   const tProjects = useTranslations('Projects')
@@ -62,11 +65,13 @@ const Header = () => {
   // Obsługa body overflow przy otwartym menu
   useEffect(() => {
     if (isMenuOpen) {
+      soundTransitionUp()
       document.body.classList.add('overflow-hidden')
       if (typeof document !== 'undefined') {
         document.body.style.overflow = 'hidden'
       }
     } else {
+      soundTransitionDown()
       document.body.classList.remove('overflow-hidden')
       if (typeof document !== 'undefined') {
         document.body.style.overflow = 'unset'
@@ -154,6 +159,10 @@ const Header = () => {
         <div className='flex flex-1/5 items-center justify-start'>
           {!isLgUp && pathname != '/' ? (
             <Link
+              onMouseEnter={soundHover}
+              onClick={() => {
+                handleLogoClick(), soundClick(), handleScrollTo('#projects')
+              }}
               href='/#projects'
               aria-label='back to projects'
               className={`font-400 group flex items-center justify-center gap-3 text-base transition-colors duration-200 ${textColorClass}`}
@@ -168,9 +177,11 @@ const Header = () => {
             <Link
               href='/#hero'
               aria-label='Logo'
+              onMouseEnter={soundHover}
               onClick={() => {
                 handleLogoClick()
                 handleScrollTo('#hero')
+                soundClick()
               }}
               className={`transition-colors duration-200 ${textColorClass}`}
             >
@@ -184,7 +195,10 @@ const Header = () => {
             <Link
               href='/#about'
               className={`underline-effect duration-200 ease-in-out ${textColorClass} `}
-              onClick={() => handleScrollTo('#about')}
+              onClick={() => {
+                handleScrollTo('#about'), soundClick()
+              }}
+              onMouseEnter={soundHover}
             >
               {t('about')}
             </Link>
@@ -196,7 +210,10 @@ const Header = () => {
             <Link
               href='/#projects'
               className={`underline-effect duration-200 ease-in-out ${textColorClass}`}
-              onClick={() => handleScrollTo('#projects')}
+              onClick={() => {
+                handleScrollTo('#projects'), soundClick()
+              }}
+              onMouseEnter={soundHover}
             >
               {t('projects')}
             </Link>
@@ -208,7 +225,10 @@ const Header = () => {
             <Link
               href='/#contact'
               className={`underline-effect duration-200 ease-in-out ${textColorClass}`}
-              onClick={() => handleScrollTo('#contact')}
+              onClick={() => {
+                handleScrollTo('#contact'), soundClick()
+              }}
+              onMouseEnter={soundHover}
             >
               {t('contact')}
             </Link>

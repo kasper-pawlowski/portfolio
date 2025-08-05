@@ -3,10 +3,12 @@
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useLenis } from 'lenis/react'
+import useSound from '@/hooks/useSound'
 
 const Footer = () => {
   const t = useTranslations('Navigation')
   const lenis = useLenis()
+  const { soundHover, soundClick } = useSound()
 
   const handleScrollTo = (target: string) => {
     if (lenis) {
@@ -62,7 +64,10 @@ const Footer = () => {
             <Link
               href='#about'
               className='font-goia text-background font-500 underline-effect z-1'
-              onClick={() => handleScrollTo('#about')}
+              onClick={() => {
+                handleScrollTo('#about'), soundClick()
+              }}
+              onMouseEnter={soundHover}
             >
               {t('about')}
             </Link>
@@ -72,7 +77,10 @@ const Footer = () => {
             <Link
               href='#projects'
               className='font-goia text-background font-500 underline-effect z-1'
-              onClick={() => handleScrollTo('#projects')}
+              onClick={() => {
+                handleScrollTo('#projects'), soundClick()
+              }}
+              onMouseEnter={soundHover}
             >
               {t('projects')}
             </Link>
@@ -82,7 +90,10 @@ const Footer = () => {
             <Link
               href='#contact'
               className='font-goia text-background font-500 underline-effect z-1'
-              onClick={() => handleScrollTo('#contact')}
+              onClick={() => {
+                handleScrollTo('#contact'), soundClick()
+              }}
+              onMouseEnter={soundHover}
             >
               {t('contact')}
             </Link>

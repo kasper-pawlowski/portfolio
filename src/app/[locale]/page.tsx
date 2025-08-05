@@ -20,7 +20,7 @@ const Home = () => {
       <Footer />
 
       <ProgressiveBlur
-        className='pointer-events-none fixed bottom-0 left-0 z-6 h-[200px] w-screen'
+        className='pointer-events-none fixed bottom-0 left-0 z-6 h-[100px] w-screen lg:h-[200px]'
         direction='bottom'
         enableOpacityTransition={true}
       />

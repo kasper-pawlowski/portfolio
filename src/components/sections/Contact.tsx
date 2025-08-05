@@ -10,17 +10,16 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import { useSound } from 'react-sounds'
+import useSound from '@/hooks/useSound'
 
 const Contact = () => {
   const t = useTranslations('Contact')
-  const { play } = useSound('/sounds/button.wav')
+  const { soundHover, soundClick, soundTap } = useSound()
 
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText('kasper.pawlowski04@gmail.com')
       toast.success(t('toast_success'))
-      play()
     } catch (err) {
       toast.error(t('toast_error'))
     }
@@ -63,11 +62,16 @@ const Contact = () => {
           className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background z-1 mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
           aria-label='Wyślij wiadomość email do kasper.pawlowski04@gmail.com'
           role='button'
+          onMouseEnter={soundHover}
+          onMouseLeave={soundHover}
+          onClick={soundClick}
         >
           kasper.pawlowski04@gmail.com
         </a>
         <button
-          onClick={handleCopyEmail}
+          onClick={() => {
+            handleCopyEmail(), soundClick()
+          }}
           className='font-500 group relative z-1 mt-10 flex items-center justify-center gap-3 duration-200 ease-in-out active:translate-y-1'
         >
           <Copy size={20} />
@@ -86,6 +90,8 @@ const Contact = () => {
             href='https://github.com/kasper-pawlowski'
             className='github-link flex items-center gap-5'
             target='_blank'
+            onMouseEnter={soundTap}
+            onClick={soundClick}
           >
             <GithubLogo className='github-logo h-10 w-10 duration-300' />
             <div className='flex flex-col gap-1'>
@@ -97,6 +103,8 @@ const Contact = () => {
             href='https://linkedin.com/in/kasper-pawlowski'
             className='linkedin-link flex items-center gap-5'
             target='_blank'
+            onMouseEnter={soundTap}
+            onClick={soundClick}
           >
             <LinkedinLogo className='linkedin-logo h-10 w-10 duration-300' />
             <div className='flex flex-col gap-1'>

@@ -13,6 +13,7 @@ import { useAnimation } from '@/context/AnimationContext'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { MeshGradient } from '@blur-ui/mesh-gradient'
 import { useGradientColors } from '@/hooks/useGradientColors'
+import useSound from '@/hooks/useSound'
 
 interface Project {
   id: number
@@ -56,6 +57,7 @@ export default function ProjectClient({
   const isLgUp = useBreakpoint('lg')
   const isQhdUp = useBreakpoint('qhd')
   const colors = useGradientColors(project)
+  const { soundHover, soundClick } = useSound()
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -157,6 +159,8 @@ export default function ProjectClient({
                   <Link
                     href={project.liveLink}
                     target='_blank'
+                    onMouseEnter={soundHover}
+                    onClick={soundClick}
                     className='text-background border-foreground bg-foreground hover:text-background group qhd:text-2xl flex items-center justify-center gap-2 rounded-2xl border-1 px-5 py-2 text-base duration-300 ease-in-out hover:rounded-3xl active:translate-y-1'
                   >
                     <span>Live</span>
@@ -170,6 +174,8 @@ export default function ProjectClient({
                   <Link
                     href={project.githubLink}
                     target='_blank'
+                    onMouseEnter={soundHover}
+                    onClick={soundClick}
                     className='border-foreground qhd:text-2xl flex items-center justify-center gap-2 rounded-2xl border-1 px-5 py-2 text-base backdrop-blur-sm duration-300 ease-in-out hover:rounded-3xl active:translate-y-1'
                   >
                     <span>Github</span>
@@ -250,6 +256,7 @@ export default function ProjectClient({
                 <Link
                   href={project.liveLink}
                   target='_blank'
+                  onClick={soundClick}
                   className='text-background border-foreground bg-foreground hover:text-background group flex items-center justify-center gap-2 rounded-4xl border-1 px-4 py-2 text-base duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
                 >
                   <span>Live</span>
@@ -263,6 +270,7 @@ export default function ProjectClient({
                 <Link
                   href={project.githubLink}
                   target='_blank'
+                  onClick={soundClick}
                   className='border-foreground flex items-center justify-center gap-2 rounded-4xl border-1 px-4 py-2 text-base backdrop-blur-sm duration-300 ease-in-out hover:rounded-none active:rounded-2xl'
                 >
                   <span>Github</span>

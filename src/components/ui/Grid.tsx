@@ -1,3 +1,4 @@
+import useSound from '@/hooks/useSound'
 import React, { useState, useEffect, useRef } from 'react'
 
 export type OverlayConfig = {
@@ -27,6 +28,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     null
   )
   const [squareSize, setSquareSize] = useState({ width: 0, height: 0 })
+  const { soundTap, soundPlum } = useSound()
 
   const getOverlayStyle = (
     overlay: OverlayConfig,
@@ -207,10 +209,12 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     }
 
     setLastHoveredSquare(index)
+    soundPlum()
   }
 
   const handleSquareLeave = (index: number) => {
     setHoveredSquare(null)
+
     // Nie resetuj lastHoveredSquare tutaj, aby zachować ciągłość ścieżki
   }
 

@@ -13,6 +13,7 @@ import { useLoader } from '@/context/LoaderContext'
 import Link from 'next/link'
 import { useLenis } from 'lenis/react'
 import { ArrowDownRight } from 'lucide-react'
+import useSound from '@/hooks/useSound'
 
 const Hero = () => {
   const { hasInitialLoadFinished } = useLoader()
@@ -20,6 +21,8 @@ const Hero = () => {
   const firstY = useMotionValue(0)
   const secondY = useMotionValue(0)
   const lenis = useLenis()
+  const { soundHover, soundClick } = useSound()
+
   useMotionValueEvent(scrollYProgress, 'change', latest => {
     const newFirstY = 0 - latest * 300
     firstY.set(newFirstY)
@@ -76,6 +79,8 @@ const Hero = () => {
               </div>
 
               <motion.button
+                onMouseEnter={soundHover}
+                onMouseLeave={soundHover}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
@@ -84,7 +89,9 @@ const Hero = () => {
                   delay: baseDelay + 0.6
                 }}
                 className='font-500 buttton group font-display qhd:left-[30%] qhd:px-6 qhd:py-4 absolute top-[80%] left-[25%] z-5 hidden items-center justify-center gap-3 rounded-3xl px-5 py-3 text-[20px] backdrop-blur-sm duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 lg:flex'
-                onClick={() => handleScrollTo('#projects')}
+                onClick={() => {
+                  handleScrollTo('#projects'), soundClick()
+                }}
               >
                 <span className=''>przejdź do projektów</span>
                 <ArrowDownRight

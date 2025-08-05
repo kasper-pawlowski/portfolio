@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import clsx from 'clsx'
 import { ChevronDown } from 'lucide-react'
+import useSound from '@/hooks/useSound'
 
 type LanguageSelectProps = {
   textColorClass?: string
@@ -18,9 +19,21 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [alignRight, setAlignRight] = useState(false)
   const pathname = usePathname()
+  const { soundTransitionDown, soundTransitionUp, soundClick, soundHover } =
+    useSound()
 
-  const toggleDropdown = () => setIsDropdownOpen(prev => !prev)
-  const closeDropdown = () => setIsDropdownOpen(false)
+  const toggleDropdown = () => {
+    if (isDropdownOpen) {
+      soundTransitionDown()
+    } else {
+      soundTransitionUp()
+    }
+    setIsDropdownOpen(prev => !prev)
+  }
+  const closeDropdown = () => {
+    soundTransitionDown()
+    setIsDropdownOpen(false)
+  }
 
   useEffect(() => {
     const handleMouseDown = (event: MouseEvent) => {
@@ -79,6 +92,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
         ref={buttonRef}
         className={`bg-foreground/5 hover:bg-foreground/10 flex place-items-center rounded-xl border-1 border-neutral-200/20 px-4 py-2 backdrop-blur-lg transition-colors duration-200 ${textColorClass}`}
         onClick={toggleDropdown}
+        onMouseEnter={soundHover}
         aria-expanded={isDropdownOpen}
         aria-haspopup='true'
         aria-label='Select language dropdown'
@@ -115,7 +129,9 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
             <Link
               locale='pl'
               href={pathname}
-              onClick={closeDropdown}
+              onClick={() => {
+                closeDropdown(), soundClick()
+              }}
               scroll={false}
               className={clsx(
                 'flex gap-3 rounded-lg py-4 transition-colors duration-200',
@@ -143,7 +159,9 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
             <Link
               locale='en'
               href={pathname}
-              onClick={closeDropdown}
+              onClick={() => {
+                closeDropdown(), soundClick()
+              }}
               scroll={false}
               className={clsx(
                 'flex gap-3 rounded-lg py-4 transition-colors duration-200',

@@ -73,7 +73,6 @@ export default async function LocaleLayout({
                     }}
                   />
                   <Header />
-
                   <main>{children}</main>
                 </div>
               </LoaderProvider>

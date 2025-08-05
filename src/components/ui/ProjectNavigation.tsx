@@ -8,6 +8,7 @@ import { AnimateNumber } from 'motion-plus-react'
 import { useState, useEffect } from 'react'
 import { useAnimation } from '@/context/AnimationContext'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
+import useSound from '@/hooks/useSound'
 
 interface ProjectNavigationProps {
   currentProjectId: number
@@ -22,6 +23,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   const [current, setCurrent] = useState(currentProjectId)
   const { isAnimating, setIsAnimating } = useAnimation()
   const isLgUp = useBreakpoint('lg')
+  const { soundHover, soundClick } = useSound()
 
   // Synchronizuj stan ze zmianami props
   useEffect(() => {
@@ -33,6 +35,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     const newValue = current === 1 ? totalProjects : current - 1
     setCurrent(newValue)
     setIsAnimating(true)
+    soundClick() // Play click sound
 
     // Opóźnij nawigację o 300ms (czas trwania animacji)
     setTimeout(() => {
@@ -45,6 +48,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     const newValue = current === totalProjects ? 1 : current + 1
     setCurrent(newValue)
     setIsAnimating(true)
+    soundClick() // Play click sound
 
     setTimeout(() => {
       router.push(`/project/${newValue}`)
@@ -61,6 +65,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             }`}
             href={`/project/${current === 1 ? totalProjects : current - 1}`}
             onClick={handlePrev}
+            onMouseEnter={soundHover}
           >
             <MoveLeft
               className='text-foreground-light'
@@ -85,6 +90,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             }`}
             href={`/project/${current === totalProjects ? 1 : current + 1}`}
             onClick={handleNext}
+            onMouseEnter={soundHover}
           >
             <MoveRight
               className='text-foreground-light'

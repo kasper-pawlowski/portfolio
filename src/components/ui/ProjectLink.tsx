@@ -4,6 +4,7 @@ import projectsData from '@/data/projects.json'
 import { Cursor } from '../core/cursor'
 import { MousePointer2, MousePointerClick } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import ProjectInteractionSounds from '../ProjectInteractionSounds'
 
 type ProjectLinkProps = {
   id: number
@@ -14,6 +15,7 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
 
   return (
     <Link href={`/project/${id}`} className='group relative z-5 h-full w-full'>
+      <ProjectInteractionSounds />
       <video
         controls={false}
         autoPlay
