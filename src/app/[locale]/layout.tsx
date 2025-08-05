@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import '../globals.css'
+import { Suspense } from 'react'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { routing } from '@/i18n/routing'
 import { Toaster } from 'react-hot-toast'
 import { ReactLenis } from 'lenis/react'
-import { goia_display, goia } from '../fonts'
+
+import Loading from '@/app/[locale]/Loading'
+import { routing } from '@/i18n/routing'
 import Providers from '@/components/providers'
 import Header from '@/components/layout/Header'
-import { Suspense } from 'react'
-import Loading from './Loading'
 import GlobalLoader from '@/components/GlobalLoader'
 import { LoaderProvider } from '@/context/LoaderContext'
+import { goia_display, goia } from '../fonts'
+import '../globals.css'
 
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
@@ -25,59 +26,71 @@ export const viewport: Viewport = {
   userScalable: false
 }
 
+const toastConfig = {
+  position: 'bottom-right' as const,
+  gutter: 16,
+  toastOptions: {
+    style: {
+      border: '0px solid var(--background)',
+      borderRadius: '12px',
+      padding: '16px',
+      color: 'var(--foreground)',
+      backgroundColor: 'var(--background)',
+      fontFamily: 'var(--font-goia-display)',
+      boxShadow: '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
+      fontWeight: '600'
+    },
+    success: {
+      iconTheme: {
+        primary: 'var(--foreground)',
+        secondary: 'var(--background)'
+      }
+    }
+  }
+}
+
+interface LocaleLayoutProps {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}
+
 export default async function LocaleLayout({
   children,
   params
-}: {
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
-}) {
+}: LocaleLayoutProps) {
   const { locale } = await params
+
   if (!hasLocale(routing.locales, locale)) {
     notFound()
   }
 
+  const bodyClassName = `${goia_display.variable} ${goia.variable} antialiased`
+
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
+      <body className={bodyClassName}>
         <Suspense fallback={<Loading />}>
           <NextIntlClientProvider>
             <Providers>
               <LoaderProvider>
-                <div className='relative min-h-full w-full overflow-clip'>
+                <AppLayout>
                   <GlobalLoader />
                   <ReactLenis root />
-                  <Toaster
-                    position='bottom-right'
-                    gutter={16}
-                    toastOptions={{
-                      style: {
-                        border: '0px solid var(--background)',
-                        borderRadius: '12px',
-                        padding: '16px',
-                        color: 'var(--foreground)',
-                        backgroundColor: 'var(--background)',
-                        fontFamily: 'var(--font-goia-display)',
-                        boxShadow:
-                          '8px 8px 0 0 var(--foreground), 0 0 0 3px var(--foreground)',
-                        fontWeight: '600'
-                      },
-                      success: {
-                        iconTheme: {
-                          primary: 'var(--foreground)',
-                          secondary: 'var(--background)'
-                        }
-                      }
-                    }}
-                  />
+                  <Toaster {...toastConfig} />
                   <Header />
                   <main>{children}</main>
-                </div>
+                </AppLayout>
               </LoaderProvider>
             </Providers>
           </NextIntlClientProvider>
         </Suspense>
       </body>
     </html>
+  )
+}
+
+function AppLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className='relative min-h-full w-full overflow-clip'>{children}</div>
   )
 }
