@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleMarquee from '../core/simple-marquee'
+import SimpleMarquee from '@/components/core/simple-marquee'
 import Divider from '../../../public/divider.svg'
 
 const Marquee = () => {

@@ -1,9 +1,9 @@
 'use client'
 
-import Photo from '../ui/Photo'
-import GridWrapper from '../ui/GridWrapper'
 import { useTranslations } from 'next-intl'
 import { motion } from 'motion/react'
+import GridWrapper from '@/components/ui/GridWrapper'
+import Photo from '@/components/ui/Photo'
 
 const About = () => {
   const t = useTranslations('About')

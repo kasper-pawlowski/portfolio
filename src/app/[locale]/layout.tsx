@@ -4,7 +4,6 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Toaster } from 'react-hot-toast'
-import { unstable_ViewTransition as ViewTransition } from 'react'
 import { ReactLenis } from 'lenis/react'
 import { goia_display, goia } from '../fonts'
 import Providers from '@/components/providers'
@@ -39,7 +38,6 @@ export default async function LocaleLayout({
   }
 
   return (
-    // <ViewTransition>
     <html lang={locale} suppressHydrationWarning>
       <body className={`${goia_display.variable} ${goia.variable} antialiased`}>
         <Suspense fallback={<Loading />}>
@@ -81,6 +79,5 @@ export default async function LocaleLayout({
         </Suspense>
       </body>
     </html>
-    // </ViewTransition>
   )
 }

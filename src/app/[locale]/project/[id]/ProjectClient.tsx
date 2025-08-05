@@ -1,19 +1,17 @@
 'use client'
 
-import Carousel from '@/components/ui/Carousel'
-import { ArrowUpRight, MoveLeft } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import GithubLogo from '../../../../../public/icons/github.svg'
-import ProjectNavigation from '@/components/ui/ProjectNavigation'
-import { ProgressiveBlur } from '@/components/core/progressive-blur'
-import { animate, AnimatePresence, delay, motion, stagger } from 'framer-motion'
-import { useEffect, useRef, type ReactNode } from 'react'
+import { ArrowUpRight } from 'lucide-react'
+import { animate, motion, stagger } from 'framer-motion'
 import { splitText } from 'motion-plus'
+import { MeshGradient } from '@blur-ui/mesh-gradient'
+import Carousel from '@/components/ui/Carousel'
 import { useAnimation } from '@/context/AnimationContext'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { MeshGradient } from '@blur-ui/mesh-gradient'
 import { useGradientColors } from '@/hooks/useGradientColors'
 import useSound from '@/hooks/useSound'
+import GithubLogo from '../../../../../public/icons/github.svg'
 
 interface Project {
   id: number
@@ -85,8 +83,8 @@ export default function ProjectClient({
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05, // opóźnienie między dziećmi
-        when: 'beforeChildren' // kontener animuje się najpierw
+        staggerChildren: 0.05,
+        when: 'beforeChildren'
       }
     }
   }
@@ -332,40 +330,4 @@ export default function ProjectClient({
       </motion.div>
     </>
   )
-}
-
-{
-  /* <div className='h-screen w-screen'>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className='mt-3 mb-5 block lg:hidden'
-          >
-            <Carousel projectId={projectId} />
-          </motion.div>
-          <div className='flex flex-4/10 flex-col gap-2 lg:hidden'>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className='font-500 font-display text-foreground-light'
-            >
-              {translations.technologies}
-            </motion.p>
-            <motion.div
-              variants={containerVariants}
-              initial='hidden'
-              animate='visible'
-              className='text-foreground font-400 flex flex-wrap items-center gap-x-2 text-sm'
-            >
-              {project.technologies.map((technology, index) => (
-                <motion.div key={technology} variants={childVariants}>
-                  <span>{technology}</span>
-                  {index < project.technologies.length - 1 && <span> / </span>}
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div> */
 }

@@ -1,7 +1,5 @@
-// app/fonts.ts
 import localFont from 'next/font/local'
 
-// Definicja fontu Goia Display ze wszystkimi wagami
 export const goia_display = localFont({
   src: [
     {
@@ -54,7 +52,6 @@ export const goia_display = localFont({
   variable: '--font-goia-display'
 })
 
-// Definicja fontu Goia (standardowego) ze wszystkimi wagami
 export const goia = localFont({
   src: [
     {

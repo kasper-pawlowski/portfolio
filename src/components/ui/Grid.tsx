@@ -1,5 +1,5 @@
-import useSound from '@/hooks/useSound'
 import React, { useState, useEffect, useRef } from 'react'
+import useSound from '@/hooks/useSound'
 
 export type OverlayConfig = {
   widthSquares: number
@@ -28,7 +28,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     null
   )
   const [squareSize, setSquareSize] = useState({ width: 0, height: 0 })
-  const { soundTap, soundPlum } = useSound()
+  const { soundPlum } = useSound()
 
   const getOverlayStyle = (
     overlay: OverlayConfig,
@@ -73,15 +73,13 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     const containerHeight = container.offsetHeight
     const tolerance = 5
 
-    // Oblicz liczbę kolumn i wierszy na podstawie rozmiaru bazowego
     const baseCols = Math.floor(containerWidth / baseSize)
     const baseRows = Math.floor(containerHeight / baseSize)
 
-    // Oblicz dokładny rozmiar kwadratu, aby wypełnić całą przestrzeń
     const exactSquareWidth = containerWidth / baseCols
     const exactSquareHeight = containerHeight / baseRows
 
-    // Sprawdź, czy rozmiary mieszczą się w tolerancji
+    // sprawdzanie czy mieszcza sie w tolerancji
     const widthInTolerance = Math.abs(exactSquareWidth - baseSize) <= tolerance
     const heightInTolerance =
       Math.abs(exactSquareHeight - baseSize) <= tolerance
@@ -91,10 +89,10 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     let finalSquareSize = baseSize
 
     if (widthInTolerance && heightInTolerance) {
-      // Użyj średniej z dokładnych rozmiarów
+      // srednia z dokładnych rozmiarów
       finalSquareSize = Math.min(exactSquareWidth, exactSquareHeight)
     } else {
-      // Dostosuj liczbę kolumn/wierszy, aby rozmiar był bliższy bazowemu
+      // dostosowanie liczby kolumn/wierszy aby rozmiar był bliższy bazowemu
       if (!widthInTolerance) {
         const altCols = Math.round(containerWidth / baseSize)
         const altSquareWidth = containerWidth / altCols
@@ -142,13 +140,11 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     }
     window.addEventListener('resize', handleResize)
 
-    // Obserwator zmian rozmiaru kontenera
     const resizeObserver = new ResizeObserver(calculateGrid)
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current)
     }
 
-    // Funkcja do czyszczenia śladu po czasie
     const clearTrailInterval = setInterval(() => {
       setTrailSquares(prev => {
         if (prev.size === 0) return prev
@@ -159,16 +155,15 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
         }
         return newSet
       })
-    }, 30) // Usuwa jeden kwadrat co 100ms
+    }, 30)
 
     return () => {
       window.removeEventListener('resize', handleResize)
       resizeObserver.disconnect()
       clearInterval(clearTrailInterval)
     }
-  }, [baseSize]) // Dodano baseSize jako dependency
+  }, [baseSize])
 
-  // Funkcja do obliczania ścieżki między dwoma kwadratami
   const getSquaresBetween = (startIndex: number, endIndex: number) => {
     const squares = []
     const { cols } = gridConfig
@@ -199,12 +194,10 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
   const handleSquareHover = (index: number) => {
     setHoveredSquare(index)
 
-    // Jeśli jest poprzedni kwadrat, dodaj wszystkie kwadraty na ścieżce
     if (lastHoveredSquare !== null && lastHoveredSquare !== index) {
       const pathSquares = getSquaresBetween(lastHoveredSquare, index)
       setTrailSquares(prev => new Set([...prev, ...pathSquares]))
     } else {
-      // Jeśli nie ma poprzedniego kwadratu, po prostu dodaj bieżący
       setTrailSquares(prev => new Set([...prev, index]))
     }
 
@@ -214,8 +207,6 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
 
   const handleSquareLeave = (index: number) => {
     setHoveredSquare(null)
-
-    // Nie resetuj lastHoveredSquare tutaj, aby zachować ciągłość ścieżki
   }
 
   const generateSquares = () => {
@@ -270,7 +261,6 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
           filter: 'url(#gooey-filter)'
         }}
       >
-        {/* SVG Filter dla efektu Gooey */}
         <svg width='0' height='0' style={{ position: 'absolute' }}>
           <defs>
             <filter id='gooey-filter'>

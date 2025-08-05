@@ -1,11 +1,11 @@
-import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
-import { Link, usePathname } from '@/i18n/navigation'
-import clsx from 'clsx'
+import { motion, AnimatePresence } from 'motion/react'
 import { ChevronDown } from 'lucide-react'
+import { Link, usePathname } from '@/i18n/navigation'
 import useSound from '@/hooks/useSound'
+import clsx from 'clsx'
 
 type LanguageSelectProps = {
   textColorClass?: string

@@ -1,14 +1,5 @@
-import {
-  Maximize,
-  Minus,
-  Square,
-  SquareMinus,
-  SquareSquare,
-  SquareX,
-  X
-} from 'lucide-react'
 import Image from 'next/image'
-import React from 'react'
+import { SquareMinus, SquareSquare, SquareX } from 'lucide-react'
 
 const Photo = () => {
   return (

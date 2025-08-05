@@ -6,21 +6,19 @@ import {
   useScroll,
   motion
 } from 'motion/react'
-
-import Marquee from '../ui/Marquee'
-import GridWrapper from '../ui/GridWrapper'
-import { useLoader } from '@/context/LoaderContext'
-import Link from 'next/link'
 import { useLenis } from 'lenis/react'
 import { ArrowDownRight } from 'lucide-react'
+import { useLoader } from '@/context/LoaderContext'
+import Marquee from '@/components/ui/Marquee'
+import GridWrapper from '@/components/ui/GridWrapper'
 import useSound from '@/hooks/useSound'
 
 const Hero = () => {
   const { hasInitialLoadFinished } = useLoader()
   const { scrollYProgress } = useScroll()
+  const lenis = useLenis()
   const firstY = useMotionValue(0)
   const secondY = useMotionValue(0)
-  const lenis = useLenis()
   const { soundHover, soundClick } = useSound()
 
   useMotionValueEvent(scrollYProgress, 'change', latest => {
@@ -125,19 +123,6 @@ const Hero = () => {
           transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
           className='from-blob-accent-1 to-blob-accent-2 qhd:h-60 qhd:-bottom-20 absolute -bottom-5 -left-[15vw] z-1 h-30 w-[130vw] bg-linear-to-b blur-3xl lg:-bottom-10 lg:h-40'
         />
-
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
-          className='bg-blob-accent-2 absolute -bottom-20 -left-[5vw] z-1 h-30 w-[110vw] opacity-70 blur-3xl'
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeInOut', delay: baseDelay }}
-          className='bg-blob-accent-1 absolute -bottom-20 -left-[5vw] z-1 h-60 w-[110vw] opacity-70 blur-3xl'
-        /> */}
       </section>
     </>
   )

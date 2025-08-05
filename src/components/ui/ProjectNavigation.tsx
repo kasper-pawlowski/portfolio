@@ -1,11 +1,10 @@
 'use client'
 
-import { MoveLeft, MoveRight } from 'lucide-react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { AnimateNumber } from 'motion-plus-react'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { MoveLeft, MoveRight } from 'lucide-react'
+import { AnimateNumber } from 'motion-plus-react'
 import { useAnimation } from '@/context/AnimationContext'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import useSound from '@/hooks/useSound'
@@ -25,7 +24,6 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
   const isLgUp = useBreakpoint('lg')
   const { soundHover, soundClick } = useSound()
 
-  // Synchronizuj stan ze zmianami props
   useEffect(() => {
     setCurrent(currentProjectId)
   }, [currentProjectId])
@@ -35,9 +33,8 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     const newValue = current === 1 ? totalProjects : current - 1
     setCurrent(newValue)
     setIsAnimating(true)
-    soundClick() // Play click sound
+    soundClick()
 
-    // Opóźnij nawigację o 300ms (czas trwania animacji)
     setTimeout(() => {
       router.push(`/project/${newValue}`)
     }, 300)
@@ -48,7 +45,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     const newValue = current === totalProjects ? 1 : current + 1
     setCurrent(newValue)
     setIsAnimating(true)
-    soundClick() // Play click sound
+    soundClick()
 
     setTimeout(() => {
       router.push(`/project/${newValue}`)
@@ -140,45 +137,6 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               />
             </Link>
           </div>
-
-          {/* <div className='relative flex h-30 w-30 items-center justify-center gap-3 transition duration-300 ease-out'>
-          <Link
-            className={`group relative z-1 translate-x-1 duration-200 ease-in-out ${
-              isAnimating ? 'pointer-events-none' : ''
-            }`}
-            href={`/project/${current === 1 ? totalProjects : current - 1}`}
-            onClick={handlePrev}
-          >
-            <MoveLeft
-              className='text-foreground-light'
-              size={24}
-              strokeWidth={1}
-            />
-          </Link>
-          <div className='font-display font-600 relative flex flex-col items-center justify-center text-4xl'>
-            <AnimateNumber
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className='mr-5'
-            >
-              {current}
-            </AnimateNumber>
-            <span className='ml-5 py-[7px]'>{totalProjects}</span>
-          </div>
-          <Link
-            className={`group -translate-x-1 duration-200 ease-in-out ${
-              isAnimating ? 'pointer-events-none' : ''
-            }`}
-            href={`/project/${current === totalProjects ? 1 : current + 1}`}
-            onClick={handleNext}
-          >
-            <MoveRight
-              className='text-foreground-light'
-              size={24}
-              strokeWidth={1}
-            />
-          </Link>
-          <div className='bg-foreground-light pointer-events-none absolute h-[60%] w-[0.5px] rotate-45 opacity-30'></div>{' '}
-        </div> */}
         </>
       )}
     </>

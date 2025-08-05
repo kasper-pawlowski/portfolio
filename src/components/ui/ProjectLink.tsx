@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import React from 'react'
-import projectsData from '@/data/projects.json'
-import { Cursor } from '../core/cursor'
-import { MousePointer2, MousePointerClick } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import ProjectInteractionSounds from '../ProjectInteractionSounds'
+import { MousePointer2, MousePointerClick } from 'lucide-react'
+import { Cursor } from '@/components/core/cursor'
+import ProjectInteractionSounds from '@/components/ProjectInteractionSounds'
+import projectsData from '@/data/projects.json'
 
 type ProjectLinkProps = {
   id: number
@@ -55,9 +54,6 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
             className='cursor-child absolute ml-4 rounded-lg border-1 border-neutral-200/20 px-3 py-1 text-neutral-50'
             style={{ backgroundColor: projectsData[id - 1].accent }}
           >
-            {/* <p className='font-display font-500 text-2xl whitespace-nowrap'>
-              {projectsData[id - 1].nameKey}
-            </p> */}
             <p className='font-display font-400 text-xl whitespace-nowrap'>
               {t('cursor_text')}
             </p>

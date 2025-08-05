@@ -1,10 +1,10 @@
-import LanguageToggle from '../language-select'
-import SoundToggle from '../sound-toggle'
-import ThemeToggle from '../theme-toggle'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { useLenis } from 'lenis/react'
+import LanguageToggle from '@/components/language-select'
+import ThemeToggle from '@/components/theme-toggle'
+import SoundToggle from '@/components/sound-toggle'
 
 const MobileMenu = ({ onClose }: { onClose: () => void }) => {
   const t = useTranslations('Navigation')

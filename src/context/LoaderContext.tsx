@@ -7,10 +7,8 @@ interface LoaderContextType {
   setHasInitialLoadFinished: (value: boolean) => void
 }
 
-// Tworzymy kontekst z wartością domyślną
 const LoaderContext = createContext<LoaderContextType | undefined>(undefined)
 
-// Tworzymy Provider, który będzie zarządzał stanem
 export const LoaderProvider = ({ children }: { children: ReactNode }) => {
   const [hasInitialLoadFinished, setHasInitialLoadFinished] = useState(false)
 
@@ -23,7 +21,6 @@ export const LoaderProvider = ({ children }: { children: ReactNode }) => {
   )
 }
 
-// Tworzymy custom hook dla łatwiejszego dostępu do kontekstu
 export const useLoader = () => {
   const context = useContext(LoaderContext)
   if (context === undefined) {

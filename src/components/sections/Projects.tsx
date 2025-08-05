@@ -1,12 +1,12 @@
-import styles from '../../styles/Projects.module.css'
-import projectsData from '../../data/projects.json'
-import ProjectLink from '../ui/ProjectLink'
-import ProjectCard from '../ui/ProjectCard'
 import { useTranslations } from 'next-intl'
+import ProjectLink from '@/components/ui/ProjectLink'
+import ProjectCard from '@/components/ui/ProjectCard'
 import {
   AnimatedProjectTitle,
   AnimatedProjectTitleMobile
-} from '../ui/AnimatedProjectTitle'
+} from '@/components/ui/AnimatedProjectTitle'
+import projectsData from '@/data/projects.json'
+import styles from '@/styles/Projects.module.css'
 
 const Projects = () => {
   const t = useTranslations('Projects')

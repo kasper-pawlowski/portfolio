@@ -1,13 +1,12 @@
 'use client'
 
+import { useEffect } from 'react'
+import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
-import data from '@/data/projects.json'
-import Image from 'next/image'
-import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { useEffect } from 'react' // No need for useState for plugins
-// import { AnimatePresence, motion } from 'motion/react' // Uncomment if you use these
 import { MoveDown } from 'lucide-react'
+import data from '@/data/projects.json'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 type CarouselProps = {
   projectId: number
@@ -16,8 +15,6 @@ type CarouselProps = {
 const Carousel = ({ projectId }: CarouselProps) => {
   const isLgUp = useBreakpoint('lg')
 
-  // Directly initialize plugins within the useEmblaCarousel call
-  // We only create the plugin instance if window is defined (client-side)
   const plugins =
     typeof window !== 'undefined'
       ? [WheelGesturesPlugin({ target: document.body })]
@@ -30,42 +27,32 @@ const Carousel = ({ projectId }: CarouselProps) => {
       dragFree: isLgUp ? true : false,
       skipSnaps: true
     },
-    plugins // Pass the directly created plugins
+    plugins
   )
 
   useEffect(() => {
-    // Ensure emblaApi is available and we're on a large screen
     if (!emblaApi || !isLgUp) {
-      // console.log('Embla API not ready or not large screen, skipping transition setup.'); // For debugging
       return
     }
 
     const container = emblaApi.containerNode()
 
-    // Function to set the transition style
     const setTransition = () => {
-      // console.log('Setting transition on container.'); // For debugging
-      // Only apply if it's not already set to avoid unnecessary DOM writes
       if (container.style.transition !== 'transform 0.3s ease-out') {
         container.style.transition = 'transform 0.3s ease-out'
       }
     }
 
-    // Attach event listeners for pointerDown, scroll, and settle
     emblaApi.on('pointerDown', setTransition)
     emblaApi.on('scroll', setTransition)
     emblaApi.on('settle', setTransition)
 
-    // IMPORTANT: Return a cleanup function to remove listeners
-    // This prevents memory leaks and ensures correct behavior if the component unmounts
-    // or if emblaApi somehow changes (though less common for Embla).
     return () => {
-      // console.log('Cleaning up Embla API transition listeners.'); // For debugging
       emblaApi.off('pointerDown', setTransition)
       emblaApi.off('scroll', setTransition)
       emblaApi.off('settle', setTransition)
     }
-  }, [emblaApi, isLgUp]) // Dependencies: Re-run if emblaApi or isLgUp changes
+  }, [emblaApi, isLgUp])
 
   const project = data.find(p => p.id === projectId)
 
@@ -102,24 +89,6 @@ const Carousel = ({ projectId }: CarouselProps) => {
           <MoveDown className='text-foreground-light' strokeWidth={1} />
         </div>
       </div>
-      {/* <AnimatePresence mode='wait'>
-        <motion.div
-          key={project.images[0]}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.1 }}
-          className='absolute top-0 z-[-2] aspect-video h-full w-full'
-        >
-          <Image
-            src={project.images[0]}
-            alt={`Blurred background`}
-            fill
-            aria-hidden='true'
-            className='scale-120 object-contain opacity-30 blur-[100px]'
-          />
-        </motion.div>
-      </AnimatePresence> */}
     </>
   )
 }

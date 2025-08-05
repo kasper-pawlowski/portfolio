@@ -1,10 +1,10 @@
-import ProjectNavigation from '@/components/ui/ProjectNavigation'
-import ProjectClient from './ProjectClient'
-import projects from '@/data/projects.json'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { MoveLeft } from 'lucide-react'
+import ProjectNavigation from '@/components/ui/ProjectNavigation'
+import projects from '@/data/projects.json'
 import { AnimationProvider } from '@/context/AnimationContext'
+import ProjectClient from './ProjectClient'
 
 type Project = {
   id: number
@@ -50,7 +50,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return <div>{t('notfound')}</div>
   }
 
-  // Pobierz wszystkie potrzebne tłumaczenia jako stringi
   const translations = {
     description: t('description'),
     technologies: t('technologies'),

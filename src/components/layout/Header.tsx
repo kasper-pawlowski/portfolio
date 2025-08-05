@@ -1,34 +1,35 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import ThemeToggle from '../theme-toggle'
-import SoundToggle from '../sound-toggle'
+
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import MobileMenu from './MobileMenu'
+import { usePathname } from '@/i18n/navigation'
+import { Menu, MoveLeft, X } from 'lucide-react'
 import {
   useMotionValueEvent,
   useScroll,
   motion,
   AnimatePresence
 } from 'motion/react'
-import LanguageSelect from '../language-select'
-import Link from 'next/link'
-import { Menu, MoveLeft, X } from 'lucide-react'
-import { ProgressiveBlur } from '../core/progressive-blur'
-import Logo from '../../../public/icons/logo.svg'
-import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useLenis } from 'lenis/react'
-import { usePathname } from '@/i18n/navigation'
+import ThemeToggle from '@/components/theme-toggle'
+import SoundToggle from '@/components/sound-toggle'
+import LanguageSelect from '@/components/language-select'
+import { ProgressiveBlur } from '@/components/core/progressive-blur'
 import useSound from '@/hooks/useSound'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
+import Logo from '../../../public/icons/logo.svg'
+import MobileMenu from './MobileMenu'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkSection, setIsDarkSection] = useState(false)
   const [scrollDirection, setScrollDirection] = useState('up')
   const [mounted, setMounted] = useState(false)
+
   const { soundHover, soundClick, soundTransitionDown, soundTransitionUp } =
     useSound()
-
   const t = useTranslations('Navigation')
   const tProjects = useTranslations('Projects')
   const lenis = useLenis()
@@ -36,7 +37,6 @@ const Header = () => {
   const { scrollY } = useScroll()
   const pathname = usePathname()
 
-  // Memoizowana funkcja sprawdzająca pozycję nagłówka
   const checkHeaderPosition = useCallback(() => {
     const headerHeight = 80
     const darkSections = ['experience']
@@ -53,7 +53,6 @@ const Header = () => {
     setIsDarkSection(isOverAnyDarkSection)
   }, [])
 
-  // Obsługa scroll direction
   useMotionValueEvent(scrollY, 'change', current => {
     if (!isLgUp) {
       const previous = scrollY.getPrevious() ?? 0
@@ -62,7 +61,6 @@ const Header = () => {
     }
   })
 
-  // Obsługa body overflow przy otwartym menu
   useEffect(() => {
     if (isMenuOpen) {
       soundTransitionUp()
@@ -78,7 +76,6 @@ const Header = () => {
       }
     }
 
-    // Cleanup przy unmount
     return () => {
       document.body.classList.remove('overflow-hidden')
       if (typeof document !== 'undefined') {
@@ -87,18 +84,15 @@ const Header = () => {
     }
   }, [isMenuOpen])
 
-  // Mounting state
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Sprawdzanie pozycji nagłówka względem sekcji
   useEffect(() => {
     if (!mounted) return
 
     checkHeaderPosition()
 
-    // Throttled scroll handler dla lepszej wydajności
     let ticking = false
     const scrollHandler = () => {
       if (!ticking) {
@@ -119,14 +113,12 @@ const Header = () => {
     }
   }, [mounted, checkHeaderPosition])
 
-  // Obsługa zamykania menu przy kliknięciu Logo
   const handleLogoClick = useCallback(() => {
     if (isMenuOpen) {
       setIsMenuOpen(false)
     }
   }, [isMenuOpen])
 
-  // Obsługa toggle menu
   const toggleMenu = useCallback(() => {
     setIsMenuOpen(prev => !prev)
   }, [])

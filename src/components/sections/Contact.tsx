@@ -1,16 +1,13 @@
 'use client'
 
-import { Copy, Github, Linkedin, MessageCircle } from 'lucide-react'
-import Image from 'next/image'
-import GithubLogo from '../../../public/icons/github.svg'
-import LinkedinLogo from '../../../public/icons/linkedin.svg'
-import WhatsappLogo from '../../../public/icons/whatsapp.svg'
-import toast from 'react-hot-toast'
 import { useTranslations } from 'next-intl'
-import { useEffect, useRef } from 'react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
+import { Copy } from 'lucide-react'
+import toast from 'react-hot-toast'
 import useSound from '@/hooks/useSound'
+import GithubLogo from '../../../public/icons/github.svg'
+import LinkedinLogo from '../../../public/icons/linkedin.svg'
 
 const Contact = () => {
   const t = useTranslations('Contact')
