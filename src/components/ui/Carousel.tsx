@@ -80,7 +80,7 @@ const Carousel = ({ projectId }: CarouselProps) => {
         <div className='embla__container flex gap-4 lg:h-full lg:flex-col lg:gap-12'>
           {project.images.map((image, index) => {
             return (
-              <div // Changed from motion.div for simplicity, use motion.div if 'motion/react' is fully integrated
+              <div
                 className='embla__slide relative aspect-video min-h-0 w-[80%] min-w-0 flex-none overflow-hidden rounded-2xl lg:w-full lg:flex-shrink-0 lg:flex-grow-0 lg:basis-auto'
                 key={index}
               >
@@ -88,7 +88,9 @@ const Carousel = ({ projectId }: CarouselProps) => {
                   src={image}
                   alt={`Project image ${index + 1}`}
                   fill
-                  sizes='(max-width: 768px) 100vw, (min-width: 769px) 50vw'
+                  quality={100}
+                  sizes='(max-width: 1024px) 80vw, 50vw'
+                  loading='eager'
                   className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out lg:rounded-4xl'
                 />
               </div>

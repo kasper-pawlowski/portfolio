@@ -33,8 +33,7 @@ export default async function ProjectCard({ project }: ProjectCardProps) {
           src={project.images[0]}
           alt={project.nameKey}
           fill
-          objectFit='contain'
-          className=''
+          className='object-contain'
         />
       </div>
 

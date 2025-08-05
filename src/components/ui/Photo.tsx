@@ -29,7 +29,7 @@ const Photo = () => {
         </div>
       </div>
       <div className='border-foreground relative aspect-square overflow-hidden border-t-3'>
-        <Image src='/photo.png' alt='Photo' fill={true} />
+        <Image src='/photo.avif' alt='Photo' fill={true} />
       </div>
     </div>
   )
