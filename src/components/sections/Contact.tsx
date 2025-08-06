@@ -16,9 +16,9 @@ const Contact = () => {
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText('kasper.pawlowski04@gmail.com')
-      toast.success(t('toast_success'))
+      toast.success(t('toast_success'), { id: 'success' })
     } catch (err) {
-      toast.error(t('toast_error'))
+      toast.error(t('toast_error'), { id: 'error' })
     }
   }
 

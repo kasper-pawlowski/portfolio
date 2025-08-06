@@ -27,6 +27,21 @@
 
     --header-size: 62px;
     --marquee-size: 80px;
+
+    --toast-font-size: 0.8rem;
+    --toast-padding: 12px 16px;
+    --toast-margin-right: 0;
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --header-size: 112px;
+      --marquee-size: 90px;
+
+      --toast-font-size: 1rem;
+      --toast-padding: 16px;
+      --toast-margin-right: 20px;
+    }
   }
 
   .dark {
@@ -163,13 +178,6 @@
   .underline-effect:hover::after {
     transform-origin: bottom left;
     transform: scaleX(1);
-  }
-}
-
-@media (min-width: 64rem) {
-  :root {
-    --header-size: 112px;
-    --marquee-size: 90px;
   }
 }
 
