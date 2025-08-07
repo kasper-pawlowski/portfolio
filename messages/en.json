@@ -5,6 +5,9 @@
     "projects": "projects",
     "contact": "contact"
   },
+  "Hero": {
+    "cta": "go to projects"
+  },
   "About": {
     "title": "About Me",
     "content": {
@@ -39,7 +42,7 @@
     "notfound": "Project not found.",
     "notsupported": "Your browser does not support the video tag.",
     "hyperio": {
-      "description": "Responsive landing page for Hyperio. The page was created based on previously prepared graphic designs."
+      "description": "Responsive landing page made for Hyperio. The page was created based on previously prepared graphic designs."
     },
     "pokedex": {
       "description": "Pokedex is a web application written in React, allowing users to browse information about Pokémon. Users can search for Pokémon by name or ID, and also view detailed data and statistics. The project focuses on a clear interface and dynamic data retrieval from an external API."
@@ -59,8 +62,8 @@
     "geoguess": {
       "description": "A web application where the player guesses the location of famous places on the world map. The user points out the locations of famous places on the map, earning points and competing with bots."
     },
-    "portfolio": {
-      "description": "A short description of Project Eight."
+    "weddingphone": {
+      "description": "Responsive landing page. The page was created based on previously prepared graphic designs."
     }
   }
 }

@@ -5,6 +5,9 @@
     "projects": "projekty",
     "contact": "kontakt"
   },
+  "Hero": {
+    "cta": "przejdź do projektów"
+  },
   "About": {
     "title": "O mnie",
     "content": {
@@ -39,7 +42,7 @@
     "notfound": "Projekt nie znaleziony.",
     "notsupported": "Twoja przeglądarka nie obsługuje tagu wideo.",
     "hyperio": {
-      "description": "Responsywny landing page dla firmy Hyperio. Strona powstała na podstawie wcześniej przygotowanych projektów graficznych"
+      "description": "Responsywny landing page wykonany dla firmy Hyperio. Strona powstała na podstawie wcześniej przygotowanych projektów graficznych"
     },
     "pokedex": {
       "description": "Pokedex to aplikacja webowa napisana w React, umożliwiająca przeglądanie informacji o Pokemonach. Użytkownik może wyszukiwać Pokemony według nazwy lub ID, a także zapoznać się ze szczegółowymi danymi i statystykami. Projekt skupia się na przejrzystym interfejsie i dynamicznym pobieraniu danych z zewnętrznego API."
@@ -59,8 +62,8 @@
     "geoguess": {
       "description": "Aplikacja webowa, w której gracz zgaduję lokalizację znanych miejsc na mapie świata. Użytkownik wskazuje na mapie lokalizacje znanych miejsc, zdobywając punkty i rywalizując z botami"
     },
-    "portfolio": {
-      "description": "Krótki opis Projektu Ósmego."
+    "weddingphone": {
+      "description": "Responsywny landing page. Strona powstała na podstawie wcześniej przygotowanych projektów graficznych"
     }
   }
 }

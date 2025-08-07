@@ -213,29 +213,28 @@
   },
   {
     "id": 8,
-    "nameKey": "Pop\u200bGuesser",
-    "slug": "popguesser",
-    "descriptionKey": "popguesser.description",
-    "videoUrl": "/projects/popguesser/popguesser.webm",
+    "nameKey": "Wedding Phone",
+    "slug": "weddingphone",
+    "descriptionKey": "weddingphone.description",
+    "videoUrl": "/projects/weddingphone/weddingphone.webm",
     "images": [
-      "/projects/popguesser/1.avif",
-      "/projects/popguesser/2.avif",
-      "/projects/popguesser/3.avif",
-      "/projects/popguesser/4.avif",
-      "/projects/popguesser/5.avif"
+      "/projects/weddingphone/1.avif",
+      "/projects/weddingphone/2.avif",
+      "/projects/weddingphone/3.avif",
+      "/projects/weddingphone/4.avif",
+      "/projects/weddingphone/5.avif"
     ],
-    "githubLink": "https://github.com/kasper-pawlowski/PopGuesser",
-    "liveLink": "",
-
-    "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    "accent": "#FF914C",
-    "color_1": "#BB4425",
-    "color_2": "#D9DDD4",
-    "color_3": "#E49752",
+    "githubLink": "https://github.com/kasper-pawlowski/wedding-phone",
+    "liveLink": "https://wedding-phone.netlify.app/",
+    "technologies": ["html", "css", "scss", "javascript"],
+    "accent": "#707070",
+    "color_1": "#F7F0E7",
+    "color_2": "#D2BEAD",
+    "color_3": "#707070",
     "color_4": "#FFFFFF",
-    "color_1_dark": "#4A1A0F",
-    "color_2_dark": "#3A3D34",
-    "color_3_dark": "#8B5A2E",
+    "color_1_dark": "#2D261A",
+    "color_2_dark": "#4A3D34",
+    "color_3_dark": "#B2B2B2",
     "color_4_dark": "#1A1A1A"
   }
 ]
