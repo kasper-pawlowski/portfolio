@@ -63,13 +63,11 @@ const Header = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      soundTransitionUp()
       document.body.classList.add('overflow-hidden')
       if (typeof document !== 'undefined') {
         document.body.style.overflow = 'hidden'
       }
     } else {
-      soundTransitionDown()
       document.body.classList.remove('overflow-hidden')
       if (typeof document !== 'undefined') {
         document.body.style.overflow = 'unset'
@@ -121,7 +119,12 @@ const Header = () => {
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen(prev => !prev)
-  }, [])
+    if (!isMenuOpen) {
+      soundTransitionUp()
+    } else {
+      soundTransitionDown()
+    }
+  }, [isMenuOpen])
 
   const handleScrollTo = (target: string) => {
     if (lenis) {
