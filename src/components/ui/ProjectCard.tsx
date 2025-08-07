@@ -38,12 +38,12 @@ export default async function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className='border-foreground flex w-full items-center justify-between gap-3 border-t-4 px-3 py-3'>
-        <p className='font-display font-800 overflow-hidden text-3xl overflow-ellipsis whitespace-nowrap'>
+        <p className='font-display font-800 flex-grow overflow-hidden text-3xl overflow-ellipsis whitespace-nowrap'>
           {project.nameKey}
         </p>
         <Link
           href={`/project/${project.id}`}
-          className='border-foreground flex items-center justify-center rounded-full border-2 px-3 py-1'
+          className='border-foreground flex shrink-0 items-center justify-center gap-1 rounded-full border-2 px-3 py-1'
         >
           <span className='font-500'>{t('see_more')}</span>
           <ArrowRight size={16} />
