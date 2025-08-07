@@ -4,15 +4,17 @@ import {
   useMotionValue,
   useMotionValueEvent,
   useScroll,
-  motion
+  motion,
+  useAnimation
 } from 'motion/react'
 import { useLenis } from 'lenis/react'
-import { ArrowDownRight } from 'lucide-react'
+import { ArrowDown, ArrowDownRight } from 'lucide-react'
 import { useLoader } from '@/context/LoaderContext'
 import Marquee from '@/components/ui/Marquee'
 import GridWrapper from '@/components/ui/GridWrapper'
 import useSound from '@/hooks/useSound'
 import { useTranslations } from 'next-intl'
+import { useEffect, useRef } from 'react'
 
 const Hero = () => {
   const { hasInitialLoadFinished } = useLoader()
@@ -21,6 +23,8 @@ const Hero = () => {
   const firstY = useMotionValue(0)
   const secondY = useMotionValue(0)
   const { soundHover, soundClick } = useSound()
+  const scrollIndicatorControls = useAnimation()
+  const hasScrolledRef = useRef(false)
 
   const t = useTranslations('Hero')
 
@@ -30,9 +34,48 @@ const Hero = () => {
 
     const newSecondY = 0 + latest * 300
     secondY.set(newSecondY)
+
+    // Sprawdź czy użytkownik zescrollował wystarczająco (np. 5% strony)
+    if (latest > 0.05 && !hasScrolledRef.current) {
+      hasScrolledRef.current = true
+      scrollIndicatorControls.start({
+        opacity: 0,
+        y: -20,
+        transition: {
+          duration: 0.3,
+          ease: 'easeOut'
+        }
+      })
+    }
   })
 
   const baseDelay = hasInitialLoadFinished ? 0 : 2
+
+  useEffect(() => {
+    scrollIndicatorControls.set({
+      opacity: 0,
+      y: 20
+    })
+
+    // Animuj do widoczności po załadowaniu
+    const timer = setTimeout(
+      () => {
+        if (!hasScrolledRef.current) {
+          scrollIndicatorControls.start({
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.5,
+              ease: 'easeInOut'
+            }
+          })
+        }
+      },
+      (baseDelay + 0.3) * 1000
+    )
+
+    return () => clearTimeout(timer)
+  }, [baseDelay, scrollIndicatorControls])
 
   const handleScrollTo = (target: string) => {
     if (lenis) {
@@ -119,6 +162,14 @@ const Hero = () => {
         <div className='z-4'>
           <Marquee />
         </div>
+
+        <motion.div
+          animate={scrollIndicatorControls}
+          className='mb-marquee text-foreground-light absolute bottom-0 left-5 -z-1 flex flex-col items-center justify-center gap-1 pb-2 lg:hidden'
+        >
+          <span className='text-sm'>scroll</span>
+          <ArrowDown size={18} strokeWidth={1} />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
