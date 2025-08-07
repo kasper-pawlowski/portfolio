@@ -28,6 +28,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     null
   )
   const [squareSize, setSquareSize] = useState({ width: 0, height: 0 })
+  const [isTouching, setIsTouching] = useState(false)
   const { soundPlum } = useSound()
 
   const getOverlayStyle = (
@@ -126,6 +127,27 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
     })
   }
 
+  const getSquareIndexFromCoordinates = (clientX: number, clientY: number) => {
+    if (!containerRef.current) return null
+
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = clientX - rect.left
+    const y = clientY - rect.top
+
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+      return null
+    }
+
+    const col = Math.floor((x / rect.width) * gridConfig.cols)
+    const row = Math.floor((y / rect.height) * gridConfig.rows)
+
+    if (col >= gridConfig.cols || row >= gridConfig.rows) {
+      return null
+    }
+
+    return row * gridConfig.cols + col
+  }
+
   useEffect(() => {
     if (itemRef.current) {
       const rect = itemRef.current.getBoundingClientRect()
@@ -206,6 +228,43 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
   }
 
   const handleSquareLeave = (index: number) => {
+    if (!isTouching) {
+      setHoveredSquare(null)
+    }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault()
+    setIsTouching(true)
+
+    const touch = e.touches[0]
+    const squareIndex = getSquareIndexFromCoordinates(
+      touch.clientX,
+      touch.clientY
+    )
+
+    if (squareIndex !== null) {
+      handleSquareHover(squareIndex)
+    }
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault()
+
+    const touch = e.touches[0]
+    const squareIndex = getSquareIndexFromCoordinates(
+      touch.clientX,
+      touch.clientY
+    )
+
+    if (squareIndex !== null && squareIndex !== hoveredSquare) {
+      handleSquareHover(squareIndex)
+    }
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault()
+    setIsTouching(false)
     setHoveredSquare(null)
   }
 
@@ -230,6 +289,7 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
           key={i}
           onMouseEnter={() => handleSquareHover(i)}
           onMouseLeave={() => handleSquareLeave(i)}
+          style={{ touchAction: 'none' }}
         />
       )
     }
@@ -258,8 +318,13 @@ const Grid: React.FC<GridProps> = ({ overlays = [], baseSize = 45 }) => {
           display: 'grid',
           gridTemplateColumns: `repeat(${gridConfig.cols}, 1fr)`,
           gridTemplateRows: `repeat(${gridConfig.rows}, 1fr)`,
-          filter: 'url(#gooey-filter)'
+          filter: 'url(#gooey-filter)',
+          touchAction: 'none'
         }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
       >
         <svg width='0' height='0' style={{ position: 'absolute' }}>
           <defs>
