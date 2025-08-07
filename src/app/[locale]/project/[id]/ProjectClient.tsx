@@ -40,7 +40,6 @@ interface ProjectClientProps {
     description: string
     technologies: string
     back_button: string
-    notfound: string
     projectDescription: string
   }
 }

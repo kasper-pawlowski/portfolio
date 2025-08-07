@@ -13,6 +13,7 @@ import StyledToaster from '@/components/ui/StyledToaster'
 import { LoaderProvider } from '@/context/LoaderContext'
 import { goia_display, goia } from '../fonts'
 import '../globals.css'
+import { getMessages } from 'next-intl/server'
 
 export const metadata: Metadata = {
   title: 'Kasper Pawłowski',
@@ -41,13 +42,15 @@ export default async function LocaleLayout({
     notFound()
   }
 
+  const messages = await getMessages({ locale })
+
   const bodyClassName = `${goia_display.variable} ${goia.variable} antialiased`
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={bodyClassName}>
         <Suspense fallback={<Loading />}>
-          <NextIntlClientProvider>
+          <NextIntlClientProvider messages={messages}>
             <Providers>
               <LoaderProvider>
                 <AppLayout>

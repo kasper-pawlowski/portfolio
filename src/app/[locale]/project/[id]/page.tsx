@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { MoveLeft } from 'lucide-react'
@@ -47,14 +48,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const project = (projects as Project[]).find(p => p.id === projectId)
 
   if (!project) {
-    return <div>{t('notfound')}</div>
+    notFound()
   }
 
   const translations = {
     description: t('description'),
     technologies: t('technologies'),
     back_button: t('back_button'),
-    notfound: t('notfound'),
     projectDescription: t(`${project.slug}.description`)
   }
 

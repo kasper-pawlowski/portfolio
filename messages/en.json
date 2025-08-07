@@ -39,7 +39,6 @@
     "see_more": "see more",
     "back_button": "back",
     "cursor_text": "view project",
-    "notfound": "Project not found.",
     "notsupported": "Your browser does not support the video tag.",
     "hyperio": {
       "description": "Responsive landing page made for Hyperio. The page was created based on previously prepared graphic designs."
@@ -65,5 +64,8 @@
     "weddingphone": {
       "description": "Responsive landing page. The page was created based on previously prepared graphic designs."
     }
+  },
+  "NotFound": {
+    "cta": "Go back to the homepage"
   }
 }
