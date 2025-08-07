@@ -18,7 +18,7 @@ const NotFound = () => {
       <p className='font-display font-800 fhd:text-[12rem] text-9xl'>404</p>
       <Link
         href='/'
-        className='font-500 buttton flex items-center justify-center gap-3 rounded-3xl px-5 py-3 backdrop-blur-sm duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1'
+        className='font-500 cta-button flex items-center justify-center gap-3 rounded-3xl px-5 py-3 backdrop-blur-sm duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1'
       >
         <ArrowLeft size={20} />
         <span>{t('cta')}</span>

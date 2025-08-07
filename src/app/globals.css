@@ -115,7 +115,7 @@
     left: anchor(center);
   }
 
-  .buttton {
+  .cta-button {
     box-shadow:
       var(--hero-button-shadow) 0px -0.722625px 1.01167px -0.833333px inset,
       var(--hero-button-shadow) 0px -2.74624px 3.84474px -1.66667px inset,
@@ -124,7 +124,7 @@
       0 0 0 3px var(--foreground);
   }
 
-  .buttton:hover {
+  .cta-button:hover {
     box-shadow:
       var(--hero-button-shadow-hover) 0px -0.722625px 1.01167px -0.833333px
         inset,
