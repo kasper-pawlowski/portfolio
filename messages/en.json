@@ -6,7 +6,7 @@
     "contact": "contact"
   },
   "Hero": {
-    "cta": "go to projects"
+    "cta": "view projects"
   },
   "About": {
     "title": "About Me",
@@ -38,7 +38,7 @@
     "technologies": "Technologies",
     "see_more": "see more",
     "back_button": "back",
-    "cursor_text": "go to project",
+    "cursor_text": "view project",
     "notfound": "Project not found.",
     "notsupported": "Your browser does not support the video tag.",
     "hyperio": {

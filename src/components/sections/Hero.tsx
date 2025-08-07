@@ -12,6 +12,7 @@ import { useLoader } from '@/context/LoaderContext'
 import Marquee from '@/components/ui/Marquee'
 import GridWrapper from '@/components/ui/GridWrapper'
 import useSound from '@/hooks/useSound'
+import { useTranslations } from 'next-intl'
 
 const Hero = () => {
   const { hasInitialLoadFinished } = useLoader()
@@ -20,6 +21,8 @@ const Hero = () => {
   const firstY = useMotionValue(0)
   const secondY = useMotionValue(0)
   const { soundHover, soundClick } = useSound()
+
+  const t = useTranslations('Hero')
 
   useMotionValueEvent(scrollYProgress, 'change', latest => {
     const newFirstY = 0 - latest * 300
@@ -91,7 +94,7 @@ const Hero = () => {
                   handleScrollTo('#projects'), soundClick()
                 }}
               >
-                <span className=''>przejdź do projektów</span>
+                <span className=''>{t('cta')}</span>
                 <ArrowDownRight
                   className='duration-300 ease-in-out group-hover:translate-x-1 group-hover:translate-y-1'
                   size={20}
