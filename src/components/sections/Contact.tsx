@@ -28,7 +28,7 @@ const Contact = () => {
         className='pointer-events-none absolute inset-0 bg-[url("/grain.png")] bg-repeat opacity-100 mix-blend-overlay'
         aria-hidden='true'
       />
-      <div className='container mx-auto flex h-auto flex-col items-center py-20 lg:py-40'>
+      <div className='container mx-auto flex h-auto flex-col items-center pt-30 pb-40 lg:py-60'>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
