@@ -16,7 +16,7 @@ import '../globals.css'
 import { getMessages } from 'next-intl/server'
 
 export const metadata: Metadata = {
-  title: 'Kasper Pawłowski',
+  title: 'Kasper Pawłowski - Frontend Developer',
   description: 'Personal website of Kasper Pawłowski'
 }
 
