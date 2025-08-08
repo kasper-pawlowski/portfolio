@@ -1,4 +1,4 @@
-import '../app/globals.css'
+// import '../app/globals.css'
 
 import { Metadata } from 'next'
 import Link from 'next/link'
