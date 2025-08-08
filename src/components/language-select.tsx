@@ -132,7 +132,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               onClick={() => {
                 closeDropdown(), soundClick()
               }}
-              scroll={false}
+              scroll={true}
               className={clsx(
                 'flex gap-3 rounded-lg py-4 transition-colors duration-200',
                 locale === 'pl' && 'bg-white/20 backdrop-blur-lg',
@@ -162,7 +162,7 @@ const LanguageSelect = ({ textColorClass }: LanguageSelectProps) => {
               onClick={() => {
                 closeDropdown(), soundClick()
               }}
-              scroll={false}
+              scroll={true}
               className={clsx(
                 'flex gap-3 rounded-lg py-4 transition-colors duration-200',
                 locale === 'en' && 'bg-white/20 backdrop-blur-lg',
