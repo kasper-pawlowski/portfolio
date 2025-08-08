@@ -36,7 +36,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     soundClick()
 
     setTimeout(() => {
-      router.push(`/project/${newValue}`)
+      router.push(`/projects/${newValue}`)
     }, 300)
   }
 
@@ -48,7 +48,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
     soundClick()
 
     setTimeout(() => {
-      router.push(`/project/${newValue}`)
+      router.push(`/projects/${newValue}`)
     }, 300)
   }
 
@@ -60,7 +60,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             className={`group qhd:-translate-x-2 qhd:hover:-translate-x-3 relative z-1 translate-x-1 duration-200 ease-in-out before:absolute before:-inset-2 before:content-[''] hover:-translate-x-0 active:scale-80 ${
               isAnimating ? 'pointer-events-none' : ''
             }`}
-            href={`/project/${current === 1 ? totalProjects : current - 1}`}
+            href={`/projects/${current === 1 ? totalProjects : current - 1}`}
             onClick={handlePrev}
             onMouseEnter={soundHover}
           >
@@ -85,7 +85,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
             className={`group qhd:translate-x-2 qhd:hover:translate-x-3 -translate-x-1 duration-200 ease-in-out before:absolute before:-inset-2 before:content-[''] hover:translate-x-0 active:scale-80 ${
               isAnimating ? 'pointer-events-none' : ''
             }`}
-            href={`/project/${current === totalProjects ? 1 : current + 1}`}
+            href={`/projects/${current === totalProjects ? 1 : current + 1}`}
             onClick={handleNext}
             onMouseEnter={soundHover}
           >
@@ -106,7 +106,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               className={`border-foreground-light flex h-full w-full items-center justify-center border-1 ${
                 isAnimating ? 'pointer-events-none' : ''
               }`}
-              href={`/project/${current === 1 ? totalProjects : current - 1}`}
+              href={`/projects/${current === 1 ? totalProjects : current - 1}`}
               onClick={handlePrev}
             >
               <MoveLeft
@@ -127,7 +127,7 @@ const ProjectNavigation: React.FC<ProjectNavigationProps> = ({
               className={`border-foreground-light flex h-full w-full items-center justify-center border-1 ${
                 isAnimating ? 'pointer-events-none' : ''
               }`}
-              href={`/project/${current === totalProjects ? 1 : current + 1}`}
+              href={`/projects/${current === totalProjects ? 1 : current + 1}`}
               onClick={handleNext}
             >
               <MoveRight

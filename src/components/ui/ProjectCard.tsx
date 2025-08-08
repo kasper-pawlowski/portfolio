@@ -42,7 +42,7 @@ export default async function ProjectCard({ project }: ProjectCardProps) {
           {project.nameKey}
         </p>
         <Link
-          href={`/project/${project.id}`}
+          href={`/projects/${project.id}`}
           className='border-foreground flex shrink-0 items-center justify-center gap-1 rounded-full border-2 px-3 py-1'
         >
           <span className='font-500'>{t('see_more')}</span>

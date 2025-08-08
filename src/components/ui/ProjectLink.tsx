@@ -13,7 +13,7 @@ const ProjectLink = ({ id }: ProjectLinkProps) => {
   const t = useTranslations('Projects')
 
   return (
-    <Link href={`/project/${id}`} className='group relative z-5 h-full w-full'>
+    <Link href={`/projects/${id}`} className='group relative z-5 h-full w-full'>
       <ProjectInteractionSounds />
       <video
         controls={false}
