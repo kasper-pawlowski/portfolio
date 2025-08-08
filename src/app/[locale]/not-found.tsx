@@ -1,17 +1,15 @@
-// import '../app/globals.css'
-
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 export const metadata: Metadata = {
   title: 'Strona nie znaleziona | 404',
   description: 'Strona, której szukasz, nie istnieje.'
 }
 
-const NotFound = () => {
-  const t = useTranslations('NotFound')
+export default async function NotFound() {
+  const t = await getTranslations('NotFound')
 
   return (
     <div className='flex h-dvh w-screen flex-col items-center justify-center gap-20'>
@@ -26,5 +24,3 @@ const NotFound = () => {
     </div>
   )
 }
-
-export default NotFound
