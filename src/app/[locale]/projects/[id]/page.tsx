@@ -6,6 +6,7 @@ import ProjectNavigation from '@/components/ui/ProjectNavigation'
 import projects from '@/data/projects.json'
 import { AnimationProvider } from '@/context/AnimationContext'
 import ProjectClient from './ProjectClient'
+import { routing } from '@/i18n/routing'
 
 type Project = {
   id: number
@@ -36,9 +37,12 @@ type ProjectPageProps = {
 }
 
 export async function generateStaticParams() {
-  return projects.map((project: Project) => ({
-    id: project.id.toString()
-  }))
+  return routing.locales.flatMap(locale =>
+    (projects as Project[]).map(project => ({
+      locale,
+      id: project.id.toString()
+    }))
+  )
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
