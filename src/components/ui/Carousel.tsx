@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
@@ -56,6 +56,15 @@ const Carousel = ({ projectId }: CarouselProps) => {
 
   const project = data.find(p => p.id === projectId)
 
+  const [loaded, setLoaded] = useState<boolean[]>([])
+  useEffect(() => {
+    if (project?.images) {
+      setLoaded(project.images.map(() => false))
+    } else {
+      setLoaded([])
+    }
+  }, [projectId])
+
   if (!project) return null
 
   return (
@@ -71,6 +80,12 @@ const Carousel = ({ projectId }: CarouselProps) => {
                 className='embla__slide relative aspect-video min-h-0 w-[80%] min-w-0 flex-none overflow-hidden rounded-2xl lg:w-full lg:flex-shrink-0 lg:flex-grow-0 lg:basis-auto'
                 key={index}
               >
+                {!loaded[index] && (
+                  <div
+                    className='absolute inset-0 animate-pulse rounded-2xl bg-neutral-200 dark:bg-neutral-800'
+                    aria-hidden='true'
+                  />
+                )}
                 <Image
                   src={image}
                   alt={`Project image ${index + 1}`}
@@ -79,6 +94,13 @@ const Carousel = ({ projectId }: CarouselProps) => {
                   sizes='(max-width: 1024px) 80vw, 50vw'
                   loading='eager'
                   className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out lg:rounded-4xl'
+                  onLoadingComplete={() =>
+                    setLoaded(prev => {
+                      const next = [...prev]
+                      next[index] = true
+                      return next
+                    })
+                  }
                 />
               </div>
             )
