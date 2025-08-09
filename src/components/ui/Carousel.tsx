@@ -7,6 +7,7 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import { MoveDown } from 'lucide-react'
 import data from '@/data/projects.json'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { motion } from 'motion/react'
 
 type CarouselProps = {
   projectId: number
@@ -82,26 +83,32 @@ const Carousel = ({ projectId }: CarouselProps) => {
               >
                 {!loaded[index] && (
                   <div
-                    className='absolute inset-0 animate-pulse rounded-2xl bg-neutral-400/30 backdrop-blur-lg'
+                    className='absolute inset-0 animate-pulse rounded-2xl bg-neutral-400/30 backdrop-blur-lg lg:rounded-4xl'
                     aria-hidden='true'
                   />
                 )}
-                <Image
-                  src={image}
-                  alt={`Project image ${index + 1}`}
-                  fill
-                  quality={100}
-                  sizes='(max-width: 1024px) 80vw, 50vw'
-                  loading='eager'
-                  className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out lg:rounded-4xl'
-                  onLoadingComplete={() =>
-                    setLoaded(prev => {
-                      const next = [...prev]
-                      next[index] = true
-                      return next
-                    })
-                  }
-                />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                >
+                  <Image
+                    src={image}
+                    alt={`Project image ${index + 1}`}
+                    fill
+                    quality={100}
+                    sizes='(max-width: 1024px) 80vw, 50vw'
+                    loading='eager'
+                    className='embla_slide_img relative h-full w-full rounded-2xl transition duration-200 ease-out lg:rounded-4xl'
+                    onLoadingComplete={() =>
+                      setLoaded(prev => {
+                        const next = [...prev]
+                        next[index] = true
+                        return next
+                      })
+                    }
+                  />
+                </motion.div>
               </div>
             )
           })}
