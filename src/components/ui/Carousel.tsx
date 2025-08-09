@@ -13,6 +13,7 @@ type CarouselProps = {
 }
 
 const Carousel = ({ projectId }: CarouselProps) => {
+  const [loaded, setLoaded] = useState<boolean[]>([])
   const isLgUp = useBreakpoint('lg')
 
   const plugins =
@@ -56,7 +57,6 @@ const Carousel = ({ projectId }: CarouselProps) => {
 
   const project = data.find(p => p.id === projectId)
 
-  const [loaded, setLoaded] = useState<boolean[]>([])
   useEffect(() => {
     if (project?.images) {
       setLoaded(project.images.map(() => false))
