@@ -82,7 +82,7 @@ const Carousel = ({ projectId }: CarouselProps) => {
               >
                 {!loaded[index] && (
                   <div
-                    className='absolute inset-0 animate-pulse rounded-2xl bg-neutral-200 dark:bg-neutral-800'
+                    className='absolute inset-0 animate-pulse rounded-2xl bg-neutral-400/30 backdrop-blur-lg'
                     aria-hidden='true'
                   />
                 )}
