@@ -178,7 +178,7 @@ const Header = () => {
                 handleScrollTo('#hero')
                 soundClick()
               }}
-              className={`transition-colors duration-200 ${textColorClass}`}
+              className={`flex items-center justify-center transition-colors duration-200 ${textColorClass}`}
             >
               <Logo className='qhd:h-8 qhd:w-8 h-6 w-6' />
             </Link>
