@@ -66,6 +66,11 @@
     }
   },
   "NotFound": {
+    "title": "Strona nie znaleziona | 404",
+    "description": "Strona, której szukasz, nie istnieje.",
     "cta": "Wróć do strony głównej"
+  },
+  "Metadata": {
+    "description": "Tworzę nowoczesne strony i aplikacje webowe. Zobacz moje portfolio i sprawdź moje projekty."
   }
 }

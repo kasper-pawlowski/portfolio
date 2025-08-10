@@ -55,15 +55,15 @@ const Contact = () => {
           {t('sub_title')}
         </motion.p>
         <a
-          href='mailto:kasper.pawlowski04@gmail.com'
+          href='mailto:hello@kasperpawlowski.com'
           className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background z-1 mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
-          aria-label='Wyślij wiadomość email do kasper.pawlowski04@gmail.com'
+          aria-label='Wyślij wiadomość email do hello@kasperpawlowski.com'
           role='button'
           onMouseEnter={soundHover}
           onMouseLeave={soundHover}
           onClick={soundClick}
         >
-          kasper.pawlowski04@gmail.com
+          hello@kasperpawlowski.com
         </a>
         <button
           onClick={() => {

@@ -13,11 +13,39 @@ import StyledToaster from '@/components/ui/StyledToaster'
 import { LoaderProvider } from '@/context/LoaderContext'
 import { goia_display, goia } from '../fonts'
 import '../globals.css'
-import { getMessages } from 'next-intl/server'
+import { getMessages, getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'Kasper Pawłowski - Frontend Developer',
-  description: 'Personal website of Kasper Pawłowski'
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound()
+  }
+
+  const t = await getTranslations({ locale, namespace: 'Metadata' })
+
+  return {
+    title: 'Kasper Pawłowski - Frontend Developer',
+    description: t('description'),
+    openGraph: {
+      title: 'Kasper Pawłowski - Frontend Developer',
+      description: t('description'),
+      url: 'https://kasperpawlowski.com',
+      siteName: 'Kasper Pawłowski',
+      locale,
+      type: 'website'
+    },
+    alternates: {
+      canonical: `https://kasperpawlowski.com/${locale}`,
+      languages: Object.fromEntries(
+        routing.locales.map(cur => [cur, `https://kasperpawlowski.com/${cur}`])
+      )
+    }
+  }
 }
 
 export const viewport: Viewport = {

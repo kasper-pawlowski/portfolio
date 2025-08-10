@@ -66,6 +66,11 @@
     }
   },
   "NotFound": {
+    "title": "Page not found | 404",
+    "description": "The page you’re looking for doesn’t exist.",
     "cta": "Go back to the homepage"
+  },
+  "Metadata": {
+    "description": "I create modern websites and web applications. Take a look at my portfolio and check out my projects."
   }
 }
