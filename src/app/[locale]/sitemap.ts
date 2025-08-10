@@ -10,30 +10,24 @@ type Href = Parameters<typeof getPathname>[0]['href']
 
 type Project = {
   id: number
-  // opcjonalnie: updatedAt?: string | Date
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
   const entries: MetadataRoute.Sitemap = [
-    // Strona główna (bez anchorów)
     ...getEntries('/', {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 1
     }),
 
-    // Dynamiczne strony projektów
     ...(projects as Project[]).flatMap(p =>
-      getEntries(
-        `/projects/${String(p.id)}`, // <- zamiana obiektu z params na string
-        {
-          lastModified: now, // podmień na p.updatedAt jeśli masz datę
-          changeFrequency: 'monthly',
-          priority: 0.7
-        }
-      )
+      getEntries(`/projects/${String(p.id)}`, {
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7
+      })
     )
   ]
 
