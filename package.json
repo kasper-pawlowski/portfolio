@@ -11,6 +11,8 @@
   "dependencies": {
     "@blur-ui/mesh-gradient": "^1.0.13",
     "@motionone/utils": "^10.18.0",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.0.2",
