@@ -62,6 +62,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     projectDescription: t(`${project.slug}.description`)
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.nameKey, // możesz użyć przetłumaczonej wersji
+    description: translations.projectDescription,
+    url: `https://kasperpawlowski.com/projects/${project.id}`,
+    inLanguage: resolvedParams.locale,
+    author: {
+      '@type': 'Person',
+      name: 'Kasper Pawlowski',
+      url: 'https://kasperpawlowski.com'
+    },
+    programmingLanguage: project.technologies.join(', ')
+  }
+
   return (
     <AnimationProvider>
       <div
@@ -83,6 +98,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Link>
         <ProjectNavigation currentProjectId={projectId} totalProjects={8} />
       </div>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c')
+        }}
+      />
     </AnimationProvider>
   )
 }

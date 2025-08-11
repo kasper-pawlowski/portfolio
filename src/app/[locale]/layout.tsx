@@ -70,6 +70,14 @@ export default async function LocaleLayout({
     notFound()
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Kasper Pawlowski',
+    url: 'https://kasperpawlowski.com',
+    jobTitle: 'Frontend Developer'
+  }
+
   const messages = await getMessages({ locale })
 
   const bodyClassName = `${goia_display.variable} ${goia.variable} antialiased`
@@ -92,6 +100,12 @@ export default async function LocaleLayout({
             </Providers>
           </NextIntlClientProvider>
         </Suspense>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c')
+          }}
+        />
       </body>
     </html>
   )
