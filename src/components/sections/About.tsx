@@ -16,7 +16,7 @@ const About = () => {
       />
       <div className='relative z-1 container mx-auto flex flex-col gap-10 py-20 font-black lg:flex-row lg:gap-20 lg:py-40'>
         <div className='flex flex-3/5 flex-col gap-10'>
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{
@@ -27,7 +27,7 @@ const About = () => {
             className='font-display z-2 text-5xl lg:text-7xl'
           >
             {t('title')}
-          </motion.h1>
+          </motion.h2>
           <p className='font-500 z-2 flex flex-col gap-5 font-sans text-lg lg:pl-20 lg:text-xl'>
             <motion.span
               initial={{ opacity: 0, y: 20 }}

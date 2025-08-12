@@ -13,7 +13,7 @@ const Experience = () => {
         aria-hidden='true'
       />
       <div className='container mx-auto flex h-auto flex-col gap-10 py-20 lg:py-40'>
-        <motion.h1
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{
@@ -24,7 +24,7 @@ const Experience = () => {
           className='font-display z-2 w-full text-5xl font-black lg:text-7xl'
         >
           {t('title')}
-        </motion.h1>
+        </motion.h2>
         <p className='z-2 flex w-full flex-col gap-5 font-sans text-lg font-medium lg:px-20 lg:text-xl'>
           <motion.span
             initial={{ opacity: 0, y: 20 }}

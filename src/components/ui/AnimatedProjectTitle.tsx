@@ -10,7 +10,7 @@ import {
 
 export const AnimatedProjectTitleMobile = ({ children }: PropsWithChildren) => {
   return (
-    <motion.h1
+    <motion.h2
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{
@@ -21,7 +21,7 @@ export const AnimatedProjectTitleMobile = ({ children }: PropsWithChildren) => {
       className='font-display font-900 z-2 mt-5 mb-10 text-center text-5xl'
     >
       {children}
-    </motion.h1>
+    </motion.h2>
   )
 }
 
@@ -38,12 +38,12 @@ export const AnimatedProjectTitle = ({ children }: PropsWithChildren) => {
   })
 
   return (
-    <motion.h1
+    <motion.h2
       transition={{ duration: 0.5, ease: 'easeInOut' }}
       style={{ y: titleY, scale: titleScale }}
       className='font-display absolute top-1/2 left-1/2 z-2 -translate-x-1/2 -translate-y-1/2 text-5xl font-black lg:text-7xl'
     >
       {children}
-    </motion.h1>
+    </motion.h2>
   )
 }
