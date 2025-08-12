@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
 
 export const metadata: Metadata = {
   title: 'Strona nie znaleziona | 404',

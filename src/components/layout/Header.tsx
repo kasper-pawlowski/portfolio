@@ -1,10 +1,8 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { usePathname } from '@/i18n/navigation'
+import { Link, usePathname } from '@/i18n/navigation'
 import { Menu, MoveLeft, X } from 'lucide-react'
 import {
   useMotionValueEvent,

@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { animate, motion, stagger } from 'framer-motion'
 import { splitText } from 'motion-plus'
@@ -12,6 +11,7 @@ import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useGradientColors } from '@/hooks/useGradientColors'
 import useSound from '@/hooks/useSound'
 import GithubLogo from '../../../../../public/icons/github.svg'
+import { Link } from '@/i18n/navigation'
 
 interface Project {
   id: number

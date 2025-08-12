@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { motion } from 'framer-motion'
 import { useLenis } from 'lenis/react'
 import LanguageToggle from '@/components/language-select'
