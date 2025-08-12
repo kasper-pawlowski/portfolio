@@ -33,6 +33,7 @@ export async function generateMetadata({
   return {
     title: 'Kasper Pawłowski - Frontend Developer',
     description: t('description'),
+    applicationName: 'Kasper Pawłowski',
     openGraph: {
       title: 'Kasper Pawłowski - Frontend Developer',
       description: t('description'),
@@ -40,10 +41,6 @@ export async function generateMetadata({
       siteName: 'Kasper Pawłowski',
       locale,
       type: 'website'
-    },
-    icons: {
-      icon: '/favicon.ico',
-      apple: '/apple-icon.png'
     },
     alternates: {
       canonical: `https://kasperpawlowski.com/${locale}`,
