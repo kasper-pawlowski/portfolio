@@ -41,6 +41,10 @@ export async function generateMetadata({
       locale,
       type: 'website'
     },
+    icons: {
+      icon: '/favicon.ico',
+      apple: '/apple-icon.png'
+    },
     alternates: {
       canonical: `https://kasperpawlowski.com/${locale}`,
       languages: Object.fromEntries(
