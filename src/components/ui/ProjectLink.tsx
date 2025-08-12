@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { MousePointer2, MousePointerClick } from 'lucide-react'
 import { Cursor } from '@/components/core/cursor'
 import ProjectInteractionSounds from '@/components/ProjectInteractionSounds'
