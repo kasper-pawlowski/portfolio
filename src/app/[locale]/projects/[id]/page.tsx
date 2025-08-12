@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
 import { MoveLeft } from 'lucide-react'
 import ProjectNavigation from '@/components/ui/ProjectNavigation'
 import projects from '@/data/projects.json'
 import { AnimationProvider } from '@/context/AnimationContext'
 import ProjectClient from './ProjectClient'
 import { routing } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
 
 type Project = {
   id: number
