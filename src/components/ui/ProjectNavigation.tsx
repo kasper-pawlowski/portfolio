@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { MoveLeft, MoveRight } from 'lucide-react'
 import { AnimateNumber } from 'motion-plus-react'
 import { useAnimation } from '@/context/AnimationContext'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import useSound from '@/hooks/useSound'
+import { Link } from '@/i18n/navigation'
 
 interface ProjectNavigationProps {
   currentProjectId: number
