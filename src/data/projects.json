@@ -12,7 +12,7 @@
       "/projects/hyperio/4.avif",
       "/projects/hyperio/5.avif"
     ],
-    "githubLink": "",
+    "githubLink": "https://github.com/kasper-pawlowski/hyperio",
     "liveLink": "https://hyperio.ch",
     "technologies": ["html", "css", "scss", "javascript"],
     "accent": "#fd9e28",
