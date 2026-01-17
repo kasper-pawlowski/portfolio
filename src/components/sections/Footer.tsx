@@ -99,7 +99,7 @@ const Footer = () => {
             </Link>
           </nav>
         </div>
-        <p className='z-1 mt-auto'>© 2025 Kasper Pawłowski</p>
+        <p className='z-1 mt-auto'>© 2026 Kasper Pawłowski</p>
       </div>
     </section>
   )
