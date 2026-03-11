@@ -15,7 +15,7 @@ const Contact = () => {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('hello@kasperpawlowski.com')
+      await navigator.clipboard.writeText('kasperpawlowski04@gmail.com')
       toast.success(t('toast_success'), { id: 'success' })
     } catch (err) {
       toast.error(t('toast_error'), { id: 'error' })
@@ -55,15 +55,15 @@ const Contact = () => {
           {t('sub_title')}
         </motion.p>
         <a
-          href='mailto:hello@kasperpawlowski.com'
+          href='mailto:kasperpawlowski04@gmail.com'
           className='font-600 shadow-elevated hover:shadow-elevated-hover bg-email-background z-1 mt-25 w-full rounded-2xl py-4 text-center text-xl duration-200 ease-in-out hover:translate-x-1 hover:translate-y-1 active:translate-y-[6px] lg:max-w-max lg:px-16'
-          aria-label='Wyślij wiadomość email do hello@kasperpawlowski.com'
+          aria-label='Wyślij wiadomość email do kasperpawlowski04@gmail.com'
           role='button'
           onMouseEnter={soundHover}
           onMouseLeave={soundHover}
           onClick={soundClick}
         >
-          hello@kasperpawlowski.com
+          kasperpawlowski04@gmail.com
         </a>
         <button
           onClick={() => {
